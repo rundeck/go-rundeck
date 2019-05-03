@@ -14,7 +14,7 @@ import "github.com/rundeck/go-rundeck/rundeck"
 import "github.com/rundeck/go-rundeck/rundeck/auth"
 
 func main() {
-    cl := rundeck.NewWithBaseURI("https://127.0.0.1:4440/api/26")   
+    cl := rundeck.NewRundeckWithBaseURI("https://127.0.0.1:4440/api/26")   
     cl.Client.Authorizer = &auth.TokenAuthorizer{Token: "ABCDEFG"}  
     ctx := context.Background() 
     sysInfo, _ := cl.SystemInfoGet(ctx)

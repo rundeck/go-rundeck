@@ -7,3 +7,5 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.1.0
 	github.com/Azure/go-autorest/tracing v0.1.0
 )
+
+replace github.com/rundeck/go-rundeck/rundeck/auth => ./auth
