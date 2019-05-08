@@ -14,7 +14,12 @@ func (ta *TokenAuthorizer) WithAuthorization() autorest.PrepareDecorator {
 			r, err := p.Prepare(r)
 			if err == nil {
 				r.Header.Set("X-Rundeck-Auth-Token", ta.Token)
-				r.Header.Set("Accept", "application/json")
+
+				accept := r.Header.Get("Accept")
+
+				if accept == "" {
+					r.Header.Set("Accept", "application/json")
+				}
 			}
 			return r, err
 		})
