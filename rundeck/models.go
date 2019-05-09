@@ -29,20 +29,6 @@ const fqdn = "rundeck"
         return []FileState{Deleted,Expired,Retained,Temp}
     }
 
-        // KeyType enumerates the values for key type.
-    type KeyType string
-
-    const (
-                // Private ...
-        Private KeyType = "private"
-                // Public ...
-        Public KeyType = "public"
-            )
-    // PossibleKeyTypeValues returns an array of possible values for the KeyType const type.
-    func PossibleKeyTypeValues() []KeyType {
-        return []KeyType{Private,Public}
-    }
-
         // Loglevel enumerates the values for loglevel.
     type Loglevel string
 
@@ -107,6 +93,20 @@ const fqdn = "rundeck"
     // PossibleStatusValues returns an array of possible values for the Status const type.
     func PossibleStatusValues() []Status {
         return []Status{Aborted,Failed,FailedWithRetry,Other,Running,Scheduled,Succeeded,Timedout}
+    }
+
+        // StorageKeyMetaType enumerates the values for storage key meta type.
+    type StorageKeyMetaType string
+
+    const (
+                // Private ...
+        Private StorageKeyMetaType = "private"
+                // Public ...
+        Public StorageKeyMetaType = "public"
+            )
+    // PossibleStorageKeyMetaTypeValues returns an array of possible values for the StorageKeyMetaType const type.
+    func PossibleStorageKeyMetaTypeValues() []StorageKeyMetaType {
+        return []StorageKeyMetaType{Private,Public}
     }
 
             // ACLList ...
@@ -312,12 +312,6 @@ const fqdn = "rundeck"
             type JobExecutionEnableOKResponse struct {
             autorest.Response `json:"-"`
             Success *bool `json:"success,omitempty"`
-            }
-
-            // JobGetOKResponse ...
-            type JobGetOKResponse struct {
-            autorest.Response `json:"-"`
-            Content *string `json:"content,omitempty"`
             }
 
             // JobInputFileInfo ...
@@ -587,9 +581,19 @@ const fqdn = "rundeck"
             type StorageKeyListResponse struct {
             autorest.Response `json:"-"`
             Resources *[]StorageKeyMetadata `json:"resources,omitempty"`
+            Meta *StorageKeyListResponseMeta `json:"meta,omitempty"`
             URL *string `json:"url,omitempty"`
             Type *string `json:"type,omitempty"`
             Path *string `json:"path,omitempty"`
+            }
+
+            // StorageKeyListResponseMeta ...
+            type StorageKeyListResponseMeta struct {
+            // RundeckKeyType - Possible values include: 'Private', 'Public'
+            RundeckKeyType StorageKeyMetaType `json:"Rundeck-key-type,omitempty"`
+            RundeckContentMask *string `json:"Rundeck-content-mask,omitempty"`
+            RundeckContentSize *string `json:"Rundeck-content-size,omitempty"`
+            RundeckContentType *string `json:"Rundeck-content-type,omitempty"`
             }
 
             // StorageKeyMetadata ...
@@ -604,7 +608,7 @@ const fqdn = "rundeck"
             // StorageKeyMetadataMeta ...
             type StorageKeyMetadataMeta struct {
             // RundeckKeyType - Possible values include: 'Private', 'Public'
-            RundeckKeyType KeyType `json:"Rundeck-key-type,omitempty"`
+            RundeckKeyType StorageKeyMetaType `json:"Rundeck-key-type,omitempty"`
             RundeckContentMask *string `json:"Rundeck-content-mask,omitempty"`
             RundeckContentSize *string `json:"Rundeck-content-size,omitempty"`
             RundeckContentType *string `json:"Rundeck-content-type,omitempty"`

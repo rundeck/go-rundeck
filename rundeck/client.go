@@ -613,7 +613,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
     // JobDelete sends the job delete request.
         // Parameters:
             // ID - ID of job to delete.
-    func (client BaseClient) JobDelete(ctx context.Context, ID float64) (result autorest.Response, err error) {
+    func (client BaseClient) JobDelete(ctx context.Context, ID string) (result autorest.Response, err error) {
         if tracing.IsEnabled() {
             ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.JobDelete")
             defer func() {
@@ -646,7 +646,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         }
 
         // JobDeletePreparer prepares the JobDelete request.
-        func (client BaseClient) JobDeletePreparer(ctx context.Context, ID float64) (*http.Request, error) {
+        func (client BaseClient) JobDeletePreparer(ctx context.Context, ID string) (*http.Request, error) {
                 pathParameters := map[string]interface{} {
                 "id": autorest.Encode("path",ID),
                 }
@@ -1162,7 +1162,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         // Parameters:
             // ID - ID of the job to export.
             // formatParameter -
-    func (client BaseClient) JobGet(ctx context.Context, ID string, formatParameter string) (result JobGetOKResponse, err error) {
+    func (client BaseClient) JobGet(ctx context.Context, ID string, formatParameter string) (result ReadCloser, err error) {
         if tracing.IsEnabled() {
             ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.JobGet")
             defer func() {
@@ -1225,13 +1225,12 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
 
     // JobGetResponder handles the response to the JobGet request. The method always
     // closes the http.Response Body.
-    func (client BaseClient) JobGetResponder(resp *http.Response) (result JobGetOKResponse, err error) {
+    func (client BaseClient) JobGetResponder(resp *http.Response) (result ReadCloser, err error) {
+        result.Value = &resp.Body
         err = autorest.Respond(
         resp,
         client.ByInspecting(),
-        azure.WithErrorUnlessStatusCode(http.StatusOK),
-        autorest.ByUnmarshallingJSON(&result),
-        autorest.ByClosing())
+        azure.WithErrorUnlessStatusCode(http.StatusOK))
         result.Response = autorest.Response{Response: resp}
             return
         }
@@ -2830,18 +2829,18 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
     // ProjectJobsImport sends the project jobs import request.
         // Parameters:
             // project - name of the project to import jobs into.
-    func (client BaseClient) ProjectJobsImport(ctx context.Context, project string) (result autorest.Response, err error) {
+    func (client BaseClient) ProjectJobsImport(ctx context.Context, project string, file io.ReadCloser, contentType string, accept string, fileFormat string, dupeOption string, UUIDOption string) (result ReadCloser, err error) {
         if tracing.IsEnabled() {
             ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectJobsImport")
             defer func() {
                 sc := -1
-                if result.Response != nil {
-                    sc = result.Response.StatusCode
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
                 }
                 tracing.EndSpan(ctx, sc, err)
             }()
         }
-            req, err := client.ProjectJobsImportPreparer(ctx, project)
+            req, err := client.ProjectJobsImportPreparer(ctx, project, file, contentType, accept, fileFormat, dupeOption, UUIDOption)
         if err != nil {
         err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectJobsImport", nil , "Failure preparing request")
         return
@@ -2849,7 +2848,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
 
                 resp, err := client.ProjectJobsImportSender(req)
                 if err != nil {
-                result.Response = resp
+                result.Response = autorest.Response{Response: resp}
                 err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectJobsImport", resp, "Failure sending request")
                 return
                 }
@@ -2863,15 +2862,50 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         }
 
         // ProjectJobsImportPreparer prepares the ProjectJobsImport request.
-        func (client BaseClient) ProjectJobsImportPreparer(ctx context.Context, project string) (*http.Request, error) {
+        func (client BaseClient) ProjectJobsImportPreparer(ctx context.Context, project string, file io.ReadCloser, contentType string, accept string, fileFormat string, dupeOption string, UUIDOption string) (*http.Request, error) {
                 pathParameters := map[string]interface{} {
                 "project": autorest.Encode("path",project),
                 }
 
+                        queryParameters := map[string]interface{} {
+            }
+                if len(fileFormat) > 0 {
+                queryParameters["fileFormat"] = autorest.Encode("query",fileFormat)
+                    } else {
+                    queryParameters["fileFormat"] = autorest.Encode("query","xml")
+                }
+                if len(dupeOption) > 0 {
+                queryParameters["dupeOption"] = autorest.Encode("query",dupeOption)
+                    } else {
+                    queryParameters["dupeOption"] = autorest.Encode("query","create")
+                }
+                if len(UUIDOption) > 0 {
+                queryParameters["uuidOption"] = autorest.Encode("query",UUIDOption)
+                    } else {
+                    queryParameters["uuidOption"] = autorest.Encode("query","preserve")
+                }
+
             preparer := autorest.CreatePreparer(
+        autorest.AsContentType("application/json; charset=utf-8"),
         autorest.AsPost(),
         autorest.WithBaseURL(client.BaseURI),
-        autorest.WithPathParameters("/project/{project}/jobs/import",pathParameters))
+        autorest.WithPathParameters("/project/{project}/jobs/import",pathParameters),
+        autorest.WithFile(file),
+        autorest.WithQueryParameters(queryParameters))
+                if len(contentType) > 0 {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithHeader("content-type",autorest.String(contentType)))
+                     } else {
+                    preparer = autorest.DecoratePreparer(preparer,
+                    autorest.WithHeader("content-type",autorest.String("application/xml")))
+                }
+                if len(accept) > 0 {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithHeader("accept",autorest.String(accept)))
+                     } else {
+                    preparer = autorest.DecoratePreparer(preparer,
+                    autorest.WithHeader("accept",autorest.String("application/xml")))
+                }
         return preparer.Prepare((&http.Request{}).WithContext(ctx))
         }
 
@@ -2884,13 +2918,13 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
 
     // ProjectJobsImportResponder handles the response to the ProjectJobsImport request. The method always
     // closes the http.Response Body.
-    func (client BaseClient) ProjectJobsImportResponder(resp *http.Response) (result autorest.Response, err error) {
+    func (client BaseClient) ProjectJobsImportResponder(resp *http.Response) (result ReadCloser, err error) {
+        result.Value = &resp.Body
         err = autorest.Respond(
         resp,
         client.ByInspecting(),
-        azure.WithErrorUnlessStatusCode(http.StatusOK),
-        autorest.ByClosing())
-        result.Response = resp
+        azure.WithErrorUnlessStatusCode(http.StatusOK))
+        result.Response = autorest.Response{Response: resp}
             return
         }
 
@@ -3367,7 +3401,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
     // StorageKeyCreate sends the storage key create request.
         // Parameters:
             // pathParameter - key path
-    func (client BaseClient) StorageKeyCreate(ctx context.Context, pathParameter string, file io.ReadCloser) (result autorest.Response, err error) {
+    func (client BaseClient) StorageKeyCreate(ctx context.Context, pathParameter string, file io.ReadCloser, contentType string) (result autorest.Response, err error) {
         if tracing.IsEnabled() {
             ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.StorageKeyCreate")
             defer func() {
@@ -3378,7 +3412,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
                 tracing.EndSpan(ctx, sc, err)
             }()
         }
-            req, err := client.StorageKeyCreatePreparer(ctx, pathParameter, file)
+            req, err := client.StorageKeyCreatePreparer(ctx, pathParameter, file, contentType)
         if err != nil {
         err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyCreate", nil , "Failure preparing request")
         return
@@ -3400,7 +3434,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         }
 
         // StorageKeyCreatePreparer prepares the StorageKeyCreate request.
-        func (client BaseClient) StorageKeyCreatePreparer(ctx context.Context, pathParameter string, file io.ReadCloser) (*http.Request, error) {
+        func (client BaseClient) StorageKeyCreatePreparer(ctx context.Context, pathParameter string, file io.ReadCloser, contentType string) (*http.Request, error) {
                 pathParameters := map[string]interface{} {
                 "path": pathParameter,
                 }
@@ -3411,6 +3445,13 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         autorest.WithBaseURL(client.BaseURI),
         autorest.WithPathParameters("/storage/keys/{path}",pathParameters),
         autorest.WithFile(file))
+                if len(contentType) > 0 {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithHeader("content-type",autorest.String(contentType)))
+                     } else {
+                    preparer = autorest.DecoratePreparer(preparer,
+                    autorest.WithHeader("content-type",autorest.String("application/pgp-keys")))
+                }
         return preparer.Prepare((&http.Request{}).WithContext(ctx))
         }
 
@@ -3500,14 +3541,14 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
             return
         }
 
-    // StorageKeyGet this enpoint is impossible to describe properly in OAPI 2.0 .
+    // StorageKeyGetMaterial this enpoint is impossible to describe properly in OAPI 2.0 .
     // Depending on resources type and accepts header GET can return a list of key metadata,
     // single metadata, or the key contents.
         // Parameters:
-            // pathParameter - key path
-    func (client BaseClient) StorageKeyGet(ctx context.Context, pathParameter string, accept string) (result StorageKeyListResponse, err error) {
+            // keyPath - key path
+    func (client BaseClient) StorageKeyGetMaterial(ctx context.Context, keyPath string) (result ReadCloser, err error) {
         if tracing.IsEnabled() {
-            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.StorageKeyGet")
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.StorageKeyGetMaterial")
             defer func() {
                 sc := -1
                 if result.Response.Response != nil {
@@ -3516,29 +3557,99 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
                 tracing.EndSpan(ctx, sc, err)
             }()
         }
-            req, err := client.StorageKeyGetPreparer(ctx, pathParameter, accept)
+            req, err := client.StorageKeyGetMaterialPreparer(ctx, keyPath)
         if err != nil {
-        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGet", nil , "Failure preparing request")
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMaterial", nil , "Failure preparing request")
         return
         }
 
-                resp, err := client.StorageKeyGetSender(req)
+                resp, err := client.StorageKeyGetMaterialSender(req)
                 if err != nil {
                 result.Response = autorest.Response{Response: resp}
-                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGet", resp, "Failure sending request")
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMaterial", resp, "Failure sending request")
                 return
                 }
 
-                result, err = client.StorageKeyGetResponder(resp)
+                result, err = client.StorageKeyGetMaterialResponder(resp)
                 if err != nil {
-                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGet", resp, "Failure responding to request")
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMaterial", resp, "Failure responding to request")
                 }
 
         return
         }
 
-        // StorageKeyGetPreparer prepares the StorageKeyGet request.
-        func (client BaseClient) StorageKeyGetPreparer(ctx context.Context, pathParameter string, accept string) (*http.Request, error) {
+        // StorageKeyGetMaterialPreparer prepares the StorageKeyGetMaterial request.
+        func (client BaseClient) StorageKeyGetMaterialPreparer(ctx context.Context, keyPath string) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "keyPath": keyPath,
+                }
+
+            preparer := autorest.CreatePreparer(
+        autorest.AsGet(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/storage/keys/{keyPath}",pathParameters),
+        autorest.WithHeader("accept", "*/*"))
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+
+        // StorageKeyGetMaterialSender sends the StorageKeyGetMaterial request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) StorageKeyGetMaterialSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+
+    // StorageKeyGetMaterialResponder handles the response to the StorageKeyGetMaterial request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) StorageKeyGetMaterialResponder(resp *http.Response) (result ReadCloser, err error) {
+        result.Value = &resp.Body
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNotFound))
+        result.Response = autorest.Response{Response: resp}
+            return
+        }
+
+    // StorageKeyGetMetadata this enpoint is impossible to describe properly in OAPI 2.0 .
+    // Depending on resources type and accepts header GET can return a list of key metadata,
+    // single metadata, or the key contents.
+        // Parameters:
+            // pathParameter - key path
+    func (client BaseClient) StorageKeyGetMetadata(ctx context.Context, pathParameter string) (result StorageKeyListResponse, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.StorageKeyGetMetadata")
+            defer func() {
+                sc := -1
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+            req, err := client.StorageKeyGetMetadataPreparer(ctx, pathParameter)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMetadata", nil , "Failure preparing request")
+        return
+        }
+
+                resp, err := client.StorageKeyGetMetadataSender(req)
+                if err != nil {
+                result.Response = autorest.Response{Response: resp}
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMetadata", resp, "Failure sending request")
+                return
+                }
+
+                result, err = client.StorageKeyGetMetadataResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyGetMetadata", resp, "Failure responding to request")
+                }
+
+        return
+        }
+
+        // StorageKeyGetMetadataPreparer prepares the StorageKeyGetMetadata request.
+        func (client BaseClient) StorageKeyGetMetadataPreparer(ctx context.Context, pathParameter string) (*http.Request, error) {
                 pathParameters := map[string]interface{} {
                 "path": pathParameter,
                 }
@@ -3546,27 +3657,21 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
             preparer := autorest.CreatePreparer(
         autorest.AsGet(),
         autorest.WithBaseURL(client.BaseURI),
-        autorest.WithPathParameters("/storage/keys/{path}",pathParameters))
-                if len(accept) > 0 {
-                preparer = autorest.DecoratePreparer(preparer,
-                autorest.WithHeader("accept",autorest.String(accept)))
-                     } else {
-                    preparer = autorest.DecoratePreparer(preparer,
-                    autorest.WithHeader("accept",autorest.String("application/json")))
-                }
+        autorest.WithPathParameters("/storage/keys/{path}",pathParameters),
+        autorest.WithHeader("accept", "application/json"))
         return preparer.Prepare((&http.Request{}).WithContext(ctx))
         }
 
-        // StorageKeyGetSender sends the StorageKeyGet request. The method will close the
+        // StorageKeyGetMetadataSender sends the StorageKeyGetMetadata request. The method will close the
         // http.Response Body if it receives an error.
-        func (client BaseClient) StorageKeyGetSender(req *http.Request) (*http.Response, error) {
+        func (client BaseClient) StorageKeyGetMetadataSender(req *http.Request) (*http.Response, error) {
                 return autorest.SendWithSender(client, req,
                 autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
                 }
 
-    // StorageKeyGetResponder handles the response to the StorageKeyGet request. The method always
+    // StorageKeyGetMetadataResponder handles the response to the StorageKeyGetMetadata request. The method always
     // closes the http.Response Body.
-    func (client BaseClient) StorageKeyGetResponder(resp *http.Response) (result StorageKeyListResponse, err error) {
+    func (client BaseClient) StorageKeyGetMetadataResponder(resp *http.Response) (result StorageKeyListResponse, err error) {
         err = autorest.Respond(
         resp,
         client.ByInspecting(),
@@ -3580,7 +3685,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
     // StorageKeyUpdate sends the storage key update request.
         // Parameters:
             // pathParameter - key path
-    func (client BaseClient) StorageKeyUpdate(ctx context.Context, pathParameter string, file io.ReadCloser) (result autorest.Response, err error) {
+    func (client BaseClient) StorageKeyUpdate(ctx context.Context, pathParameter string, file io.ReadCloser, contentType string) (result autorest.Response, err error) {
         if tracing.IsEnabled() {
             ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.StorageKeyUpdate")
             defer func() {
@@ -3591,7 +3696,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
                 tracing.EndSpan(ctx, sc, err)
             }()
         }
-            req, err := client.StorageKeyUpdatePreparer(ctx, pathParameter, file)
+            req, err := client.StorageKeyUpdatePreparer(ctx, pathParameter, file, contentType)
         if err != nil {
         err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "StorageKeyUpdate", nil , "Failure preparing request")
         return
@@ -3613,7 +3718,7 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         }
 
         // StorageKeyUpdatePreparer prepares the StorageKeyUpdate request.
-        func (client BaseClient) StorageKeyUpdatePreparer(ctx context.Context, pathParameter string, file io.ReadCloser) (*http.Request, error) {
+        func (client BaseClient) StorageKeyUpdatePreparer(ctx context.Context, pathParameter string, file io.ReadCloser, contentType string) (*http.Request, error) {
                 pathParameters := map[string]interface{} {
                 "path": pathParameter,
                 }
@@ -3624,6 +3729,13 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         autorest.WithBaseURL(client.BaseURI),
         autorest.WithPathParameters("/storage/keys/{path}",pathParameters),
         autorest.WithFile(file))
+                if len(contentType) > 0 {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithHeader("content-type",autorest.String(contentType)))
+                     } else {
+                    preparer = autorest.DecoratePreparer(preparer,
+                    autorest.WithHeader("content-type",autorest.String("application/pgp-keys")))
+                }
         return preparer.Prepare((&http.Request{}).WithContext(ctx))
         }
 
