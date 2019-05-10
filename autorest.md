@@ -19,13 +19,13 @@ The following are the settings for this using this API with AutoRest.
 Defines the Open API spec file(s) to use for input:
 ```yaml
 input-file:
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/execution.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/job.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/metric.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/project.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/storage.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/system.yaml
-- https://github.com/rundeck/rundeck-api-specs/blob/4f3b7f32eb6e961cc77a9c4f392398787528fd8d/rundeck/user.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/execution.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/job.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/metric.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/project.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/storage.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/system.yaml
+- https://github.com/rundeck/rundeck-api-specs/blob/4be5784aad4896a3e7b97e3a70a48c16feaa2bd3/rundeck/user.yaml
 ```
 
 Sets the generated TypeScript code output directory:

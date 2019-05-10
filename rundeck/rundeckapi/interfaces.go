@@ -47,7 +47,7 @@ import (
             ProjectConfigKeyGet(ctx context.Context, project string, key string) (result rundeck.ProjectConfigKeyGetOKResponse, err error)
             ProjectConfigKeySet(ctx context.Context, project string, key string, projectConfigKeySetRequest rundeck.ProjectConfigKeySetRequest) (result rundeck.ProjectConfigKeySetOKResponse, err error)
             ProjectConfigUpdate(ctx context.Context, project string, projectConfigUpdateRequest interface{}) (result autorest.Response, err error)
-            ProjectCreate(ctx context.Context, projectCreateRequest rundeck.ProjectCreateRequest) (result autorest.Response, err error)
+            ProjectCreate(ctx context.Context, projectCreateRequest rundeck.ProjectCreateRequest) (result rundeck.SetObject, err error)
             ProjectDelete(ctx context.Context, project string) (result autorest.Response, err error)
             ProjectGet(ctx context.Context, project string) (result rundeck.Project, err error)
             ProjectJobsExport(ctx context.Context, project string, formatParameter string, idlist string, groupPath string, jobFilter string) (result rundeck.String, err error)
