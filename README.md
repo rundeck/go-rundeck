@@ -41,8 +41,8 @@ openapi-generator generate \
   -i rundeck-api.yml \
   -g go \
   --git-user-id rundeck \
-  --git-repo-id go-rundeck \
-  -o ./rundeck-v2  
+  --git-repo-id go-rundeck/rundeck-v2 \
+  -o ./rundeck-v2 
 ```
 
 ```bash
