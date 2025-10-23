@@ -1,4 +1,4 @@
-module github.com/rundeck/go-rundeck
+module github.com/rundeck/go-rundeck/rundeck-v2
 
 go 1.18
 

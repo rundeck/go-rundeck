@@ -27,7 +27,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/rundeck/go-rundeck"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func main() {
@@ -109,7 +109,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/rundeck/go-rundeck"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func main() {
@@ -199,7 +199,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/rundeck/go-rundeck"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func main() {

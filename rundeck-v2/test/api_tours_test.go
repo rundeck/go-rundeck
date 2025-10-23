@@ -11,7 +11,7 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
