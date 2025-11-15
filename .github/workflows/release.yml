@@ -32,14 +32,28 @@ jobs:
           echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
           echo "VERSION_NUMBER=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-      - name: Verify rundeck-v2 SDK builds
+      - name: Verify SDK builds
         run: |
-          cd rundeck-v2
-          go mod download
-          go mod verify
-          go build
-          go test -v ./...
-        continue-on-error: true  # Tests might not all pass yet
+          # Test legacy SDK (always present)
+          if [ -d "rundeck" ]; then
+            echo "Building legacy rundeck SDK..."
+            cd rundeck
+            go mod download
+            go mod verify
+            go build
+            cd ..
+          fi
+          
+          # Test v2 SDK (if present)
+          if [ -d "rundeck-v2" ]; then
+            echo "Building rundeck-v2 SDK..."
+            cd rundeck-v2
+            go mod download
+            go mod verify
+            go build
+            go test -v ./... || true  # Tests might not all pass yet
+            cd ..
+          fi
 
       - name: Generate changelog
         id: changelog
@@ -66,23 +80,26 @@ jobs:
 
       - name: Create release body
         run: |
+          # Detect which SDKs are present
+          HAS_V2=""
+          if [ -d "rundeck-v2" ]; then
+            HAS_V2="true"
+          fi
+          
+          # Create release notes based on what's available
           cat > /tmp/release_body.md << 'EOF'
           ## Rundeck Go SDK ${{ steps.version.outputs.VERSION }}
           
-          Auto-generated Go SDK for Rundeck API v56, generated from OpenAPI specification.
+          Go SDK for the Rundeck / Runbook Automation API.
           
           ### Installation
           
           ```bash
+          # For rundeck-v2 (if available)
           go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}
-          ```
           
-          ### Usage in go.mod
-          
-          ```go
-          require (
-              github.com/rundeck/go-rundeck/rundeck-v2 ${{ steps.version.outputs.VERSION }}
-          )
+          # For legacy rundeck package
+          go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
           ```
           
           ### Changes in this release
@@ -92,19 +109,21 @@ jobs:
           ### Module Structure
           
           - **rundeck/** - Legacy SDK (AutoRest-based)
-          - **rundeck-v2/** - Current SDK (OpenAPI Generator-based) ⭐
+          EOF
           
-          ### API Documentation
+          # Add v2 info if present
+          if [ -n "$HAS_V2" ]; then
+            cat >> /tmp/release_body.md << 'EOF'
+          - **rundeck-v2/** - Modern SDK (OpenAPI Generator-based, API v56) ⭐
+          EOF
+          fi
           
-          See the [Rundeck API Documentation](https://docs.rundeck.com/docs/api/rundeck-api.html) for endpoint details.
+          cat >> /tmp/release_body.md << 'EOF'
           
-          ### Generated Files
+          ### Documentation
           
-          This SDK includes:
-          - 28 API service clients
-          - 190+ data models
-          - Full API v56 coverage
-          - Type-safe enum values
+          - [Rundeck API Documentation](https://docs.rundeck.com/docs/api/rundeck-api.html)
+          - [RELEASING.md](RELEASING.md) - Release process documentation
           
           EOF
 
