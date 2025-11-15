@@ -1,0 +1,67 @@
+name: Test
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    name: Test SDK
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.20', '1.21', '1.22']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache: true
+          cache-dependency-path: |
+            rundeck-v2/go.sum
+
+      - name: Verify rundeck-v2 dependencies
+        run: |
+          cd rundeck-v2
+          go mod download
+          go mod verify
+
+      - name: Build rundeck-v2
+        run: |
+          cd rundeck-v2
+          go build
+
+      - name: Run tests
+        run: |
+          cd rundeck-v2
+          go test -v -race -coverprofile=coverage.out ./...
+        continue-on-error: true
+
+      - name: Check formatting
+        run: |
+          cd rundeck-v2
+          if [ -n "$(gofmt -l .)" ]; then
+            echo "Go code is not formatted:"
+            gofmt -d .
+            exit 1
+          fi
+
+  validate-openapi:
+    name: Validate OpenAPI Spec
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate OpenAPI spec
+        uses: char0n/swagger-editor-validate@v1
+        with:
+          definition-file: rundeck-api.yml
+
