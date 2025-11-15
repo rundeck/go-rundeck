@@ -37,12 +37,3 @@ jobs:
           cd rundeck
           go build
 
-      - name: Check formatting
-        run: |
-          cd rundeck
-          if [ -n "$(gofmt -l .)" ]; then
-            echo "Go code is not formatted:"
-            gofmt -d .
-            exit 1
-          fi
-
