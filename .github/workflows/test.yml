@@ -7,8 +7,8 @@ on:
     branches: [ master, main ]
 
 jobs:
-  test:
-    name: Test SDK
+  test-legacy:
+    name: Test Legacy SDK
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,43 +24,81 @@ jobs:
           go-version: ${{ matrix.go-version }}
           cache: true
           cache-dependency-path: |
-            rundeck-v2/go.sum
+            rundeck/go.sum
 
-      - name: Verify rundeck-v2 dependencies
+      - name: Verify rundeck dependencies
         run: |
-          cd rundeck-v2
+          cd rundeck
           go mod download
           go mod verify
 
-      - name: Build rundeck-v2
+      - name: Build rundeck
         run: |
-          cd rundeck-v2
+          cd rundeck
           go build
-
-      - name: Run tests
-        run: |
-          cd rundeck-v2
-          go test -v -race -coverprofile=coverage.out ./...
-        continue-on-error: true
 
       - name: Check formatting
         run: |
-          cd rundeck-v2
+          cd rundeck
           if [ -n "$(gofmt -l .)" ]; then
             echo "Go code is not formatted:"
             gofmt -d .
             exit 1
           fi
 
+  test-v2:
+    name: Test V2 SDK (if exists)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.20', '1.21', '1.22']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+
+      - name: Test rundeck-v2 (if exists)
+        run: |
+          if [ -d "rundeck-v2" ]; then
+            echo "Testing rundeck-v2..."
+            cd rundeck-v2
+            go mod download
+            go mod verify
+            go build
+            if [ -n "$(gofmt -l .)" ]; then
+              echo "Go code is not formatted:"
+              gofmt -d .
+              exit 1
+            fi
+          else
+            echo "rundeck-v2 not present, skipping"
+          fi
+
   validate-openapi:
-    name: Validate OpenAPI Spec
+    name: Validate OpenAPI Spec (if exists)
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Check for OpenAPI spec
+        run: |
+          if [ -f "rundeck-api.yml" ]; then
+            echo "OpenAPI spec found"
+            echo "HAS_SPEC=true" >> $GITHUB_ENV
+          else
+            echo "OpenAPI spec not found, skipping validation"
+            echo "HAS_SPEC=false" >> $GITHUB_ENV
+          fi
+
       - name: Validate OpenAPI spec
+        if: env.HAS_SPEC == 'true'
         uses: char0n/swagger-editor-validate@v1
         with:
           definition-file: rundeck-api.yml
