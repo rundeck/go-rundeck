@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -19,9 +19,9 @@ var _ MappedNullable = &ErrorResponse{}
 
 // ErrorResponse struct for ErrorResponse
 type ErrorResponse struct {
+	ErrorCode *string `json:"errorCode,omitempty"`
 	ApiVersion *int32 `json:"apiVersion,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty"`
 	Error *string `json:"error,omitempty"`
 	Apiversion *int32 `json:"apiversion,omitempty"`
 	Message *string `json:"message,omitempty"`
@@ -42,6 +42,38 @@ func NewErrorResponse() *ErrorResponse {
 func NewErrorResponseWithDefaults() *ErrorResponse {
 	this := ErrorResponse{}
 	return &this
+}
+
+// GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
+func (o *ErrorResponse) GetErrorCode() string {
+	if o == nil || IsNil(o.ErrorCode) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorCode
+}
+
+// GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ErrorResponse) GetErrorCodeOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorCode) {
+		return nil, false
+	}
+	return o.ErrorCode, true
+}
+
+// HasErrorCode returns a boolean if a field has been set.
+func (o *ErrorResponse) HasErrorCode() bool {
+	if o != nil && !IsNil(o.ErrorCode) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
+func (o *ErrorResponse) SetErrorCode(v string) {
+	o.ErrorCode = &v
 }
 
 // GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
@@ -106,38 +138,6 @@ func (o *ErrorResponse) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *ErrorResponse) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
-}
-
-// GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
-func (o *ErrorResponse) GetErrorCode() string {
-	if o == nil || IsNil(o.ErrorCode) {
-		var ret string
-		return ret
-	}
-	return *o.ErrorCode
-}
-
-// GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ErrorResponse) GetErrorCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.ErrorCode) {
-		return nil, false
-	}
-	return o.ErrorCode, true
-}
-
-// HasErrorCode returns a boolean if a field has been set.
-func (o *ErrorResponse) HasErrorCode() bool {
-	if o != nil && !IsNil(o.ErrorCode) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
-func (o *ErrorResponse) SetErrorCode(v string) {
-	o.ErrorCode = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
@@ -246,14 +246,14 @@ func (o ErrorResponse) MarshalJSON() ([]byte, error) {
 
 func (o ErrorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ErrorCode) {
+		toSerialize["errorCode"] = o.ErrorCode
+	}
 	if !IsNil(o.ApiVersion) {
 		toSerialize["apiVersion"] = o.ApiVersion
 	}
 	if !IsNil(o.ErrorMessage) {
 		toSerialize["errorMessage"] = o.ErrorMessage
-	}
-	if !IsNil(o.ErrorCode) {
-		toSerialize["errorCode"] = o.ErrorCode
 	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error

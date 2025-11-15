@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -21,6 +21,11 @@ var _ MappedNullable = &FieldError{}
 
 // FieldError struct for FieldError
 type FieldError struct {
+	Code string `json:"code"`
+	Codes []string `json:"codes,omitempty"`
+	DefaultMessage *string `json:"defaultMessage,omitempty"`
+	Arguments []map[string]interface{} `json:"arguments,omitempty"`
+	ObjectName string `json:"objectName"`
 	BindingFailure *bool `json:"bindingFailure,omitempty"`
 	RejectedValue map[string]interface{} `json:"rejectedValue,omitempty"`
 	Field string `json:"field"`
@@ -32,8 +37,10 @@ type _FieldError FieldError
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFieldError(field string) *FieldError {
+func NewFieldError(code string, objectName string, field string) *FieldError {
 	this := FieldError{}
+	this.Code = code
+	this.ObjectName = objectName
 	this.Field = field
 	return &this
 }
@@ -44,6 +51,150 @@ func NewFieldError(field string) *FieldError {
 func NewFieldErrorWithDefaults() *FieldError {
 	this := FieldError{}
 	return &this
+}
+
+// GetCode returns the Code field value
+func (o *FieldError) GetCode() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Code
+}
+
+// GetCodeOk returns a tuple with the Code field value
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetCodeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Code, true
+}
+
+// SetCode sets field value
+func (o *FieldError) SetCode(v string) {
+	o.Code = v
+}
+
+// GetCodes returns the Codes field value if set, zero value otherwise.
+func (o *FieldError) GetCodes() []string {
+	if o == nil || IsNil(o.Codes) {
+		var ret []string
+		return ret
+	}
+	return o.Codes
+}
+
+// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetCodesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Codes) {
+		return nil, false
+	}
+	return o.Codes, true
+}
+
+// HasCodes returns a boolean if a field has been set.
+func (o *FieldError) HasCodes() bool {
+	if o != nil && !IsNil(o.Codes) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodes gets a reference to the given []string and assigns it to the Codes field.
+func (o *FieldError) SetCodes(v []string) {
+	o.Codes = v
+}
+
+// GetDefaultMessage returns the DefaultMessage field value if set, zero value otherwise.
+func (o *FieldError) GetDefaultMessage() string {
+	if o == nil || IsNil(o.DefaultMessage) {
+		var ret string
+		return ret
+	}
+	return *o.DefaultMessage
+}
+
+// GetDefaultMessageOk returns a tuple with the DefaultMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetDefaultMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.DefaultMessage) {
+		return nil, false
+	}
+	return o.DefaultMessage, true
+}
+
+// HasDefaultMessage returns a boolean if a field has been set.
+func (o *FieldError) HasDefaultMessage() bool {
+	if o != nil && !IsNil(o.DefaultMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultMessage gets a reference to the given string and assigns it to the DefaultMessage field.
+func (o *FieldError) SetDefaultMessage(v string) {
+	o.DefaultMessage = &v
+}
+
+// GetArguments returns the Arguments field value if set, zero value otherwise.
+func (o *FieldError) GetArguments() []map[string]interface{} {
+	if o == nil || IsNil(o.Arguments) {
+		var ret []map[string]interface{}
+		return ret
+	}
+	return o.Arguments
+}
+
+// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetArgumentsOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Arguments) {
+		return nil, false
+	}
+	return o.Arguments, true
+}
+
+// HasArguments returns a boolean if a field has been set.
+func (o *FieldError) HasArguments() bool {
+	if o != nil && !IsNil(o.Arguments) {
+		return true
+	}
+
+	return false
+}
+
+// SetArguments gets a reference to the given []map[string]interface{} and assigns it to the Arguments field.
+func (o *FieldError) SetArguments(v []map[string]interface{}) {
+	o.Arguments = v
+}
+
+// GetObjectName returns the ObjectName field value
+func (o *FieldError) GetObjectName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ObjectName
+}
+
+// GetObjectNameOk returns a tuple with the ObjectName field value
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetObjectNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ObjectName, true
+}
+
+// SetObjectName sets field value
+func (o *FieldError) SetObjectName(v string) {
+	o.ObjectName = v
 }
 
 // GetBindingFailure returns the BindingFailure field value if set, zero value otherwise.
@@ -144,6 +295,17 @@ func (o FieldError) MarshalJSON() ([]byte, error) {
 
 func (o FieldError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["code"] = o.Code
+	if !IsNil(o.Codes) {
+		toSerialize["codes"] = o.Codes
+	}
+	if !IsNil(o.DefaultMessage) {
+		toSerialize["defaultMessage"] = o.DefaultMessage
+	}
+	if !IsNil(o.Arguments) {
+		toSerialize["arguments"] = o.Arguments
+	}
+	toSerialize["objectName"] = o.ObjectName
 	if !IsNil(o.BindingFailure) {
 		toSerialize["bindingFailure"] = o.BindingFailure
 	}
@@ -159,6 +321,8 @@ func (o *FieldError) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"code",
+		"objectName",
 		"field",
 	}
 

@@ -111,19 +111,6 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConfigurationAPIService SaveProjectPlugins", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		httpRes, err := apiClient.ConfigurationAPI.SaveProjectPlugins(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ConfigurationAPIService StorageConfigList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

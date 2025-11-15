@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -19,10 +19,10 @@ var _ MappedNullable = &RdPageable{}
 
 // RdPageable struct for RdPageable
 type RdPageable struct {
-	Offset *int32 `json:"offset,omitempty"`
 	Errors *Errors `json:"errors,omitempty"`
 	Max *int32 `json:"max,omitempty"`
 	SortOrders []SortOrder `json:"sortOrders,omitempty"`
+	Offset *int32 `json:"offset,omitempty"`
 }
 
 // NewRdPageable instantiates a new RdPageable object
@@ -40,38 +40,6 @@ func NewRdPageable() *RdPageable {
 func NewRdPageableWithDefaults() *RdPageable {
 	this := RdPageable{}
 	return &this
-}
-
-// GetOffset returns the Offset field value if set, zero value otherwise.
-func (o *RdPageable) GetOffset() int32 {
-	if o == nil || IsNil(o.Offset) {
-		var ret int32
-		return ret
-	}
-	return *o.Offset
-}
-
-// GetOffsetOk returns a tuple with the Offset field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RdPageable) GetOffsetOk() (*int32, bool) {
-	if o == nil || IsNil(o.Offset) {
-		return nil, false
-	}
-	return o.Offset, true
-}
-
-// HasOffset returns a boolean if a field has been set.
-func (o *RdPageable) HasOffset() bool {
-	if o != nil && !IsNil(o.Offset) {
-		return true
-	}
-
-	return false
-}
-
-// SetOffset gets a reference to the given int32 and assigns it to the Offset field.
-func (o *RdPageable) SetOffset(v int32) {
-	o.Offset = &v
 }
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
@@ -170,6 +138,38 @@ func (o *RdPageable) SetSortOrders(v []SortOrder) {
 	o.SortOrders = v
 }
 
+// GetOffset returns the Offset field value if set, zero value otherwise.
+func (o *RdPageable) GetOffset() int32 {
+	if o == nil || IsNil(o.Offset) {
+		var ret int32
+		return ret
+	}
+	return *o.Offset
+}
+
+// GetOffsetOk returns a tuple with the Offset field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RdPageable) GetOffsetOk() (*int32, bool) {
+	if o == nil || IsNil(o.Offset) {
+		return nil, false
+	}
+	return o.Offset, true
+}
+
+// HasOffset returns a boolean if a field has been set.
+func (o *RdPageable) HasOffset() bool {
+	if o != nil && !IsNil(o.Offset) {
+		return true
+	}
+
+	return false
+}
+
+// SetOffset gets a reference to the given int32 and assigns it to the Offset field.
+func (o *RdPageable) SetOffset(v int32) {
+	o.Offset = &v
+}
+
 func (o RdPageable) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -180,9 +180,6 @@ func (o RdPageable) MarshalJSON() ([]byte, error) {
 
 func (o RdPageable) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Offset) {
-		toSerialize["offset"] = o.Offset
-	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
@@ -191,6 +188,9 @@ func (o RdPageable) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SortOrders) {
 		toSerialize["sortOrders"] = o.SortOrders
+	}
+	if !IsNil(o.Offset) {
+		toSerialize["offset"] = o.Offset
 	}
 	return toSerialize, nil
 }

@@ -119,34 +119,6 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService ApiProjectDisableLater", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectDisableLater(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectAPIService ApiProjectEnableLater", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectEnableLater(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectAPIService ApiProjectExport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

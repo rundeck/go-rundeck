@@ -34,30 +34,6 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SystemAPIService ApiExecutionModeLaterActive", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeLaterActive(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test SystemAPIService ApiExecutionModeLaterPassive", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeLaterPassive(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test SystemAPIService ApiExecutionModePassive", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

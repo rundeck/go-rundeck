@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -21,10 +21,10 @@ var _ MappedNullable = &ObjectError{}
 
 // ObjectError struct for ObjectError
 type ObjectError struct {
-	Arguments []map[string]interface{} `json:"arguments"`
-	Code *string `json:"code,omitempty"`
-	DefaultMessage string `json:"defaultMessage"`
-	Codes []string `json:"codes"`
+	Code string `json:"code"`
+	Codes []string `json:"codes,omitempty"`
+	DefaultMessage *string `json:"defaultMessage,omitempty"`
+	Arguments []map[string]interface{} `json:"arguments,omitempty"`
 	ObjectName string `json:"objectName"`
 }
 
@@ -34,11 +34,9 @@ type _ObjectError ObjectError
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectError(arguments []map[string]interface{}, defaultMessage string, codes []string, objectName string) *ObjectError {
+func NewObjectError(code string, objectName string) *ObjectError {
 	this := ObjectError{}
-	this.Arguments = arguments
-	this.DefaultMessage = defaultMessage
-	this.Codes = codes
+	this.Code = code
 	this.ObjectName = objectName
 	return &this
 }
@@ -51,108 +49,124 @@ func NewObjectErrorWithDefaults() *ObjectError {
 	return &this
 }
 
-// GetArguments returns the Arguments field value
-func (o *ObjectError) GetArguments() []map[string]interface{} {
-	if o == nil {
-		var ret []map[string]interface{}
-		return ret
-	}
-
-	return o.Arguments
-}
-
-// GetArgumentsOk returns a tuple with the Arguments field value
-// and a boolean to check if the value has been set.
-func (o *ObjectError) GetArgumentsOk() ([]map[string]interface{}, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Arguments, true
-}
-
-// SetArguments sets field value
-func (o *ObjectError) SetArguments(v []map[string]interface{}) {
-	o.Arguments = v
-}
-
-// GetCode returns the Code field value if set, zero value otherwise.
+// GetCode returns the Code field value
 func (o *ObjectError) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Code
+
+	return o.Code
 }
 
-// GetCodeOk returns a tuple with the Code field value if set, nil otherwise
+// GetCodeOk returns a tuple with the Code field value
 // and a boolean to check if the value has been set.
 func (o *ObjectError) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Code, true
+	return &o.Code, true
 }
 
-// HasCode returns a boolean if a field has been set.
-func (o *ObjectError) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+// SetCode sets field value
+func (o *ObjectError) SetCode(v string) {
+	o.Code = v
+}
+
+// GetCodes returns the Codes field value if set, zero value otherwise.
+func (o *ObjectError) GetCodes() []string {
+	if o == nil || IsNil(o.Codes) {
+		var ret []string
+		return ret
+	}
+	return o.Codes
+}
+
+// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectError) GetCodesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Codes) {
+		return nil, false
+	}
+	return o.Codes, true
+}
+
+// HasCodes returns a boolean if a field has been set.
+func (o *ObjectError) HasCodes() bool {
+	if o != nil && !IsNil(o.Codes) {
 		return true
 	}
 
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
-func (o *ObjectError) SetCode(v string) {
-	o.Code = &v
+// SetCodes gets a reference to the given []string and assigns it to the Codes field.
+func (o *ObjectError) SetCodes(v []string) {
+	o.Codes = v
 }
 
-// GetDefaultMessage returns the DefaultMessage field value
+// GetDefaultMessage returns the DefaultMessage field value if set, zero value otherwise.
 func (o *ObjectError) GetDefaultMessage() string {
-	if o == nil {
+	if o == nil || IsNil(o.DefaultMessage) {
 		var ret string
 		return ret
 	}
-
-	return o.DefaultMessage
+	return *o.DefaultMessage
 }
 
-// GetDefaultMessageOk returns a tuple with the DefaultMessage field value
+// GetDefaultMessageOk returns a tuple with the DefaultMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectError) GetDefaultMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DefaultMessage) {
 		return nil, false
 	}
-	return &o.DefaultMessage, true
+	return o.DefaultMessage, true
 }
 
-// SetDefaultMessage sets field value
+// HasDefaultMessage returns a boolean if a field has been set.
+func (o *ObjectError) HasDefaultMessage() bool {
+	if o != nil && !IsNil(o.DefaultMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultMessage gets a reference to the given string and assigns it to the DefaultMessage field.
 func (o *ObjectError) SetDefaultMessage(v string) {
-	o.DefaultMessage = v
+	o.DefaultMessage = &v
 }
 
-// GetCodes returns the Codes field value
-func (o *ObjectError) GetCodes() []string {
-	if o == nil {
-		var ret []string
+// GetArguments returns the Arguments field value if set, zero value otherwise.
+func (o *ObjectError) GetArguments() []map[string]interface{} {
+	if o == nil || IsNil(o.Arguments) {
+		var ret []map[string]interface{}
 		return ret
 	}
-
-	return o.Codes
+	return o.Arguments
 }
 
-// GetCodesOk returns a tuple with the Codes field value
+// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectError) GetCodesOk() ([]string, bool) {
-	if o == nil {
+func (o *ObjectError) GetArgumentsOk() ([]map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Arguments) {
 		return nil, false
 	}
-	return o.Codes, true
+	return o.Arguments, true
 }
 
-// SetCodes sets field value
-func (o *ObjectError) SetCodes(v []string) {
-	o.Codes = v
+// HasArguments returns a boolean if a field has been set.
+func (o *ObjectError) HasArguments() bool {
+	if o != nil && !IsNil(o.Arguments) {
+		return true
+	}
+
+	return false
+}
+
+// SetArguments gets a reference to the given []map[string]interface{} and assigns it to the Arguments field.
+func (o *ObjectError) SetArguments(v []map[string]interface{}) {
+	o.Arguments = v
 }
 
 // GetObjectName returns the ObjectName field value
@@ -189,12 +203,16 @@ func (o ObjectError) MarshalJSON() ([]byte, error) {
 
 func (o ObjectError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["arguments"] = o.Arguments
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
+	toSerialize["code"] = o.Code
+	if !IsNil(o.Codes) {
+		toSerialize["codes"] = o.Codes
 	}
-	toSerialize["defaultMessage"] = o.DefaultMessage
-	toSerialize["codes"] = o.Codes
+	if !IsNil(o.DefaultMessage) {
+		toSerialize["defaultMessage"] = o.DefaultMessage
+	}
+	if !IsNil(o.Arguments) {
+		toSerialize["arguments"] = o.Arguments
+	}
 	toSerialize["objectName"] = o.ObjectName
 	return toSerialize, nil
 }
@@ -204,9 +222,7 @@ func (o *ObjectError) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"arguments",
-		"defaultMessage",
-		"codes",
+		"code",
 		"objectName",
 	}
 

@@ -1,6 +1,6 @@
 # \LogStorageAPI
 
-All URIs are relative to *https://localhost:4440/api/44*
+All URIs are relative to *https://localhost:4440/api/56*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -59,7 +59,7 @@ Other parameters are passed through a pointer to a apiApiLogstorageInfoRequest s
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -186,7 +186,7 @@ Other parameters are passed through a pointer to a apiApiResumeIncompleteLogstor
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 

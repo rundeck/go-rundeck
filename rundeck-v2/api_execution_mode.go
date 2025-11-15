@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -20,174 +20,69 @@ import (
 )
 
 
-// ACLsAPIService ACLsAPI service
-type ACLsAPIService service
+// ExecutionModeAPIService ExecutionModeAPI service
+type ExecutionModeAPIService service
 
-type ApiApiSystemAclsRequest struct {
+type ApiApiExecutionModeLaterActiveRequest struct {
 	ctx context.Context
-	ApiService *ACLsAPIService
-	path string
+	ApiService *ExecutionModeAPIService
+	modeLaterRequest *ModeLaterRequest
 }
 
-func (r ApiApiSystemAclsRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ApiSystemAclsExecute(r)
+// Enable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.) 
+func (r ApiApiExecutionModeLaterActiveRequest) ModeLaterRequest(modeLaterRequest ModeLaterRequest) ApiApiExecutionModeLaterActiveRequest {
+	r.modeLaterRequest = &modeLaterRequest
+	return r
+}
+
+func (r ApiApiExecutionModeLaterActiveRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiExecutionModeLaterActiveExecute(r)
 }
 
 /*
-ApiSystemAcls Get an ACL Policy.
+ApiExecutionModeLaterActive Enable System executions after a duration of time
 
-Retrieve the YAML text of the ACL Policy file.  If YAML or text content is requested, the contents will be returned directly.
-Otherwise if XML or JSON is requested, the YAML text will be wrapped within that format.
+Sets System execution mode to Active at a later time.
 
-Authorization required: `read` or `admin` or `app_admin` access for `system_acl` resource type 
+Since: v34
 
-Since: v14
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param path Path to the Acl policy file
- @return ApiApiSystemAclsRequest
+ @return ApiApiExecutionModeLaterActiveRequest
 */
-func (a *ACLsAPIService) ApiSystemAcls(ctx context.Context, path string) ApiApiSystemAclsRequest {
-	return ApiApiSystemAclsRequest{
+func (a *ExecutionModeAPIService) ApiExecutionModeLaterActive(ctx context.Context) ApiApiExecutionModeLaterActiveRequest {
+	return ApiApiExecutionModeLaterActiveRequest{
 		ApiService: a,
 		ctx: ctx,
-		path: path,
 	}
 }
 
 // Execute executes the request
-func (a *ACLsAPIService) ApiSystemAclsExecute(r ApiApiSystemAclsRequest) (*http.Response, error) {
+//  @return ModeLaterResponse
+func (a *ExecutionModeAPIService) ApiExecutionModeLaterActiveExecute(r ApiApiExecutionModeLaterActiveRequest) (*ModeLaterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLsAPIService.ApiSystemAcls")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/system/acl/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/yaml", "application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["rundeckApiToken"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiApiSystemAclsDELETEDocsRequest struct {
-	ctx context.Context
-	ApiService *ACLsAPIService
-	path string
-}
-
-func (r ApiApiSystemAclsDELETEDocsRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.ApiSystemAclsDELETEDocsExecute(r)
-}
-
-/*
-ApiSystemAclsDELETEDocs Delete an ACL Policy.
-
-
-Authorization required: `delete` or `admin` or `app_admin` access for `system_acl` resource type 
-
-Since: v14
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param path Path to the Acl policy file
- @return ApiApiSystemAclsDELETEDocsRequest
-*/
-func (a *ACLsAPIService) ApiSystemAclsDELETEDocs(ctx context.Context, path string) ApiApiSystemAclsDELETEDocsRequest {
-	return ApiApiSystemAclsDELETEDocsRequest{
-		ApiService: a,
-		ctx: ctx,
-		path: path,
-	}
-}
-
-// Execute executes the request
-//  @return map[string]interface{}
-func (a *ACLsAPIService) ApiSystemAclsDELETEDocsExecute(r ApiApiSystemAclsDELETEDocsRequest) (map[string]interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLsAPIService.ApiSystemAclsDELETEDocs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionModeAPIService.ApiExecutionModeLaterActive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/system/acl/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
+	localVarPath := localBasePath + "/system/executions/enable/later"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.modeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("modeLaterRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -203,6 +98,8 @@ func (a *ACLsAPIService) ApiSystemAclsDELETEDocsExecute(r ApiApiSystemAclsDELETE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.modeLaterRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -239,8 +136,8 @@ func (a *ACLsAPIService) ApiSystemAclsDELETEDocsExecute(r ApiApiSystemAclsDELETE
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiErrorResponse
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -248,7 +145,6 @@ func (a *ACLsAPIService) ApiSystemAclsDELETEDocsExecute(r ApiApiSystemAclsDELETE
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -265,67 +161,66 @@ func (a *ACLsAPIService) ApiSystemAclsDELETEDocsExecute(r ApiApiSystemAclsDELETE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiSystemAclsPOSTDocsRequest struct {
+type ApiApiExecutionModeLaterPassiveRequest struct {
 	ctx context.Context
-	ApiService *ACLsAPIService
-	path string
-	body *string
+	ApiService *ExecutionModeAPIService
+	modeLaterRequest *ModeLaterRequest
 }
 
-// If the &#x60;Content-Type&#x60; is &#x60;application/yaml&#x60; or &#x60;text/plain&#x60;, then the request body is the ACL policy contents directly.  Otherwise, you can use JSON to wrap the yaml content inside &#x60;contents&#x60; 
-func (r ApiApiSystemAclsPOSTDocsRequest) Body(body string) ApiApiSystemAclsPOSTDocsRequest {
-	r.body = &body
+// Disable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.) 
+func (r ApiApiExecutionModeLaterPassiveRequest) ModeLaterRequest(modeLaterRequest ModeLaterRequest) ApiApiExecutionModeLaterPassiveRequest {
+	r.modeLaterRequest = &modeLaterRequest
 	return r
 }
 
-func (r ApiApiSystemAclsPOSTDocsRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.ApiSystemAclsPOSTDocsExecute(r)
+func (r ApiApiExecutionModeLaterPassiveRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiExecutionModeLaterPassiveExecute(r)
 }
 
 /*
-ApiSystemAclsPOSTDocs Create an ACL Policy.
+ApiExecutionModeLaterPassive Disable System executions after a duration of time
 
+Sets System execution mode to Passive at a later time.
 
-Authorization required: `create` or `admin` or `app_admin` access for `system_acl` resource type 
+Since: v34
 
-Since: v14
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param path Path to the Acl policy file
- @return ApiApiSystemAclsPOSTDocsRequest
+ @return ApiApiExecutionModeLaterPassiveRequest
 */
-func (a *ACLsAPIService) ApiSystemAclsPOSTDocs(ctx context.Context, path string) ApiApiSystemAclsPOSTDocsRequest {
-	return ApiApiSystemAclsPOSTDocsRequest{
+func (a *ExecutionModeAPIService) ApiExecutionModeLaterPassive(ctx context.Context) ApiApiExecutionModeLaterPassiveRequest {
+	return ApiApiExecutionModeLaterPassiveRequest{
 		ApiService: a,
 		ctx: ctx,
-		path: path,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return ModeLaterResponse
+func (a *ExecutionModeAPIService) ApiExecutionModeLaterPassiveExecute(r ApiApiExecutionModeLaterPassiveRequest) (*ModeLaterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *ModeLaterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLsAPIService.ApiSystemAclsPOSTDocs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionModeAPIService.ApiExecutionModeLaterPassive")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/system/acl/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
+	localVarPath := localBasePath + "/system/executions/disable/later"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.modeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("modeLaterRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/yaml", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -334,7 +229,7 @@ func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocs
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/yaml", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -342,7 +237,7 @@ func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocs
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.modeLaterRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -379,19 +274,8 @@ func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocs
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v map[string]interface{}
+			var v ModeLaterResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -399,7 +283,6 @@ func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocs
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -416,65 +299,70 @@ func (a *ACLsAPIService) ApiSystemAclsPOSTDocsExecute(r ApiApiSystemAclsPOSTDocs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiSystemAclsPUTDocsRequest struct {
+type ApiApiProjectDisableLaterRequest struct {
 	ctx context.Context
-	ApiService *ACLsAPIService
-	path string
-	body *string
+	ApiService *ExecutionModeAPIService
+	project string
+	projectModeLaterRequest *ProjectModeLaterRequest
 }
 
-// If the &#x60;Content-Type&#x60; is &#x60;application/yaml&#x60; or &#x60;text/plain&#x60;, then the request body is the ACL policy contents directly.  Otherwise, you can use JSON to wrap the yaml content inside &#x60;contents&#x60; 
-func (r ApiApiSystemAclsPUTDocsRequest) Body(body string) ApiApiSystemAclsPUTDocsRequest {
-	r.body = &body
+// Disable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
+func (r ApiApiProjectDisableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectDisableLaterRequest {
+	r.projectModeLaterRequest = &projectModeLaterRequest
 	return r
 }
 
-func (r ApiApiSystemAclsPUTDocsRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ApiSystemAclsPUTDocsExecute(r)
+func (r ApiApiProjectDisableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiProjectDisableLaterExecute(r)
 }
 
 /*
-ApiSystemAclsPUTDocs Update an ACL Policy.
+ApiProjectDisableLater Disable Project executions or schedules after a duration of time
 
+Sets project execution mode to Passive or disables Schedules at a later time.
 
-Authorization required: `update` or `admin` or `app_admin` access for `system_acl` resource type 
+Since: v34
 
-Since: v14
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param path Path to the Acl policy file
- @return ApiApiSystemAclsPUTDocsRequest
+ @param project project name
+ @return ApiApiProjectDisableLaterRequest
 */
-func (a *ACLsAPIService) ApiSystemAclsPUTDocs(ctx context.Context, path string) ApiApiSystemAclsPUTDocsRequest {
-	return ApiApiSystemAclsPUTDocsRequest{
+func (a *ExecutionModeAPIService) ApiProjectDisableLater(ctx context.Context, project string) ApiApiProjectDisableLaterRequest {
+	return ApiApiProjectDisableLaterRequest{
 		ApiService: a,
 		ctx: ctx,
-		path: path,
+		project: project,
 	}
 }
 
 // Execute executes the request
-func (a *ACLsAPIService) ApiSystemAclsPUTDocsExecute(r ApiApiSystemAclsPUTDocsRequest) (*http.Response, error) {
+//  @return ModeLaterResponse
+func (a *ExecutionModeAPIService) ApiProjectDisableLaterExecute(r ApiApiProjectDisableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ACLsAPIService.ApiSystemAclsPUTDocs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionModeAPIService.ApiProjectDisableLater")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/system/acl/{path}"
-	localVarPath = strings.Replace(localVarPath, "{"+"path"+"}", url.PathEscape(parameterValueToString(r.path, "path")), -1)
+	localVarPath := localBasePath + "/project/{project}/disable/later"
+	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.projectModeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/yaml", "application/json"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -483,7 +371,7 @@ func (a *ACLsAPIService) ApiSystemAclsPUTDocsExecute(r ApiApiSystemAclsPUTDocsRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/yaml", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -491,7 +379,7 @@ func (a *ACLsAPIService) ApiSystemAclsPUTDocsExecute(r ApiApiSystemAclsPUTDocsRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.projectModeLaterRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -508,19 +396,19 @@ func (a *ACLsAPIService) ApiSystemAclsPUTDocsExecute(r ApiApiSystemAclsPUTDocsRe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -528,29 +416,169 @@ func (a *ACLsAPIService) ApiSystemAclsPUTDocsExecute(r ApiApiSystemAclsPUTDocsRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiErrorResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v map[string]interface{}
+			var v ModeLaterResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiProjectEnableLaterRequest struct {
+	ctx context.Context
+	ApiService *ExecutionModeAPIService
+	project string
+	projectModeLaterRequest *ProjectModeLaterRequest
+}
+
+// Enable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
+func (r ApiApiProjectEnableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectEnableLaterRequest {
+	r.projectModeLaterRequest = &projectModeLaterRequest
+	return r
+}
+
+func (r ApiApiProjectEnableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiProjectEnableLaterExecute(r)
+}
+
+/*
+ApiProjectEnableLater Enable Project executions or schedules after a duration of time
+
+Sets project execution mode to Active or enable Schedules at a later time.
+
+Since: v34
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project project name
+ @return ApiApiProjectEnableLaterRequest
+*/
+func (a *ExecutionModeAPIService) ApiProjectEnableLater(ctx context.Context, project string) ApiApiProjectEnableLaterRequest {
+	return ApiApiProjectEnableLaterRequest{
+		ApiService: a,
+		ctx: ctx,
+		project: project,
+	}
+}
+
+// Execute executes the request
+//  @return ModeLaterResponse
+func (a *ExecutionModeAPIService) ApiProjectEnableLaterExecute(r ApiApiProjectEnableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionModeAPIService.ApiProjectEnableLater")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/project/{project}/enable/later"
+	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.projectModeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.projectModeLaterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

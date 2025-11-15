@@ -31,10 +31,10 @@ servers:
   variables:
     protocol:
       description: Protocol (http or https)
-      default: https
       enum:
       - http
       - https
+      default: https
     host:
       description: Server hostname or IP address
       default: localhost
@@ -5196,7 +5196,6 @@ paths:
     get:
       tags:
       - Job Executions
-      - Job Executions
       summary: Execution Query Metrics
       description: |
         Obtain metrics over the result set of an execution query over the executions of a single project.
@@ -6525,7 +6524,6 @@ paths:
     post:
       tags:
       - Jobs
-      - Jobs
       summary: Import Job definitions
       description: |-
         Import a set of job definitions in a supported format.
@@ -6808,7 +6806,6 @@ paths:
   /project/{project}/plugins/save:
     post:
       tags:
-      - Configuration
       - Project
       summary: Save list-style plugin configurations for a project
       description: |-
@@ -12398,20 +12395,22 @@ components:
         big:
           type: boolean
     DefaultMessageSourceResolvable:
+      required:
+      - code
       type: object
       properties:
-        defaultMessage:
+        code:
           type: string
         codes:
           type: array
           items:
             type: string
+        defaultMessage:
+          type: string
         arguments:
           type: array
           items:
             type: object
-        code:
-          type: string
     DeleteBulkRequest:
       type: object
       properties:
@@ -12457,13 +12456,13 @@ components:
     ErrorResponse:
       type: object
       properties:
-        errorMessage:
-          type: string
         errorCode:
           type: string
         apiVersion:
           type: integer
           format: int32
+        errorMessage:
+          type: string
         error:
           type: string
         apiversion:
@@ -12474,12 +12473,6 @@ components:
     Errors:
       type: object
       properties:
-        allErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectError'
-        fieldError:
-          $ref: '#/components/schemas/FieldError'
         objectName:
           type: string
         nestedPath:
@@ -12500,6 +12493,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FieldError'
+        allErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectError'
+        fieldError:
+          $ref: '#/components/schemas/FieldError'
         errorCount:
           type: integer
           format: int32
@@ -12550,16 +12549,19 @@ components:
           type: string
           description: 'since: v42'
     FieldError:
-      required:
-      - field
       type: object
-      properties:
-        bindingFailure:
-          type: boolean
-        rejectedValue:
-          type: object
-        field:
-          type: string
+      allOf:
+      - $ref: '#/components/schemas/ObjectError'
+      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
+      - required:
+        - field
+        properties:
+          bindingFailure:
+            type: boolean
+          rejectedValue:
+            type: object
+          field:
+            type: string
     HomeSummary:
       required:
       - execCount
@@ -13195,16 +13197,18 @@ components:
       - properties:
           errors:
             $ref: '#/components/schemas/Errors'
-          jobFilter:
-            type: string
-          jobExactFilter:
-            type: string
           sortBy:
+            type: string
+          sortOrder:
             type: string
           inputParamMap:
             type: object
             additionalProperties: true
-          sortOrder:
+          jobFilter:
+            type: string
+          jobExactFilter:
+            type: string
+          projFilter:
             type: string
           groupPath:
             type: string
@@ -13224,8 +13228,6 @@ components:
             type: boolean
           serverNodeUUIDFilter:
             type: string
-          projFilter:
-            type: string
           daysAhead:
             type: integer
             format: int32
@@ -13241,13 +13243,13 @@ components:
         max:
           type: integer
           format: int32
-        offset:
-          type: integer
-          format: int32
         sortOrders:
           type: array
           items:
             $ref: '#/components/schemas/SortOrder'
+        offset:
+          type: integer
+          format: int32
     RegenRunnerCredResponse:
       type: object
       properties:

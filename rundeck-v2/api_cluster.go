@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -21,6 +21,146 @@ import (
 
 // ClusterAPIService ClusterAPI service
 type ClusterAPIService service
+
+type ApiApiJobClusterTakeoverScheduleRequest struct {
+	ctx context.Context
+	ApiService *ClusterAPIService
+	body *map[string]interface{}
+}
+
+// Takeover Request.  * optional &#x60;server&#x60; entry, with one of these required entries:     * &#x60;uuid&#x60; server UUID to take over from     * &#x60;all&#x60; value of &#x60;true&#x60; to take over from all servers * optional &#x60;project&#x60; entry, specifying a project name * optional &#x60;job&#x60; entry, with required entry:     * &#x60;id&#x60; Job UUID * optional &#x60;jobs&#x60; array, each object has:     * &#x60;id&#x60; Job UUID     * (Since: v32) 
+func (r ApiApiJobClusterTakeoverScheduleRequest) Body(body map[string]interface{}) ApiApiJobClusterTakeoverScheduleRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiApiJobClusterTakeoverScheduleRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ApiJobClusterTakeoverScheduleExecute(r)
+}
+
+/*
+ApiJobClusterTakeoverSchedule Takeover Schedule in Cluster Mode
+
+Tell a Rundeck server in cluster mode to claim all scheduled jobs from another
+cluster server.
+
+This endpoint can take over the schedule of certain jobs based on the input:
+
+* specify a server `uuid`: take over all jobs from that server
+* specify server `all` value of `true`: take over all jobs regardless of server UUID
+
+Additionally, you can specify a `project` name to take over only jobs matching
+the given project name, in combination with the server options.
+
+Alternately, specify one or more job IDs to takeover certain Jobs' schedules.
+
+Authorization required: `ops_admin` for resource type `job`
+
+Since: v14
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiJobClusterTakeoverScheduleRequest
+*/
+func (a *ClusterAPIService) ApiJobClusterTakeoverSchedule(ctx context.Context) ApiApiJobClusterTakeoverScheduleRequest {
+	return ApiApiJobClusterTakeoverScheduleRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *ClusterAPIService) ApiJobClusterTakeoverScheduleExecute(r ApiApiJobClusterTakeoverScheduleRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterAPIService.ApiJobClusterTakeoverSchedule")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/scheduler/takeover"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiApiToggleRequest struct {
 	ctx context.Context

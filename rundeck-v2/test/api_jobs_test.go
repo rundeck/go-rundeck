@@ -427,19 +427,6 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test JobsAPIService ApiJobsImportv14_1", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		httpRes, err := apiClient.JobsAPI.ApiJobsImportv14_0(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test JobsAPIService ApiJobsListv2", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

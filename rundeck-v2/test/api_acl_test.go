@@ -80,4 +80,58 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ACLAPIService ApiSystemAcls", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var path string
+
+		httpRes, err := apiClient.ACLAPI.ApiSystemAcls(context.Background(), path).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ACLAPIService ApiSystemAclsDELETEDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var path string
+
+		resp, httpRes, err := apiClient.ACLAPI.ApiSystemAclsDELETEDocs(context.Background(), path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ACLAPIService ApiSystemAclsPOSTDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var path string
+
+		resp, httpRes, err := apiClient.ACLAPI.ApiSystemAclsPOSTDocs(context.Background(), path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ACLAPIService ApiSystemAclsPUTDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var path string
+
+		httpRes, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

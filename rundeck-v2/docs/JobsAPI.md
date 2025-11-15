@@ -1,6 +1,6 @@
 # \JobsAPI
 
-All URIs are relative to *https://localhost:4440/api/44*
+All URIs are relative to *https://localhost:4440/api/56*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,7 +34,6 @@ Method | HTTP request | Description
 [**ApiJobWorkflow**](JobsAPI.md#ApiJobWorkflow) | **Get** /job/{id}/workflow | Get Job Workflow
 [**ApiJobsExportv14**](JobsAPI.md#ApiJobsExportv14) | **Get** /project/{project}/jobs/export | Export Jobs
 [**ApiJobsImportv14**](JobsAPI.md#ApiJobsImportv14) | **Post** /project/{project}/jobs/import | Import Job definitions
-[**ApiJobsImportv14_0**](JobsAPI.md#ApiJobsImportv14_0) | **Post** /project/{project}/jobs/import | Import Job definitions
 [**ApiJobsListv2**](JobsAPI.md#ApiJobsListv2) | **Get** /project/{project}/jobs | Listing Jobs
 [**ApiListAllJobsInProject**](JobsAPI.md#ApiListAllJobsInProject) | **Get** /project/{project}/listAllJobs | List all Jobs in Summarized Form [Enterprise]
 [**ApiSchedulerListJobs**](JobsAPI.md#ApiSchedulerListJobs) | **Get** /scheduler/server/{uuid}/jobs | List Scheduled Jobs For a Cluster Server
@@ -100,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -170,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -240,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -310,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -380,7 +379,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -450,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -520,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -590,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -660,7 +659,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -730,7 +729,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -810,7 +809,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -886,7 +885,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -956,7 +955,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1022,7 +1021,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1090,7 +1089,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1160,7 +1159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1238,7 +1237,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1308,7 +1307,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1380,7 +1379,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1450,7 +1449,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1520,7 +1519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1595,7 +1594,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1671,7 +1670,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1743,7 +1742,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1833,7 +1832,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -1918,7 +1917,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2003,7 +2002,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2073,7 +2072,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2175,7 +2174,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2249,81 +2248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
-
-### HTTP request headers
-
-- **Content-Type**: application/x-www-form-urlencoded, multipart/form-data, application/json, text/yaml
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ApiJobsImportv14_0
-
-> ApiJobsImportv14_0(ctx, project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
-
-Import Job definitions
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
-)
-
-func main() {
-	project := "project_example" // string | Project Name
-	fileformat := "fileformat_example" // string | Input file format, to specify the input format, if multipart of form input is sent. (optional)
-	dupeOption := "dupeOption_example" // string | A value to indicate the behavior when importing jobs which already exist.  Value can be \"skip\", \"create\", or \"update\". Default is \"create\". (optional)
-	uuidOption := "uuidOption_example" // string | Whether to preserve or remove UUIDs from the imported jobs:  *  `preserve`: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  `remove`: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID.  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiJobsImportv14_0(context.Background(), project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobsImportv14_0``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**project** | **string** | Project Name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApiJobsImportv14_1Request struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **fileformat** | **string** | Input file format, to specify the input format, if multipart of form input is sent. | 
- **dupeOption** | **string** | A value to indicate the behavior when importing jobs which already exist.  Value can be \&quot;skip\&quot;, \&quot;create\&quot;, or \&quot;update\&quot;. Default is \&quot;create\&quot;. | 
- **uuidOption** | **string** | Whether to preserve or remove UUIDs from the imported jobs:  *  &#x60;preserve&#x60;: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  &#x60;remove&#x60;: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID.  | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2429,7 +2354,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2499,7 +2424,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2569,7 +2494,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 
@@ -2630,7 +2555,7 @@ Other parameters are passed through a pointer to a apiApiSchedulerListJobsCurren
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 

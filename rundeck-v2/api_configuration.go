@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -16,7 +16,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
 )
 
 
@@ -889,148 +888,6 @@ func (a *ConfigurationAPIService) RestartExecute(r ApiRestartRequest) (*http.Res
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["rundeckApiToken"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSaveProjectPluginsRequest struct {
-	ctx context.Context
-	ApiService *ConfigurationAPIService
-	project string
-	serviceName *string
-	configPrefix *string
-	body *map[string]interface{}
-}
-
-// Plugin service name (e.g. &#x60;ResourceModelSource&#x60;)
-func (r ApiSaveProjectPluginsRequest) ServiceName(serviceName string) ApiSaveProjectPluginsRequest {
-	r.serviceName = &serviceName
-	return r
-}
-
-// Property prefix (e.g. &#x60;resources.source&#x60;)
-func (r ApiSaveProjectPluginsRequest) ConfigPrefix(configPrefix string) ApiSaveProjectPluginsRequest {
-	r.configPrefix = &configPrefix
-	return r
-}
-
-// Plugins payload
-func (r ApiSaveProjectPluginsRequest) Body(body map[string]interface{}) ApiSaveProjectPluginsRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSaveProjectPluginsRequest) Execute() (*http.Response, error) {
-	return r.ApiService.SaveProjectPluginsExecute(r)
-}
-
-/*
-SaveProjectPlugins Save list-style plugin configurations for a project
-
-Create/update list-based plugin configurations (e.g. Resource Model Sources).
-Authorization required: `configure` on the project.
-Since: v55
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param project Project name
- @return ApiSaveProjectPluginsRequest
-*/
-func (a *ConfigurationAPIService) SaveProjectPlugins(ctx context.Context, project string) ApiSaveProjectPluginsRequest {
-	return ApiSaveProjectPluginsRequest{
-		ApiService: a,
-		ctx: ctx,
-		project: project,
-	}
-}
-
-// Execute executes the request
-func (a *ConfigurationAPIService) SaveProjectPluginsExecute(r ApiSaveProjectPluginsRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.SaveProjectPlugins")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/project/{project}/plugins/save"
-	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.serviceName == nil {
-		return nil, reportError("serviceName is required and must be specified")
-	}
-	if r.configPrefix == nil {
-		return nil, reportError("configPrefix is required and must be specified")
-	}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	parameterAddToHeaderOrQuery(localVarQueryParams, "serviceName", r.serviceName, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "configPrefix", r.configPrefix, "form", "")
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

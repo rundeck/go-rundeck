@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -51,8 +51,6 @@ type APIClient struct {
 
 	ACLAPI *ACLAPIService
 
-	ACLsAPI *ACLsAPIService
-
 	APIAPI *APIAPIService
 
 	AdHocAPI *AdHocAPIService
@@ -67,11 +65,13 @@ type APIClient struct {
 
 	DefaultAPI *DefaultAPIService
 
-	ExecutionAPI *ExecutionAPIService
+	ExecutionModeAPI *ExecutionModeAPIService
 
 	HealthAPI *HealthAPIService
 
 	HistoryAPI *HistoryAPIService
+
+	JobExecutionsAPI *JobExecutionsAPIService
 
 	JobsAPI *JobsAPIService
 
@@ -87,19 +87,13 @@ type APIClient struct {
 
 	ProjectAPI *ProjectAPIService
 
-	ProjectExecutionModeAPI *ProjectExecutionModeAPIService
-
 	ROIAPI *ROIAPIService
 
 	RunnerAPI *RunnerAPIService
 
 	SCMAPI *SCMAPIService
 
-	SchedulerAPI *SchedulerAPIService
-
 	SystemAPI *SystemAPIService
-
-	SystemExecutionModeAPI *SystemExecutionModeAPIService
 
 	TokensAPI *TokensAPIService
 
@@ -129,7 +123,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.ACLAPI = (*ACLAPIService)(&c.common)
-	c.ACLsAPI = (*ACLsAPIService)(&c.common)
 	c.APIAPI = (*APIAPIService)(&c.common)
 	c.AdHocAPI = (*AdHocAPIService)(&c.common)
 	c.AuthorizationAPI = (*AuthorizationAPIService)(&c.common)
@@ -137,9 +130,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ClusterAPI = (*ClusterAPIService)(&c.common)
 	c.ConfigurationAPI = (*ConfigurationAPIService)(&c.common)
 	c.DefaultAPI = (*DefaultAPIService)(&c.common)
-	c.ExecutionAPI = (*ExecutionAPIService)(&c.common)
+	c.ExecutionModeAPI = (*ExecutionModeAPIService)(&c.common)
 	c.HealthAPI = (*HealthAPIService)(&c.common)
 	c.HistoryAPI = (*HistoryAPIService)(&c.common)
+	c.JobExecutionsAPI = (*JobExecutionsAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
 	c.KeyStorageAPI = (*KeyStorageAPIService)(&c.common)
 	c.LicenseAPI = (*LicenseAPIService)(&c.common)
@@ -147,13 +141,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MetricsAPI = (*MetricsAPIService)(&c.common)
 	c.PluginsAPI = (*PluginsAPIService)(&c.common)
 	c.ProjectAPI = (*ProjectAPIService)(&c.common)
-	c.ProjectExecutionModeAPI = (*ProjectExecutionModeAPIService)(&c.common)
 	c.ROIAPI = (*ROIAPIService)(&c.common)
 	c.RunnerAPI = (*RunnerAPIService)(&c.common)
 	c.SCMAPI = (*SCMAPIService)(&c.common)
-	c.SchedulerAPI = (*SchedulerAPIService)(&c.common)
 	c.SystemAPI = (*SystemAPIService)(&c.common)
-	c.SystemExecutionModeAPI = (*SystemExecutionModeAPIService)(&c.common)
 	c.TokensAPI = (*TokensAPIService)(&c.common)
 	c.ToursAPI = (*ToursAPIService)(&c.common)
 	c.UserAPI = (*UserAPIService)(&c.common)
@@ -507,6 +498,16 @@ func (c *APIClient) prepareRequest(
 		localVarRequest = localVarRequest.WithContext(ctx)
 
 		// Walk through any authentication.
+
+		// Basic HTTP Authentication
+		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
+			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
+		}
+
+		// AccessToken Authentication
+		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
+			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
+		}
 
 	}
 

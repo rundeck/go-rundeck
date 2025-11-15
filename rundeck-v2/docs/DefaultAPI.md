@@ -1,6 +1,6 @@
 # \DefaultAPI
 
-All URIs are relative to *https://localhost:4440/api/44*
+All URIs are relative to *https://localhost:4440/api/56*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[rundeckApiToken](../README.md#rundeckApiToken)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 

@@ -1,7 +1,7 @@
 /*
 Rundeck / Runbook Automation API
 
-Rundeck / Runbook Automation REST API for job automation, execution management, and system administration
+Rundeck / Runbook Automation REST API for job automation, execution management, and system administration.  The Rundeck API provides comprehensive access to: - Job management (create, update, delete, execute jobs) - Execution monitoring and control - Project and resource management - Node filtering and resource queries - System configuration and administration - SCM integration (Git and other version control) - Authentication token management - Metrics and health monitoring  All API endpoints require authentication via API token, password session, or JWT token (Enterprise). API version must be specified in the URL path (e.g., /api/46/...).  For detailed documentation, see: [Rundeck API Docs](https://docs.rundeck.com/docs/api/)
 
 API version: 56
 */
@@ -30,7 +30,7 @@ type ApiApiProjectConfigGetRequest struct {
 	project string
 }
 
-func (r ApiApiProjectConfigGetRequest) Execute() (string, *http.Response, error) {
+func (r ApiApiProjectConfigGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.ApiProjectConfigGetExecute(r)
 }
 
@@ -55,13 +55,13 @@ func (a *ProjectAPIService) ApiProjectConfigGet(ctx context.Context, project str
 }
 
 // Execute executes the request
-//  @return string
-func (a *ProjectAPIService) ApiProjectConfigGetExecute(r ApiApiProjectConfigGetRequest) (string, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ProjectAPIService) ApiProjectConfigGetExecute(r ApiApiProjectConfigGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigGet")
@@ -86,7 +86,7 @@ func (a *ProjectAPIService) ApiProjectConfigGetExecute(r ApiApiProjectConfigGetR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/text", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -561,7 +561,7 @@ func (r ApiApiProjectConfigPutRequest) Execute() (map[string]interface{}, *http.
 /*
 ApiProjectConfigPut Modify a project config
 
-Replaces all configuration data with the submitted values.
+Replaces all configuration data with the submitted values. Any existing configuration properties not included in the request will be removed.
 The response, based on `Accept` header, can be returned in the Text, XML or Json format.
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
@@ -815,7 +815,7 @@ func (r ApiApiProjectDeleteRequest) Execute() (*http.Response, error) {
 /*
 ApiProjectDelete Delete a project
 
-Delete an existing projects on the server.
+Delete an existing project on the server.  The action cannot be undone.
 
 Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
@@ -923,290 +923,6 @@ func (a *ProjectAPIService) ApiProjectDeleteExecute(r ApiApiProjectDeleteRequest
 	return localVarHTTPResponse, nil
 }
 
-type ApiApiProjectDisableLaterRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIService
-	project string
-	projectModeLaterRequest *ProjectModeLaterRequest
-}
-
-// Disable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
-func (r ApiApiProjectDisableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectDisableLaterRequest {
-	r.projectModeLaterRequest = &projectModeLaterRequest
-	return r
-}
-
-func (r ApiApiProjectDisableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
-	return r.ApiService.ApiProjectDisableLaterExecute(r)
-}
-
-/*
-ApiProjectDisableLater Disable Project executions or schedules after a duration of time
-
-Sets project execution mode to Passive or disables Schedules at a later time.
-
-Since: v34
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param project project name
- @return ApiApiProjectDisableLaterRequest
-*/
-func (a *ProjectAPIService) ApiProjectDisableLater(ctx context.Context, project string) ApiApiProjectDisableLaterRequest {
-	return ApiApiProjectDisableLaterRequest{
-		ApiService: a,
-		ctx: ctx,
-		project: project,
-	}
-}
-
-// Execute executes the request
-//  @return ModeLaterResponse
-func (a *ProjectAPIService) ApiProjectDisableLaterExecute(r ApiApiProjectDisableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ModeLaterResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectDisableLater")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/project/{project}/disable/later"
-	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.projectModeLaterRequest == nil {
-		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.projectModeLaterRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["rundeckApiToken"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ModeLaterResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiApiProjectEnableLaterRequest struct {
-	ctx context.Context
-	ApiService *ProjectAPIService
-	project string
-	projectModeLaterRequest *ProjectModeLaterRequest
-}
-
-// Enable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
-func (r ApiApiProjectEnableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectEnableLaterRequest {
-	r.projectModeLaterRequest = &projectModeLaterRequest
-	return r
-}
-
-func (r ApiApiProjectEnableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
-	return r.ApiService.ApiProjectEnableLaterExecute(r)
-}
-
-/*
-ApiProjectEnableLater Enable Project executions or schedules after a duration of time
-
-Sets project execution mode to Active or enable Schedules at a later time.
-
-Since: v34
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param project project name
- @return ApiApiProjectEnableLaterRequest
-*/
-func (a *ProjectAPIService) ApiProjectEnableLater(ctx context.Context, project string) ApiApiProjectEnableLaterRequest {
-	return ApiApiProjectEnableLaterRequest{
-		ApiService: a,
-		ctx: ctx,
-		project: project,
-	}
-}
-
-// Execute executes the request
-//  @return ModeLaterResponse
-func (a *ProjectAPIService) ApiProjectEnableLaterExecute(r ApiApiProjectEnableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ModeLaterResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectEnableLater")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/project/{project}/enable/later"
-	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.projectModeLaterRequest == nil {
-		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.projectModeLaterRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["rundeckApiToken"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ModeLaterResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiApiProjectExportRequest struct {
 	ctx context.Context
 	ApiService *ProjectAPIService
@@ -1303,7 +1019,7 @@ func (r ApiApiProjectExportRequest) Execute() (map[string]interface{}, *http.Res
 /*
 ApiProjectExport Export a zip archive of the project.
 
-Performs the export to a zip archive of the project synchronously. 
+Performs the export to a zip archive of the project synchronously.  _For large projects, consider using the async export endpoint instead._
 Optional parameters:
 
 * executionIds a list (comma-separated) of execution IDs. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
@@ -2654,13 +2370,13 @@ func (a *ProjectAPIService) ApiProjectImportExecute(r ApiApiProjectImportRequest
 		parameterAddToHeaderOrQuery(localVarQueryParams, "importExecutions", r.importExecutions, "form", "")
 	}
 	if r.importConfig != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "importConfig ", r.importConfig, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "importConfig", r.importConfig, "form", "")
 	}
 	if r.importACL != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "importACL ", r.importACL, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "importACL", r.importACL, "form", "")
 	}
 	if r.importScm != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "importScm ", r.importScm, "form", "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "importScm", r.importScm, "form", "")
 	}
 	if r.importWebhooks != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "importWebhooks", r.importWebhooks, "form", "")
@@ -2778,7 +2494,7 @@ ApiProjectList1 List Projects
 
 List the existing projects on the server.
 
-Authorization required: `read` for project resource
+Authorization required: `read` for each project resource. Only authorized projects will be included in the response.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

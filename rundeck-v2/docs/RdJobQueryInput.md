@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Offset** | Pointer to **int32** |  | [optional] 
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
 **Max** | Pointer to **int32** |  | [optional] 
 **SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
+**Offset** | Pointer to **int32** |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **string** |  | [optional] 
 **InputParamMap** | Pointer to **map[string]interface{}** |  | [optional] 
@@ -45,31 +45,6 @@ will change when the set of required properties is changed
 NewRdJobQueryInputWithDefaults instantiates a new RdJobQueryInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOffset
-
-`func (o *RdJobQueryInput) GetOffset() int32`
-
-GetOffset returns the Offset field if non-nil, zero value otherwise.
-
-### GetOffsetOk
-
-`func (o *RdJobQueryInput) GetOffsetOk() (*int32, bool)`
-
-GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOffset
-
-`func (o *RdJobQueryInput) SetOffset(v int32)`
-
-SetOffset sets Offset field to given value.
-
-### HasOffset
-
-`func (o *RdJobQueryInput) HasOffset() bool`
-
-HasOffset returns a boolean if a field has been set.
 
 ### GetErrors
 
@@ -145,6 +120,31 @@ SetSortOrders sets SortOrders field to given value.
 `func (o *RdJobQueryInput) HasSortOrders() bool`
 
 HasSortOrders returns a boolean if a field has been set.
+
+### GetOffset
+
+`func (o *RdJobQueryInput) GetOffset() int32`
+
+GetOffset returns the Offset field if non-nil, zero value otherwise.
+
+### GetOffsetOk
+
+`func (o *RdJobQueryInput) GetOffsetOk() (*int32, bool)`
+
+GetOffsetOk returns a tuple with the Offset field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOffset
+
+`func (o *RdJobQueryInput) SetOffset(v int32)`
+
+SetOffset sets Offset field to given value.
+
+### HasOffset
+
+`func (o *RdJobQueryInput) HasOffset() bool`
+
+HasOffset returns a boolean if a field has been set.
 
 ### GetSortBy
 

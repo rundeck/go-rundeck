@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ErrorCode** | Pointer to **string** |  | [optional] 
 **ApiVersion** | Pointer to **int32** |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
-**ErrorCode** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
 **Apiversion** | Pointer to **int32** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
@@ -29,6 +29,31 @@ will change when the set of required properties is changed
 NewErrorResponseWithDefaults instantiates a new ErrorResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetErrorCode
+
+`func (o *ErrorResponse) GetErrorCode() string`
+
+GetErrorCode returns the ErrorCode field if non-nil, zero value otherwise.
+
+### GetErrorCodeOk
+
+`func (o *ErrorResponse) GetErrorCodeOk() (*string, bool)`
+
+GetErrorCodeOk returns a tuple with the ErrorCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorCode
+
+`func (o *ErrorResponse) SetErrorCode(v string)`
+
+SetErrorCode sets ErrorCode field to given value.
+
+### HasErrorCode
+
+`func (o *ErrorResponse) HasErrorCode() bool`
+
+HasErrorCode returns a boolean if a field has been set.
 
 ### GetApiVersion
 
@@ -79,31 +104,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ErrorResponse) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
-### GetErrorCode
-
-`func (o *ErrorResponse) GetErrorCode() string`
-
-GetErrorCode returns the ErrorCode field if non-nil, zero value otherwise.
-
-### GetErrorCodeOk
-
-`func (o *ErrorResponse) GetErrorCodeOk() (*string, bool)`
-
-GetErrorCodeOk returns a tuple with the ErrorCode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrorCode
-
-`func (o *ErrorResponse) SetErrorCode(v string)`
-
-SetErrorCode sets ErrorCode field to given value.
-
-### HasErrorCode
-
-`func (o *ErrorResponse) HasErrorCode() bool`
-
-HasErrorCode returns a boolean if a field has been set.
 
 ### GetError
 
