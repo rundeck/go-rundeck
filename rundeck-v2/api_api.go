@@ -18,11 +18,12 @@ import (
 	"net/url"
 )
 
+
 // APIAPIService APIAPI service
 type APIAPIService service
 
 type ApiInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *APIAPIService
 }
 
@@ -39,25 +40,24 @@ This endpoint provides essential API metadata that clients can use to determine 
 
 Use this endpoint to verify API connectivity and determine the correct API version to use for your integration.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiInfoRequest
 */
 func (a *APIAPIService) Info(ctx context.Context) ApiInfoRequest {
 	return ApiInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *APIAPIService) InfoExecute(r ApiInfoRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIAPIService.Info")

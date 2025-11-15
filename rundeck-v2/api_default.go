@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // DefaultAPIService DefaultAPI service
 type DefaultAPIService service
 
 type ApiApiValidateOptionRequest struct {
-	ctx                      context.Context
-	ApiService               *DefaultAPIService
-	project                  string
-	jobWasScheduled          *bool
+	ctx context.Context
+	ApiService *DefaultAPIService
+	project string
+	jobWasScheduled *bool
 	apiValidateOptionRequest *ApiValidateOptionRequest
 }
 
@@ -53,7 +54,7 @@ Validates an option defintion for a job, returns any validation errors.
 
 If any validation errors occur, the response will use code 400, otherwise 200 will be returned.
 
-The request body should be a JSON object describing a Job Option definition,
+The request body should be a JSON object describing a Job Option definition, 
 and a `jobWasScheduled` parameter to indicate if the job was scheduled.
 
 The data format corresponds with a Job Option definition in Job JSON format, with these additional fields:
@@ -62,29 +63,29 @@ The data format corresponds with a Job Option definition in Job JSON format, wit
 * `configRemoteUrl`: a configuration object for the remote URL values
 * `valuesType`: indicates the type of chosen values list, one of "url", "list", or a Option Values plugin type.
 
+
 Since: V47
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiValidateOptionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiValidateOptionRequest
 */
 func (a *DefaultAPIService) ApiValidateOption(ctx context.Context, project string) ApiApiValidateOptionRequest {
 	return ApiApiValidateOptionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return OptionValidateResponse
+//  @return OptionValidateResponse
 func (a *DefaultAPIService) ApiValidateOptionExecute(r ApiApiValidateOptionRequest) (*OptionValidateResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *OptionValidateResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OptionValidateResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.ApiValidateOption")
@@ -165,8 +166,8 @@ func (a *DefaultAPIService) ApiValidateOptionExecute(r ApiApiValidateOptionReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

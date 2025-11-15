@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_LicenseAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_LicenseAPIService(t *testing.T) {
 
 	t.Run("Test LicenseAPIService ApiStoreLicense", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.LicenseAPI.ApiStoreLicense(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_openapi_LicenseAPIService(t *testing.T) {
 
 	t.Run("Test LicenseAPIService Verify", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.LicenseAPI.Verify(context.Background()).Execute()
 

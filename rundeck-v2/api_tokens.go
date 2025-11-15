@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // TokensAPIService TokensAPI service
 type TokensAPIService service
 
 type ApiApiTokenCreateRequest struct {
-	ctx                   context.Context
-	ApiService            *TokensAPIService
-	user                  string
+	ctx context.Context
+	ApiService *TokensAPIService
+	user string
 	apiTokenCreateRequest *ApiTokenCreateRequest
 }
 
@@ -53,27 +54,27 @@ then the generated token will have all roles as the authenticated user.
 
 Since: v11
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param user username
-	@return ApiApiTokenCreateRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param user username
+ @return ApiApiTokenCreateRequest
 */
 func (a *TokensAPIService) ApiTokenCreate(ctx context.Context, user string) ApiApiTokenCreateRequest {
 	return ApiApiTokenCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		user:       user,
+		ctx: ctx,
+		user: user,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *TokensAPIService) ApiTokenCreateExecute(r ApiApiTokenCreateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.ApiTokenCreate")
@@ -162,9 +163,9 @@ func (a *TokensAPIService) ApiTokenCreateExecute(r ApiApiTokenCreateRequest) (ma
 }
 
 type ApiApiTokenDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TokensAPIService
-	tokenid    string
+	tokenid string
 }
 
 func (r ApiApiTokenDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -174,27 +175,26 @@ func (r ApiApiTokenDeleteRequest) Execute() (map[string]interface{}, *http.Respo
 /*
 ApiTokenDelete Delete a specified auth token.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tokenid Token ID (UUID)
-	@return ApiApiTokenDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tokenid Token ID (UUID)
+ @return ApiApiTokenDeleteRequest
 */
 func (a *TokensAPIService) ApiTokenDelete(ctx context.Context, tokenid string) ApiApiTokenDeleteRequest {
 	return ApiApiTokenDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		tokenid:    tokenid,
+		ctx: ctx,
+		tokenid: tokenid,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *TokensAPIService) ApiTokenDeleteExecute(r ApiApiTokenDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.ApiTokenDelete")
@@ -269,8 +269,8 @@ func (a *TokensAPIService) ApiTokenDeleteExecute(r ApiApiTokenDeleteRequest) (ma
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -289,9 +289,9 @@ func (a *TokensAPIService) ApiTokenDeleteExecute(r ApiApiTokenDeleteRequest) (ma
 }
 
 type ApiApiTokenGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TokensAPIService
-	tokenid    string
+	tokenid string
 }
 
 func (r ApiApiTokenGetRequest) Execute() (*Token, *http.Response, error) {
@@ -303,27 +303,26 @@ ApiTokenGet Get a specified auth token metadata
 
 API Token information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tokenid Token ID (UUID)
-	@return ApiApiTokenGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tokenid Token ID (UUID)
+ @return ApiApiTokenGetRequest
 */
 func (a *TokensAPIService) ApiTokenGet(ctx context.Context, tokenid string) ApiApiTokenGetRequest {
 	return ApiApiTokenGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		tokenid:    tokenid,
+		ctx: ctx,
+		tokenid: tokenid,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Token
+//  @return Token
 func (a *TokensAPIService) ApiTokenGetExecute(r ApiApiTokenGetRequest) (*Token, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Token
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Token
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.ApiTokenGet")
@@ -398,8 +397,8 @@ func (a *TokensAPIService) ApiTokenGetExecute(r ApiApiTokenGetRequest) (*Token, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -417,9 +416,9 @@ func (a *TokensAPIService) ApiTokenGetExecute(r ApiApiTokenGetRequest) (*Token, 
 }
 
 type ApiApiTokenListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TokensAPIService
-	user       string
+	user string
 }
 
 func (r ApiApiTokenListRequest) Execute() ([]Token, *http.Response, error) {
@@ -429,27 +428,26 @@ func (r ApiApiTokenListRequest) Execute() ([]Token, *http.Response, error) {
 /*
 ApiTokenList List all tokens or all tokens for a specific user.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param user username
-	@return ApiApiTokenListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param user username
+ @return ApiApiTokenListRequest
 */
 func (a *TokensAPIService) ApiTokenList(ctx context.Context, user string) ApiApiTokenListRequest {
 	return ApiApiTokenListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		user:       user,
+		ctx: ctx,
+		user: user,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Token
+//  @return []Token
 func (a *TokensAPIService) ApiTokenListExecute(r ApiApiTokenListRequest) ([]Token, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Token
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Token
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.ApiTokenList")
@@ -533,9 +531,9 @@ func (a *TokensAPIService) ApiTokenListExecute(r ApiApiTokenListRequest) ([]Toke
 }
 
 type ApiApiTokenRemoveExpiredRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TokensAPIService
-	user       string
+	user string
 }
 
 func (r ApiApiTokenRemoveExpiredRequest) Execute() (*RemoveExpiredTokens, *http.Response, error) {
@@ -547,27 +545,26 @@ ApiTokenRemoveExpired Remove Expired Tokens
 
 Remove expired tokens for the specified User. Since: v19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param user username, or special value `*`
-	@return ApiApiTokenRemoveExpiredRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param user username, or special value `*`
+ @return ApiApiTokenRemoveExpiredRequest
 */
 func (a *TokensAPIService) ApiTokenRemoveExpired(ctx context.Context, user string) ApiApiTokenRemoveExpiredRequest {
 	return ApiApiTokenRemoveExpiredRequest{
 		ApiService: a,
-		ctx:        ctx,
-		user:       user,
+		ctx: ctx,
+		user: user,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RemoveExpiredTokens
+//  @return RemoveExpiredTokens
 func (a *TokensAPIService) ApiTokenRemoveExpiredExecute(r ApiApiTokenRemoveExpiredRequest) (*RemoveExpiredTokens, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RemoveExpiredTokens
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RemoveExpiredTokens
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.ApiTokenRemoveExpired")

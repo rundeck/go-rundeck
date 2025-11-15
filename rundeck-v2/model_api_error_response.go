@@ -19,10 +19,10 @@ var _ MappedNullable = &ApiErrorResponse{}
 
 // ApiErrorResponse Error Response
 type ApiErrorResponse struct {
-	Error      *bool   `json:"error,omitempty"`
-	Apiversion *int32  `json:"apiversion,omitempty"`
-	ErrorCode  *string `json:"errorCode,omitempty"`
-	Message    *string `json:"message,omitempty"`
+	Error *bool `json:"error,omitempty"`
+	Apiversion *int32 `json:"apiversion,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
 
 // NewApiErrorResponse instantiates a new ApiErrorResponse object
@@ -171,7 +171,7 @@ func (o *ApiErrorResponse) SetMessage(v string) {
 }
 
 func (o ApiErrorResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableApiErrorResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

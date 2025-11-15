@@ -18,14 +18,15 @@ import (
 	"net/url"
 )
 
+
 // LicenseAPIService LicenseAPI service
 type LicenseAPIService service
 
 type ApiApiStoreLicenseRequest struct {
-	ctx              context.Context
-	ApiService       *LicenseAPIService
+	ctx context.Context
+	ApiService *LicenseAPIService
 	licenseAgreement *interface{}
-	body             *string
+	body *string
 }
 
 // true to agree with the Runbook Automation License
@@ -49,25 +50,24 @@ ApiStoreLicense Set License Key
 
 Uploads a license key for Runbook Automation
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiStoreLicenseRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiStoreLicenseRequest
 */
 func (a *LicenseAPIService) ApiStoreLicense(ctx context.Context) ApiApiStoreLicenseRequest {
 	return ApiApiStoreLicenseRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Basic
+//  @return Basic
 func (a *LicenseAPIService) ApiStoreLicenseExecute(r ApiApiStoreLicenseRequest) (*Basic, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Basic
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Basic
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LicenseAPIService.ApiStoreLicense")
@@ -150,8 +150,8 @@ func (a *LicenseAPIService) ApiStoreLicenseExecute(r ApiApiStoreLicenseRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -169,7 +169,7 @@ func (a *LicenseAPIService) ApiStoreLicenseExecute(r ApiApiStoreLicenseRequest) 
 }
 
 type ApiVerifyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *LicenseAPIService
 }
 
@@ -182,25 +182,24 @@ Verify View License
 
 Returns metadata about the current License for Runbook Automation
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiVerifyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiVerifyRequest
 */
 func (a *LicenseAPIService) Verify(ctx context.Context) ApiVerifyRequest {
 	return ApiVerifyRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return LicenseInfoResponse
+//  @return LicenseInfoResponse
 func (a *LicenseAPIService) VerifyExecute(r ApiVerifyRequest) (*LicenseInfoResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LicenseInfoResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LicenseInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LicenseAPIService.Verify")

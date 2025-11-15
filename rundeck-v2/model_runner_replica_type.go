@@ -20,14 +20,14 @@ type RunnerReplicaType string
 
 // List of RunnerReplicaType
 const (
-	EPHEMERAL RunnerReplicaType = "EPHEMERAL"
-	MANUAL    RunnerReplicaType = "MANUAL"
+	EPHEMERAL RunnerReplicaType = "ephemeral"
+	MANUAL RunnerReplicaType = "manual"
 )
 
 // All allowed values of RunnerReplicaType enum
 var AllowedRunnerReplicaTypeEnumValues = []RunnerReplicaType{
-	"EPHEMERAL",
-	"MANUAL",
+	"ephemeral",
+	"manual",
 }
 
 func (v *RunnerReplicaType) UnmarshalJSON(src []byte) error {
@@ -108,3 +108,4 @@ func (v *NullableRunnerReplicaType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

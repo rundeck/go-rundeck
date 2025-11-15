@@ -19,8 +19,8 @@ var _ MappedNullable = &JobReference{}
 
 // JobReference struct for JobReference
 type JobReference struct {
-	JobId     *string `json:"jobId,omitempty"`
-	JobName   *string `json:"jobName,omitempty"`
+	JobId *string `json:"jobId,omitempty"`
+	JobName *string `json:"jobName,omitempty"`
 	GroupPath *string `json:"groupPath,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *JobReference) SetGroupPath(v string) {
 }
 
 func (o JobReference) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableJobReference) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,8 +19,8 @@ var _ MappedNullable = &Timestamp{}
 
 // Timestamp Timestamp Information
 type Timestamp struct {
-	Epoch    *int64  `json:"epoch,omitempty"`
-	Unit     *string `json:"unit,omitempty"`
+	Epoch *int64 `json:"epoch,omitempty"`
+	Unit *string `json:"unit,omitempty"`
 	Datetime *string `json:"datetime,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *Timestamp) SetDatetime(v string) {
 }
 
 func (o Timestamp) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableTimestamp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

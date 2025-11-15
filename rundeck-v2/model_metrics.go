@@ -19,7 +19,7 @@ var _ MappedNullable = &Metrics{}
 
 // Metrics Metrics Information
 type Metrics struct {
-	Href        *string `json:"href,omitempty"`
+	Href *string `json:"href,omitempty"`
 	ContentType *string `json:"contentType,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *Metrics) SetContentType(v string) {
 }
 
 func (o Metrics) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableMetrics) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

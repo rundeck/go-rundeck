@@ -19,7 +19,7 @@ var _ MappedNullable = &ThreadDump{}
 
 // ThreadDump Thread Dump Information
 type ThreadDump struct {
-	Href        *string `json:"href,omitempty"`
+	Href *string `json:"href,omitempty"`
 	ContentType *string `json:"contentType,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *ThreadDump) SetContentType(v string) {
 }
 
 func (o ThreadDump) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableThreadDump) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

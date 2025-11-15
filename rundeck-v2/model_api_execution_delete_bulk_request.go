@@ -18,8 +18,8 @@ import (
 
 // ApiExecutionDeleteBulkRequest - struct for ApiExecutionDeleteBulkRequest
 type ApiExecutionDeleteBulkRequest struct {
-	DeleteBulkRequest        *DeleteBulkRequest
-	DeleteBulkRequestLong    *DeleteBulkRequestLong
+	DeleteBulkRequest *DeleteBulkRequest
+	DeleteBulkRequestLong *DeleteBulkRequestLong
 	ArrayOfMapmapOfStringAny *[]map[string]interface{}
 }
 
@@ -43,6 +43,7 @@ func ArrayOfMapmapOfStringAnyAsApiExecutionDeleteBulkRequest(v *[]map[string]int
 		ArrayOfMapmapOfStringAny: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ApiExecutionDeleteBulkRequest) UnmarshalJSON(data []byte) error {
@@ -131,7 +132,7 @@ func (src ApiExecutionDeleteBulkRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ApiExecutionDeleteBulkRequest) GetActualInstance() interface{} {
+func (obj *ApiExecutionDeleteBulkRequest) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -152,7 +153,7 @@ func (obj *ApiExecutionDeleteBulkRequest) GetActualInstance() interface{} {
 }
 
 // Get the actual instance value
-func (obj ApiExecutionDeleteBulkRequest) GetActualInstanceValue() interface{} {
+func (obj ApiExecutionDeleteBulkRequest) GetActualInstanceValue() (interface{}) {
 	if obj.DeleteBulkRequest != nil {
 		return *obj.DeleteBulkRequest
 	}
@@ -204,3 +205,5 @@ func (v *NullableApiExecutionDeleteBulkRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

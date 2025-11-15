@@ -82,10 +82,10 @@ Class | Method | HTTP request | Description
 *ACLAPI* | [**ApiProjectAclsGetDocs**](docs/ACLAPI.md#apiprojectaclsgetdocs) | **Get** /project/{project}/acl/{path} | Get ACL Policy file for a project.
 *ACLAPI* | [**ApiProjectAclsPostDocs**](docs/ACLAPI.md#apiprojectaclspostdocs) | **Post** /project/{project}/acl/{path} | Update a Project ACL Policy
 *ACLAPI* | [**ApiProjectAclsPutDocs**](docs/ACLAPI.md#apiprojectaclsputdocs) | **Put** /project/{project}/acl/{path} | Update a Project ACL Policy
-*ACLAPI* | [**ApiSystemAcls**](docs/ACLAPI.md#apisystemacls) | **Get** /system/acl/{path} | Get an ACL Policy.
-*ACLAPI* | [**ApiSystemAclsDELETEDocs**](docs/ACLAPI.md#apisystemaclsdeletedocs) | **Delete** /system/acl/{path} | Delete an ACL Policy.
-*ACLAPI* | [**ApiSystemAclsPOSTDocs**](docs/ACLAPI.md#apisystemaclspostdocs) | **Post** /system/acl/{path} | Create an ACL Policy.
-*ACLAPI* | [**ApiSystemAclsPUTDocs**](docs/ACLAPI.md#apisystemaclsputdocs) | **Put** /system/acl/{path} | Update an ACL Policy.
+*ACLsAPI* | [**ApiSystemAcls**](docs/ACLsAPI.md#apisystemacls) | **Get** /system/acl/{path} | Get an ACL Policy.
+*ACLsAPI* | [**ApiSystemAclsDELETEDocs**](docs/ACLsAPI.md#apisystemaclsdeletedocs) | **Delete** /system/acl/{path} | Delete an ACL Policy.
+*ACLsAPI* | [**ApiSystemAclsPOSTDocs**](docs/ACLsAPI.md#apisystemaclspostdocs) | **Post** /system/acl/{path} | Create an ACL Policy.
+*ACLsAPI* | [**ApiSystemAclsPUTDocs**](docs/ACLsAPI.md#apisystemaclsputdocs) | **Put** /system/acl/{path} | Update an ACL Policy.
 *APIAPI* | [**Info**](docs/APIAPI.md#info) | **Get** / | Get API Information
 *AdHocAPI* | [**ApiRunCommandv14**](docs/AdHocAPI.md#apiruncommandv14) | **Post** /project/{project}/run/command | Run Adhoc Command
 *AdHocAPI* | [**ApiRunScriptUrlv14**](docs/AdHocAPI.md#apirunscripturlv14) | **Post** /project/{project}/run/url | Run Adhoc Script URL
@@ -101,7 +101,6 @@ Class | Method | HTTP request | Description
 *CalendarsAPI* | [**ApiLoadSystemCalendars**](docs/CalendarsAPI.md#apiloadsystemcalendars) | **Post** /system/calendars | Create/Update System Calendar [Enterprise]
 *CalendarsAPI* | [**ApiProjectCalendars**](docs/CalendarsAPI.md#apiprojectcalendars) | **Get** /project/{project}/calendars | List Project Calendars [Enterprise]
 *CalendarsAPI* | [**ApiSystemCalendars**](docs/CalendarsAPI.md#apisystemcalendars) | **Get** /system/calendars | List System Calendars [Enterprise]
-*ClusterAPI* | [**ApiJobClusterTakeoverSchedule**](docs/ClusterAPI.md#apijobclustertakeoverschedule) | **Put** /scheduler/takeover | Takeover Schedule in Cluster Mode
 *ClusterAPI* | [**ApiToggle**](docs/ClusterAPI.md#apitoggle) | **Post** /enterprise/cluster/executions/disable | Set Execution Mode for a Cluster Member [Enterprise]
 *ClusterAPI* | [**ApiToggle1**](docs/ClusterAPI.md#apitoggle1) | **Post** /enterprise/cluster/executions/enable | Set Execution Mode for a Cluster Member [Enterprise]
 *ConfigurationAPI* | [**ConfigDelete**](docs/ConfigurationAPI.md#configdelete) | **Post** /config/delete | Delete a Single Config Value [Enterprise]
@@ -112,36 +111,33 @@ Class | Method | HTTP request | Description
 *ConfigurationAPI* | [**ConfigSave**](docs/ConfigurationAPI.md#configsave) | **Post** /config/save | Create or Update Configurations [Enterprise]
 *ConfigurationAPI* | [**Refresh**](docs/ConfigurationAPI.md#refresh) | **Post** /config/refresh | Refresh Configurations from Properties File [Enterprise]
 *ConfigurationAPI* | [**Restart**](docs/ConfigurationAPI.md#restart) | **Post** /config/restart | Restart the Rundeck Server [Enterprise]
+*ConfigurationAPI* | [**SaveProjectPlugins**](docs/ConfigurationAPI.md#saveprojectplugins) | **Post** /project/{project}/plugins/save | Save list-style plugin configurations for a project
 *ConfigurationAPI* | [**StorageConfigList**](docs/ConfigurationAPI.md#storageconfiglist) | **Get** /config/listStoragePlugins | List All Currently configured Storage Plugins [Enterprise]
 *ConfigurationAPI* | [**StorageConfigSave**](docs/ConfigurationAPI.md#storageconfigsave) | **Post** /config/saveStoragePlugins | Create or Update Storage Plugins [Enterprise]
 *DefaultAPI* | [**ApiValidateOption**](docs/DefaultAPI.md#apivalidateoption) | **Post** /project/{project}/jobs/validateOption | Validate an option
-*ExecutionModeAPI* | [**ApiExecutionModeLaterActive**](docs/ExecutionModeAPI.md#apiexecutionmodelateractive) | **Post** /system/executions/enable/later | Enable System executions after a duration of time
-*ExecutionModeAPI* | [**ApiExecutionModeLaterPassive**](docs/ExecutionModeAPI.md#apiexecutionmodelaterpassive) | **Post** /system/executions/disable/later | Disable System executions after a duration of time
-*ExecutionModeAPI* | [**ApiProjectDisableLater**](docs/ExecutionModeAPI.md#apiprojectdisablelater) | **Post** /project/{project}/disable/later | Disable Project executions or schedules after a duration of time
-*ExecutionModeAPI* | [**ApiProjectEnableLater**](docs/ExecutionModeAPI.md#apiprojectenablelater) | **Post** /project/{project}/enable/later | Enable Project executions or schedules after a duration of time
+*ExecutionAPI* | [**ApiExecution**](docs/ExecutionAPI.md#apiexecution) | **Get** /execution/{id} | Execution Info
+*ExecutionAPI* | [**ApiExecutionAbort**](docs/ExecutionAPI.md#apiexecutionabort) | **Post** /execution/{id}/abort | Aborting Executions
+*ExecutionAPI* | [**ApiExecutionDelete**](docs/ExecutionAPI.md#apiexecutiondelete) | **Delete** /execution/{id} | Delete an Execution
+*ExecutionAPI* | [**ApiExecutionDeleteBulk**](docs/ExecutionAPI.md#apiexecutiondeletebulk) | **Post** /executions/delete | Bulk Delete Executions
+*ExecutionAPI* | [**ApiExecutionInputFiles**](docs/ExecutionAPI.md#apiexecutioninputfiles) | **Get** /execution/{id}/input/files | List Input Files for an Execution
+*ExecutionAPI* | [**ApiExecutionMetricsDocs**](docs/ExecutionAPI.md#apiexecutionmetricsdocs) | **Get** /executions/metrics | Execution Query Metrics
+*ExecutionAPI* | [**ApiExecutionMetricsProjectDocs**](docs/ExecutionAPI.md#apiexecutionmetricsprojectdocs) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
+*ExecutionAPI* | [**ApiExecutionMetricsProjectDocs_0**](docs/ExecutionAPI.md#apiexecutionmetricsprojectdocs_0) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
+*ExecutionAPI* | [**ApiExecutionOutput**](docs/ExecutionAPI.md#apiexecutionoutput) | **Get** /execution/{id}/output | Execution Output
+*ExecutionAPI* | [**ApiExecutionOutputNodeFilter**](docs/ExecutionAPI.md#apiexecutionoutputnodefilter) | **Get** /execution/{id}/output/node/{nodename} | Execution Output For Node
+*ExecutionAPI* | [**ApiExecutionOutputNodeStepFilter**](docs/ExecutionAPI.md#apiexecutionoutputnodestepfilter) | **Get** /execution/{id}/output/node/{nodename}/step/{stepctx} | Execution Output For Node and Step
+*ExecutionAPI* | [**ApiExecutionOutputStepFilter**](docs/ExecutionAPI.md#apiexecutionoutputstepfilter) | **Get** /execution/{id}/output/step/{stepctx} | Execution Output For Step
+*ExecutionAPI* | [**ApiExecutionState**](docs/ExecutionAPI.md#apiexecutionstate) | **Get** /execution/{id}/state | Execution State
+*ExecutionAPI* | [**ApiExecutionStateOutput**](docs/ExecutionAPI.md#apiexecutionstateoutput) | **Get** /execution/{id}/output/state | Execution Output with State
+*ExecutionAPI* | [**ApiExecutionsQueryv14Docs**](docs/ExecutionAPI.md#apiexecutionsqueryv14docs) | **Get** /project/{project}/executions | Execution Query
+*ExecutionAPI* | [**ApiExecutionsRunningv14**](docs/ExecutionAPI.md#apiexecutionsrunningv14) | **Get** /project/{project}/executions/running | Listing Running Executions
+*ExecutionAPI* | [**ApiHomeSummary**](docs/ExecutionAPI.md#apihomesummary) | **Get** /home/summary | Summary of executions and projects
 *HealthAPI* | [**ApiNodeHealth**](docs/HealthAPI.md#apinodehealth) | **Get** /project/{project}/healthcheck/status | Get Node Healthcheck Status [Enterprise]
 *HealthAPI* | [**ApiNodeHealthAll**](docs/HealthAPI.md#apinodehealthall) | **Get** /project/{project}/healthcheck/status/all | Get Node Healthcheck Status for All Nodes [Enterprise]
 *HealthAPI* | [**ApiProjectHasHealthStatusEnhancer**](docs/HealthAPI.md#apiprojecthashealthstatusenhancer) | **Get** /project/{project}/healthcheck/enhancer | Check Health Status Node Enhancer is Configured [Enterprise]
 *HealthAPI* | [**ApiRefreshHealthCheck**](docs/HealthAPI.md#apirefreshhealthcheck) | **Post** /project/{project}/healthcheck/refresh | Refresh Node Healthcheck Status [Enterprise]
 *HealthAPI* | [**ApiRefreshHealthCheckAll**](docs/HealthAPI.md#apirefreshhealthcheckall) | **Post** /project/{project}/healthcheck/refresh/all | Refresh All Project Node Healthchecks [Enterprise]
 *HistoryAPI* | [**ApiHistoryv14**](docs/HistoryAPI.md#apihistoryv14) | **Get** /project/{project}/history | Listing History
-*JobExecutionsAPI* | [**ApiExecution**](docs/JobExecutionsAPI.md#apiexecution) | **Get** /execution/{id} | Execution Info
-*JobExecutionsAPI* | [**ApiExecutionAbort**](docs/JobExecutionsAPI.md#apiexecutionabort) | **Post** /execution/{id}/abort | Aborting Executions
-*JobExecutionsAPI* | [**ApiExecutionDelete**](docs/JobExecutionsAPI.md#apiexecutiondelete) | **Delete** /execution/{id} | Delete an Execution
-*JobExecutionsAPI* | [**ApiExecutionDeleteBulk**](docs/JobExecutionsAPI.md#apiexecutiondeletebulk) | **Post** /executions/delete | Bulk Delete Executions
-*JobExecutionsAPI* | [**ApiExecutionInputFiles**](docs/JobExecutionsAPI.md#apiexecutioninputfiles) | **Get** /execution/{id}/input/files | List Input Files for an Execution
-*JobExecutionsAPI* | [**ApiExecutionMetricsDocs**](docs/JobExecutionsAPI.md#apiexecutionmetricsdocs) | **Get** /executions/metrics | Execution Query Metrics
-*JobExecutionsAPI* | [**ApiExecutionMetricsProjectDocs**](docs/JobExecutionsAPI.md#apiexecutionmetricsprojectdocs) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
-*JobExecutionsAPI* | [**ApiExecutionMetricsProjectDocs_0**](docs/JobExecutionsAPI.md#apiexecutionmetricsprojectdocs_0) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
-*JobExecutionsAPI* | [**ApiExecutionOutput**](docs/JobExecutionsAPI.md#apiexecutionoutput) | **Get** /execution/{id}/output | Execution Output
-*JobExecutionsAPI* | [**ApiExecutionOutputNodeFilter**](docs/JobExecutionsAPI.md#apiexecutionoutputnodefilter) | **Get** /execution/{id}/output/node/{nodename} | Execution Output For Node
-*JobExecutionsAPI* | [**ApiExecutionOutputNodeStepFilter**](docs/JobExecutionsAPI.md#apiexecutionoutputnodestepfilter) | **Get** /execution/{id}/output/node/{nodename}/step/{stepctx} | Execution Output For Node and Step
-*JobExecutionsAPI* | [**ApiExecutionOutputStepFilter**](docs/JobExecutionsAPI.md#apiexecutionoutputstepfilter) | **Get** /execution/{id}/output/step/{stepctx} | Execution Output For Step
-*JobExecutionsAPI* | [**ApiExecutionState**](docs/JobExecutionsAPI.md#apiexecutionstate) | **Get** /execution/{id}/state | Execution State
-*JobExecutionsAPI* | [**ApiExecutionStateOutput**](docs/JobExecutionsAPI.md#apiexecutionstateoutput) | **Get** /execution/{id}/output/state | Execution Output with State
-*JobExecutionsAPI* | [**ApiExecutionsQueryv14Docs**](docs/JobExecutionsAPI.md#apiexecutionsqueryv14docs) | **Get** /project/{project}/executions | Execution Query
-*JobExecutionsAPI* | [**ApiExecutionsRunningv14**](docs/JobExecutionsAPI.md#apiexecutionsrunningv14) | **Get** /project/{project}/executions/running | Listing Running Executions
-*JobExecutionsAPI* | [**ApiHomeSummary**](docs/JobExecutionsAPI.md#apihomesummary) | **Get** /home/summary | Summary of executions and projects
 *JobsAPI* | [**ApiExecutionDataAvailable**](docs/JobsAPI.md#apiexecutiondataavailable) | **Get** /execution/{id}/result/dataAvailable | Check Execution Result Data Availability [Enterprise]
 *JobsAPI* | [**ApiExecutionDataExport**](docs/JobsAPI.md#apiexecutiondataexport) | **Get** /execution/{id}/result/data | Get Execution Result Data [Enterprise]
 *JobsAPI* | [**ApiFlipExecutionDisabled**](docs/JobsAPI.md#apiflipexecutiondisabled) | **Post** /job/{id}/execution/disable | Disable Executions for a Job
@@ -195,6 +191,8 @@ Class | Method | HTTP request | Description
 *ProjectAPI* | [**ApiProjectConfigPut**](docs/ProjectAPI.md#apiprojectconfigput) | **Put** /project/{project}/config | Modify a project config
 *ProjectAPI* | [**ApiProjectCreate**](docs/ProjectAPI.md#apiprojectcreate) | **Post** /projects | Create a Project
 *ProjectAPI* | [**ApiProjectDelete**](docs/ProjectAPI.md#apiprojectdelete) | **Delete** /project/{project} | Delete a project
+*ProjectAPI* | [**ApiProjectDisableLater**](docs/ProjectAPI.md#apiprojectdisablelater) | **Post** /project/{project}/disable/later | Disable Project executions or schedules after a duration of time
+*ProjectAPI* | [**ApiProjectEnableLater**](docs/ProjectAPI.md#apiprojectenablelater) | **Post** /project/{project}/enable/later | Enable Project executions or schedules after a duration of time
 *ProjectAPI* | [**ApiProjectExport**](docs/ProjectAPI.md#apiprojectexport) | **Get** /project/{project}/export | Export a zip archive of the project.
 *ProjectAPI* | [**ApiProjectExportAsyncDocs**](docs/ProjectAPI.md#apiprojectexportasyncdocs) | **Get** /project/{project}/export/async | Export a zip archive of the project asynchronously.
 *ProjectAPI* | [**ApiProjectExportAsyncDownload**](docs/ProjectAPI.md#apiprojectexportasyncdownload) | **Get** /project/{project}/export/download/{token} | Download the zip archive file
@@ -214,6 +212,8 @@ Class | Method | HTTP request | Description
 *ProjectAPI* | [**ApiSourcesList**](docs/ProjectAPI.md#apisourceslist) | **Get** /project/{project}/sources | List Resource Model Sources for a Project
 *ProjectAPI* | [**ApiTagsForNodes**](docs/ProjectAPI.md#apitagsfornodes) | **Get** /project/{project}/nodes/tags | List tags for project nodes
 *ProjectAPI* | [**SaveProjectPlugins**](docs/ProjectAPI.md#saveprojectplugins) | **Post** /project/{project}/plugins/save | Save list-style plugin configurations for a project
+*ProjectExecutionModeAPI* | [**ApiProjectDisableLater**](docs/ProjectExecutionModeAPI.md#apiprojectdisablelater) | **Post** /project/{project}/disable/later | Disable Project executions or schedules after a duration of time
+*ProjectExecutionModeAPI* | [**ApiProjectEnableLater**](docs/ProjectExecutionModeAPI.md#apiprojectenablelater) | **Post** /project/{project}/enable/later | Enable Project executions or schedules after a duration of time
 *ROIAPI* | [**GetRoiMetricsDataApi**](docs/ROIAPI.md#getroimetricsdataapi) | **Get** /execution/{id}/roimetrics/data | INCUBATING: ROI Metrics Data [Enterprise]
 *ROIAPI* | [**GetRoiMetricsDataAvailability**](docs/ROIAPI.md#getroimetricsdataavailability) | **Get** /execution/{id}/roimetrics/available | INCUBATING: ROI Metrics Data Available [Enterprise]
 *RunnerAPI* | [**CheckPing**](docs/RunnerAPI.md#checkping) | **Get** /runnerManagement/checkPing/{token} | Check Runner Ping
@@ -265,7 +265,10 @@ Class | Method | HTTP request | Description
 *SCMAPI* | [**ApiProjectSetup**](docs/SCMAPI.md#apiprojectsetup) | **Post** /project/{project}/scm/{integration}/plugin/{type}/setup | Setup SCM Plugin for a Project
 *SCMAPI* | [**ApiProjectStatus**](docs/SCMAPI.md#apiprojectstatus) | **Get** /project/{project}/scm/{integration}/status | Get Project SCM Status
 *SCMAPI* | [**ApiProjectToggleSCM**](docs/SCMAPI.md#apiprojecttogglescm) | **Post** /project/{project}/scm/toggle | Toggle SCM for a Project
+*SchedulerAPI* | [**ApiJobClusterTakeoverSchedule**](docs/SchedulerAPI.md#apijobclustertakeoverschedule) | **Put** /scheduler/takeover | Takeover Schedule in Cluster Mode
 *SystemAPI* | [**ApiExecutionModeActive**](docs/SystemAPI.md#apiexecutionmodeactive) | **Post** /system/executions/enable | Set Execution Mode Active
+*SystemAPI* | [**ApiExecutionModeLaterActive**](docs/SystemAPI.md#apiexecutionmodelateractive) | **Post** /system/executions/enable/later | Enable System executions after a duration of time
+*SystemAPI* | [**ApiExecutionModeLaterPassive**](docs/SystemAPI.md#apiexecutionmodelaterpassive) | **Post** /system/executions/disable/later | Disable System executions after a duration of time
 *SystemAPI* | [**ApiExecutionModePassive**](docs/SystemAPI.md#apiexecutionmodepassive) | **Post** /system/executions/disable | Set Execution Mode Passive
 *SystemAPI* | [**ApiExecutionModeStatus**](docs/SystemAPI.md#apiexecutionmodestatus) | **Get** /system/executions/status | Get Current Execution Mode
 *SystemAPI* | [**ApiSystemInfo**](docs/SystemAPI.md#apisysteminfo) | **Get** /system/info | Get Rundeck server information and stats
@@ -273,6 +276,8 @@ Class | Method | HTTP request | Description
 *SystemAPI* | [**FeatureQueryAll**](docs/SystemAPI.md#featurequeryall) | **Get** /feature | List all System Feature on/off Status
 *SystemAPI* | [**GetDataset**](docs/SystemAPI.md#getdataset) | **Get** /enterprise/system-report/datasets/{dataset} | Get System Report Dataset by Name
 *SystemAPI* | [**ListDatasets**](docs/SystemAPI.md#listdatasets) | **Get** /enterprise/system-report/datasets | List System Report Datasets
+*SystemExecutionModeAPI* | [**ApiExecutionModeLaterActive**](docs/SystemExecutionModeAPI.md#apiexecutionmodelateractive) | **Post** /system/executions/enable/later | Enable System executions after a duration of time
+*SystemExecutionModeAPI* | [**ApiExecutionModeLaterPassive**](docs/SystemExecutionModeAPI.md#apiexecutionmodelaterpassive) | **Post** /system/executions/disable/later | Disable System executions after a duration of time
 *TokensAPI* | [**ApiTokenCreate**](docs/TokensAPI.md#apitokencreate) | **Post** /tokens/{user} | Create API Token
 *TokensAPI* | [**ApiTokenDelete**](docs/TokensAPI.md#apitokendelete) | **Delete** /token/{tokenid} | Delete a specified auth token.
 *TokensAPI* | [**ApiTokenGet**](docs/TokensAPI.md#apitokenget) | **Get** /token/{tokenid} | Get a specified auth token metadata

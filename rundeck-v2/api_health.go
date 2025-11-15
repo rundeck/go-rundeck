@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // HealthAPIService HealthAPI service
 type HealthAPIService service
 
 type ApiApiNodeHealthRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *HealthAPIService
-	node       *string
-	project    string
+	node *string
+	project string
 }
 
 // Node Name
@@ -46,27 +47,29 @@ Node Healtcheck status for a Node.
 
 Authorization required: `app_admin` for `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiNodeHealthRequest
+
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiNodeHealthRequest
 */
 func (a *HealthAPIService) ApiNodeHealth(ctx context.Context, project string) ApiApiNodeHealthRequest {
 	return ApiApiNodeHealthRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HealthAPIService) ApiNodeHealthExecute(r ApiApiNodeHealthRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthAPIService.ApiNodeHealth")
@@ -145,8 +148,8 @@ func (a *HealthAPIService) ApiNodeHealthExecute(r ApiApiNodeHealthRequest) (map[
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -156,8 +159,8 @@ func (a *HealthAPIService) ApiNodeHealthExecute(r ApiApiNodeHealthRequest) (map[
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -175,9 +178,9 @@ func (a *HealthAPIService) ApiNodeHealthExecute(r ApiApiNodeHealthRequest) (map[
 }
 
 type ApiApiNodeHealthAllRequest struct {
-	ctx           context.Context
-	ApiService    *HealthAPIService
-	project       string
+	ctx context.Context
+	ApiService *HealthAPIService
+	project string
 	includeChecks *bool
 }
 
@@ -198,27 +201,27 @@ Node Healtcheck status for all Nodes.
 
 Authorization required: `app_admin` for `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiNodeHealthAllRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiNodeHealthAllRequest
 */
 func (a *HealthAPIService) ApiNodeHealthAll(ctx context.Context, project string) ApiApiNodeHealthAllRequest {
 	return ApiApiNodeHealthAllRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *HealthAPIService) ApiNodeHealthAllExecute(r ApiApiNodeHealthAllRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthAPIService.ApiNodeHealthAll")
@@ -305,9 +308,9 @@ func (a *HealthAPIService) ApiNodeHealthAllExecute(r ApiApiNodeHealthAllRequest)
 }
 
 type ApiApiProjectHasHealthStatusEnhancerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *HealthAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiProjectHasHealthStatusEnhancerRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -321,27 +324,27 @@ Check if the Project has the Health Status Node Enhancer configured.
 
 Authorization required: `app_admin` for `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectHasHealthStatusEnhancerRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectHasHealthStatusEnhancerRequest
 */
 func (a *HealthAPIService) ApiProjectHasHealthStatusEnhancer(ctx context.Context, project string) ApiApiProjectHasHealthStatusEnhancerRequest {
 	return ApiApiProjectHasHealthStatusEnhancerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HealthAPIService) ApiProjectHasHealthStatusEnhancerExecute(r ApiApiProjectHasHealthStatusEnhancerRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthAPIService.ApiProjectHasHealthStatusEnhancer")
@@ -425,11 +428,11 @@ func (a *HealthAPIService) ApiProjectHasHealthStatusEnhancerExecute(r ApiApiProj
 }
 
 type ApiApiRefreshHealthCheckRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *HealthAPIService
-	project    string
-	node       *string
-	body       *map[string]interface{}
+	project string
+	node *string
+	body *map[string]interface{}
 }
 
 // Node Name
@@ -455,27 +458,27 @@ Request a Refresh to the Healtcheck status for a set of Nodes.
 
 Authorization required: `app_admin` for `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiRefreshHealthCheckRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiRefreshHealthCheckRequest
 */
 func (a *HealthAPIService) ApiRefreshHealthCheck(ctx context.Context, project string) ApiApiRefreshHealthCheckRequest {
 	return ApiApiRefreshHealthCheckRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HealthAPIService) ApiRefreshHealthCheckExecute(r ApiApiRefreshHealthCheckRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthAPIService.ApiRefreshHealthCheck")
@@ -555,8 +558,8 @@ func (a *HealthAPIService) ApiRefreshHealthCheckExecute(r ApiApiRefreshHealthChe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -574,9 +577,9 @@ func (a *HealthAPIService) ApiRefreshHealthCheckExecute(r ApiApiRefreshHealthChe
 }
 
 type ApiApiRefreshHealthCheckAllRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *HealthAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiRefreshHealthCheckAllRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -590,27 +593,27 @@ Request a Refresh to the Healtcheck status for all Nodes in a Project.
 
 Authorization required: `app_admin` for `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiRefreshHealthCheckAllRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiRefreshHealthCheckAllRequest
 */
 func (a *HealthAPIService) ApiRefreshHealthCheckAll(ctx context.Context, project string) ApiApiRefreshHealthCheckAllRequest {
 	return ApiApiRefreshHealthCheckAllRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HealthAPIService) ApiRefreshHealthCheckAllExecute(r ApiApiRefreshHealthCheckAllRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HealthAPIService.ApiRefreshHealthCheckAll")

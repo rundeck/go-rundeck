@@ -19,8 +19,8 @@ var _ MappedNullable = &ScmPluginList{}
 
 // ScmPluginList struct for ScmPluginList
 type ScmPluginList struct {
-	Integration *string                `json:"integration,omitempty"`
-	Plugins     []ScmPluginDescription `json:"plugins,omitempty"`
+	Integration *string `json:"integration,omitempty"`
+	Plugins []ScmPluginDescription `json:"plugins,omitempty"`
 }
 
 // NewScmPluginList instantiates a new ScmPluginList object
@@ -105,7 +105,7 @@ func (o *ScmPluginList) SetPlugins(v []ScmPluginDescription) {
 }
 
 func (o ScmPluginList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableScmPluginList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

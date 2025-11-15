@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_CalendarsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiDeleteProjectCalendar", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string
@@ -38,7 +38,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiDeleteSystemCalendar", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -51,7 +51,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiLoadProjectCalendars", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -65,7 +65,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiLoadSystemCalendars", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CalendarsAPI.ApiLoadSystemCalendars(context.Background()).Execute()
 
@@ -77,7 +77,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiProjectCalendars", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -91,7 +91,7 @@ func Test_openapi_CalendarsAPIService(t *testing.T) {
 
 	t.Run("Test CalendarsAPIService ApiSystemCalendars", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CalendarsAPI.ApiSystemCalendars(context.Background()).Execute()
 

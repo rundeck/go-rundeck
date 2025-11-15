@@ -19,24 +19,24 @@ var _ MappedNullable = &OptionValidateRequest{}
 
 // OptionValidateRequest struct for OptionValidateRequest
 type OptionValidateRequest struct {
-	Type                        *string                `json:"type,omitempty"`
-	StoragePath                 *string                `json:"storagePath,omitempty"`
-	ValuesUrl                   *string                `json:"valuesUrl,omitempty"`
-	Value                       *string                `json:"value,omitempty"`
-	Values                      []string               `json:"values,omitempty"`
-	Secure                      *bool                  `json:"secure,omitempty"`
-	ValueExposed                *bool                  `json:"valueExposed,omitempty"`
-	ValuesType                  *string                `json:"valuesType,omitempty"`
-	RemoteUrlAuthenticationType *string                `json:"remoteUrlAuthenticationType,omitempty"`
-	ConfigRemoteUrl             map[string]interface{} `json:"configRemoteUrl,omitempty"`
-	OptionType                  *string                `json:"optionType,omitempty"`
-	DefaultStoragePath          *string                `json:"defaultStoragePath,omitempty"`
-	RealValuesUrl               *string                `json:"realValuesUrl,omitempty"`
-	DefaultValue                *string                `json:"defaultValue,omitempty"`
-	ValuesList                  *string                `json:"valuesList,omitempty"`
-	OptionValues                []string               `json:"optionValues,omitempty"`
-	SecureInput                 *bool                  `json:"secureInput,omitempty"`
-	SecureExposed               *bool                  `json:"secureExposed,omitempty"`
+	Type *string `json:"type,omitempty"`
+	StoragePath *string `json:"storagePath,omitempty"`
+	ValuesUrl *string `json:"valuesUrl,omitempty"`
+	Value *string `json:"value,omitempty"`
+	Values []string `json:"values,omitempty"`
+	Secure *bool `json:"secure,omitempty"`
+	ValueExposed *bool `json:"valueExposed,omitempty"`
+	ValuesType *string `json:"valuesType,omitempty"`
+	RemoteUrlAuthenticationType *string `json:"remoteUrlAuthenticationType,omitempty"`
+	ConfigRemoteUrl map[string]interface{} `json:"configRemoteUrl,omitempty"`
+	OptionType *string `json:"optionType,omitempty"`
+	DefaultStoragePath *string `json:"defaultStoragePath,omitempty"`
+	RealValuesUrl *string `json:"realValuesUrl,omitempty"`
+	DefaultValue *string `json:"defaultValue,omitempty"`
+	ValuesList *string `json:"valuesList,omitempty"`
+	OptionValues []string `json:"optionValues,omitempty"`
+	SecureInput *bool `json:"secureInput,omitempty"`
+	SecureExposed *bool `json:"secureExposed,omitempty"`
 }
 
 // NewOptionValidateRequest instantiates a new OptionValidateRequest object
@@ -633,7 +633,7 @@ func (o *OptionValidateRequest) SetSecureExposed(v bool) {
 }
 
 func (o OptionValidateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -734,3 +734,5 @@ func (v *NullableOptionValidateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

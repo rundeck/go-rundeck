@@ -19,17 +19,17 @@ var _ MappedNullable = &RoutingRule{}
 
 // RoutingRule struct for RoutingRule
 type RoutingRule struct {
-	Name         *string     `json:"name,omitempty"`
-	Description  *string     `json:"description,omitempty"`
-	Debug        *bool       `json:"debug,omitempty"`
-	Enabled      *bool       `json:"enabled,omitempty"`
-	Policy       *PolicyType `json:"policy,omitempty"`
-	JobId        *string     `json:"jobId,omitempty"`
-	JobArgString *string     `json:"jobArgString,omitempty"`
-	JobOptions   []JobOption `json:"jobOptions,omitempty"`
-	NodeFilter   *string     `json:"nodeFilter,omitempty"`
-	User         *string     `json:"user,omitempty"`
-	Conditions   []Condition `json:"conditions,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Debug *bool `json:"debug,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Policy *PolicyType `json:"policy,omitempty"`
+	JobId *string `json:"jobId,omitempty"`
+	JobArgString *string `json:"jobArgString,omitempty"`
+	JobOptions []JobOption `json:"jobOptions,omitempty"`
+	NodeFilter *string `json:"nodeFilter,omitempty"`
+	User *string `json:"user,omitempty"`
+	Conditions []Condition `json:"conditions,omitempty"`
 }
 
 // NewRoutingRule instantiates a new RoutingRule object
@@ -402,7 +402,7 @@ func (o *RoutingRule) SetConditions(v []Condition) {
 }
 
 func (o RoutingRule) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -482,3 +482,5 @@ func (v *NullableRoutingRule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

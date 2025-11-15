@@ -20,12 +20,12 @@ var _ MappedNullable = &ScmActionInput{}
 // ScmActionInput struct for ScmActionInput
 type ScmActionInput struct {
 	// ID for the action
-	ActionId    *string `json:"actionId,omitempty"`
+	ActionId *string `json:"actionId,omitempty"`
 	Integration *string `json:"integration,omitempty"`
 	// Display title for the action
-	Title       *string               `json:"title,omitempty"`
-	Description *string               `json:"description,omitempty"`
-	Fields      []ScmPluginInputField `json:"fields,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Fields []ScmPluginInputField `json:"fields,omitempty"`
 	ImportItems []ScmImportActionItem `json:"importItems,omitempty"`
 	ExportItems []ScmExportActionItem `json:"exportItems,omitempty"`
 }
@@ -272,7 +272,7 @@ func (o *ScmActionInput) SetExportItems(v []ScmExportActionItem) {
 }
 
 func (o ScmActionInput) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,3 +340,5 @@ func (v *NullableScmActionInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

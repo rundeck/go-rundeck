@@ -19,11 +19,11 @@ var _ MappedNullable = &Stats{}
 
 // Stats Stat Information
 type Stats struct {
-	Uptime    *Uptime    `json:"uptime,omitempty"`
-	Cpu       *Cpu       `json:"cpu,omitempty"`
-	Memory    *Memory    `json:"memory,omitempty"`
+	Uptime *Uptime `json:"uptime,omitempty"`
+	Cpu *Cpu `json:"cpu,omitempty"`
+	Memory *Memory `json:"memory,omitempty"`
 	Scheduler *Scheduler `json:"scheduler,omitempty"`
-	Threads   *Threads   `json:"threads,omitempty"`
+	Threads *Threads `json:"threads,omitempty"`
 }
 
 // NewStats instantiates a new Stats object
@@ -204,7 +204,7 @@ func (o *Stats) SetThreads(v Threads) {
 }
 
 func (o Stats) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableStats) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

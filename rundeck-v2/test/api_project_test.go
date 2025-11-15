@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_ProjectAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectConfigGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -38,7 +38,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectConfigKeyDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var keypath string
@@ -52,7 +52,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectConfigKeyGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var keypath string
@@ -67,7 +67,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectConfigKeyPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var keypath string
@@ -82,7 +82,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectConfigPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -96,7 +96,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectCreate(context.Background()).Execute()
 
@@ -108,7 +108,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -119,9 +119,37 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectAPIService ApiProjectDisableLater", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectDisableLater(context.Background(), project).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService ApiProjectEnableLater", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectEnableLater(context.Background(), project).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService ApiProjectExport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -135,7 +163,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectExportAsyncDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -149,7 +177,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectExportAsyncDownload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var token string
@@ -164,7 +192,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectExportAsyncStatus", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var token string
@@ -179,7 +207,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectFileDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var filename string
@@ -193,7 +221,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectFileGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var filename string
@@ -208,7 +236,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectFilePut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var filename string
@@ -223,7 +251,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -237,7 +265,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectImport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -251,7 +279,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectList1", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectList1(context.Background()).Execute()
 
@@ -263,7 +291,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiProjectMeta", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -277,7 +305,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiResourcesv2", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -291,7 +319,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiResourcev14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var name string
@@ -306,7 +334,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiSourceGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var index int32
@@ -321,7 +349,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiSourceGetContent", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var index int32
@@ -336,7 +364,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiSourceWriteContent", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var index int32
@@ -351,7 +379,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiSourcesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -365,7 +393,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService ApiTagsForNodes", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -379,7 +407,7 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAPIService SaveProjectPlugins", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 

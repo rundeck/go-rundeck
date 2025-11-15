@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_RunnerAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService CheckPing", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var token string
 
@@ -38,7 +38,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService CreateNoEphemeralReplica", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 
@@ -52,7 +52,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService CreateProjectNoEphemeralReplica", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -67,7 +67,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService CreateProjectRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -81,7 +81,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService CreateRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.CreateRunner(context.Background()).Execute()
 
@@ -93,7 +93,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService DeleteProjectRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -107,7 +107,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService DeleteProjectRunnerReplica", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -122,7 +122,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService DeleteRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 
@@ -135,7 +135,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService DeleteRunnerReplica", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 		var replicaId string
@@ -149,7 +149,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService DownloadRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var token string
 
@@ -162,7 +162,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService GetRunnerKey", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -176,7 +176,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListProjectAssociatedTags", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.ListProjectAssociatedTags(context.Background()).Execute()
 
@@ -188,7 +188,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListProjectRunners", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -202,7 +202,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListProjectRunnersReplicas", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -217,7 +217,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListRunnerTags", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -231,7 +231,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListRunners", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.ListRunners(context.Background()).Execute()
 
@@ -243,7 +243,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ListRunnersReplicas", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 
@@ -257,7 +257,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService PingProjectRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var project string
@@ -272,7 +272,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService PingRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -286,7 +286,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ProjectCheckPing", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var token string
 		var project string
@@ -301,7 +301,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ProjectContextRunnerConfig", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -315,7 +315,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ProjectDownloadRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var token string
 		var project string
@@ -329,7 +329,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ProjectRunnerInfo", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 		var project string
@@ -344,7 +344,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService ProjectUi", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -358,7 +358,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService RegenerateProjectRunnerCreds", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string
@@ -373,7 +373,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService RegenerateRunnerCreds", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -387,7 +387,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService RemoveProjectAssociation", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -402,7 +402,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService RunnerInfo", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 
@@ -416,7 +416,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService SaveProjectContextRunnerConfig", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -430,7 +430,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService SaveProjectRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var runnerId string
@@ -445,7 +445,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService SaveProjectRunnerNodeDispatchSettings", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -459,7 +459,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService SaveRunner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var runnerId string
 
@@ -473,7 +473,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService SearchTags", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.SearchTags(context.Background()).Execute()
 
@@ -485,7 +485,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService StartupOperation", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.StartupOperation(context.Background()).Execute()
 
@@ -497,7 +497,7 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 	t.Run("Test RunnerAPIService Ui", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.RunnerAPI.Ui(context.Background()).Execute()
 

@@ -22,9 +22,9 @@ type UserClassAllocationError struct {
 	// Exceeded User Class assignments, by user class name
 	Excessions *map[string]int64 `json:"excessions,omitempty"`
 	// Allowed User Class assignment limits, by user class name
-	Limits    *map[string]int64 `json:"limits,omitempty"`
-	Error     *string           `json:"error,omitempty"`
-	ErrorCode *string           `json:"errorCode,omitempty"`
+	Limits *map[string]int64 `json:"limits,omitempty"`
+	Error *string `json:"error,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty"`
 }
 
 // NewUserClassAllocationError instantiates a new UserClassAllocationError object
@@ -173,7 +173,7 @@ func (o *UserClassAllocationError) SetErrorCode(v string) {
 }
 
 func (o UserClassAllocationError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -232,3 +232,5 @@ func (v *NullableUserClassAllocationError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &FailedItem{}
 // FailedItem struct for FailedItem
 type FailedItem struct {
 	Message *string `json:"message,omitempty"`
-	Id      *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewFailedItem instantiates a new FailedItem object
@@ -105,7 +105,7 @@ func (o *FailedItem) SetId(v string) {
 }
 
 func (o FailedItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableFailedItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

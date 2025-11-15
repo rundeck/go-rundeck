@@ -19,10 +19,10 @@ var _ MappedNullable = &Memory{}
 
 // Memory Memory Information
 type Memory struct {
-	Unit  *string `json:"unit,omitempty"`
-	Max   *int64  `json:"max,omitempty"`
-	Free  *int64  `json:"free,omitempty"`
-	Total *int64  `json:"total,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	Max *int64 `json:"max,omitempty"`
+	Free *int64 `json:"free,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 }
 
 // NewMemory instantiates a new Memory object
@@ -171,7 +171,7 @@ func (o *Memory) SetTotal(v int64) {
 }
 
 func (o Memory) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableMemory) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

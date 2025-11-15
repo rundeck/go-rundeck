@@ -19,11 +19,11 @@ var _ MappedNullable = &Rundeck{}
 
 // Rundeck Rundeck Information
 type Rundeck struct {
-	Version    *string `json:"version,omitempty"`
-	Build      *string `json:"build,omitempty"`
-	BuildGit   *string `json:"buildGit,omitempty"`
-	Node       *string `json:"node,omitempty"`
-	Base       *string `json:"base,omitempty"`
+	Version *string `json:"version,omitempty"`
+	Build *string `json:"build,omitempty"`
+	BuildGit *string `json:"buildGit,omitempty"`
+	Node *string `json:"node,omitempty"`
+	Base *string `json:"base,omitempty"`
 	Apiversion *string `json:"apiversion,omitempty"`
 	ServerUUID *string `json:"serverUUID,omitempty"`
 }
@@ -270,7 +270,7 @@ func (o *Rundeck) SetServerUUID(v string) {
 }
 
 func (o Rundeck) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullableRundeck) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

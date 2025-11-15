@@ -19,15 +19,15 @@ var _ MappedNullable = &ApiPluginListProvider{}
 
 // ApiPluginListProvider struct for ApiPluginListProvider
 type ApiPluginListProvider struct {
-	Service       *string `json:"service,omitempty"`
-	ArtifactName  *string `json:"artifactName,omitempty"`
-	Name          *string `json:"name,omitempty"`
-	Id            *string `json:"id,omitempty"`
-	Builtin       *bool   `json:"builtin,omitempty"`
+	Service *string `json:"service,omitempty"`
+	ArtifactName *string `json:"artifactName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Builtin *bool `json:"builtin,omitempty"`
 	PluginVersion *string `json:"pluginVersion,omitempty"`
-	Title         *string `json:"title,omitempty"`
-	Description   *string `json:"description,omitempty"`
-	Author        *string `json:"author,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Author *string `json:"author,omitempty"`
 	// URL to icon file for the plugin if present. Since: v40
 	IconUrl *string `json:"iconUrl,omitempty"`
 	// Map of metadata about the plugin if present. Since: v40
@@ -472,7 +472,7 @@ func (o *ApiPluginListProvider) SetHighlightedOrder(v int32) {
 }
 
 func (o ApiPluginListProvider) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -558,3 +558,5 @@ func (v *NullableApiPluginListProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

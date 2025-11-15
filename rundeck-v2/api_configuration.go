@@ -16,18 +16,20 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
+
 
 // ConfigurationAPIService ConfigurationAPI service
 type ConfigurationAPIService service
 
 type ApiConfigDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
-// Delete Config Request.  * &#x60;key&#x60; Required   * Represents the config to be deleted.   * Accepts: Any &#x60;string&#x60; * &#x60;strata&#x60; Optional   * Whether the config should apply to the current server (&#x60;Server&#x60;), or to all servers in the cluster (&#x60;default&#x60;).   * Accepts: &#x60;Server&#x60;, &#x60;default&#x60;   * Default: &#x60;default&#x60;
+// Delete Config Request.  * &#x60;key&#x60; Required   * Represents the config to be deleted.   * Accepts: Any &#x60;string&#x60; * &#x60;strata&#x60; Optional   * Whether the config should apply to the current server (&#x60;Server&#x60;), or to all servers in the cluster (&#x60;default&#x60;).   * Accepts: &#x60;Server&#x60;, &#x60;default&#x60;   * Default: &#x60;default&#x60; 
 func (r ApiConfigDeleteRequest) Body(body map[string]interface{}) ApiConfigDeleteRequest {
 	r.body = &body
 	return r
@@ -46,25 +48,25 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigDeleteRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigDeleteRequest
 */
 func (a *ConfigurationAPIService) ConfigDelete(ctx context.Context) ApiConfigDeleteRequest {
 	return ApiConfigDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ConfigurationAPIService) ConfigDeleteExecute(r ApiConfigDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigDelete")
@@ -149,10 +151,10 @@ func (a *ConfigurationAPIService) ConfigDeleteExecute(r ApiConfigDeleteRequest) 
 }
 
 type ApiConfigGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
-	key        *string
-	strata     *string
+	key *string
+	strata *string
 }
 
 // Configuration key
@@ -180,22 +182,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigGetRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigGetRequest
 */
 func (a *ConfigurationAPIService) ConfigGet(ctx context.Context) ApiConfigGetRequest {
 	return ApiConfigGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) ConfigGetExecute(r ApiConfigGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigGet")
@@ -276,7 +279,7 @@ func (a *ConfigurationAPIService) ConfigGetExecute(r ApiConfigGetRequest) (*http
 }
 
 type ApiConfigGetCategoriesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -293,22 +296,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigGetCategoriesRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigGetCategoriesRequest
 */
 func (a *ConfigurationAPIService) ConfigGetCategories(ctx context.Context) ApiConfigGetCategoriesRequest {
 	return ApiConfigGetCategoriesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) ConfigGetCategoriesExecute(r ApiConfigGetCategoriesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigGetCategories")
@@ -382,7 +386,7 @@ func (a *ConfigurationAPIService) ConfigGetCategoriesExecute(r ApiConfigGetCateg
 }
 
 type ApiConfigListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -399,22 +403,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigListRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigListRequest
 */
 func (a *ConfigurationAPIService) ConfigList(ctx context.Context) ApiConfigListRequest {
 	return ApiConfigListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) ConfigListExecute(r ApiConfigListRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigList")
@@ -488,7 +493,7 @@ func (a *ConfigurationAPIService) ConfigListExecute(r ApiConfigListRequest) (*ht
 }
 
 type ApiConfigMetaListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -505,22 +510,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigMetaListRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigMetaListRequest
 */
 func (a *ConfigurationAPIService) ConfigMetaList(ctx context.Context) ApiConfigMetaListRequest {
 	return ApiConfigMetaListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) ConfigMetaListExecute(r ApiConfigMetaListRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigMetaList")
@@ -594,12 +600,12 @@ func (a *ConfigurationAPIService) ConfigMetaListExecute(r ApiConfigMetaListReque
 }
 
 type ApiConfigSaveRequest struct {
-	ctx         context.Context
-	ApiService  *ConfigurationAPIService
+	ctx context.Context
+	ApiService *ConfigurationAPIService
 	requestBody *[]map[string]interface{}
 }
 
-// Update Config Request. List of config values, each value contains:  * &#x60;key&#x60; Required   * Represents either a new config to be created, or an existing config to be updated.   * Accepts: Any &#x60;string&#x60; * &#x60;value&#x60; Required   * The value for the desired config &#x60;key&#x60;.   * Accepts: Any &#x60;string&#x60; * &#x60;strata&#x60; Optional   * Whether the config should apply to the current server (&#x60;Server&#x60;), or to all servers in the cluster (&#x60;default&#x60;).   * Accepts: &#x60;Server&#x60;, &#x60;default&#x60;   * Default: &#x60;default&#x60;
+// Update Config Request. List of config values, each value contains:  * &#x60;key&#x60; Required   * Represents either a new config to be created, or an existing config to be updated.   * Accepts: Any &#x60;string&#x60; * &#x60;value&#x60; Required   * The value for the desired config &#x60;key&#x60;.   * Accepts: Any &#x60;string&#x60; * &#x60;strata&#x60; Optional   * Whether the config should apply to the current server (&#x60;Server&#x60;), or to all servers in the cluster (&#x60;default&#x60;).   * Accepts: &#x60;Server&#x60;, &#x60;default&#x60;   * Default: &#x60;default&#x60; 
 func (r ApiConfigSaveRequest) RequestBody(requestBody []map[string]interface{}) ApiConfigSaveRequest {
 	r.requestBody = &requestBody
 	return r
@@ -618,22 +624,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiConfigSaveRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiConfigSaveRequest
 */
 func (a *ConfigurationAPIService) ConfigSave(ctx context.Context) ApiConfigSaveRequest {
 	return ApiConfigSaveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) ConfigSaveExecute(r ApiConfigSaveRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.ConfigSave")
@@ -712,7 +719,7 @@ func (a *ConfigurationAPIService) ConfigSaveExecute(r ApiConfigSaveRequest) (*ht
 }
 
 type ApiRefreshRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -729,22 +736,23 @@ Authorization required: `ops_admin` or `app_admin` for `system` resource.
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRefreshRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRefreshRequest
 */
 func (a *ConfigurationAPIService) Refresh(ctx context.Context) ApiRefreshRequest {
 	return ApiRefreshRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) RefreshExecute(r ApiRefreshRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.Refresh")
@@ -818,7 +826,7 @@ func (a *ConfigurationAPIService) RefreshExecute(r ApiRefreshRequest) (*http.Res
 }
 
 type ApiRestartRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -835,22 +843,22 @@ Authorization required: `ops_admin` for `system` resource
 
 Since: v36
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiRestartRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRestartRequest
 */
 func (a *ConfigurationAPIService) Restart(ctx context.Context) ApiRestartRequest {
 	return ApiRestartRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) RestartExecute(r ApiRestartRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.Restart")
@@ -923,8 +931,150 @@ func (a *ConfigurationAPIService) RestartExecute(r ApiRestartRequest) (*http.Res
 	return localVarHTTPResponse, nil
 }
 
+type ApiSaveProjectPluginsRequest struct {
+	ctx context.Context
+	ApiService *ConfigurationAPIService
+	project string
+	serviceName *string
+	configPrefix *string
+	body *map[string]interface{}
+}
+
+// Plugin service name (e.g. &#x60;ResourceModelSource&#x60;)
+func (r ApiSaveProjectPluginsRequest) ServiceName(serviceName string) ApiSaveProjectPluginsRequest {
+	r.serviceName = &serviceName
+	return r
+}
+
+// Property prefix (e.g. &#x60;resources.source&#x60;)
+func (r ApiSaveProjectPluginsRequest) ConfigPrefix(configPrefix string) ApiSaveProjectPluginsRequest {
+	r.configPrefix = &configPrefix
+	return r
+}
+
+// Plugins payload
+func (r ApiSaveProjectPluginsRequest) Body(body map[string]interface{}) ApiSaveProjectPluginsRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSaveProjectPluginsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.SaveProjectPluginsExecute(r)
+}
+
+/*
+SaveProjectPlugins Save list-style plugin configurations for a project
+
+Create/update list-based plugin configurations (e.g. Resource Model Sources).
+Authorization required: `configure` on the project.
+Since: v55
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiSaveProjectPluginsRequest
+*/
+func (a *ConfigurationAPIService) SaveProjectPlugins(ctx context.Context, project string) ApiSaveProjectPluginsRequest {
+	return ApiSaveProjectPluginsRequest{
+		ApiService: a,
+		ctx: ctx,
+		project: project,
+	}
+}
+
+// Execute executes the request
+func (a *ConfigurationAPIService) SaveProjectPluginsExecute(r ApiSaveProjectPluginsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.SaveProjectPlugins")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/project/{project}/plugins/save"
+	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.serviceName == nil {
+		return nil, reportError("serviceName is required and must be specified")
+	}
+	if r.configPrefix == nil {
+		return nil, reportError("configPrefix is required and must be specified")
+	}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "serviceName", r.serviceName, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "configPrefix", r.configPrefix, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiStorageConfigListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ConfigurationAPIService
 }
 
@@ -939,22 +1089,23 @@ List all existing configs and their properties for storage plugins.
 
 Authorization required: `app_admin`.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStorageConfigListRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStorageConfigListRequest
 */
 func (a *ConfigurationAPIService) StorageConfigList(ctx context.Context) ApiStorageConfigListRequest {
 	return ApiStorageConfigListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) StorageConfigListExecute(r ApiStorageConfigListRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.StorageConfigList")
@@ -1028,12 +1179,12 @@ func (a *ConfigurationAPIService) StorageConfigListExecute(r ApiStorageConfigLis
 }
 
 type ApiStorageConfigSaveRequest struct {
-	ctx         context.Context
-	ApiService  *ConfigurationAPIService
+	ctx context.Context
+	ApiService *ConfigurationAPIService
 	requestBody *[]map[string]interface{}
 }
 
-// Update Storage Plugin Config Request. Configured plugins to be saved should be specified in the &#x60;plugins&#x60; array. Plugins that have been deleted should be specified in the &#x60;removedPlugins&#x60; array.
+// Update Storage Plugin Config Request. Configured plugins to be saved should be specified in the &#x60;plugins&#x60; array. Plugins that have been deleted should be specified in the &#x60;removedPlugins&#x60; array. 
 func (r ApiStorageConfigSaveRequest) RequestBody(requestBody []map[string]interface{}) ApiStorageConfigSaveRequest {
 	r.requestBody = &requestBody
 	return r
@@ -1048,24 +1199,26 @@ StorageConfigSave Create or Update Storage Plugins [Enterprise]
 
 Create or update configs and properties for storage plugins.
 
-Authorization required: `app_admin`.
+Authorization required: `app_admin`. 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStorageConfigSaveRequest
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStorageConfigSaveRequest
 */
 func (a *ConfigurationAPIService) StorageConfigSave(ctx context.Context) ApiStorageConfigSaveRequest {
 	return ApiStorageConfigSaveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ConfigurationAPIService) StorageConfigSaveExecute(r ApiStorageConfigSaveRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConfigurationAPIService.StorageConfigSave")

@@ -19,9 +19,9 @@ var _ MappedNullable = &ScmPluginSetupInput{}
 
 // ScmPluginSetupInput struct for ScmPluginSetupInput
 type ScmPluginSetupInput struct {
-	Type        *string               `json:"type,omitempty"`
-	Integration *string               `json:"integration,omitempty"`
-	Fields      []ScmPluginInputField `json:"fields,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Integration *string `json:"integration,omitempty"`
+	Fields []ScmPluginInputField `json:"fields,omitempty"`
 }
 
 // NewScmPluginSetupInput instantiates a new ScmPluginSetupInput object
@@ -138,7 +138,7 @@ func (o *ScmPluginSetupInput) SetFields(v []ScmPluginInputField) {
 }
 
 func (o ScmPluginSetupInput) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableScmPluginSetupInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

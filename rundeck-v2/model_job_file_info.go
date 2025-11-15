@@ -19,17 +19,17 @@ var _ MappedNullable = &JobFileInfo{}
 
 // JobFileInfo struct for JobFileInfo
 type JobFileInfo struct {
-	Id             *string `json:"id,omitempty"`
-	JobId          *string `json:"jobId,omitempty"`
-	ExecId         *int64  `json:"execId,omitempty"`
-	OptionName     *string `json:"optionName,omitempty"`
-	FileName       *string `json:"fileName,omitempty"`
-	Sha            *string `json:"sha,omitempty"`
-	Size           *int64  `json:"size,omitempty"`
-	DateCreated    *string `json:"dateCreated,omitempty"`
+	Id *string `json:"id,omitempty"`
+	JobId *string `json:"jobId,omitempty"`
+	ExecId *int64 `json:"execId,omitempty"`
+	OptionName *string `json:"optionName,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
+	Sha *string `json:"sha,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	DateCreated *string `json:"dateCreated,omitempty"`
 	ExpirationDate *string `json:"expirationDate,omitempty"`
-	User           *string `json:"user,omitempty"`
-	FileState      *string `json:"fileState,omitempty"`
+	User *string `json:"user,omitempty"`
+	FileState *string `json:"fileState,omitempty"`
 	ServerNodeUUID *string `json:"serverNodeUUID,omitempty"`
 }
 
@@ -435,7 +435,7 @@ func (o *JobFileInfo) SetServerNodeUUID(v string) {
 }
 
 func (o JobFileInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -518,3 +518,5 @@ func (v *NullableJobFileInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

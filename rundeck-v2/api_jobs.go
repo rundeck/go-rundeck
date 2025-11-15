@@ -16,18 +16,19 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
+	"reflect"
 	"time"
 )
+
 
 // JobsAPIService JobsAPI service
 type JobsAPIService service
 
 type ApiApiExecutionDataAvailableRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiExecutionDataAvailableRequest) Execute() (*ResultDataAvailableResponse, *http.Response, error) {
@@ -41,27 +42,27 @@ Check whether the execution has Result Data created by a Job using the [Result D
 
 Since: v40
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionDataAvailableRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionDataAvailableRequest
 */
 func (a *JobsAPIService) ApiExecutionDataAvailable(ctx context.Context, id string) ApiApiExecutionDataAvailableRequest {
 	return ApiApiExecutionDataAvailableRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ResultDataAvailableResponse
+//  @return ResultDataAvailableResponse
 func (a *JobsAPIService) ApiExecutionDataAvailableExecute(r ApiApiExecutionDataAvailableRequest) (*ResultDataAvailableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ResultDataAvailableResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ResultDataAvailableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiExecutionDataAvailable")
@@ -136,8 +137,8 @@ func (a *JobsAPIService) ApiExecutionDataAvailableExecute(r ApiApiExecutionDataA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -155,10 +156,10 @@ func (a *JobsAPIService) ApiExecutionDataAvailableExecute(r ApiApiExecutionDataA
 }
 
 type ApiApiExecutionDataExportRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
-	wait       *bool
+	id string
+	wait *bool
 }
 
 // if true and the data is not immediately available, the response will wait until the data is retrieved, or a timeout occurs. Otherwise the response may return 202 status if data must be retrieved first.
@@ -182,24 +183,25 @@ You can handle this situation in two ways: either use the `wait=true` URL parame
 
 Since: v40
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionDataExportRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionDataExportRequest
 */
 func (a *JobsAPIService) ApiExecutionDataExport(ctx context.Context, id string) ApiApiExecutionDataExportRequest {
 	return ApiApiExecutionDataExportRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *JobsAPIService) ApiExecutionDataExportExecute(r ApiApiExecutionDataExportRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiExecutionDataExport")
@@ -277,8 +279,8 @@ func (a *JobsAPIService) ApiExecutionDataExportExecute(r ApiApiExecutionDataExpo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -287,9 +289,9 @@ func (a *JobsAPIService) ApiExecutionDataExportExecute(r ApiApiExecutionDataExpo
 }
 
 type ApiApiFlipExecutionDisabledRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiFlipExecutionDisabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -299,33 +301,32 @@ func (r ApiApiFlipExecutionDisabledRequest) Execute() (map[string]interface{}, *
 /*
 ApiFlipExecutionDisabled Disable Executions for a Job
 
-Disable executions for a job.
+Disable executions for a job. 
 
 Authorization required: `toggle_execution` action for a job.
 
 Since: V14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiFlipExecutionDisabledRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiFlipExecutionDisabledRequest
 */
 func (a *JobsAPIService) ApiFlipExecutionDisabled(ctx context.Context, id string) ApiApiFlipExecutionDisabledRequest {
 	return ApiApiFlipExecutionDisabledRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipExecutionDisabledExecute(r ApiApiFlipExecutionDisabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipExecutionDisabled")
@@ -409,10 +410,10 @@ func (a *JobsAPIService) ApiFlipExecutionDisabledExecute(r ApiApiFlipExecutionDi
 }
 
 type ApiApiFlipExecutionDisabledBulkRequest struct {
-	ctx                     context.Context
-	ApiService              *JobsAPIService
-	ids                     *[]string
-	idlist                  *string
+	ctx context.Context
+	ApiService *JobsAPIService
+	ids *[]string
+	idlist *string
 	apiBulkJobDeleteRequest *ApiBulkJobDeleteRequest
 }
 
@@ -447,25 +448,24 @@ Authorization required: `toggle_execution` action for each job.
 
 Since: v16
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiFlipExecutionDisabledBulkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiFlipExecutionDisabledBulkRequest
 */
 func (a *JobsAPIService) ApiFlipExecutionDisabledBulk(ctx context.Context) ApiApiFlipExecutionDisabledBulkRequest {
 	return ApiApiFlipExecutionDisabledBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipExecutionDisabledBulkExecute(r ApiApiFlipExecutionDisabledBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipExecutionDisabledBulk")
@@ -564,9 +564,9 @@ func (a *JobsAPIService) ApiFlipExecutionDisabledBulkExecute(r ApiApiFlipExecuti
 }
 
 type ApiApiFlipExecutionEnabledRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiFlipExecutionEnabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -576,33 +576,32 @@ func (r ApiApiFlipExecutionEnabledRequest) Execute() (map[string]interface{}, *h
 /*
 ApiFlipExecutionEnabled Enable Executions for a Job
 
-Enable executions for a job.
+Enable executions for a job. 
 
 Authorization required: `toggle_execution` action for a job.
 
 Since: V14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiFlipExecutionEnabledRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiFlipExecutionEnabledRequest
 */
 func (a *JobsAPIService) ApiFlipExecutionEnabled(ctx context.Context, id string) ApiApiFlipExecutionEnabledRequest {
 	return ApiApiFlipExecutionEnabledRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipExecutionEnabledExecute(r ApiApiFlipExecutionEnabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipExecutionEnabled")
@@ -686,10 +685,10 @@ func (a *JobsAPIService) ApiFlipExecutionEnabledExecute(r ApiApiFlipExecutionEna
 }
 
 type ApiApiFlipExecutionEnabledBulkRequest struct {
-	ctx                     context.Context
-	ApiService              *JobsAPIService
-	ids                     *[]string
-	idlist                  *string
+	ctx context.Context
+	ApiService *JobsAPIService
+	ids *[]string
+	idlist *string
 	apiBulkJobDeleteRequest *ApiBulkJobDeleteRequest
 }
 
@@ -724,25 +723,24 @@ Authorization required: `toggle_execution` action for each job.
 
 Since: v16
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiFlipExecutionEnabledBulkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiFlipExecutionEnabledBulkRequest
 */
 func (a *JobsAPIService) ApiFlipExecutionEnabledBulk(ctx context.Context) ApiApiFlipExecutionEnabledBulkRequest {
 	return ApiApiFlipExecutionEnabledBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipExecutionEnabledBulkExecute(r ApiApiFlipExecutionEnabledBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipExecutionEnabledBulk")
@@ -841,9 +839,9 @@ func (a *JobsAPIService) ApiFlipExecutionEnabledBulkExecute(r ApiApiFlipExecutio
 }
 
 type ApiApiFlipScheduleDisabledRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiFlipScheduleDisabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -853,33 +851,32 @@ func (r ApiApiFlipScheduleDisabledRequest) Execute() (map[string]interface{}, *h
 /*
 ApiFlipScheduleDisabled Disable Schedule for a Job
 
-Disable schedule for a job.
+Disable schedule for a job. 
 
 Authorization required: `toggle_schedule` action for a job.
 
 Since: V14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiFlipScheduleDisabledRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiFlipScheduleDisabledRequest
 */
 func (a *JobsAPIService) ApiFlipScheduleDisabled(ctx context.Context, id string) ApiApiFlipScheduleDisabledRequest {
 	return ApiApiFlipScheduleDisabledRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipScheduleDisabledExecute(r ApiApiFlipScheduleDisabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipScheduleDisabled")
@@ -963,10 +960,10 @@ func (a *JobsAPIService) ApiFlipScheduleDisabledExecute(r ApiApiFlipScheduleDisa
 }
 
 type ApiApiFlipScheduleDisabledBulkRequest struct {
-	ctx                     context.Context
-	ApiService              *JobsAPIService
-	ids                     *[]string
-	idlist                  *string
+	ctx context.Context
+	ApiService *JobsAPIService
+	ids *[]string
+	idlist *string
 	apiBulkJobDeleteRequest *ApiBulkJobDeleteRequest
 }
 
@@ -1001,25 +998,24 @@ Authorization required: `toggle_schedule` action for each job.
 
 Since: v16
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiFlipScheduleDisabledBulkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiFlipScheduleDisabledBulkRequest
 */
 func (a *JobsAPIService) ApiFlipScheduleDisabledBulk(ctx context.Context) ApiApiFlipScheduleDisabledBulkRequest {
 	return ApiApiFlipScheduleDisabledBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipScheduleDisabledBulkExecute(r ApiApiFlipScheduleDisabledBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipScheduleDisabledBulk")
@@ -1118,9 +1114,9 @@ func (a *JobsAPIService) ApiFlipScheduleDisabledBulkExecute(r ApiApiFlipSchedule
 }
 
 type ApiApiFlipScheduleEnabledRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiFlipScheduleEnabledRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1130,33 +1126,32 @@ func (r ApiApiFlipScheduleEnabledRequest) Execute() (map[string]interface{}, *ht
 /*
 ApiFlipScheduleEnabled Enable Schedule for a Job
 
-Enable schedule for a job.
+Enable schedule for a job. 
 
 Authorization required: `toggle_schedule` action for a job.
 
 Since: V14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiFlipScheduleEnabledRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiFlipScheduleEnabledRequest
 */
 func (a *JobsAPIService) ApiFlipScheduleEnabled(ctx context.Context, id string) ApiApiFlipScheduleEnabledRequest {
 	return ApiApiFlipScheduleEnabledRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipScheduleEnabledExecute(r ApiApiFlipScheduleEnabledRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipScheduleEnabled")
@@ -1240,10 +1235,10 @@ func (a *JobsAPIService) ApiFlipScheduleEnabledExecute(r ApiApiFlipScheduleEnabl
 }
 
 type ApiApiFlipScheduleEnabledBulkRequest struct {
-	ctx                     context.Context
-	ApiService              *JobsAPIService
-	ids                     *[]string
-	idlist                  *string
+	ctx context.Context
+	ApiService *JobsAPIService
+	ids *[]string
+	idlist *string
 	apiBulkJobDeleteRequest *ApiBulkJobDeleteRequest
 }
 
@@ -1278,25 +1273,24 @@ Authorization required: `toggle_schedule` action for each job.
 
 Since: v16
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiFlipScheduleEnabledBulkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiFlipScheduleEnabledBulkRequest
 */
 func (a *JobsAPIService) ApiFlipScheduleEnabledBulk(ctx context.Context) ApiApiFlipScheduleEnabledBulkRequest {
 	return ApiApiFlipScheduleEnabledBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiFlipScheduleEnabledBulkExecute(r ApiApiFlipScheduleEnabledBulkRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiFlipScheduleEnabledBulk")
@@ -1395,13 +1389,13 @@ func (a *JobsAPIService) ApiFlipScheduleEnabledBulkExecute(r ApiApiFlipScheduleE
 }
 
 type ApiApiJobBrowseRequest struct {
-	ctx             context.Context
-	ApiService      *JobsAPIService
-	project         string
-	path            *string
-	meta            *string
-	breakpoint      *int32
-	max             *int32
+	ctx context.Context
+	ApiService *JobsAPIService
+	project string
+	path *string
+	meta *string
+	breakpoint *int32
+	max *int32
 	rdJobQueryInput *RdJobQueryInput
 }
 
@@ -1442,34 +1436,33 @@ func (r ApiApiJobBrowseRequest) Execute() (*JobBrowseResponse, *http.Response, e
 /*
 ApiJobBrowse Project Job Group browse
 
-Query the jobs at a specific group path. Response includes the list of immediate jobs matching the query in the exact path,
+Query the jobs at a specific group path. Response includes the list of immediate jobs matching the query in the exact path, 
 and the names of job Groups starting at that path.
 
 Authorization required: `read` or `view` for the Jobs.
 
 Since: v46
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiJobBrowseRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiJobBrowseRequest
 */
 func (a *JobsAPIService) ApiJobBrowse(ctx context.Context, project string) ApiApiJobBrowseRequest {
 	return ApiApiJobBrowseRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobBrowseResponse
+//  @return JobBrowseResponse
 func (a *JobsAPIService) ApiJobBrowseExecute(r ApiApiJobBrowseRequest) (*JobBrowseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobBrowseResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobBrowseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobBrowse")
@@ -1571,11 +1564,11 @@ func (a *JobsAPIService) ApiJobBrowseExecute(r ApiApiJobBrowseRequest) (*JobBrow
 }
 
 type ApiApiJobBrowseGetDocsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	project    string
-	path       *string
-	meta       *string
+	project string
+	path *string
+	meta *string
 	breakpoint *int32
 }
 
@@ -1610,27 +1603,26 @@ Authorization required: `read` or `view` for the Job.
 
 Since: v46
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiJobBrowseGetDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiJobBrowseGetDocsRequest
 */
 func (a *JobsAPIService) ApiJobBrowseGetDocs(ctx context.Context, project string) ApiApiJobBrowseGetDocsRequest {
 	return ApiApiJobBrowseGetDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobBrowseResponse
+//  @return JobBrowseResponse
 func (a *JobsAPIService) ApiJobBrowseGetDocsExecute(r ApiApiJobBrowseGetDocsRequest) (*JobBrowseResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobBrowseResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobBrowseResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobBrowseGetDocs")
@@ -1726,9 +1718,9 @@ func (a *JobsAPIService) ApiJobBrowseGetDocsExecute(r ApiApiJobBrowseGetDocsRequ
 }
 
 type ApiApiJobDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1742,27 +1734,26 @@ Delete a single job definition.
 
 Authorization required: `delete` for the job.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobDeleteRequest
 */
 func (a *JobsAPIService) ApiJobDelete(ctx context.Context, id string) ApiApiJobDeleteRequest {
 	return ApiApiJobDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiJobDeleteExecute(r ApiApiJobDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobDelete")
@@ -1837,8 +1828,8 @@ func (a *JobsAPIService) ApiJobDeleteExecute(r ApiApiJobDeleteRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1848,8 +1839,8 @@ func (a *JobsAPIService) ApiJobDeleteExecute(r ApiApiJobDeleteRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1859,8 +1850,8 @@ func (a *JobsAPIService) ApiJobDeleteExecute(r ApiApiJobDeleteRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1879,8 +1870,8 @@ func (a *JobsAPIService) ApiJobDeleteExecute(r ApiApiJobDeleteRequest) (map[stri
 }
 
 type ApiApiJobDeleteBulkRequest struct {
-	ctx                     context.Context
-	ApiService              *JobsAPIService
+	ctx context.Context
+	ApiService *JobsAPIService
 	apiBulkJobDeleteRequest *ApiBulkJobDeleteRequest
 }
 
@@ -1899,32 +1890,32 @@ ApiJobDeleteBulk Bulk Job Delete
 
 Delete multiple job definitions at once.
 
-Both `DELETE` and `POST` are allowed for doing a bulk delete of jobs.
-However, to send a body with the request,
-then the POST method must be used,
+Both `DELETE` and `POST` are allowed for doing a bulk delete of jobs. 
+However, to send a body with the request, 
+then the POST method must be used, 
 since the DELETE method does not allow for request bodies.
-
+ 
 Authorization required: `delete` on project resource type `job`, and `delete` on each Job resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiJobDeleteBulkRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiJobDeleteBulkRequest
 */
 func (a *JobsAPIService) ApiJobDeleteBulk(ctx context.Context) ApiApiJobDeleteBulkRequest {
 	return ApiApiJobDeleteBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DeleteBulkResponse
+//  @return DeleteBulkResponse
 func (a *JobsAPIService) ApiJobDeleteBulkExecute(r ApiApiJobDeleteBulkRequest) (*DeleteBulkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeleteBulkResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeleteBulkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobDeleteBulk")
@@ -2009,10 +2000,10 @@ func (a *JobsAPIService) ApiJobDeleteBulkExecute(r ApiApiJobDeleteBulkRequest) (
 }
 
 type ApiApiJobDeleteBulkDocs2Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	ids        *[]string
-	idlist     *string
+	ids *[]string
+	idlist *string
 }
 
 // The Job IDs to delete, can be specified multiple times
@@ -2036,32 +2027,32 @@ ApiJobDeleteBulkDocs2 Bulk Job Delete
 
 Delete multiple job definitions at once.
 
-Both `DELETE` and `POST` are allowed for doing a bulk delete of jobs.
-However, to send a body with the request,
-then the POST method must be used,
+Both `DELETE` and `POST` are allowed for doing a bulk delete of jobs. 
+However, to send a body with the request, 
+then the POST method must be used, 
 since the DELETE method does not allow for request bodies.
-
+ 
 Authorization required: `delete` on project resource type `job`, and `delete` on each Job resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiJobDeleteBulkDocs2Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiJobDeleteBulkDocs2Request
 */
 func (a *JobsAPIService) ApiJobDeleteBulkDocs2(ctx context.Context) ApiApiJobDeleteBulkDocs2Request {
 	return ApiApiJobDeleteBulkDocs2Request{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DeleteBulkResponse
+//  @return DeleteBulkResponse
 func (a *JobsAPIService) ApiJobDeleteBulkDocs2Execute(r ApiApiJobDeleteBulkDocs2Request) (*DeleteBulkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeleteBulkResponse
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeleteBulkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobDeleteBulkDocs2")
@@ -2158,9 +2149,9 @@ func (a *JobsAPIService) ApiJobDeleteBulkDocs2Execute(r ApiApiJobDeleteBulkDocs2
 }
 
 type ApiApiJobDetailRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobDetailRequest) Execute() (*JobInfo, *http.Response, error) {
@@ -2176,27 +2167,26 @@ Authorization required: `read` or `view` for the job.
 
 Since: V18
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobDetailRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobDetailRequest
 */
 func (a *JobsAPIService) ApiJobDetail(ctx context.Context, id string) ApiApiJobDetailRequest {
 	return ApiApiJobDetailRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobInfo
+//  @return JobInfo
 func (a *JobsAPIService) ApiJobDetailExecute(r ApiApiJobDetailRequest) (*JobInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobDetail")
@@ -2280,12 +2270,12 @@ func (a *JobsAPIService) ApiJobDetailExecute(r ApiApiJobDetailRequest) (*JobInfo
 }
 
 type ApiApiJobExecutionsRequest struct {
-	ctx           context.Context
-	ApiService    *JobsAPIService
-	id            string
-	status        *string
-	max           *int32
-	offset        *int32
+	ctx context.Context
+	ApiService *JobsAPIService
+	id string
+	status *string
+	max *int32
+	offset *int32
 	includeJobRef *bool
 }
 
@@ -2324,27 +2314,27 @@ Get the list of executions for a Job.
 
 Authorizations required: `read` or `view` for the Job, and `read` for the project resource type `execution`.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobExecutionsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobExecutionsRequest
 */
 func (a *JobsAPIService) ApiJobExecutions(ctx context.Context, id string) ApiApiJobExecutionsRequest {
 	return ApiApiJobExecutionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *JobsAPIService) ApiJobExecutionsExecute(r ApiApiJobExecutionsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobExecutions")
@@ -2440,9 +2430,9 @@ func (a *JobsAPIService) ApiJobExecutionsExecute(r ApiApiJobExecutionsRequest) (
 }
 
 type ApiApiJobExecutionsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobExecutionsDeleteRequest) Execute() (*DeleteBulkResponse, *http.Response, error) {
@@ -2454,27 +2444,26 @@ ApiJobExecutionsDelete Delete all Executions for a Job
 
 Delete all executions for a Job.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobExecutionsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobExecutionsDeleteRequest
 */
 func (a *JobsAPIService) ApiJobExecutionsDelete(ctx context.Context, id string) ApiApiJobExecutionsDeleteRequest {
 	return ApiApiJobExecutionsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DeleteBulkResponse
+//  @return DeleteBulkResponse
 func (a *JobsAPIService) ApiJobExecutionsDeleteExecute(r ApiApiJobExecutionsDeleteRequest) (*DeleteBulkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeleteBulkResponse
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeleteBulkResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobExecutionsDelete")
@@ -2558,10 +2547,10 @@ func (a *JobsAPIService) ApiJobExecutionsDeleteExecute(r ApiApiJobExecutionsDele
 }
 
 type ApiApiJobExportRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
-	format     *string
+	id string
+	format *string
 }
 
 // can be \&quot;yaml\&quot; or \&quot;json\&quot; (API v44+) to specify the output format
@@ -2581,27 +2570,26 @@ Export a single job definition, in one of the supported formats.
 
 Authorization required: `read` for the Job.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobExportRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobExportRequest
 */
 func (a *JobsAPIService) ApiJobExport(ctx context.Context, id string) ApiApiJobExportRequest {
 	return ApiApiJobExportRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiJobExportExecute(r ApiApiJobExportRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobExport")
@@ -2679,8 +2667,8 @@ func (a *JobsAPIService) ApiJobExportExecute(r ApiApiJobExportRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2690,8 +2678,8 @@ func (a *JobsAPIService) ApiJobExportExecute(r ApiApiJobExportRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 415 {
@@ -2701,8 +2689,8 @@ func (a *JobsAPIService) ApiJobExportExecute(r ApiApiJobExportRequest) (map[stri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2720,9 +2708,9 @@ func (a *JobsAPIService) ApiJobExportExecute(r ApiApiJobExportRequest) (map[stri
 }
 
 type ApiApiJobFileInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobFileInfoRequest) Execute() (*JobFileInfo, *http.Response, error) {
@@ -2734,27 +2722,26 @@ ApiJobFileInfo Get Info About an Uploaded File
 
 Get info about an uploaded file given its ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id File ID
-	@return ApiApiJobFileInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id File ID
+ @return ApiApiJobFileInfoRequest
 */
 func (a *JobsAPIService) ApiJobFileInfo(ctx context.Context, id string) ApiApiJobFileInfoRequest {
 	return ApiApiJobFileInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobFileInfo
+//  @return JobFileInfo
 func (a *JobsAPIService) ApiJobFileInfoExecute(r ApiApiJobFileInfoRequest) (*JobFileInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobFileInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobFileInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobFileInfo")
@@ -2838,9 +2825,9 @@ func (a *JobsAPIService) ApiJobFileInfoExecute(r ApiApiJobFileInfoRequest) (*Job
 }
 
 type ApiApiJobFileMultiUploadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobFileMultiUploadRequest) Execute() (*JobFileUpload, *http.Response, error) {
@@ -2860,27 +2847,26 @@ is the option name. The filename is specified normally within the multi-part req
 
 Since: v19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobFileMultiUploadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobFileMultiUploadRequest
 */
 func (a *JobsAPIService) ApiJobFileMultiUpload(ctx context.Context, id string) ApiApiJobFileMultiUploadRequest {
 	return ApiApiJobFileMultiUploadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobFileUpload
+//  @return JobFileUpload
 func (a *JobsAPIService) ApiJobFileMultiUploadExecute(r ApiApiJobFileMultiUploadRequest) (*JobFileUpload, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobFileUpload
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobFileUpload
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobFileMultiUpload")
@@ -2964,11 +2950,11 @@ func (a *JobsAPIService) ApiJobFileMultiUploadExecute(r ApiApiJobFileMultiUpload
 }
 
 type ApiApiJobFileUploadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 	optionName string
-	fileName   *string
+	fileName *string
 }
 
 // Specify the original file name (optional)
@@ -2991,29 +2977,28 @@ You can then Run the Job using the "file key" as the option value.
 
 Since: v19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param optionName For a single file/option value, specify the option name either as a query parameter or as part of the URL path
-	@return ApiApiJobFileUploadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param optionName For a single file/option value, specify the option name either as a query parameter or as part of the URL path
+ @return ApiApiJobFileUploadRequest
 */
 func (a *JobsAPIService) ApiJobFileUpload(ctx context.Context, id string, optionName string) ApiApiJobFileUploadRequest {
 	return ApiApiJobFileUploadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 		optionName: optionName,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobFileUpload
+//  @return JobFileUpload
 func (a *JobsAPIService) ApiJobFileUploadExecute(r ApiApiJobFileUploadRequest) (*JobFileUpload, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobFileUpload
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobFileUpload
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobFileUpload")
@@ -3101,15 +3086,15 @@ func (a *JobsAPIService) ApiJobFileUploadExecute(r ApiApiJobFileUploadRequest) (
 }
 
 type ApiApiJobForecastRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
-	time       *string
-	past       *bool
-	max        *int32
+	id string
+	time *string
+	past *bool
+	max *int32
 }
 
-// Time range to forecast.   Format is a string like &#x60;2d1h4n5s&#x60; using the following characters for time units: * &#x60;s&#x60; second * &#x60;n&#x60; minute * &#x60;h&#x60; hour * &#x60;d&#x60; day * &#x60;w&#x60; week * &#x60;m&#x60; month * &#x60;y&#x60; year
+// Time range to forecast.   Format is a string like &#x60;2d1h4n5s&#x60; using the following characters for time units: * &#x60;s&#x60; second * &#x60;n&#x60; minute * &#x60;h&#x60; hour * &#x60;d&#x60; day * &#x60;w&#x60; week * &#x60;m&#x60; month * &#x60;y&#x60; year 
 func (r ApiApiJobForecastRequest) Time(time string) ApiApiJobForecastRequest {
 	r.time = &time
 	return r
@@ -3141,27 +3126,26 @@ Authorization required: `read` or `view` for the Job
 
 Since: V31
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobForecastRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobForecastRequest
 */
 func (a *JobsAPIService) ApiJobForecast(ctx context.Context, id string) ApiApiJobForecastRequest {
 	return ApiApiJobForecastRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return JobInfo
+//  @return JobInfo
 func (a *JobsAPIService) ApiJobForecastExecute(r ApiApiJobForecastRequest) (*JobInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *JobInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *JobInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobForecast")
@@ -3254,10 +3238,10 @@ func (a *JobsAPIService) ApiJobForecastExecute(r ApiApiJobForecastRequest) (*Job
 }
 
 type ApiApiJobMetaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
-	meta       *string
+	id string
+	meta *string
 }
 
 // Comma-separated list of metadata item names to include, or \&quot;*\&quot; for all (default)
@@ -3279,27 +3263,26 @@ Authorization required: `read` or `view` for the Job.
 
 Since: v46
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobMetaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobMetaRequest
 */
 func (a *JobsAPIService) ApiJobMeta(ctx context.Context, id string) ApiApiJobMetaRequest {
 	return ApiApiJobMetaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ItemMeta
+//  @return []ItemMeta
 func (a *JobsAPIService) ApiJobMetaExecute(r ApiApiJobMetaRequest) ([]ItemMeta, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ItemMeta
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ItemMeta
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobMeta")
@@ -3387,19 +3370,19 @@ func (a *JobsAPIService) ApiJobMetaExecute(r ApiApiJobMetaRequest) ([]ItemMeta, 
 }
 
 type ApiApiJobRetryRequest struct {
-	ctx           context.Context
-	ApiService    *JobsAPIService
-	id            string
-	executionId   string
-	failedNodes   *bool
-	argString     *string
-	loglevel      *string
-	asUser        *string
-	filter        *string
-	runAtTime     *time.Time
+	ctx context.Context
+	ApiService *JobsAPIService
+	id string
+	executionId string
+	failedNodes *bool
+	argString *string
+	loglevel *string
+	asUser *string
+	filter *string
+	runAtTime *time.Time
 	optionOPTNAME *string
-	metaKEY       *string
-	body          *map[string]interface{}
+	metaKEY *string
+	body *map[string]interface{}
 }
 
 // &#x60;false&#x60; to run on the same nodes as the original execution, &#x60;true&#x60;or empty to run only on failed nodes.
@@ -3466,22 +3449,23 @@ ApiJobRetry Retry a Job based on execution
 Retry a failed execution on failed nodes only or on the same as the execution.
 This is the same functionality as the `Retry Failed Nodes ...` button on the execution page.
 
-# Parameters can be specified in the request body, instead of as query parameters
+Parameters can be specified in the request body, instead of as query parameters
 
 Authorization required: `run` for the Job resource, and `read` or `view` for the Execution resource.
 
 Since: v24
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param executionId Execution ID
-	@return ApiApiJobRetryRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param executionId Execution ID
+ @return ApiApiJobRetryRequest
 */
 func (a *JobsAPIService) ApiJobRetry(ctx context.Context, id string, executionId string) ApiApiJobRetryRequest {
 	return ApiApiJobRetryRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		id:          id,
+		ApiService: a,
+		ctx: ctx,
+		id: id,
 		executionId: executionId,
 	}
 }
@@ -3489,9 +3473,9 @@ func (a *JobsAPIService) ApiJobRetry(ctx context.Context, id string, executionId
 // Execute executes the request
 func (a *JobsAPIService) ApiJobRetryExecute(r ApiApiJobRetryRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobRetry")
@@ -3593,17 +3577,17 @@ func (a *JobsAPIService) ApiJobRetryExecute(r ApiApiJobRetryRequest) (*http.Resp
 }
 
 type ApiApiJobRunRequest struct {
-	ctx           context.Context
-	ApiService    *JobsAPIService
-	id            string
-	argString     *string
-	loglevel      *string
-	asUser        *string
-	filter        *string
-	runAtTime     *time.Time
+	ctx context.Context
+	ApiService *JobsAPIService
+	id string
+	argString *string
+	loglevel *string
+	asUser *string
+	filter *string
+	runAtTime *time.Time
 	optionOPTNAME *string
-	metaKEY       *string
-	body          *map[string]interface{}
+	metaKEY *string
+	body *map[string]interface{}
 }
 
 // argument string to pass to the job, of the form: &#x60;-opt value -opt2 value ...&#x60;.
@@ -3663,28 +3647,29 @@ ApiJobRun Running a Job
 
 Run a job specified by ID.
 
-# Parameters can be specified in the request body, instead of as query parameters
+Parameters can be specified in the request body, instead of as query parameters
 
 Authorization required: `run` for the Job resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobRunRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobRunRequest
 */
 func (a *JobsAPIService) ApiJobRun(ctx context.Context, id string) ApiApiJobRunRequest {
 	return ApiApiJobRunRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *JobsAPIService) ApiJobRunExecute(r ApiApiJobRunRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobRun")
@@ -3782,17 +3767,17 @@ func (a *JobsAPIService) ApiJobRunExecute(r ApiApiJobRunRequest) (*http.Response
 }
 
 type ApiApiJobRun1Request struct {
-	ctx           context.Context
-	ApiService    *JobsAPIService
-	id            string
-	argString     *string
-	loglevel      *string
-	asUser        *string
-	filter        *string
-	runAtTime     *time.Time
+	ctx context.Context
+	ApiService *JobsAPIService
+	id string
+	argString *string
+	loglevel *string
+	asUser *string
+	filter *string
+	runAtTime *time.Time
 	optionOPTNAME *string
-	metaKEY       *string
-	body          *map[string]interface{}
+	metaKEY *string
+	body *map[string]interface{}
 }
 
 // argument string to pass to the job, of the form: &#x60;-opt value -opt2 value ...&#x60;.
@@ -3852,28 +3837,29 @@ ApiJobRun1 Running a Job
 
 Run a job specified by ID.
 
-# Parameters can be specified in the request body, instead of as query parameters
+Parameters can be specified in the request body, instead of as query parameters
 
 Authorization required: `run` for the Job resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobRun1Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobRun1Request
 */
 func (a *JobsAPIService) ApiJobRun1(ctx context.Context, id string) ApiApiJobRun1Request {
 	return ApiApiJobRun1Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *JobsAPIService) ApiJobRun1Execute(r ApiApiJobRun1Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobRun1")
@@ -3971,9 +3957,9 @@ func (a *JobsAPIService) ApiJobRun1Execute(r ApiApiJobRun1Request) (*http.Respon
 }
 
 type ApiApiJobWorkflowRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiJobWorkflowRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -3994,27 +3980,26 @@ The authorization level affects the response data.
 
 Since: v34
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@return ApiApiJobWorkflowRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @return ApiApiJobWorkflowRequest
 */
 func (a *JobsAPIService) ApiJobWorkflow(ctx context.Context, id string) ApiApiJobWorkflowRequest {
 	return ApiApiJobWorkflowRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiJobWorkflowExecute(r ApiApiJobWorkflowRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobWorkflow")
@@ -4098,25 +4083,25 @@ func (a *JobsAPIService) ApiJobWorkflowExecute(r ApiApiJobWorkflowRequest) (map[
 }
 
 type ApiApiJobsExportv14Request struct {
-	ctx                    context.Context
-	ApiService             *JobsAPIService
-	project                string
-	idlist                 *string
-	groupPath              *string
-	jobFilter              *string
-	format                 *string
-	jobExactFilter         *string
-	projFilter             *string
-	groupPathExact         *string
-	descFilter             *string
-	loglevelFilter         *string
-	scheduledFilter        *bool
-	scheduleEnabledFilter  *bool
+	ctx context.Context
+	ApiService *JobsAPIService
+	project string
+	idlist *string
+	groupPath *string
+	jobFilter *string
+	format *string
+	jobExactFilter *string
+	projFilter *string
+	groupPathExact *string
+	descFilter *string
+	loglevelFilter *string
+	scheduledFilter *bool
+	scheduleEnabledFilter *bool
 	executionEnabledFilter *bool
-	serverNodeUUIDFilter   *string
-	daysAhead              *int32
-	runJobLaterFilter      *bool
-	paginatedRequired      *bool
+	serverNodeUUIDFilter *string
+	daysAhead *int32
+	runJobLaterFilter *bool
+	paginatedRequired *bool
 }
 
 // A comma-separated list of Job IDs to export
@@ -4216,27 +4201,27 @@ Authorization required: `read` for each job resource.
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiJobsExportv14Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiJobsExportv14Request
 */
 func (a *JobsAPIService) ApiJobsExportv14(ctx context.Context, project string) ApiApiJobsExportv14Request {
 	return ApiApiJobsExportv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *JobsAPIService) ApiJobsExportv14Execute(r ApiApiJobsExportv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobsExportv14")
@@ -4368,9 +4353,9 @@ func (a *JobsAPIService) ApiJobsExportv14Execute(r ApiApiJobsExportv14Request) (
 }
 
 type ApiApiJobsImportv14Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	project    string
+	project string
 	fileformat *string
 	dupeOption *string
 	uuidOption *string
@@ -4388,7 +4373,7 @@ func (r ApiApiJobsImportv14Request) DupeOption(dupeOption string) ApiApiJobsImpo
 	return r
 }
 
-// Whether to preserve or remove UUIDs from the imported jobs:  *  &#x60;preserve&#x60;: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  &#x60;remove&#x60;: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID.
+// Whether to preserve or remove UUIDs from the imported jobs:  *  &#x60;preserve&#x60;: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  &#x60;remove&#x60;: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID. 
 func (r ApiApiJobsImportv14Request) UuidOption(uuidOption string) ApiApiJobsImportv14Request {
 	r.uuidOption = &uuidOption
 	return r
@@ -4403,26 +4388,27 @@ ApiJobsImportv14 Import Job definitions
 
 Import a set of job definitions in a supported format.
 
+
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiJobsImportv14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiJobsImportv14Request
 */
 func (a *JobsAPIService) ApiJobsImportv14(ctx context.Context, project string) ApiApiJobsImportv14Request {
 	return ApiApiJobsImportv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
 func (a *JobsAPIService) ApiJobsImportv14Execute(r ApiApiJobsImportv14Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobsImportv14")
@@ -4506,8 +4492,8 @@ func (a *JobsAPIService) ApiJobsImportv14Execute(r ApiApiJobsImportv14Request) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4516,9 +4502,9 @@ func (a *JobsAPIService) ApiJobsImportv14Execute(r ApiApiJobsImportv14Request) (
 }
 
 type ApiApiJobsImportv14_0Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	project    string
+	project string
 	fileformat *string
 	dupeOption *string
 	uuidOption *string
@@ -4536,7 +4522,7 @@ func (r ApiApiJobsImportv14_0Request) DupeOption(dupeOption string) ApiApiJobsIm
 	return r
 }
 
-// Whether to preserve or remove UUIDs from the imported jobs:  *  &#x60;preserve&#x60;: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  &#x60;remove&#x60;: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID.
+// Whether to preserve or remove UUIDs from the imported jobs:  *  &#x60;preserve&#x60;: Preserve the UUIDs in imported jobs.  This may cause the import to fail if the UUID is already used. (Default value). *  &#x60;remove&#x60;: Remove the UUIDs from imported jobs. Allows update/create to succeed without conflict on UUID. 
 func (r ApiApiJobsImportv14_0Request) UuidOption(uuidOption string) ApiApiJobsImportv14_0Request {
 	r.uuidOption = &uuidOption
 	return r
@@ -4551,26 +4537,27 @@ ApiJobsImportv14_0 Import Job definitions
 
 Import a set of job definitions in a supported format.
 
+
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiJobsImportv14_0Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiJobsImportv14_0Request
 */
 func (a *JobsAPIService) ApiJobsImportv14_1(ctx context.Context, project string) ApiApiJobsImportv14_0Request {
 	return ApiApiJobsImportv14_0Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
 func (a *JobsAPIService) ApiJobsImportv14_1Execute(r ApiApiJobsImportv14_0Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobsImportv14_1")
@@ -4654,8 +4641,8 @@ func (a *JobsAPIService) ApiJobsImportv14_1Execute(r ApiApiJobsImportv14_0Reques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4664,27 +4651,27 @@ func (a *JobsAPIService) ApiJobsImportv14_1Execute(r ApiApiJobsImportv14_0Reques
 }
 
 type ApiApiJobsListv2Request struct {
-	ctx                    context.Context
-	ApiService             *JobsAPIService
-	project                string
-	max                    *int32
-	offset                 *int32
-	tags                   *int32
-	jobFilter              *string
-	jobExactFilter         *string
-	projFilter             *string
-	groupPath              *string
-	groupPathExact         *string
-	descFilter             *string
-	loglevelFilter         *string
-	idlist                 *string
-	scheduledFilter        *bool
-	scheduleEnabledFilter  *bool
+	ctx context.Context
+	ApiService *JobsAPIService
+	project string
+	max *int32
+	offset *int32
+	tags *int32
+	jobFilter *string
+	jobExactFilter *string
+	projFilter *string
+	groupPath *string
+	groupPathExact *string
+	descFilter *string
+	loglevelFilter *string
+	idlist *string
+	scheduledFilter *bool
+	scheduleEnabledFilter *bool
 	executionEnabledFilter *bool
-	serverNodeUUIDFilter   *string
-	daysAhead              *int32
-	runJobLaterFilter      *bool
-	paginatedRequired      *bool
+	serverNodeUUIDFilter *string
+	daysAhead *int32
+	runJobLaterFilter *bool
+	paginatedRequired *bool
 }
 
 // limit the maximum amount of results to be received.
@@ -4803,27 +4790,27 @@ List the jobs that exist for a project.
 
 Authorization required: `view` or `read` for each Job resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiJobsListv2Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiJobsListv2Request
 */
 func (a *JobsAPIService) ApiJobsListv2(ctx context.Context, project string) ApiApiJobsListv2Request {
 	return ApiApiJobsListv2Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []JobInfo
+//  @return []JobInfo
 func (a *JobsAPIService) ApiJobsListv2Execute(r ApiApiJobsListv2Request) ([]JobInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []JobInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []JobInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiJobsListv2")
@@ -4961,9 +4948,9 @@ func (a *JobsAPIService) ApiJobsListv2Execute(r ApiApiJobsListv2Request) ([]JobI
 }
 
 type ApiApiListAllJobsInProjectRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiListAllJobsInProjectRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
@@ -4975,27 +4962,26 @@ ApiListAllJobsInProject List all Jobs in Summarized Form [Enterprise]
 
 List the jobs summarized for a project.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiListAllJobsInProjectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiListAllJobsInProjectRequest
 */
 func (a *JobsAPIService) ApiListAllJobsInProject(ctx context.Context, project string) ApiApiListAllJobsInProjectRequest {
 	return ApiApiListAllJobsInProjectRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *JobsAPIService) ApiListAllJobsInProjectExecute(r ApiApiListAllJobsInProjectRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiListAllJobsInProject")
@@ -5079,9 +5065,9 @@ func (a *JobsAPIService) ApiListAllJobsInProjectExecute(r ApiApiListAllJobsInPro
 }
 
 type ApiApiSchedulerListJobsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
-	uuid       string
+	uuid string
 }
 
 func (r ApiApiSchedulerListJobsRequest) Execute() ([]JobInfo, *http.Response, error) {
@@ -5097,27 +5083,26 @@ Authorization required: `read` or `view` for each job resource
 
 Since: v17
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param uuid Server UUID
-	@return ApiApiSchedulerListJobsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid Server UUID
+ @return ApiApiSchedulerListJobsRequest
 */
 func (a *JobsAPIService) ApiSchedulerListJobs(ctx context.Context, uuid string) ApiApiSchedulerListJobsRequest {
 	return ApiApiSchedulerListJobsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		uuid:       uuid,
+		ctx: ctx,
+		uuid: uuid,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []JobInfo
+//  @return []JobInfo
 func (a *JobsAPIService) ApiSchedulerListJobsExecute(r ApiApiSchedulerListJobsRequest) ([]JobInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []JobInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []JobInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiSchedulerListJobs")
@@ -5201,7 +5186,7 @@ func (a *JobsAPIService) ApiSchedulerListJobsExecute(r ApiApiSchedulerListJobsRe
 }
 
 type ApiApiSchedulerListJobsCurrentDocsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *JobsAPIService
 }
 
@@ -5218,25 +5203,24 @@ Authorization required: `read` or `view` for each job resource
 
 Since: v17
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiSchedulerListJobsCurrentDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiSchedulerListJobsCurrentDocsRequest
 */
 func (a *JobsAPIService) ApiSchedulerListJobsCurrentDocs(ctx context.Context) ApiApiSchedulerListJobsCurrentDocsRequest {
 	return ApiApiSchedulerListJobsCurrentDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []JobInfo
+//  @return []JobInfo
 func (a *JobsAPIService) ApiSchedulerListJobsCurrentDocsExecute(r ApiApiSchedulerListJobsCurrentDocsRequest) ([]JobInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []JobInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []JobInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobsAPIService.ApiSchedulerListJobsCurrentDocs")

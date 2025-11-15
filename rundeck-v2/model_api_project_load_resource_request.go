@@ -19,7 +19,7 @@ import (
 // ApiProjectLoadResourceRequest - struct for ApiProjectLoadResourceRequest
 type ApiProjectLoadResourceRequest struct {
 	Manifest *Manifest
-	Tour     *Tour
+	Tour *Tour
 }
 
 // ManifestAsApiProjectLoadResourceRequest is a convenience function that returns Manifest wrapped in ApiProjectLoadResourceRequest
@@ -35,6 +35,7 @@ func TourAsApiProjectLoadResourceRequest(v *Tour) ApiProjectLoadResourceRequest 
 		Tour: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ApiProjectLoadResourceRequest) UnmarshalJSON(data []byte) error {
@@ -101,7 +102,7 @@ func (src ApiProjectLoadResourceRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ApiProjectLoadResourceRequest) GetActualInstance() interface{} {
+func (obj *ApiProjectLoadResourceRequest) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -118,7 +119,7 @@ func (obj *ApiProjectLoadResourceRequest) GetActualInstance() interface{} {
 }
 
 // Get the actual instance value
-func (obj ApiProjectLoadResourceRequest) GetActualInstanceValue() interface{} {
+func (obj ApiProjectLoadResourceRequest) GetActualInstanceValue() (interface{}) {
 	if obj.Manifest != nil {
 		return *obj.Manifest
 	}
@@ -166,3 +167,5 @@ func (v *NullableApiProjectLoadResourceRequest) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_HealthAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_HealthAPIService(t *testing.T) {
 
 	t.Run("Test HealthAPIService ApiNodeHealth", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -38,7 +38,7 @@ func Test_openapi_HealthAPIService(t *testing.T) {
 
 	t.Run("Test HealthAPIService ApiNodeHealthAll", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -52,7 +52,7 @@ func Test_openapi_HealthAPIService(t *testing.T) {
 
 	t.Run("Test HealthAPIService ApiProjectHasHealthStatusEnhancer", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -66,7 +66,7 @@ func Test_openapi_HealthAPIService(t *testing.T) {
 
 	t.Run("Test HealthAPIService ApiRefreshHealthCheck", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -80,7 +80,7 @@ func Test_openapi_HealthAPIService(t *testing.T) {
 
 	t.Run("Test HealthAPIService ApiRefreshHealthCheckAll", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 

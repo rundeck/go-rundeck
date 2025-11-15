@@ -20,7 +20,7 @@ var _ MappedNullable = &SystemReportItem{}
 // SystemReportItem struct for SystemReportItem
 type SystemReportItem struct {
 	Label *string `json:"label,omitempty"`
-	Name  *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewSystemReportItem instantiates a new SystemReportItem object
@@ -105,7 +105,7 @@ func (o *SystemReportItem) SetName(v string) {
 }
 
 func (o SystemReportItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableSystemReportItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

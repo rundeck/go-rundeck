@@ -19,17 +19,17 @@ var _ MappedNullable = &System{}
 
 // System System Information
 type System struct {
-	Timestamp   *Timestamp             `json:"timestamp,omitempty"`
-	Rundeck     *Rundeck               `json:"rundeck,omitempty"`
-	Executions  *Executions            `json:"executions,omitempty"`
-	Os          *Os                    `json:"os,omitempty"`
-	Jvm         *Jvm                   `json:"jvm,omitempty"`
-	Stats       *Stats                 `json:"stats,omitempty"`
-	Metrics     *Metrics               `json:"metrics,omitempty"`
-	ThreadDump  *ThreadDump            `json:"threadDump,omitempty"`
-	Healthcheck *Healthcheck           `json:"healthcheck,omitempty"`
-	Ping        *Ping                  `json:"ping,omitempty"`
-	Extended    map[string]interface{} `json:"extended,omitempty"`
+	Timestamp *Timestamp `json:"timestamp,omitempty"`
+	Rundeck *Rundeck `json:"rundeck,omitempty"`
+	Executions *Executions `json:"executions,omitempty"`
+	Os *Os `json:"os,omitempty"`
+	Jvm *Jvm `json:"jvm,omitempty"`
+	Stats *Stats `json:"stats,omitempty"`
+	Metrics *Metrics `json:"metrics,omitempty"`
+	ThreadDump *ThreadDump `json:"threadDump,omitempty"`
+	Healthcheck *Healthcheck `json:"healthcheck,omitempty"`
+	Ping *Ping `json:"ping,omitempty"`
+	Extended map[string]interface{} `json:"extended,omitempty"`
 }
 
 // NewSystem instantiates a new System object
@@ -402,7 +402,7 @@ func (o *System) SetExtended(v map[string]interface{}) {
 }
 
 func (o System) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -482,3 +482,5 @@ func (v *NullableSystem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_UserClassAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetEnabled", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.GetEnabled(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetUserClass", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var username string
 
@@ -50,7 +50,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetUserClassAllocations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.GetUserClassAllocations(context.Background()).Execute()
 
@@ -62,7 +62,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetUserClassAllocationsState", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.GetUserClassAllocationsState(context.Background()).Execute()
 
@@ -74,7 +74,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetUserClassSelf", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.GetUserClassSelf(context.Background()).Execute()
 
@@ -86,7 +86,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService GetUserClassesAvailable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.GetUserClassesAvailable(context.Background()).Execute()
 
@@ -98,7 +98,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService RemoveUserClass", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var username string
 
@@ -111,7 +111,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService SetUserClass", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var username string
 
@@ -125,7 +125,7 @@ func Test_openapi_UserClassAPIService(t *testing.T) {
 
 	t.Run("Test UserClassAPIService StoreUserClasses", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserClassAPI.StoreUserClasses(context.Background()).Execute()
 

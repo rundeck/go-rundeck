@@ -19,8 +19,8 @@ var _ MappedNullable = &ProjectContextRunnerConfig{}
 
 // ProjectContextRunnerConfig struct for ProjectContextRunnerConfig
 type ProjectContextRunnerConfig struct {
-	Project   *string `json:"project,omitempty"`
-	Automatic *bool   `json:"automatic,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Automatic *bool `json:"automatic,omitempty"`
 }
 
 // NewProjectContextRunnerConfig instantiates a new ProjectContextRunnerConfig object
@@ -105,7 +105,7 @@ func (o *ProjectContextRunnerConfig) SetAutomatic(v bool) {
 }
 
 func (o ProjectContextRunnerConfig) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableProjectContextRunnerConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

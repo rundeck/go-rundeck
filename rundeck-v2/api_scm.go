@@ -19,15 +19,16 @@ import (
 	"strings"
 )
 
+
 // SCMAPIService SCMAPI service
 type SCMAPIService service
 
 type ApiApiJobActionInputRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	id          string
+	ctx context.Context
+	ApiService *SCMAPIService
+	id string
 	integration string
-	actionId    string
+	actionId string
 }
 
 func (r ApiApiJobActionInputRequest) Execute() (*ScmActionInput, *http.Response, error) {
@@ -51,31 +52,30 @@ Authorization required: `export` or `scm_export` (for export integration), or `i
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param integration SCM integration type
-	@param actionId Action Name/ID
-	@return ApiApiJobActionInputRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param integration SCM integration type
+ @param actionId Action Name/ID
+ @return ApiApiJobActionInputRequest
 */
 func (a *SCMAPIService) ApiJobActionInput(ctx context.Context, id string, integration string, actionId string) ApiApiJobActionInputRequest {
 	return ApiApiJobActionInputRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		id:          id,
+		ApiService: a,
+		ctx: ctx,
+		id: id,
 		integration: integration,
-		actionId:    actionId,
+		actionId: actionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionInput
+//  @return ScmActionInput
 func (a *SCMAPIService) ApiJobActionInputExecute(r ApiApiJobActionInputRequest) (*ScmActionInput, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionInput
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionInput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiJobActionInput")
@@ -161,12 +161,12 @@ func (a *SCMAPIService) ApiJobActionInputExecute(r ApiApiJobActionInputRequest) 
 }
 
 type ApiApiJobActionPerformRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	id          string
+	ctx context.Context
+	ApiService *SCMAPIService
+	id string
 	integration string
-	actionId    string
-	body        *map[string]interface{}
+	actionId string
+	body *map[string]interface{}
 }
 
 // SCM Action Input Request.
@@ -192,31 +192,30 @@ Authorization required: `export` or `scm_export` (for export integration), or `i
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param integration SCM integration type
-	@param actionId Action Name/ID
-	@return ApiApiJobActionPerformRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param integration SCM integration type
+ @param actionId Action Name/ID
+ @return ApiApiJobActionPerformRequest
 */
 func (a *SCMAPIService) ApiJobActionPerform(ctx context.Context, id string, integration string, actionId string) ApiApiJobActionPerformRequest {
 	return ApiApiJobActionPerformRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		id:          id,
+		ApiService: a,
+		ctx: ctx,
+		id: id,
 		integration: integration,
-		actionId:    actionId,
+		actionId: actionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionResult
+//  @return ScmActionResult
 func (a *SCMAPIService) ApiJobActionPerformExecute(r ApiApiJobActionPerformRequest) (*ScmActionResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiJobActionPerform")
@@ -298,8 +297,8 @@ func (a *SCMAPIService) ApiJobActionPerformExecute(r ApiApiJobActionPerformReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -317,9 +316,9 @@ func (a *SCMAPIService) ApiJobActionPerformExecute(r ApiApiJobActionPerformReque
 }
 
 type ApiApiJobDiffRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	id          string
+	ctx context.Context
+	ApiService *SCMAPIService
+	id string
 	integration string
 }
 
@@ -339,29 +338,28 @@ Authorization required: `export` or `scm_export` (for export integration), or `i
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param integration SCM integration type
-	@return ApiApiJobDiffRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param integration SCM integration type
+ @return ApiApiJobDiffRequest
 */
 func (a *SCMAPIService) ApiJobDiff(ctx context.Context, id string, integration string) ApiApiJobDiffRequest {
 	return ApiApiJobDiffRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		id:          id,
+		ApiService: a,
+		ctx: ctx,
+		id: id,
 		integration: integration,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmJobDiff
+//  @return ScmJobDiff
 func (a *SCMAPIService) ApiJobDiffExecute(r ApiApiJobDiffRequest) (*ScmJobDiff, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmJobDiff
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmJobDiff
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiJobDiff")
@@ -446,9 +444,9 @@ func (a *SCMAPIService) ApiJobDiffExecute(r ApiApiJobDiffRequest) (*ScmJobDiff, 
 }
 
 type ApiApiJobStatusRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	id          string
+	ctx context.Context
+	ApiService *SCMAPIService
+	id string
 	integration string
 }
 
@@ -465,29 +463,29 @@ Authorization required: `export` or `scm_export` (for export integration), or `i
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Job ID
-	@param integration SCM integration type
-	@return ApiApiJobStatusRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Job ID
+ @param integration SCM integration type
+ @return ApiApiJobStatusRequest
 */
 func (a *SCMAPIService) ApiJobStatus(ctx context.Context, id string, integration string) ApiApiJobStatusRequest {
 	return ApiApiJobStatusRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		id:          id,
+		ApiService: a,
+		ctx: ctx,
+		id: id,
 		integration: integration,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmJobStatus
+//  @return ScmJobStatus
 func (a *SCMAPIService) ApiJobStatusExecute(r ApiApiJobStatusRequest) (*ScmJobStatus, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmJobStatus
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmJobStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiJobStatus")
@@ -572,11 +570,11 @@ func (a *SCMAPIService) ApiJobStatusExecute(r ApiApiJobStatusRequest) (*ScmJobSt
 }
 
 type ApiApiPluginInputRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	type_       string
+	type_ string
 }
 
 func (r ApiApiPluginInputRequest) Execute() (*ScmPluginSetupInput, *http.Response, error) {
@@ -586,7 +584,7 @@ func (r ApiApiPluginInputRequest) Execute() (*ScmPluginSetupInput, *http.Respons
 /*
 ApiPluginInput Get SCM Plugin Input Fields
 
-	List the input fields for a specific plugin.
+ List the input fields for a specific plugin.
 
 The response will list each input field.
 
@@ -594,31 +592,30 @@ Authorization Required: `export` or `scm_export` or `import` or `scm_import` for
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param type_ Plugin Name
-	@return ApiApiPluginInputRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param type_ Plugin Name
+ @return ApiApiPluginInputRequest
 */
 func (a *SCMAPIService) ApiPluginInput(ctx context.Context, project string, integration string, type_ string) ApiApiPluginInputRequest {
 	return ApiApiPluginInputRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		type_:       type_,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmPluginSetupInput
+//  @return ScmPluginSetupInput
 func (a *SCMAPIService) ApiPluginInputExecute(r ApiApiPluginInputRequest) (*ScmPluginSetupInput, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmPluginSetupInput
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmPluginSetupInput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiPluginInput")
@@ -704,9 +701,9 @@ func (a *SCMAPIService) ApiPluginInputExecute(r ApiApiPluginInputRequest) (*ScmP
 }
 
 type ApiApiPluginsRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
 }
 
@@ -717,36 +714,36 @@ func (r ApiApiPluginsRequest) Execute() (*ScmPluginList, *http.Response, error) 
 /*
 ApiPlugins List SCM Plugins
 
-Lists the available plugins for the specified integration.  Each plugin is identified by a
+Lists the available plugins for the specified integration.  Each plugin is identified by a 
 `type` name.
 
 Authorization Required: `configure` for the Project resource (app context)
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@return ApiApiPluginsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @return ApiApiPluginsRequest
 */
 func (a *SCMAPIService) ApiPlugins(ctx context.Context, project string, integration string) ApiApiPluginsRequest {
 	return ApiApiPluginsRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmPluginList
+//  @return ScmPluginList
 func (a *SCMAPIService) ApiPluginsExecute(r ApiApiPluginsRequest) (*ScmPluginList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmPluginList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmPluginList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiPlugins")
@@ -831,11 +828,11 @@ func (a *SCMAPIService) ApiPluginsExecute(r ApiApiPluginsRequest) (*ScmPluginLis
 }
 
 type ApiApiProjectActionInputRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	actionId    string
+	actionId string
 }
 
 func (r ApiApiProjectActionInputRequest) Execute() (*ScmActionInput, *http.Response, error) {
@@ -845,7 +842,7 @@ func (r ApiApiProjectActionInputRequest) Execute() (*ScmActionInput, *http.Respo
 /*
 ApiProjectActionInput Get Project SCM Action Input Fields
 
-	Get the input fields and selectable items for a specific action.
+ Get the input fields and selectable items for a specific action.
 
 Each action may have a set of Input Fields describing user-input values.
 
@@ -859,31 +856,30 @@ Authorization Required: `export` or `scm_export` or `import` or `scm_import` for
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param actionId Action ID
-	@return ApiApiProjectActionInputRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param actionId Action ID
+ @return ApiApiProjectActionInputRequest
 */
 func (a *SCMAPIService) ApiProjectActionInput(ctx context.Context, project string, integration string, actionId string) ApiApiProjectActionInputRequest {
 	return ApiApiProjectActionInputRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		actionId:    actionId,
+		actionId: actionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionInput
+//  @return ScmActionInput
 func (a *SCMAPIService) ApiProjectActionInputExecute(r ApiApiProjectActionInputRequest) (*ScmActionInput, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionInput
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionInput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectActionInput")
@@ -969,12 +965,12 @@ func (a *SCMAPIService) ApiProjectActionInputExecute(r ApiApiProjectActionInputR
 }
 
 type ApiApiProjectActionPerformRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	actionId    string
-	scmAction   *ScmAction
+	actionId string
+	scmAction *ScmAction
 }
 
 // Perform Action Request
@@ -1012,31 +1008,30 @@ Authorization Required: `export` or `scm_export` or `import` or `scm_import` for
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param actionId Action ID
-	@return ApiApiProjectActionPerformRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param actionId Action ID
+ @return ApiApiProjectActionPerformRequest
 */
 func (a *SCMAPIService) ApiProjectActionPerform(ctx context.Context, project string, integration string, actionId string) ApiApiProjectActionPerformRequest {
 	return ApiApiProjectActionPerformRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		actionId:    actionId,
+		actionId: actionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionResult
+//  @return ScmActionResult
 func (a *SCMAPIService) ApiProjectActionPerformExecute(r ApiApiProjectActionPerformRequest) (*ScmActionResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectActionPerform")
@@ -1127,9 +1122,9 @@ func (a *SCMAPIService) ApiProjectActionPerformExecute(r ApiApiProjectActionPerf
 }
 
 type ApiApiProjectConfigRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
 }
 
@@ -1140,35 +1135,34 @@ func (r ApiApiProjectConfigRequest) Execute() (*ScmProjectPluginConfig, *http.Re
 /*
 ApiProjectConfig Get Project SCM Config
 
-	Get the configuration properties for the current plugin.
+ Get the configuration properties for the current plugin.
 
 Authorization Required: `configure` for the Project resource (app context)
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@return ApiApiProjectConfigRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @return ApiApiProjectConfigRequest
 */
 func (a *SCMAPIService) ApiProjectConfig(ctx context.Context, project string, integration string) ApiApiProjectConfigRequest {
 	return ApiApiProjectConfigRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmProjectPluginConfig
+//  @return ScmProjectPluginConfig
 func (a *SCMAPIService) ApiProjectConfigExecute(r ApiApiProjectConfigRequest) (*ScmProjectPluginConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmProjectPluginConfig
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmProjectPluginConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectConfig")
@@ -1253,11 +1247,11 @@ func (a *SCMAPIService) ApiProjectConfigExecute(r ApiApiProjectConfigRequest) (*
 }
 
 type ApiApiProjectDisableRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	type_       string
+	type_ string
 }
 
 func (r ApiApiProjectDisableRequest) Execute() (*ScmActionResult, *http.Response, error) {
@@ -1267,37 +1261,36 @@ func (r ApiApiProjectDisableRequest) Execute() (*ScmActionResult, *http.Response
 /*
 ApiProjectDisable Disable SCM Plugin for a Project
 
-	Disable a plugin. (Idempotent).
+ Disable a plugin. (Idempotent).
 
 Authorization Required: `configure` for the Project resource (app context)
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param type_ Plugin Name
-	@return ApiApiProjectDisableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param type_ Plugin Name
+ @return ApiApiProjectDisableRequest
 */
 func (a *SCMAPIService) ApiProjectDisable(ctx context.Context, project string, integration string, type_ string) ApiApiProjectDisableRequest {
 	return ApiApiProjectDisableRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		type_:       type_,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionResult
+//  @return ScmActionResult
 func (a *SCMAPIService) ApiProjectDisableExecute(r ApiApiProjectDisableRequest) (*ScmActionResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectDisable")
@@ -1383,11 +1376,11 @@ func (a *SCMAPIService) ApiProjectDisableExecute(r ApiApiProjectDisableRequest) 
 }
 
 type ApiApiProjectEnableRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	type_       string
+	type_ string
 }
 
 func (r ApiApiProjectEnableRequest) Execute() (*ScmActionResult, *http.Response, error) {
@@ -1397,37 +1390,36 @@ func (r ApiApiProjectEnableRequest) Execute() (*ScmActionResult, *http.Response,
 /*
 ApiProjectEnable Enable SCM Plugin for a Project
 
-	Enable a plugin that was previously configured. (Idempotent).
+ Enable a plugin that was previously configured. (Idempotent).
 
 Authorization Required: `configure` for the Project resource (app context)
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param type_ Plugin Name
-	@return ApiApiProjectEnableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param type_ Plugin Name
+ @return ApiApiProjectEnableRequest
 */
 func (a *SCMAPIService) ApiProjectEnable(ctx context.Context, project string, integration string, type_ string) ApiApiProjectEnableRequest {
 	return ApiApiProjectEnableRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		type_:       type_,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionResult
+//  @return ScmActionResult
 func (a *SCMAPIService) ApiProjectEnableExecute(r ApiApiProjectEnableRequest) (*ScmActionResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectEnable")
@@ -1513,12 +1505,12 @@ func (a *SCMAPIService) ApiProjectEnableExecute(r ApiApiProjectEnableRequest) (*
 }
 
 type ApiApiProjectSetupRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
-	type_       string
-	body        *map[string]interface{}
+	type_ string
+	body *map[string]interface{}
 }
 
 // Configuration values for the plugin.
@@ -1546,31 +1538,30 @@ Authorization Required: `configure` for the Project resource (app context)
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@param type_ Plugin Name
-	@return ApiApiProjectSetupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @param type_ Plugin Name
+ @return ApiApiProjectSetupRequest
 */
 func (a *SCMAPIService) ApiProjectSetup(ctx context.Context, project string, integration string, type_ string) ApiApiProjectSetupRequest {
 	return ApiApiProjectSetupRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
-		type_:       type_,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmActionResult
+//  @return ScmActionResult
 func (a *SCMAPIService) ApiProjectSetupExecute(r ApiApiProjectSetupRequest) (*ScmActionResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmActionResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmActionResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectSetup")
@@ -1649,8 +1640,8 @@ func (a *SCMAPIService) ApiProjectSetupExecute(r ApiApiProjectSetupRequest) (*Sc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1668,9 +1659,9 @@ func (a *SCMAPIService) ApiProjectSetupExecute(r ApiApiProjectSetupRequest) (*Sc
 }
 
 type ApiApiProjectStatusRequest struct {
-	ctx         context.Context
-	ApiService  *SCMAPIService
-	project     string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	integration string
 }
 
@@ -1681,35 +1672,34 @@ func (r ApiApiProjectStatusRequest) Execute() (*ScmProjectStatus, *http.Response
 /*
 ApiProjectStatus Get Project SCM Status
 
-	Get the SCM plugin status and available actions for the project.
+ Get the SCM plugin status and available actions for the project.
 
 Authorization Required: `export` or `scm_export` or `import` or `scm_import` for the Project resource (app context), depending on the integration type
 
 Since: v15
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param integration Integration Name
-	@return ApiApiProjectStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param integration Integration Name
+ @return ApiApiProjectStatusRequest
 */
 func (a *SCMAPIService) ApiProjectStatus(ctx context.Context, project string, integration string) ApiApiProjectStatusRequest {
 	return ApiApiProjectStatusRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		project:     project,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
 		integration: integration,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmProjectStatus
+//  @return ScmProjectStatus
 func (a *SCMAPIService) ApiProjectStatusExecute(r ApiApiProjectStatusRequest) (*ScmProjectStatus, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmProjectStatus
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmProjectStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectStatus")
@@ -1794,9 +1784,9 @@ func (a *SCMAPIService) ApiProjectStatusExecute(r ApiApiProjectStatusRequest) (*
 }
 
 type ApiApiProjectToggleSCMRequest struct {
-	ctx              context.Context
-	ApiService       *SCMAPIService
-	project          string
+	ctx context.Context
+	ApiService *SCMAPIService
+	project string
 	scmToggleRequest *ScmToggleRequest
 }
 
@@ -1813,9 +1803,9 @@ func (r ApiApiProjectToggleSCMRequest) Execute() (*ScmToggleResponse, *http.Resp
 /*
 ApiProjectToggleSCM Toggle SCM for a Project
 
-	Toggle SCM enabled/disabled for a Project.
+ Toggle SCM enabled/disabled for a Project.
 
-This endpoint will enable or disable all configured SCM plugins for the project.
+This endpoint will enable or disable all configured SCM plugins for the project. 
 Specify whether to enable or disable in the request body.
 
 This action is idempotent.
@@ -1824,27 +1814,26 @@ Authorization Required: `configure` for the Project resource (app context)
 
 Since: v46
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectToggleSCMRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectToggleSCMRequest
 */
 func (a *SCMAPIService) ApiProjectToggleSCM(ctx context.Context, project string) ApiApiProjectToggleSCMRequest {
 	return ApiApiProjectToggleSCMRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ScmToggleResponse
+//  @return ScmToggleResponse
 func (a *SCMAPIService) ApiProjectToggleSCMExecute(r ApiApiProjectToggleSCMRequest) (*ScmToggleResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ScmToggleResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ScmToggleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCMAPIService.ApiProjectToggleSCM")

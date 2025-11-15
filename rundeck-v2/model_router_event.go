@@ -19,7 +19,7 @@ var _ MappedNullable = &RouterEvent{}
 
 // RouterEvent struct for RouterEvent
 type RouterEvent struct {
-	Meta  *RouterEventMetadata   `json:"meta,omitempty"`
+	Meta *RouterEventMetadata `json:"meta,omitempty"`
 	Event map[string]interface{} `json:"event,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *RouterEvent) SetEvent(v map[string]interface{}) {
 }
 
 func (o RouterEvent) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableRouterEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

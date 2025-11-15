@@ -19,7 +19,7 @@ var _ MappedNullable = &RemoveExpiredTokens{}
 
 // RemoveExpiredTokens struct for RemoveExpiredTokens
 type RemoveExpiredTokens struct {
-	Count   *int32  `json:"count,omitempty"`
+	Count *int32 `json:"count,omitempty"`
 	Message *string `json:"message,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *RemoveExpiredTokens) SetMessage(v string) {
 }
 
 func (o RemoveExpiredTokens) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableRemoveExpiredTokens) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

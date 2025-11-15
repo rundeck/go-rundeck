@@ -20,12 +20,12 @@ type ConditionType string
 
 // List of ConditionType
 const (
-	CONTAINS         ConditionType = "contains"
-	DATE_TIME_AFTER  ConditionType = "dateTimeAfter"
+	CONTAINS ConditionType = "contains"
+	DATE_TIME_AFTER ConditionType = "dateTimeAfter"
 	DATE_TIME_BEFORE ConditionType = "dateTimeBefore"
-	EXISTS           ConditionType = "exists"
-	IS_A             ConditionType = "isA"
-	EQUALS           ConditionType = "equals"
+	EXISTS ConditionType = "exists"
+	IS_A ConditionType = "isA"
+	EQUALS ConditionType = "equals"
 )
 
 // All allowed values of ConditionType enum
@@ -116,3 +116,4 @@ func (v *NullableConditionType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

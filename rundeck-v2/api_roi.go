@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // ROIAPIService ROIAPI service
 type ROIAPIService service
 
 type ApiGetRoiMetricsDataApiRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ROIAPIService
-	id         string
-	wait       *bool
+	id string
+	wait *bool
 }
 
 // if true and the data is not immediately available, the response will wait until the data is retrieved, or a timeout occurs. Otherwise the response may return 202 status if data must be retrieved first.
@@ -44,24 +45,24 @@ GetRoiMetricsDataApi INCUBATING: ROI Metrics Data [Enterprise]
 
 Get result data for ROI Metrics.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiGetRoiMetricsDataApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiGetRoiMetricsDataApiRequest
 */
 func (a *ROIAPIService) GetRoiMetricsDataApi(ctx context.Context, id string) ApiGetRoiMetricsDataApiRequest {
 	return ApiGetRoiMetricsDataApiRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *ROIAPIService) GetRoiMetricsDataApiExecute(r ApiGetRoiMetricsDataApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ROIAPIService.GetRoiMetricsDataApi")
@@ -139,8 +140,8 @@ func (a *ROIAPIService) GetRoiMetricsDataApiExecute(r ApiGetRoiMetricsDataApiReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -149,9 +150,9 @@ func (a *ROIAPIService) GetRoiMetricsDataApiExecute(r ApiGetRoiMetricsDataApiReq
 }
 
 type ApiGetRoiMetricsDataAvailabilityRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ROIAPIService
-	id         string
+	id string
 }
 
 func (r ApiGetRoiMetricsDataAvailabilityRequest) Execute() (*RoiMetricsControllerDataAvailableResponse, *http.Response, error) {
@@ -163,27 +164,26 @@ GetRoiMetricsDataAvailability INCUBATING: ROI Metrics Data Available [Enterprise
 
 Get result indicating whether ROI metrics data is available as part of an execution.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiGetRoiMetricsDataAvailabilityRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiGetRoiMetricsDataAvailabilityRequest
 */
 func (a *ROIAPIService) GetRoiMetricsDataAvailability(ctx context.Context, id string) ApiGetRoiMetricsDataAvailabilityRequest {
 	return ApiGetRoiMetricsDataAvailabilityRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RoiMetricsControllerDataAvailableResponse
+//  @return RoiMetricsControllerDataAvailableResponse
 func (a *ROIAPIService) GetRoiMetricsDataAvailabilityExecute(r ApiGetRoiMetricsDataAvailabilityRequest) (*RoiMetricsControllerDataAvailableResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RoiMetricsControllerDataAvailableResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RoiMetricsControllerDataAvailableResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ROIAPIService.GetRoiMetricsDataAvailability")
@@ -258,8 +258,8 @@ func (a *ROIAPIService) GetRoiMetricsDataAvailabilityExecute(r ApiGetRoiMetricsD
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

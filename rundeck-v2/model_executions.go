@@ -19,7 +19,7 @@ var _ MappedNullable = &Executions{}
 
 // Executions Executions Information
 type Executions struct {
-	Active        *string `json:"active,omitempty"`
+	Active *string `json:"active,omitempty"`
 	ExecutionMode *string `json:"executionMode,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *Executions) SetExecutionMode(v string) {
 }
 
 func (o Executions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableExecutions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

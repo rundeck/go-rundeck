@@ -18,11 +18,12 @@ import (
 	"net/url"
 )
 
+
 // LogStorageAPIService LogStorageAPI service
 type LogStorageAPIService service
 
 type ApiApiLogstorageInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *LogStorageAPIService
 }
 
@@ -39,25 +40,25 @@ Authorization required: `read` for `system` resource
 
 Since: V17
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiLogstorageInfoRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiLogstorageInfoRequest
 */
 func (a *LogStorageAPIService) ApiLogstorageInfo(ctx context.Context) ApiApiLogstorageInfoRequest {
 	return ApiApiLogstorageInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *LogStorageAPIService) ApiLogstorageInfoExecute(r ApiApiLogstorageInfoRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogStorageAPIService.ApiLogstorageInfo")
@@ -140,9 +141,9 @@ func (a *LogStorageAPIService) ApiLogstorageInfoExecute(r ApiApiLogstorageInfoRe
 }
 
 type ApiApiLogstorageListIncompleteExecutionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *LogStorageAPIService
-	query      *BaseQuery
+	query *BaseQuery
 }
 
 func (r ApiApiLogstorageListIncompleteExecutionsRequest) Query(query BaseQuery) ApiApiLogstorageListIncompleteExecutionsRequest {
@@ -163,25 +164,24 @@ Authorization required: `read` for `system` resource
 
 Since: V17
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiLogstorageListIncompleteExecutionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiLogstorageListIncompleteExecutionsRequest
 */
 func (a *LogStorageAPIService) ApiLogstorageListIncompleteExecutions(ctx context.Context) ApiApiLogstorageListIncompleteExecutionsRequest {
 	return ApiApiLogstorageListIncompleteExecutionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *LogStorageAPIService) ApiLogstorageListIncompleteExecutionsExecute(r ApiApiLogstorageListIncompleteExecutionsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogStorageAPIService.ApiLogstorageListIncompleteExecutions")
@@ -267,7 +267,7 @@ func (a *LogStorageAPIService) ApiLogstorageListIncompleteExecutionsExecute(r Ap
 }
 
 type ApiApiResumeIncompleteLogstorageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *LogStorageAPIService
 }
 
@@ -284,25 +284,24 @@ Authorization required: `ops_admin` for `system` resource
 
 Since: V17
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiResumeIncompleteLogstorageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiResumeIncompleteLogstorageRequest
 */
 func (a *LogStorageAPIService) ApiResumeIncompleteLogstorage(ctx context.Context) ApiApiResumeIncompleteLogstorageRequest {
 	return ApiApiResumeIncompleteLogstorageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *LogStorageAPIService) ApiResumeIncompleteLogstorageExecute(r ApiApiResumeIncompleteLogstorageRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LogStorageAPIService.ApiResumeIncompleteLogstorage")

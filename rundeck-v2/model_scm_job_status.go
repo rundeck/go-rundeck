@@ -19,13 +19,13 @@ var _ MappedNullable = &ScmJobStatus{}
 
 // ScmJobStatus struct for ScmJobStatus
 type ScmJobStatus struct {
-	Id          *string    `json:"id,omitempty"`
-	Project     *string    `json:"project,omitempty"`
-	Integration *string    `json:"integration,omitempty"`
-	SynchState  *string    `json:"synchState,omitempty"`
-	Message     *string    `json:"message,omitempty"`
-	Actions     []string   `json:"actions,omitempty"`
-	Commit      *ScmCommit `json:"commit,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Integration *string `json:"integration,omitempty"`
+	SynchState *string `json:"synchState,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Actions []string `json:"actions,omitempty"`
+	Commit *ScmCommit `json:"commit,omitempty"`
 }
 
 // NewScmJobStatus instantiates a new ScmJobStatus object
@@ -270,7 +270,7 @@ func (o *ScmJobStatus) SetCommit(v ScmCommit) {
 }
 
 func (o ScmJobStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +338,5 @@ func (v *NullableScmJobStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

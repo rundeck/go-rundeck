@@ -20,11 +20,11 @@ var _ MappedNullable = &ScmCommit{}
 
 // ScmCommit struct for ScmCommit
 type ScmCommit struct {
-	CommitId *string                `json:"commitId,omitempty"`
-	Message  *string                `json:"message,omitempty"`
-	Author   *string                `json:"author,omitempty"`
-	Date     *time.Time             `json:"date,omitempty"`
-	Info     map[string]interface{} `json:"info,omitempty"`
+	CommitId *string `json:"commitId,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Author *string `json:"author,omitempty"`
+	Date *time.Time `json:"date,omitempty"`
+	Info map[string]interface{} `json:"info,omitempty"`
 }
 
 // NewScmCommit instantiates a new ScmCommit object
@@ -205,7 +205,7 @@ func (o *ScmCommit) SetInfo(v map[string]interface{}) {
 }
 
 func (o ScmCommit) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -267,3 +267,5 @@ func (v *NullableScmCommit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

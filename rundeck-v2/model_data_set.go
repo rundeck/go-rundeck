@@ -19,10 +19,10 @@ var _ MappedNullable = &DataSet{}
 
 // DataSet struct for DataSet
 type DataSet struct {
-	Name    *string      `json:"name,omitempty"`
-	Label   *string      `json:"label,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Label *string `json:"label,omitempty"`
 	Entries []IDataEntry `json:"entries,omitempty"`
-	Big     *bool        `json:"big,omitempty"`
+	Big *bool `json:"big,omitempty"`
 }
 
 // NewDataSet instantiates a new DataSet object
@@ -171,7 +171,7 @@ func (o *DataSet) SetBig(v bool) {
 }
 
 func (o DataSet) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableDataSet) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

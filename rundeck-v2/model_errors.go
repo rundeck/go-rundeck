@@ -19,16 +19,16 @@ var _ MappedNullable = &Errors{}
 
 // Errors struct for Errors
 type Errors struct {
-	AllErrors        []ObjectError `json:"allErrors,omitempty"`
-	FieldError       *FieldError   `json:"fieldError,omitempty"`
-	ObjectName       *string       `json:"objectName,omitempty"`
-	NestedPath       *string       `json:"nestedPath,omitempty"`
-	GlobalErrorCount *int32        `json:"globalErrorCount,omitempty"`
-	GlobalErrors     []ObjectError `json:"globalErrors,omitempty"`
-	GlobalError      *ObjectError  `json:"globalError,omitempty"`
-	FieldErrorCount  *int32        `json:"fieldErrorCount,omitempty"`
-	FieldErrors      []FieldError  `json:"fieldErrors,omitempty"`
-	ErrorCount       *int32        `json:"errorCount,omitempty"`
+	AllErrors []ObjectError `json:"allErrors,omitempty"`
+	FieldError *FieldError `json:"fieldError,omitempty"`
+	ObjectName *string `json:"objectName,omitempty"`
+	NestedPath *string `json:"nestedPath,omitempty"`
+	GlobalErrorCount *int32 `json:"globalErrorCount,omitempty"`
+	GlobalErrors []ObjectError `json:"globalErrors,omitempty"`
+	GlobalError *ObjectError `json:"globalError,omitempty"`
+	FieldErrorCount *int32 `json:"fieldErrorCount,omitempty"`
+	FieldErrors []FieldError `json:"fieldErrors,omitempty"`
+	ErrorCount *int32 `json:"errorCount,omitempty"`
 }
 
 // NewErrors instantiates a new Errors object
@@ -369,7 +369,7 @@ func (o *Errors) SetErrorCount(v int32) {
 }
 
 func (o Errors) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -446,3 +446,5 @@ func (v *NullableErrors) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

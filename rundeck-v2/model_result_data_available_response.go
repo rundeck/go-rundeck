@@ -19,8 +19,8 @@ var _ MappedNullable = &ResultDataAvailableResponse{}
 
 // ResultDataAvailableResponse struct for ResultDataAvailableResponse
 type ResultDataAvailableResponse struct {
-	Loadable *bool   `json:"loadable,omitempty"`
-	Message  *string `json:"message,omitempty"`
+	Loadable *bool `json:"loadable,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
 
 // NewResultDataAvailableResponse instantiates a new ResultDataAvailableResponse object
@@ -105,7 +105,7 @@ func (o *ResultDataAvailableResponse) SetMessage(v string) {
 }
 
 func (o ResultDataAvailableResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableResultDataAvailableResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

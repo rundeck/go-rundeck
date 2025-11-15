@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**ConfigSave**](ConfigurationAPI.md#ConfigSave) | **Post** /config/save | Create or Update Configurations [Enterprise]
 [**Refresh**](ConfigurationAPI.md#Refresh) | **Post** /config/refresh | Refresh Configurations from Properties File [Enterprise]
 [**Restart**](ConfigurationAPI.md#Restart) | **Post** /config/restart | Restart the Rundeck Server [Enterprise]
+[**SaveProjectPlugins**](ConfigurationAPI.md#SaveProjectPlugins) | **Post** /project/{project}/plugins/save | Save list-style plugin configurations for a project
 [**StorageConfigList**](ConfigurationAPI.md#StorageConfigList) | **Get** /config/listStoragePlugins | List All Currently configured Storage Plugins [Enterprise]
 [**StorageConfigSave**](ConfigurationAPI.md#StorageConfigSave) | **Post** /config/saveStoragePlugins | Create or Update Storage Plugins [Enterprise]
 
@@ -501,6 +502,80 @@ Other parameters are passed through a pointer to a apiRestartRequest struct via 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SaveProjectPlugins
+
+> SaveProjectPlugins(ctx, project).ServiceName(serviceName).ConfigPrefix(configPrefix).Body(body).Execute()
+
+Save list-style plugin configurations for a project
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	project := "project_example" // string | Project name
+	serviceName := "serviceName_example" // string | Plugin service name (e.g. `ResourceModelSource`)
+	configPrefix := "configPrefix_example" // string | Property prefix (e.g. `resources.source`)
+	body := map[string]interface{}{ ... } // map[string]interface{} | Plugins payload
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ConfigurationAPI.SaveProjectPlugins(context.Background(), project).ServiceName(serviceName).ConfigPrefix(configPrefix).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConfigurationAPI.SaveProjectPlugins``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**project** | **string** | Project name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSaveProjectPluginsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **serviceName** | **string** | Plugin service name (e.g. &#x60;ResourceModelSource&#x60;) | 
+ **configPrefix** | **string** | Property prefix (e.g. &#x60;resources.source&#x60;) | 
+ **body** | **map[string]interface{}** | Plugins payload | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

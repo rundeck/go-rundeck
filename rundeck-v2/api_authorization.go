@@ -16,18 +16,19 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
+	"reflect"
 )
+
 
 // AuthorizationAPIService AuthorizationAPI service
 type AuthorizationAPIService service
 
 type ApiAppContextAuthorizationsForResourceKindRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AuthorizationAPIService
-	kind       string
-	actions    *[]string
+	kind string
+	actions *[]string
 }
 
 // Actions to check authorization for
@@ -51,27 +52,26 @@ Useful for UI components that need to conditionally display features or for appl
 
 **INCUBATING**: This endpoint is in "incubating" status, and may change.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param kind Resource Kind
-	@return ApiAppContextAuthorizationsForResourceKindRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param kind Resource Kind
+ @return ApiAppContextAuthorizationsForResourceKindRequest
 */
 func (a *AuthorizationAPIService) AppContextAuthorizationsForResourceKind(ctx context.Context, kind string) ApiAppContextAuthorizationsForResourceKindRequest {
 	return ApiAppContextAuthorizationsForResourceKindRequest{
 		ApiService: a,
-		ctx:        ctx,
-		kind:       kind,
+		ctx: ctx,
+		kind: kind,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AuthorizationsResponse
+//  @return AuthorizationsResponse
 func (a *AuthorizationAPIService) AppContextAuthorizationsForResourceKindExecute(r ApiAppContextAuthorizationsForResourceKindRequest) (*AuthorizationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AuthorizationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthorizationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationAPIService.AppContextAuthorizationsForResourceKind")
@@ -169,11 +169,11 @@ func (a *AuthorizationAPIService) AppContextAuthorizationsForResourceKindExecute
 }
 
 type ApiAppContextAuthorizationsForTypeWithSpecifierRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AuthorizationAPIService
-	type_      string
-	specifier  string
-	actions    *[]string
+	type_ string
+	specifier string
+	actions *[]string
 }
 
 // Actions to check authorization for
@@ -189,34 +189,33 @@ func (r ApiAppContextAuthorizationsForTypeWithSpecifierRequest) Execute() (*Auth
 /*
 AppContextAuthorizationsForTypeWithSpecifier Get authorizations for an application type with specifier
 
-Get authorizations for the supplied set of actions for the subject executing the API call.
+Get authorizations for the supplied set of actions for the subject executing the API call. 
 Evaluation is made in the context of the application for the supplied type and specifier.
 
 **INCUBATING**: This endpoint is in "incubating" status, and may change.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param type_ Resource Type
-	@param specifier Resource specifier
-	@return ApiAppContextAuthorizationsForTypeWithSpecifierRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param type_ Resource Type
+ @param specifier Resource specifier
+ @return ApiAppContextAuthorizationsForTypeWithSpecifierRequest
 */
 func (a *AuthorizationAPIService) AppContextAuthorizationsForTypeWithSpecifier(ctx context.Context, type_ string, specifier string) ApiAppContextAuthorizationsForTypeWithSpecifierRequest {
 	return ApiAppContextAuthorizationsForTypeWithSpecifierRequest{
 		ApiService: a,
-		ctx:        ctx,
-		type_:      type_,
-		specifier:  specifier,
+		ctx: ctx,
+		type_: type_,
+		specifier: specifier,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AuthorizationsResponse
+//  @return AuthorizationsResponse
 func (a *AuthorizationAPIService) AppContextAuthorizationsForTypeWithSpecifierExecute(r ApiAppContextAuthorizationsForTypeWithSpecifierRequest) (*AuthorizationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AuthorizationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthorizationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationAPIService.AppContextAuthorizationsForTypeWithSpecifier")
@@ -315,11 +314,11 @@ func (a *AuthorizationAPIService) AppContextAuthorizationsForTypeWithSpecifierEx
 }
 
 type ApiProjectContextAuthorizationsForJobRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AuthorizationAPIService
-	project    string
-	specifier  string
-	actions    *[]string
+	project string
+	specifier string
+	actions *[]string
 }
 
 // Actions to check authorization for
@@ -335,34 +334,33 @@ func (r ApiProjectContextAuthorizationsForJobRequest) Execute() (*Authorizations
 /*
 ProjectContextAuthorizationsForJob Get authorizations for a job
 
-Get authorizations for the supplied set of actions for the subject executing the API call.
+Get authorizations for the supplied set of actions for the subject executing the API call. 
 Evaluation is made in the context of the project for the supplied job.
 
 **INCUBATING**: This endpoint is in "incubating" status, and may change.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param specifier Job Id
-	@return ApiProjectContextAuthorizationsForJobRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param specifier Job Id
+ @return ApiProjectContextAuthorizationsForJobRequest
 */
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForJob(ctx context.Context, project string, specifier string) ApiProjectContextAuthorizationsForJobRequest {
 	return ApiProjectContextAuthorizationsForJobRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		specifier:  specifier,
+		ctx: ctx,
+		project: project,
+		specifier: specifier,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AuthorizationsResponse
+//  @return AuthorizationsResponse
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForJobExecute(r ApiProjectContextAuthorizationsForJobRequest) (*AuthorizationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AuthorizationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthorizationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationAPIService.ProjectContextAuthorizationsForJob")
@@ -461,11 +459,11 @@ func (a *AuthorizationAPIService) ProjectContextAuthorizationsForJobExecute(r Ap
 }
 
 type ApiProjectContextAuthorizationsForResourceKindRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AuthorizationAPIService
-	project    string
-	kind       string
-	actions    *[]string
+	project string
+	kind string
+	actions *[]string
 }
 
 // Actions to check authorization for
@@ -481,34 +479,33 @@ func (r ApiProjectContextAuthorizationsForResourceKindRequest) Execute() (*Autho
 /*
 ProjectContextAuthorizationsForResourceKind Get authorizations for a project resource kind
 
-Get authorizations for the supplied set of actions for the subject executing the API call.
+Get authorizations for the supplied set of actions for the subject executing the API call. 
 Evaluation is made in the context of the project for the supplied resource kind.
 
 **INCUBATING**: This endpoint is in "incubating" status, and may change.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param kind Resource Kind
-	@return ApiProjectContextAuthorizationsForResourceKindRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param kind Resource Kind
+ @return ApiProjectContextAuthorizationsForResourceKindRequest
 */
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForResourceKind(ctx context.Context, project string, kind string) ApiProjectContextAuthorizationsForResourceKindRequest {
 	return ApiProjectContextAuthorizationsForResourceKindRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		kind:       kind,
+		ctx: ctx,
+		project: project,
+		kind: kind,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AuthorizationsResponse
+//  @return AuthorizationsResponse
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForResourceKindExecute(r ApiProjectContextAuthorizationsForResourceKindRequest) (*AuthorizationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AuthorizationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthorizationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationAPIService.ProjectContextAuthorizationsForResourceKind")
@@ -607,12 +604,12 @@ func (a *AuthorizationAPIService) ProjectContextAuthorizationsForResourceKindExe
 }
 
 type ApiProjectContextAuthorizationsForTypeWithSpecifierRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AuthorizationAPIService
-	project    string
-	type_      string
-	specifier  string
-	actions    *[]string
+	project string
+	type_ string
+	specifier string
+	actions *[]string
 }
 
 // Actions to check authorization for
@@ -628,36 +625,35 @@ func (r ApiProjectContextAuthorizationsForTypeWithSpecifierRequest) Execute() (*
 /*
 ProjectContextAuthorizationsForTypeWithSpecifier Get authorizations for a type with specifier
 
-Get authorizations for the supplied set of actions for the subject executing the API call.
+Get authorizations for the supplied set of actions for the subject executing the API call. 
 Evaluation is made in the context of the project for the type with a specifier.
 
 **INCUBATING**: This endpoint is in "incubating" status, and may change.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param type_ Resource Type
-	@param specifier Resource specifier
-	@return ApiProjectContextAuthorizationsForTypeWithSpecifierRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param type_ Resource Type
+ @param specifier Resource specifier
+ @return ApiProjectContextAuthorizationsForTypeWithSpecifierRequest
 */
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForTypeWithSpecifier(ctx context.Context, project string, type_ string, specifier string) ApiProjectContextAuthorizationsForTypeWithSpecifierRequest {
 	return ApiProjectContextAuthorizationsForTypeWithSpecifierRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		type_:      type_,
-		specifier:  specifier,
+		ctx: ctx,
+		project: project,
+		type_: type_,
+		specifier: specifier,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AuthorizationsResponse
+//  @return AuthorizationsResponse
 func (a *AuthorizationAPIService) ProjectContextAuthorizationsForTypeWithSpecifierExecute(r ApiProjectContextAuthorizationsForTypeWithSpecifierRequest) (*AuthorizationsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AuthorizationsResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthorizationsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorizationAPIService.ProjectContextAuthorizationsForTypeWithSpecifier")

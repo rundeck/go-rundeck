@@ -19,10 +19,10 @@ var _ MappedNullable = &ConditionEvaluation{}
 
 // ConditionEvaluation struct for ConditionEvaluation
 type ConditionEvaluation struct {
-	Satisfied *bool                  `json:"satisfied,omitempty"`
-	Value     map[string]interface{} `json:"value,omitempty"`
-	Condition *Condition             `json:"condition,omitempty"`
-	Error     map[string]interface{} `json:"error,omitempty"`
+	Satisfied *bool `json:"satisfied,omitempty"`
+	Value map[string]interface{} `json:"value,omitempty"`
+	Condition *Condition `json:"condition,omitempty"`
+	Error map[string]interface{} `json:"error,omitempty"`
 }
 
 // NewConditionEvaluation instantiates a new ConditionEvaluation object
@@ -171,7 +171,7 @@ func (o *ConditionEvaluation) SetError(v map[string]interface{}) {
 }
 
 func (o ConditionEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableConditionEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

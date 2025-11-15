@@ -18,7 +18,7 @@ import (
 
 // ApiTokenCreateRequest - struct for ApiTokenCreateRequest
 type ApiTokenCreateRequest struct {
-	CreateToken            *CreateToken
+	CreateToken *CreateToken
 	CreateTokenStringRoles *CreateTokenStringRoles
 }
 
@@ -35,6 +35,7 @@ func CreateTokenStringRolesAsApiTokenCreateRequest(v *CreateTokenStringRoles) Ap
 		CreateTokenStringRoles: v,
 	}
 }
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ApiTokenCreateRequest) UnmarshalJSON(data []byte) error {
@@ -101,7 +102,7 @@ func (src ApiTokenCreateRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ApiTokenCreateRequest) GetActualInstance() interface{} {
+func (obj *ApiTokenCreateRequest) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
@@ -118,7 +119,7 @@ func (obj *ApiTokenCreateRequest) GetActualInstance() interface{} {
 }
 
 // Get the actual instance value
-func (obj ApiTokenCreateRequest) GetActualInstanceValue() interface{} {
+func (obj ApiTokenCreateRequest) GetActualInstanceValue() (interface{}) {
 	if obj.CreateToken != nil {
 		return *obj.CreateToken
 	}
@@ -166,3 +167,5 @@ func (v *NullableApiTokenCreateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

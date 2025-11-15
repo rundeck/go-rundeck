@@ -19,31 +19,31 @@ var _ MappedNullable = &ProjectArchiveParams{}
 
 // ProjectArchiveParams struct for ProjectArchiveParams
 type ProjectArchiveParams struct {
-	Project            *string                       `json:"project,omitempty"`
-	JobUuidOption      *string                       `json:"jobUuidOption,omitempty"`
-	ImportExecutions   *bool                         `json:"importExecutions,omitempty"`
-	ImportConfig       *bool                         `json:"importConfig,omitempty"`
-	ImportNodesSources *bool                         `json:"importNodesSources,omitempty"`
-	ImportACL          *bool                         `json:"importACL,omitempty"`
-	ImportScm          *bool                         `json:"importScm,omitempty"`
-	ValidateJobref     *bool                         `json:"validateJobref,omitempty"`
-	ExportAll          *bool                         `json:"exportAll,omitempty"`
-	ExportJobs         *bool                         `json:"exportJobs,omitempty"`
-	ExportExecutions   *bool                         `json:"exportExecutions,omitempty"`
-	ExportConfigs      *bool                         `json:"exportConfigs,omitempty"`
-	ExportReadmes      *bool                         `json:"exportReadmes,omitempty"`
-	ExportAcls         *bool                         `json:"exportAcls,omitempty"`
-	ExportScm          *bool                         `json:"exportScm,omitempty"`
-	ImportComponents   *map[string]bool              `json:"importComponents,omitempty"`
-	ImportOpts         *map[string]map[string]string `json:"importOpts,omitempty"`
-	ExportComponents   *map[string]bool              `json:"exportComponents,omitempty"`
-	ExportOpts         *map[string]map[string]string `json:"exportOpts,omitempty"`
-	StripJobRef        *string                       `json:"stripJobRef,omitempty"`
-	Targetproject      *string                       `json:"targetproject,omitempty"`
-	Apitoken           *string                       `json:"apitoken,omitempty"`
-	Url                *string                       `json:"url,omitempty"`
-	Preserveuuid       *bool                         `json:"preserveuuid,omitempty"`
-	AsyncImport        *bool                         `json:"asyncImport,omitempty"`
+	Project *string `json:"project,omitempty"`
+	JobUuidOption *string `json:"jobUuidOption,omitempty"`
+	ImportExecutions *bool `json:"importExecutions,omitempty"`
+	ImportConfig *bool `json:"importConfig,omitempty"`
+	ImportNodesSources *bool `json:"importNodesSources,omitempty"`
+	ImportACL *bool `json:"importACL,omitempty"`
+	ImportScm *bool `json:"importScm,omitempty"`
+	ValidateJobref *bool `json:"validateJobref,omitempty"`
+	ExportAll *bool `json:"exportAll,omitempty"`
+	ExportJobs *bool `json:"exportJobs,omitempty"`
+	ExportExecutions *bool `json:"exportExecutions,omitempty"`
+	ExportConfigs *bool `json:"exportConfigs,omitempty"`
+	ExportReadmes *bool `json:"exportReadmes,omitempty"`
+	ExportAcls *bool `json:"exportAcls,omitempty"`
+	ExportScm *bool `json:"exportScm,omitempty"`
+	ImportComponents *map[string]bool `json:"importComponents,omitempty"`
+	ImportOpts *map[string]map[string]string `json:"importOpts,omitempty"`
+	ExportComponents *map[string]bool `json:"exportComponents,omitempty"`
+	ExportOpts *map[string]map[string]string `json:"exportOpts,omitempty"`
+	StripJobRef *string `json:"stripJobRef,omitempty"`
+	Targetproject *string `json:"targetproject,omitempty"`
+	Apitoken *string `json:"apitoken,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Preserveuuid *bool `json:"preserveuuid,omitempty"`
+	AsyncImport *bool `json:"asyncImport,omitempty"`
 }
 
 // NewProjectArchiveParams instantiates a new ProjectArchiveParams object
@@ -864,7 +864,7 @@ func (o *ProjectArchiveParams) SetAsyncImport(v bool) {
 }
 
 func (o ProjectArchiveParams) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -986,3 +986,5 @@ func (v *NullableProjectArchiveParams) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

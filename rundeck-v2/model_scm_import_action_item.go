@@ -20,8 +20,8 @@ var _ MappedNullable = &ScmImportActionItem{}
 // ScmImportActionItem struct for ScmImportActionItem
 type ScmImportActionItem struct {
 	// ID of the repo item, e.g. a file path
-	ItemId *string       `json:"itemId,omitempty"`
-	Job    *JobReference `json:"job,omitempty"`
+	ItemId *string `json:"itemId,omitempty"`
+	Job *JobReference `json:"job,omitempty"`
 	// true if there is an associated `job`
 	Tracked *bool `json:"tracked,omitempty"`
 	// whether the job was deleted on remote and requires to be deleted
@@ -208,7 +208,7 @@ func (o *ScmImportActionItem) SetStatus(v string) {
 }
 
 func (o ScmImportActionItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -270,3 +270,5 @@ func (v *NullableScmImportActionItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

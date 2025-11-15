@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_ConfigurationAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ConfigurationAPI.ConfigDelete(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigGet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.ConfigGet(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigGetCategories", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.ConfigGetCategories(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.ConfigList(context.Background()).Execute()
 
@@ -69,7 +69,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigMetaList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.ConfigMetaList(context.Background()).Execute()
 
@@ -80,7 +80,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService ConfigSave", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.ConfigSave(context.Background()).Execute()
 
@@ -91,7 +91,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService Refresh", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.Refresh(context.Background()).Execute()
 
@@ -102,7 +102,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService Restart", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.Restart(context.Background()).Execute()
 
@@ -111,9 +111,22 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConfigurationAPIService SaveProjectPlugins", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		httpRes, err := apiClient.ConfigurationAPI.SaveProjectPlugins(context.Background(), project).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConfigurationAPIService StorageConfigList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.StorageConfigList(context.Background()).Execute()
 
@@ -124,7 +137,7 @@ func Test_openapi_ConfigurationAPIService(t *testing.T) {
 
 	t.Run("Test ConfigurationAPIService StorageConfigSave", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ConfigurationAPI.StorageConfigSave(context.Background()).Execute()
 

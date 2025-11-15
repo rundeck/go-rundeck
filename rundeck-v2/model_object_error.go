@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,11 +21,11 @@ var _ MappedNullable = &ObjectError{}
 
 // ObjectError struct for ObjectError
 type ObjectError struct {
-	Code           *string                  `json:"code,omitempty"`
-	Codes          []string                 `json:"codes,omitempty"`
-	DefaultMessage *string                  `json:"defaultMessage,omitempty"`
-	Arguments      []map[string]interface{} `json:"arguments,omitempty"`
-	ObjectName     string                   `json:"objectName"`
+	Arguments []map[string]interface{} `json:"arguments"`
+	Code *string `json:"code,omitempty"`
+	DefaultMessage string `json:"defaultMessage"`
+	Codes []string `json:"codes"`
+	ObjectName string `json:"objectName"`
 }
 
 type _ObjectError ObjectError
@@ -34,8 +34,11 @@ type _ObjectError ObjectError
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectError(objectName string) *ObjectError {
+func NewObjectError(arguments []map[string]interface{}, defaultMessage string, codes []string, objectName string) *ObjectError {
 	this := ObjectError{}
+	this.Arguments = arguments
+	this.DefaultMessage = defaultMessage
+	this.Codes = codes
 	this.ObjectName = objectName
 	return &this
 }
@@ -46,6 +49,30 @@ func NewObjectError(objectName string) *ObjectError {
 func NewObjectErrorWithDefaults() *ObjectError {
 	this := ObjectError{}
 	return &this
+}
+
+// GetArguments returns the Arguments field value
+func (o *ObjectError) GetArguments() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.Arguments
+}
+
+// GetArgumentsOk returns a tuple with the Arguments field value
+// and a boolean to check if the value has been set.
+func (o *ObjectError) GetArgumentsOk() ([]map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Arguments, true
+}
+
+// SetArguments sets field value
+func (o *ObjectError) SetArguments(v []map[string]interface{}) {
+	o.Arguments = v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -80,100 +107,52 @@ func (o *ObjectError) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetCodes returns the Codes field value if set, zero value otherwise.
+// GetDefaultMessage returns the DefaultMessage field value
+func (o *ObjectError) GetDefaultMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DefaultMessage
+}
+
+// GetDefaultMessageOk returns a tuple with the DefaultMessage field value
+// and a boolean to check if the value has been set.
+func (o *ObjectError) GetDefaultMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DefaultMessage, true
+}
+
+// SetDefaultMessage sets field value
+func (o *ObjectError) SetDefaultMessage(v string) {
+	o.DefaultMessage = v
+}
+
+// GetCodes returns the Codes field value
 func (o *ObjectError) GetCodes() []string {
-	if o == nil || IsNil(o.Codes) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Codes
 }
 
-// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
+// GetCodesOk returns a tuple with the Codes field value
 // and a boolean to check if the value has been set.
 func (o *ObjectError) GetCodesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Codes) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Codes, true
 }
 
-// HasCodes returns a boolean if a field has been set.
-func (o *ObjectError) HasCodes() bool {
-	if o != nil && !IsNil(o.Codes) {
-		return true
-	}
-
-	return false
-}
-
-// SetCodes gets a reference to the given []string and assigns it to the Codes field.
+// SetCodes sets field value
 func (o *ObjectError) SetCodes(v []string) {
 	o.Codes = v
-}
-
-// GetDefaultMessage returns the DefaultMessage field value if set, zero value otherwise.
-func (o *ObjectError) GetDefaultMessage() string {
-	if o == nil || IsNil(o.DefaultMessage) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultMessage
-}
-
-// GetDefaultMessageOk returns a tuple with the DefaultMessage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectError) GetDefaultMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultMessage) {
-		return nil, false
-	}
-	return o.DefaultMessage, true
-}
-
-// HasDefaultMessage returns a boolean if a field has been set.
-func (o *ObjectError) HasDefaultMessage() bool {
-	if o != nil && !IsNil(o.DefaultMessage) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultMessage gets a reference to the given string and assigns it to the DefaultMessage field.
-func (o *ObjectError) SetDefaultMessage(v string) {
-	o.DefaultMessage = &v
-}
-
-// GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *ObjectError) GetArguments() []map[string]interface{} {
-	if o == nil || IsNil(o.Arguments) {
-		var ret []map[string]interface{}
-		return ret
-	}
-	return o.Arguments
-}
-
-// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectError) GetArgumentsOk() ([]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Arguments) {
-		return nil, false
-	}
-	return o.Arguments, true
-}
-
-// HasArguments returns a boolean if a field has been set.
-func (o *ObjectError) HasArguments() bool {
-	if o != nil && !IsNil(o.Arguments) {
-		return true
-	}
-
-	return false
-}
-
-// SetArguments gets a reference to the given []map[string]interface{} and assigns it to the Arguments field.
-func (o *ObjectError) SetArguments(v []map[string]interface{}) {
-	o.Arguments = v
 }
 
 // GetObjectName returns the ObjectName field value
@@ -201,7 +180,7 @@ func (o *ObjectError) SetObjectName(v string) {
 }
 
 func (o ObjectError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -210,18 +189,12 @@ func (o ObjectError) MarshalJSON() ([]byte, error) {
 
 func (o ObjectError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["arguments"] = o.Arguments
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Codes) {
-		toSerialize["codes"] = o.Codes
-	}
-	if !IsNil(o.DefaultMessage) {
-		toSerialize["defaultMessage"] = o.DefaultMessage
-	}
-	if !IsNil(o.Arguments) {
-		toSerialize["arguments"] = o.Arguments
-	}
+	toSerialize["defaultMessage"] = o.DefaultMessage
+	toSerialize["codes"] = o.Codes
 	toSerialize["objectName"] = o.ObjectName
 	return toSerialize, nil
 }
@@ -231,6 +204,9 @@ func (o *ObjectError) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"arguments",
+		"defaultMessage",
+		"codes",
 		"objectName",
 	}
 
@@ -239,10 +215,10 @@ func (o *ObjectError) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -298,3 +274,5 @@ func (v *NullableObjectError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

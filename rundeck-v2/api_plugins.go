@@ -18,11 +18,12 @@ import (
 	"net/url"
 )
 
+
 // PluginsAPIService PluginsAPI service
 type PluginsAPIService service
 
 type ApiListPluginsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PluginsAPIService
 }
 
@@ -37,25 +38,25 @@ Get the list of installed Plugins.
 
 Since: v33
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListPluginsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListPluginsRequest
 */
 func (a *PluginsAPIService) ListPlugins(ctx context.Context) ApiListPluginsRequest {
 	return ApiListPluginsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ApiPluginListProvider
+//  @return []ApiPluginListProvider
 func (a *PluginsAPIService) ListPluginsExecute(r ApiListPluginsRequest) ([]ApiPluginListProvider, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ApiPluginListProvider
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ApiPluginListProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PluginsAPIService.ListPlugins")

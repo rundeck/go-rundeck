@@ -20,27 +20,27 @@ var _ MappedNullable = &RunnerInfo{}
 
 // RunnerInfo struct for RunnerInfo
 type RunnerInfo struct {
-	Id                  *string                    `json:"id,omitempty"`
-	Name                *string                    `json:"name,omitempty"`
-	Description         *string                    `json:"description,omitempty"`
-	Status              *string                    `json:"status,omitempty"`
-	Version             *string                    `json:"version,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Version *string `json:"version,omitempty"`
 	ProjectAssociations *RunnerProjectAssociations `json:"projectAssociations,omitempty"`
-	DateCreated         *time.Time                 `json:"dateCreated,omitempty"`
-	LastUpdated         *time.Time                 `json:"lastUpdated,omitempty"`
-	LastCheckin         *string                    `json:"lastCheckin,omitempty"`
-	LastCheckinAlert    *bool                      `json:"lastCheckinAlert,omitempty"`
-	RunningOperations   *int32                     `json:"runningOperations,omitempty"`
-	Uptime              *int64                     `json:"uptime,omitempty"`
-	TagNames            []string                   `json:"tagNames,omitempty"`
-	RunnerAsNodeEnabled *bool                      `json:"runnerAsNodeEnabled,omitempty"`
-	RemoteNodeDispatch  *bool                      `json:"remoteNodeDispatch,omitempty"`
-	RunnerNodeFilter    *string                    `json:"runnerNodeFilter,omitempty"`
-	Hostname            *string                    `json:"hostname,omitempty"`
-	OsFamily            *string                    `json:"osFamily,omitempty"`
-	ReplicaType         *RunnerReplicaType         `json:"replicaType,omitempty"`
-	InstallationType    *RunnerInstallationType    `json:"installationType,omitempty"`
-	ReplicaValidation   *ReplicaValidationResult   `json:"replicaValidation,omitempty"`
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
+	LastCheckin *string `json:"lastCheckin,omitempty"`
+	LastCheckinAlert *bool `json:"lastCheckinAlert,omitempty"`
+	RunningOperations *int32 `json:"runningOperations,omitempty"`
+	Uptime *int64 `json:"uptime,omitempty"`
+	TagNames []string `json:"tagNames,omitempty"`
+	RunnerAsNodeEnabled *bool `json:"runnerAsNodeEnabled,omitempty"`
+	RemoteNodeDispatch *bool `json:"remoteNodeDispatch,omitempty"`
+	RunnerNodeFilter *string `json:"runnerNodeFilter,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
+	OsFamily *string `json:"osFamily,omitempty"`
+	ReplicaType *RunnerReplicaType `json:"replicaType,omitempty"`
+	InstallationType *RunnerInstallationType `json:"installationType,omitempty"`
+	ReplicaValidation *ReplicaValidationResult `json:"replicaValidation,omitempty"`
 }
 
 // NewRunnerInfo instantiates a new RunnerInfo object
@@ -733,7 +733,7 @@ func (o *RunnerInfo) SetReplicaValidation(v ReplicaValidationResult) {
 }
 
 func (o RunnerInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -843,3 +843,5 @@ func (v *NullableRunnerInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

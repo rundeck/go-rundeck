@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Arguments** | **[]map[string]interface{}** |  | 
 **Code** | Pointer to **string** |  | [optional] 
-**Codes** | Pointer to **[]string** |  | [optional] 
-**DefaultMessage** | Pointer to **string** |  | [optional] 
-**Arguments** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**DefaultMessage** | **string** |  | 
+**Codes** | **[]string** |  | 
 **ObjectName** | **string** |  | 
 
 ## Methods
 
 ### NewObjectError
 
-`func NewObjectError(objectName string, ) *ObjectError`
+`func NewObjectError(arguments []map[string]interface{}, defaultMessage string, codes []string, objectName string, ) *ObjectError`
 
 NewObjectError instantiates a new ObjectError object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +28,26 @@ will change when the set of required properties is changed
 NewObjectErrorWithDefaults instantiates a new ObjectError object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetArguments
+
+`func (o *ObjectError) GetArguments() []map[string]interface{}`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *ObjectError) GetArgumentsOk() (*[]map[string]interface{}, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *ObjectError) SetArguments(v []map[string]interface{})`
+
+SetArguments sets Arguments field to given value.
+
 
 ### GetCode
 
@@ -54,31 +74,6 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
-### GetCodes
-
-`func (o *ObjectError) GetCodes() []string`
-
-GetCodes returns the Codes field if non-nil, zero value otherwise.
-
-### GetCodesOk
-
-`func (o *ObjectError) GetCodesOk() (*[]string, bool)`
-
-GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCodes
-
-`func (o *ObjectError) SetCodes(v []string)`
-
-SetCodes sets Codes field to given value.
-
-### HasCodes
-
-`func (o *ObjectError) HasCodes() bool`
-
-HasCodes returns a boolean if a field has been set.
-
 ### GetDefaultMessage
 
 `func (o *ObjectError) GetDefaultMessage() string`
@@ -98,36 +93,26 @@ and a boolean to check if the value has been set.
 
 SetDefaultMessage sets DefaultMessage field to given value.
 
-### HasDefaultMessage
 
-`func (o *ObjectError) HasDefaultMessage() bool`
+### GetCodes
 
-HasDefaultMessage returns a boolean if a field has been set.
+`func (o *ObjectError) GetCodes() []string`
 
-### GetArguments
+GetCodes returns the Codes field if non-nil, zero value otherwise.
 
-`func (o *ObjectError) GetArguments() []map[string]interface{}`
+### GetCodesOk
 
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
+`func (o *ObjectError) GetCodesOk() (*[]string, bool)`
 
-### GetArgumentsOk
-
-`func (o *ObjectError) GetArgumentsOk() (*[]map[string]interface{}, bool)`
-
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetArguments
+### SetCodes
 
-`func (o *ObjectError) SetArguments(v []map[string]interface{})`
+`func (o *ObjectError) SetCodes(v []string)`
 
-SetArguments sets Arguments field to given value.
+SetCodes sets Codes field to given value.
 
-### HasArguments
-
-`func (o *ObjectError) HasArguments() bool`
-
-HasArguments returns a boolean if a field has been set.
 
 ### GetObjectName
 

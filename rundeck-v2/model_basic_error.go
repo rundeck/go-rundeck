@@ -19,7 +19,7 @@ var _ MappedNullable = &BasicError{}
 
 // BasicError struct for BasicError
 type BasicError struct {
-	Error     *string `json:"error,omitempty"`
+	Error *string `json:"error,omitempty"`
 	ErrorCode *string `json:"errorCode,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *BasicError) SetErrorCode(v string) {
 }
 
 func (o BasicError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableBasicError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // RunnerAPIService RunnerAPI service
 type RunnerAPIService service
 
 type ApiCheckPingRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	token      string
+	token string
 }
 
 func (r ApiCheckPingRequest) Execute() (*PingResponse, *http.Response, error) {
@@ -37,27 +38,26 @@ CheckPing Check Runner Ping
 
 Check a ping response. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param token Ping Token
-	@return ApiCheckPingRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param token Ping Token
+ @return ApiCheckPingRequest
 */
 func (a *RunnerAPIService) CheckPing(ctx context.Context, token string) ApiCheckPingRequest {
 	return ApiCheckPingRequest{
 		ApiService: a,
-		ctx:        ctx,
-		token:      token,
+		ctx: ctx,
+		token: token,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PingResponse
+//  @return PingResponse
 func (a *RunnerAPIService) CheckPingExecute(r ApiCheckPingRequest) (*PingResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PingResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.CheckPing")
@@ -141,9 +141,9 @@ func (a *RunnerAPIService) CheckPingExecute(r ApiCheckPingRequest) (*PingRespons
 }
 
 type ApiCreateNoEphemeralReplicaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
+	runnerId string
 }
 
 func (r ApiCreateNoEphemeralReplicaRequest) Execute() (*NewRunnerReplicaResponse, *http.Response, error) {
@@ -155,27 +155,26 @@ CreateNoEphemeralReplica Create a Runner Replica in no-ephemeral mode
 
 Create a new Runner Replica. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId
-	@return ApiCreateNoEphemeralReplicaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId
+ @return ApiCreateNoEphemeralReplicaRequest
 */
 func (a *RunnerAPIService) CreateNoEphemeralReplica(ctx context.Context, runnerId string) ApiCreateNoEphemeralReplicaRequest {
 	return ApiCreateNoEphemeralReplicaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
+		ctx: ctx,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NewRunnerReplicaResponse
+//  @return NewRunnerReplicaResponse
 func (a *RunnerAPIService) CreateNoEphemeralReplicaExecute(r ApiCreateNoEphemeralReplicaRequest) (*NewRunnerReplicaResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NewRunnerReplicaResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NewRunnerReplicaResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.CreateNoEphemeralReplica")
@@ -250,8 +249,8 @@ func (a *RunnerAPIService) CreateNoEphemeralReplicaExecute(r ApiCreateNoEphemera
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -269,10 +268,10 @@ func (a *RunnerAPIService) CreateNoEphemeralReplicaExecute(r ApiCreateNoEphemera
 }
 
 type ApiCreateProjectNoEphemeralReplicaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	runnerId   string
+	project string
+	runnerId string
 }
 
 func (r ApiCreateProjectNoEphemeralReplicaRequest) Execute() (*NewRunnerReplicaResponse, *http.Response, error) {
@@ -284,29 +283,28 @@ CreateProjectNoEphemeralReplica Create a Runner Replica without ephemeral mode a
 
 Create a new Runner Replica without ephemeral mode at project context. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@return ApiCreateProjectNoEphemeralReplicaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @return ApiCreateProjectNoEphemeralReplicaRequest
 */
 func (a *RunnerAPIService) CreateProjectNoEphemeralReplica(ctx context.Context, project string, runnerId string) ApiCreateProjectNoEphemeralReplicaRequest {
 	return ApiCreateProjectNoEphemeralReplicaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NewRunnerReplicaResponse
+//  @return NewRunnerReplicaResponse
 func (a *RunnerAPIService) CreateProjectNoEphemeralReplicaExecute(r ApiCreateProjectNoEphemeralReplicaRequest) (*NewRunnerReplicaResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NewRunnerReplicaResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NewRunnerReplicaResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.CreateProjectNoEphemeralReplica")
@@ -382,8 +380,8 @@ func (a *RunnerAPIService) CreateProjectNoEphemeralReplicaExecute(r ApiCreatePro
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -401,9 +399,9 @@ func (a *RunnerAPIService) CreateProjectNoEphemeralReplicaExecute(r ApiCreatePro
 }
 
 type ApiCreateProjectRunnerRequest struct {
-	ctx                        context.Context
-	ApiService                 *RunnerAPIService
-	project                    string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	project string
 	createProjectRunnerRequest *CreateProjectRunnerRequest
 }
 
@@ -421,27 +419,26 @@ CreateProjectRunner Create a Runner at Project Context
 
 Create a new Runner at project context. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@return ApiCreateProjectRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @return ApiCreateProjectRunnerRequest
 */
 func (a *RunnerAPIService) CreateProjectRunner(ctx context.Context, project string) ApiCreateProjectRunnerRequest {
 	return ApiCreateProjectRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NewRunnerResponse
+//  @return NewRunnerResponse
 func (a *RunnerAPIService) CreateProjectRunnerExecute(r ApiCreateProjectRunnerRequest) (*NewRunnerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NewRunnerResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NewRunnerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.CreateProjectRunner")
@@ -518,8 +515,8 @@ func (a *RunnerAPIService) CreateProjectRunnerExecute(r ApiCreateProjectRunnerRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -537,8 +534,8 @@ func (a *RunnerAPIService) CreateProjectRunnerExecute(r ApiCreateProjectRunnerRe
 }
 
 type ApiCreateRunnerRequest struct {
-	ctx                        context.Context
-	ApiService                 *RunnerAPIService
+	ctx context.Context
+	ApiService *RunnerAPIService
 	createProjectRunnerRequest *CreateProjectRunnerRequest
 }
 
@@ -556,25 +553,24 @@ CreateRunner Create a Runner
 
 Create a new Runner. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCreateRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateRunnerRequest
 */
 func (a *RunnerAPIService) CreateRunner(ctx context.Context) ApiCreateRunnerRequest {
 	return ApiCreateRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return NewRunnerResponse
+//  @return NewRunnerResponse
 func (a *RunnerAPIService) CreateRunnerExecute(r ApiCreateRunnerRequest) (*NewRunnerResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *NewRunnerResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *NewRunnerResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.CreateRunner")
@@ -650,8 +646,8 @@ func (a *RunnerAPIService) CreateRunnerExecute(r ApiCreateRunnerRequest) (*NewRu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -669,10 +665,10 @@ func (a *RunnerAPIService) CreateRunnerExecute(r ApiCreateRunnerRequest) (*NewRu
 }
 
 type ApiDeleteProjectRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	runnerId   string
+	project string
+	runnerId string
 }
 
 func (r ApiDeleteProjectRunnerRequest) Execute() (*http.Response, error) {
@@ -684,26 +680,26 @@ DeleteProjectRunner Delete Runner
 
 Delete the specified runner. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@return ApiDeleteProjectRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @return ApiDeleteProjectRunnerRequest
 */
 func (a *RunnerAPIService) DeleteProjectRunner(ctx context.Context, project string, runnerId string) ApiDeleteProjectRunnerRequest {
 	return ApiDeleteProjectRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) DeleteProjectRunnerExecute(r ApiDeleteProjectRunnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.DeleteProjectRunner")
@@ -779,11 +775,11 @@ func (a *RunnerAPIService) DeleteProjectRunnerExecute(r ApiDeleteProjectRunnerRe
 }
 
 type ApiDeleteProjectRunnerReplicaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	runnerId   string
-	replicaId  string
+	project string
+	runnerId string
+	replicaId string
 }
 
 func (r ApiDeleteProjectRunnerReplicaRequest) Execute() (*http.Response, error) {
@@ -795,28 +791,28 @@ DeleteProjectRunnerReplica Delete Runner Replica at Project Context
 
 Delete the specified Runner Replica without ephemeral mode. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@param replicaId
-	@return ApiDeleteProjectRunnerReplicaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @param replicaId
+ @return ApiDeleteProjectRunnerReplicaRequest
 */
 func (a *RunnerAPIService) DeleteProjectRunnerReplica(ctx context.Context, project string, runnerId string, replicaId string) ApiDeleteProjectRunnerReplicaRequest {
 	return ApiDeleteProjectRunnerReplicaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
-		replicaId:  replicaId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
+		replicaId: replicaId,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) DeleteProjectRunnerReplicaExecute(r ApiDeleteProjectRunnerReplicaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.DeleteProjectRunnerReplica")
@@ -893,9 +889,9 @@ func (a *RunnerAPIService) DeleteProjectRunnerReplicaExecute(r ApiDeleteProjectR
 }
 
 type ApiDeleteRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
+	runnerId string
 }
 
 func (r ApiDeleteRunnerRequest) Execute() (*http.Response, error) {
@@ -907,24 +903,24 @@ DeleteRunner Delete Runner
 
 Delete the specified runner. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId
-	@return ApiDeleteRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId
+ @return ApiDeleteRunnerRequest
 */
 func (a *RunnerAPIService) DeleteRunner(ctx context.Context, runnerId string) ApiDeleteRunnerRequest {
 	return ApiDeleteRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
+		ctx: ctx,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) DeleteRunnerExecute(r ApiDeleteRunnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.DeleteRunner")
@@ -999,10 +995,10 @@ func (a *RunnerAPIService) DeleteRunnerExecute(r ApiDeleteRunnerRequest) (*http.
 }
 
 type ApiDeleteRunnerReplicaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
-	replicaId  string
+	runnerId string
+	replicaId string
 }
 
 func (r ApiDeleteRunnerReplicaRequest) Execute() (*http.Response, error) {
@@ -1014,26 +1010,26 @@ DeleteRunnerReplica Delete Runner Replica
 
 Delete the specified runner replica without ephemeral mode. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId
-	@param replicaId
-	@return ApiDeleteRunnerReplicaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId
+ @param replicaId
+ @return ApiDeleteRunnerReplicaRequest
 */
 func (a *RunnerAPIService) DeleteRunnerReplica(ctx context.Context, runnerId string, replicaId string) ApiDeleteRunnerReplicaRequest {
 	return ApiDeleteRunnerReplicaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
-		replicaId:  replicaId,
+		ctx: ctx,
+		runnerId: runnerId,
+		replicaId: replicaId,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) DeleteRunnerReplicaExecute(r ApiDeleteRunnerReplicaRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.DeleteRunnerReplica")
@@ -1109,9 +1105,9 @@ func (a *RunnerAPIService) DeleteRunnerReplicaExecute(r ApiDeleteRunnerReplicaRe
 }
 
 type ApiDownloadRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	token      string
+	token string
 }
 
 func (r ApiDownloadRunnerRequest) Execute() (*http.Response, error) {
@@ -1123,24 +1119,24 @@ DownloadRunner Download Runner
 
 Download runner Jar. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param token Download Token
-	@return ApiDownloadRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param token Download Token
+ @return ApiDownloadRunnerRequest
 */
 func (a *RunnerAPIService) DownloadRunner(ctx context.Context, token string) ApiDownloadRunnerRequest {
 	return ApiDownloadRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		token:      token,
+		ctx: ctx,
+		token: token,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) DownloadRunnerExecute(r ApiDownloadRunnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.DownloadRunner")
@@ -1215,11 +1211,11 @@ func (a *RunnerAPIService) DownloadRunnerExecute(r ApiDownloadRunnerRequest) (*h
 }
 
 type ApiGetRunnerKeyRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	id         string
-	path       *string
-	refresh    *bool
+	id string
+	path *string
+	refresh *bool
 }
 
 // key path
@@ -1243,27 +1239,26 @@ GetRunnerKey Get Runner Storage Keys
 
 List all keys
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id runner id
-	@return ApiGetRunnerKeyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id runner id
+ @return ApiGetRunnerKeyRequest
 */
 func (a *RunnerAPIService) GetRunnerKey(ctx context.Context, id string) ApiGetRunnerKeyRequest {
 	return ApiGetRunnerKeyRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TagCountResponse
+//  @return TagCountResponse
 func (a *RunnerAPIService) GetRunnerKeyExecute(r ApiGetRunnerKeyRequest) (*TagCountResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TagCountResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TagCountResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.GetRunnerKey")
@@ -1353,9 +1348,9 @@ func (a *RunnerAPIService) GetRunnerKeyExecute(r ApiGetRunnerKeyRequest) (*TagCo
 }
 
 type ApiListProjectAssociatedTagsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    *string
+	project *string
 }
 
 // Project Name
@@ -1373,25 +1368,24 @@ ListProjectAssociatedTags List all Tags associated to a project
 
 List all known tags. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListProjectAssociatedTagsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListProjectAssociatedTagsRequest
 */
 func (a *RunnerAPIService) ListProjectAssociatedTags(ctx context.Context) ApiListProjectAssociatedTagsRequest {
 	return ApiListProjectAssociatedTagsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TagCountResponse
+//  @return TagCountResponse
 func (a *RunnerAPIService) ListProjectAssociatedTagsExecute(r ApiListProjectAssociatedTagsRequest) (*TagCountResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TagCountResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TagCountResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListProjectAssociatedTags")
@@ -1478,13 +1472,13 @@ func (a *RunnerAPIService) ListProjectAssociatedTagsExecute(r ApiListProjectAsso
 }
 
 type ApiListProjectRunnersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	tags       *string
-	localOnly  *bool
-	filter     *string
-	status     *string
+	project string
+	tags *string
+	localOnly *bool
+	filter *string
+	status *string
 }
 
 // List of tags
@@ -1520,27 +1514,26 @@ ListProjectRunners List Runners at project context
 
 List available runners associated to the project. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@return ApiListProjectRunnersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @return ApiListProjectRunnersRequest
 */
 func (a *RunnerAPIService) ListProjectRunners(ctx context.Context, project string) ApiListProjectRunnersRequest {
 	return ApiListProjectRunnersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerList
+//  @return RunnerList
 func (a *RunnerAPIService) ListProjectRunnersExecute(r ApiListProjectRunnersRequest) (*RunnerList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListProjectRunners")
@@ -1636,10 +1629,10 @@ func (a *RunnerAPIService) ListProjectRunnersExecute(r ApiListProjectRunnersRequ
 }
 
 type ApiListProjectRunnersReplicasRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	runnerId   string
+	project string
+	runnerId string
 }
 
 func (r ApiListProjectRunnersReplicasRequest) Execute() (*RunnerReplicaList, *http.Response, error) {
@@ -1651,29 +1644,28 @@ ListProjectRunnersReplicas List Runner Replicas at Project Context
 
 List available Runner Replicas. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@return ApiListProjectRunnersReplicasRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @return ApiListProjectRunnersReplicasRequest
 */
 func (a *RunnerAPIService) ListProjectRunnersReplicas(ctx context.Context, project string, runnerId string) ApiListProjectRunnersReplicasRequest {
 	return ApiListProjectRunnersReplicasRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerReplicaList
+//  @return RunnerReplicaList
 func (a *RunnerAPIService) ListProjectRunnersReplicasExecute(r ApiListProjectRunnersReplicasRequest) (*RunnerReplicaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerReplicaList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerReplicaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListProjectRunnersReplicas")
@@ -1758,9 +1750,9 @@ func (a *RunnerAPIService) ListProjectRunnersReplicasExecute(r ApiListProjectRun
 }
 
 type ApiListRunnerTagsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	id         string
+	id string
 }
 
 func (r ApiListRunnerTagsRequest) Execute() ([]string, *http.Response, error) {
@@ -1772,27 +1764,26 @@ ListRunnerTags List Runner Tags
 
 List tags for the Runner. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Runner ID
-	@return ApiListRunnerTagsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Runner ID
+ @return ApiListRunnerTagsRequest
 */
 func (a *RunnerAPIService) ListRunnerTags(ctx context.Context, id string) ApiListRunnerTagsRequest {
 	return ApiListRunnerTagsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *RunnerAPIService) ListRunnerTagsExecute(r ApiListRunnerTagsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListRunnerTags")
@@ -1876,12 +1867,12 @@ func (a *RunnerAPIService) ListRunnerTagsExecute(r ApiListRunnerTagsRequest) ([]
 }
 
 type ApiListRunnersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	tags       *string
-	localOnly  *bool
-	filter     *string
-	status     *string
+	tags *string
+	localOnly *bool
+	filter *string
+	status *string
 }
 
 // List of tags
@@ -1917,25 +1908,24 @@ ListRunners List Runners
 
 List available runners. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListRunnersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListRunnersRequest
 */
 func (a *RunnerAPIService) ListRunners(ctx context.Context) ApiListRunnersRequest {
 	return ApiListRunnersRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerList
+//  @return RunnerList
 func (a *RunnerAPIService) ListRunnersExecute(r ApiListRunnersRequest) (*RunnerList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListRunners")
@@ -2030,9 +2020,9 @@ func (a *RunnerAPIService) ListRunnersExecute(r ApiListRunnersRequest) (*RunnerL
 }
 
 type ApiListRunnersReplicasRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
+	runnerId string
 }
 
 func (r ApiListRunnersReplicasRequest) Execute() (*RunnerReplicaList, *http.Response, error) {
@@ -2044,27 +2034,26 @@ ListRunnersReplicas List Runner Replicas
 
 List available Runner Replicas. Since: V55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId
-	@return ApiListRunnersReplicasRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId
+ @return ApiListRunnersReplicasRequest
 */
 func (a *RunnerAPIService) ListRunnersReplicas(ctx context.Context, runnerId string) ApiListRunnersReplicasRequest {
 	return ApiListRunnersReplicasRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
+		ctx: ctx,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerReplicaList
+//  @return RunnerReplicaList
 func (a *RunnerAPIService) ListRunnersReplicasExecute(r ApiListRunnersReplicasRequest) (*RunnerReplicaList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerReplicaList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerReplicaList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ListRunnersReplicas")
@@ -2148,10 +2137,10 @@ func (a *RunnerAPIService) ListRunnersReplicasExecute(r ApiListRunnersReplicasRe
 }
 
 type ApiPingProjectRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	id         string
-	project    string
+	id string
+	project string
 }
 
 func (r ApiPingProjectRunnerRequest) Execute() (*PingTokenResponse, *http.Response, error) {
@@ -2163,29 +2152,28 @@ PingProjectRunner Ping a Runner at Project Context
 
 Ping the runner at project context. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Runner ID
-	@param project
-	@return ApiPingProjectRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Runner ID
+ @param project
+ @return ApiPingProjectRunnerRequest
 */
 func (a *RunnerAPIService) PingProjectRunner(ctx context.Context, id string, project string) ApiPingProjectRunnerRequest {
 	return ApiPingProjectRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		project:    project,
+		ctx: ctx,
+		id: id,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PingTokenResponse
+//  @return PingTokenResponse
 func (a *RunnerAPIService) PingProjectRunnerExecute(r ApiPingProjectRunnerRequest) (*PingTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PingTokenResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PingTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.PingProjectRunner")
@@ -2270,9 +2258,9 @@ func (a *RunnerAPIService) PingProjectRunnerExecute(r ApiPingProjectRunnerReques
 }
 
 type ApiPingRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	id         string
+	id string
 }
 
 func (r ApiPingRunnerRequest) Execute() (*PingTokenResponse, *http.Response, error) {
@@ -2284,27 +2272,26 @@ PingRunner Ping a Runner
 
 Ping the runner. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Runner ID
-	@return ApiPingRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Runner ID
+ @return ApiPingRunnerRequest
 */
 func (a *RunnerAPIService) PingRunner(ctx context.Context, id string) ApiPingRunnerRequest {
 	return ApiPingRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PingTokenResponse
+//  @return PingTokenResponse
 func (a *RunnerAPIService) PingRunnerExecute(r ApiPingRunnerRequest) (*PingTokenResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PingTokenResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PingTokenResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.PingRunner")
@@ -2388,10 +2375,10 @@ func (a *RunnerAPIService) PingRunnerExecute(r ApiPingRunnerRequest) (*PingToken
 }
 
 type ApiProjectCheckPingRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	token      string
-	project    string
+	token string
+	project string
 }
 
 func (r ApiProjectCheckPingRequest) Execute() (*PingResponse, *http.Response, error) {
@@ -2403,29 +2390,28 @@ ProjectCheckPing Check Runner Ping at Project Context
 
 Check a ping response at project context. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param token Ping Token
-	@param project
-	@return ApiProjectCheckPingRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param token Ping Token
+ @param project
+ @return ApiProjectCheckPingRequest
 */
 func (a *RunnerAPIService) ProjectCheckPing(ctx context.Context, token string, project string) ApiProjectCheckPingRequest {
 	return ApiProjectCheckPingRequest{
 		ApiService: a,
-		ctx:        ctx,
-		token:      token,
-		project:    project,
+		ctx: ctx,
+		token: token,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PingResponse
+//  @return PingResponse
 func (a *RunnerAPIService) ProjectCheckPingExecute(r ApiProjectCheckPingRequest) (*PingResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PingResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PingResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ProjectCheckPing")
@@ -2510,9 +2496,9 @@ func (a *RunnerAPIService) ProjectCheckPingExecute(r ApiProjectCheckPingRequest)
 }
 
 type ApiProjectContextRunnerConfigRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
+	project string
 }
 
 func (r ApiProjectContextRunnerConfigRequest) Execute() (*ProjectContextRunnerConfig, *http.Response, error) {
@@ -2524,27 +2510,26 @@ ProjectContextRunnerConfig Get Project Context Runner Configuration
 
 Get project context runner configuration. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiProjectContextRunnerConfigRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiProjectContextRunnerConfigRequest
 */
 func (a *RunnerAPIService) ProjectContextRunnerConfig(ctx context.Context, project string) ApiProjectContextRunnerConfigRequest {
 	return ApiProjectContextRunnerConfigRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectContextRunnerConfig
+//  @return ProjectContextRunnerConfig
 func (a *RunnerAPIService) ProjectContextRunnerConfigExecute(r ApiProjectContextRunnerConfigRequest) (*ProjectContextRunnerConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectContextRunnerConfig
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectContextRunnerConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ProjectContextRunnerConfig")
@@ -2628,10 +2613,10 @@ func (a *RunnerAPIService) ProjectContextRunnerConfigExecute(r ApiProjectContext
 }
 
 type ApiProjectDownloadRunnerRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	token      string
-	project    string
+	token string
+	project string
 }
 
 func (r ApiProjectDownloadRunnerRequest) Execute() (*http.Response, error) {
@@ -2643,26 +2628,26 @@ ProjectDownloadRunner Download Runner at Project Context
 
 Download runner Jar at project context. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param token Download Token
-	@param project
-	@return ApiProjectDownloadRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param token Download Token
+ @param project
+ @return ApiProjectDownloadRunnerRequest
 */
 func (a *RunnerAPIService) ProjectDownloadRunner(ctx context.Context, token string, project string) ApiProjectDownloadRunnerRequest {
 	return ApiProjectDownloadRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		token:      token,
-		project:    project,
+		ctx: ctx,
+		token: token,
+		project: project,
 	}
 }
 
 // Execute executes the request
 func (a *RunnerAPIService) ProjectDownloadRunnerExecute(r ApiProjectDownloadRunnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ProjectDownloadRunner")
@@ -2738,10 +2723,10 @@ func (a *RunnerAPIService) ProjectDownloadRunnerExecute(r ApiProjectDownloadRunn
 }
 
 type ApiProjectRunnerInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
-	project    string
+	runnerId string
+	project string
 }
 
 func (r ApiProjectRunnerInfoRequest) Execute() (*RunnerInfo, *http.Response, error) {
@@ -2753,29 +2738,28 @@ ProjectRunnerInfo Get Runner Info at Project Context
 
 Get runner information at project context. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId Runner ID
-	@param project
-	@return ApiProjectRunnerInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId Runner ID
+ @param project
+ @return ApiProjectRunnerInfoRequest
 */
 func (a *RunnerAPIService) ProjectRunnerInfo(ctx context.Context, runnerId string, project string) ApiProjectRunnerInfoRequest {
 	return ApiProjectRunnerInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
-		project:    project,
+		ctx: ctx,
+		runnerId: runnerId,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) ProjectRunnerInfoExecute(r ApiProjectRunnerInfoRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ProjectRunnerInfo")
@@ -2860,9 +2844,9 @@ func (a *RunnerAPIService) ProjectRunnerInfoExecute(r ApiProjectRunnerInfoReques
 }
 
 type ApiProjectUiRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
+	project string
 }
 
 func (r ApiProjectUiRequest) Execute() (*UiData, *http.Response, error) {
@@ -2874,27 +2858,26 @@ ProjectUi Get UI info for runner management at project context
 
 Get UI info for runner management at project context. Since: V43
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@return ApiProjectUiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @return ApiProjectUiRequest
 */
 func (a *RunnerAPIService) ProjectUi(ctx context.Context, project string) ApiProjectUiRequest {
 	return ApiProjectUiRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UiData
+//  @return UiData
 func (a *RunnerAPIService) ProjectUiExecute(r ApiProjectUiRequest) (*UiData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UiData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UiData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.ProjectUi")
@@ -2978,10 +2961,10 @@ func (a *RunnerAPIService) ProjectUiExecute(r ApiProjectUiRequest) (*UiData, *ht
 }
 
 type ApiRegenerateProjectRunnerCredsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	project    string
-	id         string
+	project string
+	id string
 }
 
 func (r ApiRegenerateProjectRunnerCredsRequest) Execute() (*RegenRunnerCredResponse, *http.Response, error) {
@@ -2993,29 +2976,28 @@ RegenerateProjectRunnerCreds Regenerate Runner Creds at Project context
 
 Regenerate credentials for the Runner at Project context. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param id
-	@return ApiRegenerateProjectRunnerCredsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param id
+ @return ApiRegenerateProjectRunnerCredsRequest
 */
 func (a *RunnerAPIService) RegenerateProjectRunnerCreds(ctx context.Context, project string, id string) ApiRegenerateProjectRunnerCredsRequest {
 	return ApiRegenerateProjectRunnerCredsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		id:         id,
+		ctx: ctx,
+		project: project,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RegenRunnerCredResponse
+//  @return RegenRunnerCredResponse
 func (a *RunnerAPIService) RegenerateProjectRunnerCredsExecute(r ApiRegenerateProjectRunnerCredsRequest) (*RegenRunnerCredResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RegenRunnerCredResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RegenRunnerCredResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.RegenerateProjectRunnerCreds")
@@ -3084,6 +3066,16 @@ func (a *RunnerAPIService) RegenerateProjectRunnerCredsExecute(r ApiRegeneratePr
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3100,9 +3092,9 @@ func (a *RunnerAPIService) RegenerateProjectRunnerCredsExecute(r ApiRegeneratePr
 }
 
 type ApiRegenerateRunnerCredsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	id         string
+	id string
 }
 
 func (r ApiRegenerateRunnerCredsRequest) Execute() (*RegenRunnerCredResponse, *http.Response, error) {
@@ -3114,27 +3106,26 @@ RegenerateRunnerCreds Regenerate Runner Creds
 
 Regenerate credentials for the Runner. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiRegenerateRunnerCredsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiRegenerateRunnerCredsRequest
 */
 func (a *RunnerAPIService) RegenerateRunnerCreds(ctx context.Context, id string) ApiRegenerateRunnerCredsRequest {
 	return ApiRegenerateRunnerCredsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RegenRunnerCredResponse
+//  @return RegenRunnerCredResponse
 func (a *RunnerAPIService) RegenerateRunnerCredsExecute(r ApiRegenerateRunnerCredsRequest) (*RegenRunnerCredResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RegenRunnerCredResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RegenRunnerCredResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.RegenerateRunnerCreds")
@@ -3202,6 +3193,16 @@ func (a *RunnerAPIService) RegenerateRunnerCredsExecute(r ApiRegenerateRunnerCre
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -3218,10 +3219,10 @@ func (a *RunnerAPIService) RegenerateRunnerCredsExecute(r ApiRegenerateRunnerCre
 }
 
 type ApiRemoveProjectAssociationRequest struct {
-	ctx                 context.Context
-	ApiService          *RunnerAPIService
-	project             string
-	runnerId            string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	project string
+	runnerId string
 	updateRunnerRequest *UpdateRunnerRequest
 }
 
@@ -3239,29 +3240,28 @@ RemoveProjectAssociation Remove Project Association From the Runner
 
 Remove project association from the runner at project context. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@return ApiRemoveProjectAssociationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @return ApiRemoveProjectAssociationRequest
 */
 func (a *RunnerAPIService) RemoveProjectAssociation(ctx context.Context, project string, runnerId string) ApiRemoveProjectAssociationRequest {
 	return ApiRemoveProjectAssociationRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) RemoveProjectAssociationExecute(r ApiRemoveProjectAssociationRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.RemoveProjectAssociation")
@@ -3348,9 +3348,9 @@ func (a *RunnerAPIService) RemoveProjectAssociationExecute(r ApiRemoveProjectAss
 }
 
 type ApiRunnerInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	runnerId   string
+	runnerId string
 }
 
 func (r ApiRunnerInfoRequest) Execute() (*RunnerInfo, *http.Response, error) {
@@ -3362,27 +3362,26 @@ RunnerInfo Get Runner Info
 
 Get runner information. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId Runner ID
-	@return ApiRunnerInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId Runner ID
+ @return ApiRunnerInfoRequest
 */
 func (a *RunnerAPIService) RunnerInfo(ctx context.Context, runnerId string) ApiRunnerInfoRequest {
 	return ApiRunnerInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
+		ctx: ctx,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) RunnerInfoExecute(r ApiRunnerInfoRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.RunnerInfo")
@@ -3466,9 +3465,9 @@ func (a *RunnerAPIService) RunnerInfoExecute(r ApiRunnerInfoRequest) (*RunnerInf
 }
 
 type ApiSaveProjectContextRunnerConfigRequest struct {
-	ctx                                   context.Context
-	ApiService                            *RunnerAPIService
-	project                               string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	project string
 	saveProjectContextRunnerConfigRequest *SaveProjectContextRunnerConfigRequest
 }
 
@@ -3486,27 +3485,26 @@ SaveProjectContextRunnerConfig Save Project Context Runner Config
 
 Save project context runner config. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiSaveProjectContextRunnerConfigRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiSaveProjectContextRunnerConfigRequest
 */
 func (a *RunnerAPIService) SaveProjectContextRunnerConfig(ctx context.Context, project string) ApiSaveProjectContextRunnerConfigRequest {
 	return ApiSaveProjectContextRunnerConfigRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectContextRunnerConfig
+//  @return ProjectContextRunnerConfig
 func (a *RunnerAPIService) SaveProjectContextRunnerConfigExecute(r ApiSaveProjectContextRunnerConfigRequest) (*ProjectContextRunnerConfig, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectContextRunnerConfig
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectContextRunnerConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.SaveProjectContextRunnerConfig")
@@ -3595,10 +3593,10 @@ func (a *RunnerAPIService) SaveProjectContextRunnerConfigExecute(r ApiSaveProjec
 }
 
 type ApiSaveProjectRunnerRequest struct {
-	ctx                      context.Context
-	ApiService               *RunnerAPIService
-	project                  string
-	runnerId                 string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	project string
+	runnerId string
 	saveProjectRunnerRequest *SaveProjectRunnerRequest
 }
 
@@ -3616,29 +3614,28 @@ SaveProjectRunner Update Runner Definition  at Project context
 
 Update the runner at Project context. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@param runnerId
-	@return ApiSaveProjectRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @param runnerId
+ @return ApiSaveProjectRunnerRequest
 */
 func (a *RunnerAPIService) SaveProjectRunner(ctx context.Context, project string, runnerId string) ApiSaveProjectRunnerRequest {
 	return ApiSaveProjectRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		runnerId:   runnerId,
+		ctx: ctx,
+		project: project,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) SaveProjectRunnerExecute(r ApiSaveProjectRunnerRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.SaveProjectRunner")
@@ -3725,9 +3722,9 @@ func (a *RunnerAPIService) SaveProjectRunnerExecute(r ApiSaveProjectRunnerReques
 }
 
 type ApiSaveProjectRunnerNodeDispatchSettingsRequest struct {
-	ctx                                          context.Context
-	ApiService                                   *RunnerAPIService
-	project                                      string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	project string
 	saveProjectRunnerNodeDispatchSettingsRequest *SaveProjectRunnerNodeDispatchSettingsRequest
 }
 
@@ -3745,27 +3742,26 @@ SaveProjectRunnerNodeDispatchSettings Update Runner Node Dispatch at project con
 
 Update the Runner Node Dispatch at project context
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project
-	@return ApiSaveProjectRunnerNodeDispatchSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project
+ @return ApiSaveProjectRunnerNodeDispatchSettingsRequest
 */
 func (a *RunnerAPIService) SaveProjectRunnerNodeDispatchSettings(ctx context.Context, project string) ApiSaveProjectRunnerNodeDispatchSettingsRequest {
 	return ApiSaveProjectRunnerNodeDispatchSettingsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) SaveProjectRunnerNodeDispatchSettingsExecute(r ApiSaveProjectRunnerNodeDispatchSettingsRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.SaveProjectRunnerNodeDispatchSettings")
@@ -3851,9 +3847,9 @@ func (a *RunnerAPIService) SaveProjectRunnerNodeDispatchSettingsExecute(r ApiSav
 }
 
 type ApiSaveRunnerRequest struct {
-	ctx                      context.Context
-	ApiService               *RunnerAPIService
-	runnerId                 string
+	ctx context.Context
+	ApiService *RunnerAPIService
+	runnerId string
 	saveProjectRunnerRequest *SaveProjectRunnerRequest
 }
 
@@ -3871,27 +3867,26 @@ SaveRunner Update Runner Definition
 
 Update the runner. Since: V41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param runnerId
-	@return ApiSaveRunnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param runnerId
+ @return ApiSaveRunnerRequest
 */
 func (a *RunnerAPIService) SaveRunner(ctx context.Context, runnerId string) ApiSaveRunnerRequest {
 	return ApiSaveRunnerRequest{
 		ApiService: a,
-		ctx:        ctx,
-		runnerId:   runnerId,
+		ctx: ctx,
+		runnerId: runnerId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return RunnerInfo
+//  @return RunnerInfo
 func (a *RunnerAPIService) SaveRunnerExecute(r ApiSaveRunnerRequest) (*RunnerInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *RunnerInfo
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RunnerInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.SaveRunner")
@@ -3977,11 +3972,11 @@ func (a *RunnerAPIService) SaveRunnerExecute(r ApiSaveRunnerRequest) (*RunnerInf
 }
 
 type ApiSearchTagsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
-	keyword    *string
-	offset     *int32
-	limit      *int32
+	keyword *string
+	offset *int32
+	limit *int32
 }
 
 // Keyword
@@ -4011,25 +4006,24 @@ SearchTags Search Runner Tags by a keyword
 
 List tags for the Runner
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSearchTagsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSearchTagsRequest
 */
 func (a *RunnerAPIService) SearchTags(ctx context.Context) ApiSearchTagsRequest {
 	return ApiSearchTagsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *RunnerAPIService) SearchTagsExecute(r ApiSearchTagsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.SearchTags")
@@ -4121,7 +4115,7 @@ func (a *RunnerAPIService) SearchTagsExecute(r ApiSearchTagsRequest) ([]string, 
 }
 
 type ApiStartupOperationRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
 }
 
@@ -4134,25 +4128,24 @@ StartupOperation Runner: Init agent process to register replicas [Enterprise Run
 
 Validate a replica when it is run for the first time
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStartupOperationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStartupOperationRequest
 */
 func (a *RunnerAPIService) StartupOperation(ctx context.Context) ApiStartupOperationRequest {
 	return ApiStartupOperationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return StartUpResponse
+//  @return StartUpResponse
 func (a *RunnerAPIService) StartupOperationExecute(r ApiStartupOperationRequest) (*StartUpResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *StartUpResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StartUpResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.StartupOperation")
@@ -4226,8 +4219,8 @@ func (a *RunnerAPIService) StartupOperationExecute(r ApiStartupOperationRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4245,7 +4238,7 @@ func (a *RunnerAPIService) StartupOperationExecute(r ApiStartupOperationRequest)
 }
 
 type ApiUiRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *RunnerAPIService
 }
 
@@ -4258,25 +4251,24 @@ Ui Get UI info for runner management
 
 Get UI info for runner management. Since: V42
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUiRequest
 */
 func (a *RunnerAPIService) Ui(ctx context.Context) ApiUiRequest {
 	return ApiUiRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UiData
+//  @return UiData
 func (a *RunnerAPIService) UiExecute(r ApiUiRequest) (*UiData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UiData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UiData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RunnerAPIService.Ui")

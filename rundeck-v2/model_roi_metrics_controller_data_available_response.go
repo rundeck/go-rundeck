@@ -19,8 +19,8 @@ var _ MappedNullable = &RoiMetricsControllerDataAvailableResponse{}
 
 // RoiMetricsControllerDataAvailableResponse struct for RoiMetricsControllerDataAvailableResponse
 type RoiMetricsControllerDataAvailableResponse struct {
-	Loadable *bool   `json:"loadable,omitempty"`
-	Message  *string `json:"message,omitempty"`
+	Loadable *bool `json:"loadable,omitempty"`
+	Message *string `json:"message,omitempty"`
 }
 
 // NewRoiMetricsControllerDataAvailableResponse instantiates a new RoiMetricsControllerDataAvailableResponse object
@@ -105,7 +105,7 @@ func (o *RoiMetricsControllerDataAvailableResponse) SetMessage(v string) {
 }
 
 func (o RoiMetricsControllerDataAvailableResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableRoiMetricsControllerDataAvailableResponse) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

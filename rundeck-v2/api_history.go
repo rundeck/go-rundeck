@@ -16,28 +16,29 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"reflect"
 	"strings"
+	"reflect"
 )
+
 
 // HistoryAPIService HistoryAPI service
 type HistoryAPIService service
 
 type ApiApiHistoryv14Request struct {
-	ctx                  context.Context
-	ApiService           *HistoryAPIService
-	project              string
-	jobIdFilter          *string
-	reportIdFilter       *string
-	userFilter           *string
-	statFilter           *string
-	jobListFilter        *[]string
+	ctx context.Context
+	ApiService *HistoryAPIService
+	project string
+	jobIdFilter *string
+	reportIdFilter *string
+	userFilter *string
+	statFilter *string
+	jobListFilter *[]string
 	excludeJobListFilter *[]string
-	recentFilter         *string
-	begin                *string
-	end                  *string
-	max                  *int32
-	offset               *int32
+	recentFilter *string
+	begin *string
+	end *string
+	max *int32
+	offset *int32
 }
 
 // include events for a job ID.
@@ -113,29 +114,29 @@ func (r ApiApiHistoryv14Request) Execute() (map[string]interface{}, *http.Respon
 /*
 ApiHistoryv14 Listing History
 
+
 List the event history for a project.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiHistoryv14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiHistoryv14Request
 */
 func (a *HistoryAPIService) ApiHistoryv14(ctx context.Context, project string) ApiApiHistoryv14Request {
 	return ApiApiHistoryv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *HistoryAPIService) ApiHistoryv14Execute(r ApiApiHistoryv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HistoryAPIService.ApiHistoryv14")

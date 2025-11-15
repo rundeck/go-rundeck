@@ -19,11 +19,11 @@ var _ MappedNullable = &RuleRoutingResult{}
 
 // RuleRoutingResult struct for RuleRoutingResult
 type RuleRoutingResult struct {
-	RuleEvaluation  *RuleEvaluation    `json:"ruleEvaluation,omitempty"`
-	JobRunStatus    *JobRunStatus      `json:"jobRunStatus,omitempty"`
-	JobId           *string            `json:"jobId,omitempty"`
-	ExecutionId     *string            `json:"executionId,omitempty"`
-	ErrorMsg        *string            `json:"errorMsg,omitempty"`
+	RuleEvaluation *RuleEvaluation `json:"ruleEvaluation,omitempty"`
+	JobRunStatus *JobRunStatus `json:"jobRunStatus,omitempty"`
+	JobId *string `json:"jobId,omitempty"`
+	ExecutionId *string `json:"executionId,omitempty"`
+	ErrorMsg *string `json:"errorMsg,omitempty"`
 	RenderedOptions *map[string]string `json:"renderedOptions,omitempty"`
 }
 
@@ -237,7 +237,7 @@ func (o *RuleRoutingResult) SetRenderedOptions(v map[string]string) {
 }
 
 func (o RuleRoutingResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableRuleRoutingResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

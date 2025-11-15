@@ -1,26 +1,26 @@
-# \JobExecutionsAPI
+# \ExecutionAPI
 
 All URIs are relative to *https://localhost:4440/api/44*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiExecution**](JobExecutionsAPI.md#ApiExecution) | **Get** /execution/{id} | Execution Info
-[**ApiExecutionAbort**](JobExecutionsAPI.md#ApiExecutionAbort) | **Post** /execution/{id}/abort | Aborting Executions
-[**ApiExecutionDelete**](JobExecutionsAPI.md#ApiExecutionDelete) | **Delete** /execution/{id} | Delete an Execution
-[**ApiExecutionDeleteBulk**](JobExecutionsAPI.md#ApiExecutionDeleteBulk) | **Post** /executions/delete | Bulk Delete Executions
-[**ApiExecutionInputFiles**](JobExecutionsAPI.md#ApiExecutionInputFiles) | **Get** /execution/{id}/input/files | List Input Files for an Execution
-[**ApiExecutionMetricsDocs**](JobExecutionsAPI.md#ApiExecutionMetricsDocs) | **Get** /executions/metrics | Execution Query Metrics
-[**ApiExecutionMetricsProjectDocs**](JobExecutionsAPI.md#ApiExecutionMetricsProjectDocs) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
-[**ApiExecutionMetricsProjectDocs_0**](JobExecutionsAPI.md#ApiExecutionMetricsProjectDocs_0) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
-[**ApiExecutionOutput**](JobExecutionsAPI.md#ApiExecutionOutput) | **Get** /execution/{id}/output | Execution Output
-[**ApiExecutionOutputNodeFilter**](JobExecutionsAPI.md#ApiExecutionOutputNodeFilter) | **Get** /execution/{id}/output/node/{nodename} | Execution Output For Node
-[**ApiExecutionOutputNodeStepFilter**](JobExecutionsAPI.md#ApiExecutionOutputNodeStepFilter) | **Get** /execution/{id}/output/node/{nodename}/step/{stepctx} | Execution Output For Node and Step
-[**ApiExecutionOutputStepFilter**](JobExecutionsAPI.md#ApiExecutionOutputStepFilter) | **Get** /execution/{id}/output/step/{stepctx} | Execution Output For Step
-[**ApiExecutionState**](JobExecutionsAPI.md#ApiExecutionState) | **Get** /execution/{id}/state | Execution State
-[**ApiExecutionStateOutput**](JobExecutionsAPI.md#ApiExecutionStateOutput) | **Get** /execution/{id}/output/state | Execution Output with State
-[**ApiExecutionsQueryv14Docs**](JobExecutionsAPI.md#ApiExecutionsQueryv14Docs) | **Get** /project/{project}/executions | Execution Query
-[**ApiExecutionsRunningv14**](JobExecutionsAPI.md#ApiExecutionsRunningv14) | **Get** /project/{project}/executions/running | Listing Running Executions
-[**ApiHomeSummary**](JobExecutionsAPI.md#ApiHomeSummary) | **Get** /home/summary | Summary of executions and projects
+[**ApiExecution**](ExecutionAPI.md#ApiExecution) | **Get** /execution/{id} | Execution Info
+[**ApiExecutionAbort**](ExecutionAPI.md#ApiExecutionAbort) | **Post** /execution/{id}/abort | Aborting Executions
+[**ApiExecutionDelete**](ExecutionAPI.md#ApiExecutionDelete) | **Delete** /execution/{id} | Delete an Execution
+[**ApiExecutionDeleteBulk**](ExecutionAPI.md#ApiExecutionDeleteBulk) | **Post** /executions/delete | Bulk Delete Executions
+[**ApiExecutionInputFiles**](ExecutionAPI.md#ApiExecutionInputFiles) | **Get** /execution/{id}/input/files | List Input Files for an Execution
+[**ApiExecutionMetricsDocs**](ExecutionAPI.md#ApiExecutionMetricsDocs) | **Get** /executions/metrics | Execution Query Metrics
+[**ApiExecutionMetricsProjectDocs**](ExecutionAPI.md#ApiExecutionMetricsProjectDocs) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
+[**ApiExecutionMetricsProjectDocs_0**](ExecutionAPI.md#ApiExecutionMetricsProjectDocs_0) | **Get** /project/{project}/executions/metrics | Execution Query Metrics
+[**ApiExecutionOutput**](ExecutionAPI.md#ApiExecutionOutput) | **Get** /execution/{id}/output | Execution Output
+[**ApiExecutionOutputNodeFilter**](ExecutionAPI.md#ApiExecutionOutputNodeFilter) | **Get** /execution/{id}/output/node/{nodename} | Execution Output For Node
+[**ApiExecutionOutputNodeStepFilter**](ExecutionAPI.md#ApiExecutionOutputNodeStepFilter) | **Get** /execution/{id}/output/node/{nodename}/step/{stepctx} | Execution Output For Node and Step
+[**ApiExecutionOutputStepFilter**](ExecutionAPI.md#ApiExecutionOutputStepFilter) | **Get** /execution/{id}/output/step/{stepctx} | Execution Output For Step
+[**ApiExecutionState**](ExecutionAPI.md#ApiExecutionState) | **Get** /execution/{id}/state | Execution State
+[**ApiExecutionStateOutput**](ExecutionAPI.md#ApiExecutionStateOutput) | **Get** /execution/{id}/output/state | Execution Output with State
+[**ApiExecutionsQueryv14Docs**](ExecutionAPI.md#ApiExecutionsQueryv14Docs) | **Get** /project/{project}/executions | Execution Query
+[**ApiExecutionsRunningv14**](ExecutionAPI.md#ApiExecutionsRunningv14) | **Get** /project/{project}/executions/running | Listing Running Executions
+[**ApiHomeSummary**](ExecutionAPI.md#ApiHomeSummary) | **Get** /home/summary | Summary of executions and projects
 
 
 
@@ -49,9 +49,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobExecutionsAPI.ApiExecution(context.Background(), id).Execute()
+	r, err := apiClient.ExecutionAPI.ApiExecution(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecution``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecution``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -119,9 +119,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobExecutionsAPI.ApiExecutionAbort(context.Background(), id).AsUser(asUser).ForceIncomplete(forceIncomplete).Execute()
+	r, err := apiClient.ExecutionAPI.ApiExecutionAbort(context.Background(), id).AsUser(asUser).ForceIncomplete(forceIncomplete).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionAbort``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionAbort``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -189,9 +189,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobExecutionsAPI.ApiExecutionDelete(context.Background(), id).Execute()
+	r, err := apiClient.ExecutionAPI.ApiExecutionDelete(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -258,13 +258,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionDeleteBulk(context.Background()).Ids(ids).ApiExecutionDeleteBulkRequest(apiExecutionDeleteBulkRequest).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionDeleteBulk(context.Background()).Ids(ids).ApiExecutionDeleteBulkRequest(apiExecutionDeleteBulkRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionDeleteBulk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionDeleteBulk``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionDeleteBulk`: DeleteBulkResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionDeleteBulk`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionDeleteBulk`: %v\n", resp)
 }
 ```
 
@@ -325,13 +325,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionInputFiles(context.Background(), id).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionInputFiles(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionInputFiles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionInputFiles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionInputFiles`: ExecutionFileInfoList
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionInputFiles`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionInputFiles`: %v\n", resp)
 }
 ```
 
@@ -422,13 +422,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionMetricsDocs(context.Background()).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionMetricsDocs(context.Background()).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionMetricsDocs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionMetricsDocs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionMetricsDocs`: MetricsQueryResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionMetricsDocs`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionMetricsDocs`: %v\n", resp)
 }
 ```
 
@@ -515,13 +515,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionMetricsProjectDocs(context.Background(), project).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionMetricsProjectDocs(context.Background(), project).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionMetricsProjectDocs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionMetricsProjectDocs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionMetricsProjectDocs`: MetricsQueryResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionMetricsProjectDocs`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionMetricsProjectDocs`: %v\n", resp)
 }
 ```
 
@@ -585,13 +585,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionMetricsProjectDocs_0(context.Background(), project).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionMetricsProjectDocs_0(context.Background(), project).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionMetricsProjectDocs_0``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionMetricsProjectDocs_0``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionMetricsProjectDocs_0`: MetricsQueryResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionMetricsProjectDocs_0`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionMetricsProjectDocs_0`: %v\n", resp)
 }
 ```
 
@@ -663,13 +663,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionOutput(context.Background(), id).Nodename(nodename).Stepctx(stepctx).Offset(offset).Lastlines(lastlines).Lastmod(lastmod).Maxlines(maxlines).Compacted(compacted).Format(format).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionOutput(context.Background(), id).Nodename(nodename).Stepctx(stepctx).Offset(offset).Lastlines(lastlines).Lastmod(lastmod).Maxlines(maxlines).Compacted(compacted).Format(format).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionOutput``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionOutput``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionOutput`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionOutput`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionOutput`: %v\n", resp)
 }
 ```
 
@@ -742,13 +742,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionOutputNodeFilter(context.Background(), id, nodename).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionOutputNodeFilter(context.Background(), id, nodename).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionOutputNodeFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionOutputNodeFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionOutputNodeFilter`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionOutputNodeFilter`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionOutputNodeFilter`: %v\n", resp)
 }
 ```
 
@@ -816,13 +816,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionOutputNodeStepFilter(context.Background(), id, nodename, stepctx).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionOutputNodeStepFilter(context.Background(), id, nodename, stepctx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionOutputNodeStepFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionOutputNodeStepFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionOutputNodeStepFilter`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionOutputNodeStepFilter`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionOutputNodeStepFilter`: %v\n", resp)
 }
 ```
 
@@ -891,13 +891,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionOutputStepFilter(context.Background(), id, stepctx).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionOutputStepFilter(context.Background(), id, stepctx).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionOutputStepFilter``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionOutputStepFilter``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionOutputStepFilter`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionOutputStepFilter`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionOutputStepFilter`: %v\n", resp)
 }
 ```
 
@@ -963,13 +963,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionState(context.Background(), id).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionState(context.Background(), id).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionState``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionState``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionState`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionState`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionState`: %v\n", resp)
 }
 ```
 
@@ -1034,13 +1034,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionStateOutput(context.Background(), id).StateOnly(stateOnly).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionStateOutput(context.Background(), id).StateOnly(stateOnly).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionStateOutput``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionStateOutput``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionStateOutput`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionStateOutput`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionStateOutput`: %v\n", resp)
 }
 ```
 
@@ -1132,9 +1132,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobExecutionsAPI.ApiExecutionsQueryv14Docs(context.Background(), project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+	r, err := apiClient.ExecutionAPI.ApiExecutionsQueryv14Docs(context.Background(), project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionsQueryv14Docs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionsQueryv14Docs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -1231,13 +1231,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionsRunningv14(context.Background(), project).Max(max).Offset(offset).JobIdFilter(jobIdFilter).IncludePostponed(includePostponed).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiExecutionsRunningv14(context.Background(), project).Max(max).Offset(offset).JobIdFilter(jobIdFilter).IncludePostponed(includePostponed).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionsRunningv14``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiExecutionsRunningv14``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiExecutionsRunningv14`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiExecutionsRunningv14`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiExecutionsRunningv14`: %v\n", resp)
 }
 ```
 
@@ -1304,13 +1304,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiHomeSummary(context.Background()).Execute()
+	resp, r, err := apiClient.ExecutionAPI.ApiHomeSummary(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiHomeSummary``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionAPI.ApiHomeSummary``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `ApiHomeSummary`: HomeSummary
-	fmt.Fprintf(os.Stdout, "Response from `JobExecutionsAPI.ApiHomeSummary`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ExecutionAPI.ApiHomeSummary`: %v\n", resp)
 }
 ```
 

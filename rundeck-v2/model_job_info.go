@@ -20,27 +20,27 @@ var _ MappedNullable = &JobInfo{}
 
 // JobInfo struct for JobInfo
 type JobInfo struct {
-	Id                        *string     `json:"id,omitempty"`
-	Name                      *string     `json:"name,omitempty"`
-	Group                     *string     `json:"group,omitempty"`
-	Project                   *string     `json:"project,omitempty"`
-	Description               *string     `json:"description,omitempty"`
-	Href                      *string     `json:"href,omitempty"`
-	Permalink                 *string     `json:"permalink,omitempty"`
-	Scheduled                 *bool       `json:"scheduled,omitempty"`
-	ScheduleEnabled           *bool       `json:"scheduleEnabled,omitempty"`
-	Enabled                   *bool       `json:"enabled,omitempty"`
-	ServerNodeUUID            *string     `json:"serverNodeUUID,omitempty"`
-	ServerOwner               *bool       `json:"serverOwner,omitempty"`
-	AverageDuration           *int64      `json:"averageDuration,omitempty"`
-	NextScheduledExecution    *time.Time  `json:"nextScheduledExecution,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Group *string `json:"group,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Href *string `json:"href,omitempty"`
+	Permalink *string `json:"permalink,omitempty"`
+	Scheduled *bool `json:"scheduled,omitempty"`
+	ScheduleEnabled *bool `json:"scheduleEnabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	ServerNodeUUID *string `json:"serverNodeUUID,omitempty"`
+	ServerOwner *bool `json:"serverOwner,omitempty"`
+	AverageDuration *int64 `json:"averageDuration,omitempty"`
+	NextScheduledExecution *time.Time `json:"nextScheduledExecution,omitempty"`
 	FutureScheduledExecutions []time.Time `json:"futureScheduledExecutions,omitempty"`
-	ProjectDisableExecutions  *bool       `json:"projectDisableExecutions,omitempty"`
-	ProjectDisableSchedule    *bool       `json:"projectDisableSchedule,omitempty"`
-	Created                   *string     `json:"created,omitempty"`
-	CreatedBy                 *string     `json:"createdBy,omitempty"`
-	LastModified              *string     `json:"lastModified,omitempty"`
-	LastModifiedBy            *string     `json:"lastModifiedBy,omitempty"`
+	ProjectDisableExecutions *bool `json:"projectDisableExecutions,omitempty"`
+	ProjectDisableSchedule *bool `json:"projectDisableSchedule,omitempty"`
+	Created *string `json:"created,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 }
 
 // NewJobInfo instantiates a new JobInfo object
@@ -733,7 +733,7 @@ func (o *JobInfo) SetLastModifiedBy(v string) {
 }
 
 func (o JobInfo) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -843,3 +843,5 @@ func (v *NullableJobInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

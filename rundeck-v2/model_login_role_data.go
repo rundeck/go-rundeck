@@ -19,9 +19,9 @@ var _ MappedNullable = &LoginRoleData{}
 
 // LoginRoleData struct for LoginRoleData
 type LoginRoleData struct {
-	Id          *int64  `json:"id,omitempty"`
-	Authority   *string `json:"authority,omitempty"`
 	Description *string `json:"description,omitempty"`
+	Id *int64 `json:"id,omitempty"`
+	Authority *string `json:"authority,omitempty"`
 }
 
 // NewLoginRoleData instantiates a new LoginRoleData object
@@ -39,6 +39,38 @@ func NewLoginRoleData() *LoginRoleData {
 func NewLoginRoleDataWithDefaults() *LoginRoleData {
 	this := LoginRoleData{}
 	return &this
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *LoginRoleData) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoginRoleData) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *LoginRoleData) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *LoginRoleData) SetDescription(v string) {
+	o.Description = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -105,40 +137,8 @@ func (o *LoginRoleData) SetAuthority(v string) {
 	o.Authority = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
-func (o *LoginRoleData) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
-		var ret string
-		return ret
-	}
-	return *o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoginRoleData) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
-		return nil, false
-	}
-	return o.Description, true
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *LoginRoleData) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *LoginRoleData) SetDescription(v string) {
-	o.Description = &v
-}
-
 func (o LoginRoleData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -147,14 +147,14 @@ func (o LoginRoleData) MarshalJSON() ([]byte, error) {
 
 func (o LoginRoleData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Authority) {
 		toSerialize["authority"] = o.Authority
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
 }
@@ -194,3 +194,5 @@ func (v *NullableLoginRoleData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

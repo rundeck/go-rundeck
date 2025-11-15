@@ -19,7 +19,7 @@ var _ MappedNullable = &ItemMeta{}
 
 // ItemMeta struct for ItemMeta
 type ItemMeta struct {
-	Name *string                `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Data map[string]interface{} `json:"data,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *ItemMeta) SetData(v map[string]interface{}) {
 }
 
 func (o ItemMeta) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableItemMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

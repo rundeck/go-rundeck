@@ -22,7 +22,7 @@ type ApiBulkJobDeleteRequest struct {
 	Ids []string `json:"ids,omitempty"`
 	// A comma separated list of ids
 	Idlist *string `json:"idlist,omitempty"`
-	Id     *string `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 }
 
 // NewApiBulkJobDeleteRequest instantiates a new ApiBulkJobDeleteRequest object
@@ -139,7 +139,7 @@ func (o *ApiBulkJobDeleteRequest) SetId(v string) {
 }
 
 func (o ApiBulkJobDeleteRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableApiBulkJobDeleteRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

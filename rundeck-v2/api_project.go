@@ -16,17 +16,18 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // ProjectAPIService ProjectAPI service
 type ProjectAPIService service
 
 type ApiApiProjectConfigGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiProjectConfigGetRequest) Execute() (string, *http.Response, error) {
@@ -41,27 +42,26 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectConfigGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectConfigGetRequest
 */
 func (a *ProjectAPIService) ApiProjectConfigGet(ctx context.Context, project string) ApiApiProjectConfigGetRequest {
 	return ApiApiProjectConfigGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ProjectAPIService) ApiProjectConfigGetExecute(r ApiApiProjectConfigGetRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigGet")
@@ -145,10 +145,10 @@ func (a *ProjectAPIService) ApiProjectConfigGetExecute(r ApiApiProjectConfigGetR
 }
 
 type ApiApiProjectConfigKeyDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	keypath    string
+	project string
+	keypath string
 }
 
 func (r ApiApiProjectConfigKeyDeleteRequest) Execute() (*http.Response, error) {
@@ -162,26 +162,26 @@ Delete an individual configuration properties by their key.
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param keypath Key Path
-	@return ApiApiProjectConfigKeyDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param keypath Key Path
+ @return ApiApiProjectConfigKeyDeleteRequest
 */
 func (a *ProjectAPIService) ApiProjectConfigKeyDelete(ctx context.Context, project string, keypath string) ApiApiProjectConfigKeyDeleteRequest {
 	return ApiApiProjectConfigKeyDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		keypath:    keypath,
+		ctx: ctx,
+		project: project,
+		keypath: keypath,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIService) ApiProjectConfigKeyDeleteExecute(r ApiApiProjectConfigKeyDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigKeyDelete")
@@ -257,10 +257,10 @@ func (a *ProjectAPIService) ApiProjectConfigKeyDeleteExecute(r ApiApiProjectConf
 }
 
 type ApiApiProjectConfigKeyGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	keypath    string
+	project string
+	keypath string
 }
 
 func (r ApiApiProjectConfigKeyGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -275,29 +275,28 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param keypath Key Path
-	@return ApiApiProjectConfigKeyGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param keypath Key Path
+ @return ApiApiProjectConfigKeyGetRequest
 */
 func (a *ProjectAPIService) ApiProjectConfigKeyGet(ctx context.Context, project string, keypath string) ApiApiProjectConfigKeyGetRequest {
 	return ApiApiProjectConfigKeyGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		keypath:    keypath,
+		ctx: ctx,
+		project: project,
+		keypath: keypath,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectConfigKeyGetExecute(r ApiApiProjectConfigKeyGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigKeyGet")
@@ -373,8 +372,8 @@ func (a *ProjectAPIService) ApiProjectConfigKeyGetExecute(r ApiApiProjectConfigK
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -392,12 +391,12 @@ func (a *ProjectAPIService) ApiProjectConfigKeyGetExecute(r ApiApiProjectConfigK
 }
 
 type ApiApiProjectConfigKeyPutRequest struct {
-	ctx                    context.Context
-	ApiService             *ProjectAPIService
-	project                string
-	keypath                string
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	keypath string
 	enablePluginValidation *bool
-	body                   *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Enable plugin validation
@@ -423,29 +422,28 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param keypath Key Path
-	@return ApiApiProjectConfigKeyPutRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param keypath Key Path
+ @return ApiApiProjectConfigKeyPutRequest
 */
 func (a *ProjectAPIService) ApiProjectConfigKeyPut(ctx context.Context, project string, keypath string) ApiApiProjectConfigKeyPutRequest {
 	return ApiApiProjectConfigKeyPutRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		keypath:    keypath,
+		ctx: ctx,
+		project: project,
+		keypath: keypath,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectConfigKeyPutExecute(r ApiApiProjectConfigKeyPutRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigKeyPut")
@@ -526,8 +524,8 @@ func (a *ProjectAPIService) ApiProjectConfigKeyPutExecute(r ApiApiProjectConfigK
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -545,10 +543,10 @@ func (a *ProjectAPIService) ApiProjectConfigKeyPutExecute(r ApiApiProjectConfigK
 }
 
 type ApiApiProjectConfigPutRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	body       *map[string]interface{}
+	project string
+	body *map[string]interface{}
 }
 
 func (r ApiApiProjectConfigPutRequest) Body(body map[string]interface{}) ApiApiProjectConfigPutRequest {
@@ -568,27 +566,26 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectConfigPutRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectConfigPutRequest
 */
 func (a *ProjectAPIService) ApiProjectConfigPut(ctx context.Context, project string) ApiApiProjectConfigPutRequest {
 	return ApiApiProjectConfigPutRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectConfigPutExecute(r ApiApiProjectConfigPutRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectConfigPut")
@@ -674,9 +671,9 @@ func (a *ProjectAPIService) ApiProjectConfigPutExecute(r ApiApiProjectConfigPutR
 }
 
 type ApiApiProjectCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Project Create contains a name, and configuration values
@@ -696,25 +693,25 @@ Create a new project.
 
 Authorization required: `create` for resource type `project`
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectCreateRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiProjectCreateRequest
 */
 func (a *ProjectAPIService) ApiProjectCreate(ctx context.Context) ApiApiProjectCreateRequest {
 	return ApiApiProjectCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectCreateExecute(r ApiApiProjectCreateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectCreate")
@@ -799,10 +796,10 @@ func (a *ProjectAPIService) ApiProjectCreateExecute(r ApiApiProjectCreateRequest
 }
 
 type ApiApiProjectDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	deferred   *bool
+	project string
+	deferred *bool
 }
 
 // Deferred Delete. Since: v45
@@ -822,24 +819,24 @@ Delete an existing projects on the server.
 
 Authorization required: `delete` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectDeleteRequest
 */
 func (a *ProjectAPIService) ApiProjectDelete(ctx context.Context, project string) ApiApiProjectDeleteRequest {
 	return ApiApiProjectDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIService) ApiProjectDeleteExecute(r ApiApiProjectDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectDelete")
@@ -917,8 +914,8 @@ func (a *ProjectAPIService) ApiProjectDeleteExecute(r ApiApiProjectDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -926,22 +923,306 @@ func (a *ProjectAPIService) ApiProjectDeleteExecute(r ApiApiProjectDeleteRequest
 	return localVarHTTPResponse, nil
 }
 
+type ApiApiProjectDisableLaterRequest struct {
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	projectModeLaterRequest *ProjectModeLaterRequest
+}
+
+// Disable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
+func (r ApiApiProjectDisableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectDisableLaterRequest {
+	r.projectModeLaterRequest = &projectModeLaterRequest
+	return r
+}
+
+func (r ApiApiProjectDisableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiProjectDisableLaterExecute(r)
+}
+
+/*
+ApiProjectDisableLater Disable Project executions or schedules after a duration of time
+
+Sets project execution mode to Passive or disables Schedules at a later time.
+
+Since: v34
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project project name
+ @return ApiApiProjectDisableLaterRequest
+*/
+func (a *ProjectAPIService) ApiProjectDisableLater(ctx context.Context, project string) ApiApiProjectDisableLaterRequest {
+	return ApiApiProjectDisableLaterRequest{
+		ApiService: a,
+		ctx: ctx,
+		project: project,
+	}
+}
+
+// Execute executes the request
+//  @return ModeLaterResponse
+func (a *ProjectAPIService) ApiProjectDisableLaterExecute(r ApiApiProjectDisableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectDisableLater")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/project/{project}/disable/later"
+	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.projectModeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.projectModeLaterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiProjectEnableLaterRequest struct {
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	projectModeLaterRequest *ProjectModeLaterRequest
+}
+
+// Enable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.) 
+func (r ApiApiProjectEnableLaterRequest) ProjectModeLaterRequest(projectModeLaterRequest ProjectModeLaterRequest) ApiApiProjectEnableLaterRequest {
+	r.projectModeLaterRequest = &projectModeLaterRequest
+	return r
+}
+
+func (r ApiApiProjectEnableLaterRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiProjectEnableLaterExecute(r)
+}
+
+/*
+ApiProjectEnableLater Enable Project executions or schedules after a duration of time
+
+Sets project execution mode to Active or enable Schedules at a later time.
+
+Since: v34
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project project name
+ @return ApiApiProjectEnableLaterRequest
+*/
+func (a *ProjectAPIService) ApiProjectEnableLater(ctx context.Context, project string) ApiApiProjectEnableLaterRequest {
+	return ApiApiProjectEnableLaterRequest{
+		ApiService: a,
+		ctx: ctx,
+		project: project,
+	}
+}
+
+// Execute executes the request
+//  @return ModeLaterResponse
+func (a *ProjectAPIService) ApiProjectEnableLaterExecute(r ApiApiProjectEnableLaterRequest) (*ModeLaterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectEnableLater")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/project/{project}/enable/later"
+	localVarPath = strings.Replace(localVarPath, "{"+"project"+"}", url.PathEscape(parameterValueToString(r.project, "project")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.projectModeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("projectModeLaterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.projectModeLaterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiProjectExportRequest struct {
-	ctx                                   context.Context
-	ApiService                            *ProjectAPIService
-	project                               string
-	archiveParams                         *ProjectArchiveParams
-	executionIds                          *string
-	exportAll                             *string
-	exportJobs                            *string
-	exportExecutions                      *string
-	exportConfigs                         *string
-	exportReadmes                         *string
-	exportAcls                            *string
-	exportComponentsCalendars             *string
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	archiveParams *ProjectArchiveParams
+	executionIds *string
+	exportAll *string
+	exportJobs *string
+	exportExecutions *string
+	exportConfigs *string
+	exportReadmes *string
+	exportAcls *string
+	exportComponentsCalendars *string
 	exportComponentsSchedule20Definitions *string
-	exportComponentsToursManager          *string
-	exportComponentsNodeWizard            *string
+	exportComponentsToursManager *string
+	exportComponentsNodeWizard *string
 }
 
 func (r ApiApiProjectExportRequest) ArchiveParams(archiveParams ProjectArchiveParams) ApiApiProjectExportRequest {
@@ -1022,7 +1303,7 @@ func (r ApiApiProjectExportRequest) Execute() (map[string]interface{}, *http.Res
 /*
 ApiProjectExport Export a zip archive of the project.
 
-Performs the export to a zip archive of the project synchronously.
+Performs the export to a zip archive of the project synchronously. 
 Optional parameters:
 
 * executionIds a list (comma-separated) of execution IDs. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
@@ -1044,27 +1325,26 @@ In APIv34 or later:
 
 Requires `export` authorization for the project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectExportRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectExportRequest
 */
 func (a *ProjectAPIService) ApiProjectExport(ctx context.Context, project string) ApiApiProjectExportRequest {
 	return ApiApiProjectExportRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectExportExecute(r ApiApiProjectExportRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectExport")
@@ -1176,8 +1456,8 @@ func (a *ProjectAPIService) ApiProjectExportExecute(r ApiApiProjectExportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1195,20 +1475,20 @@ func (a *ProjectAPIService) ApiProjectExportExecute(r ApiApiProjectExportRequest
 }
 
 type ApiApiProjectExportAsyncDocsRequest struct {
-	ctx                                   context.Context
-	ApiService                            *ProjectAPIService
-	project                               string
-	executionIds                          *string
-	exportAll                             *string
-	exportJobs                            *string
-	exportExecutions                      *string
-	exportConfigs                         *string
-	exportReadmes                         *string
-	exportAcls                            *string
-	exportComponentsCalendars             *string
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	executionIds *string
+	exportAll *string
+	exportJobs *string
+	exportExecutions *string
+	exportConfigs *string
+	exportReadmes *string
+	exportAcls *string
+	exportComponentsCalendars *string
 	exportComponentsSchedule20Definitions *string
-	exportComponentsToursManager          *string
-	exportComponentsNodeWizard            *string
+	exportComponentsToursManager *string
+	exportComponentsNodeWizard *string
 }
 
 // List of execution to include to the exported archive
@@ -1285,7 +1565,7 @@ func (r ApiApiProjectExportAsyncDocsRequest) Execute() (map[string]interface{}, 
 ApiProjectExportAsyncDocs Export a zip archive of the project asynchronously.
 
 Performs the export to a zip archive of the project asynchronously.
-Use the Token result to query the export status and to retrieve the result once ready
+Use the Token result to query the export status and to retrieve the result once ready 
 Optional parameters:
 
 * executionIds a list (comma-separated) of execution IDs. If this is specified then the archive will contain only executions that are specified, and will not contain Jobs, ACLs, or project configuration/readme files.
@@ -1307,27 +1587,26 @@ In APIv34 or later:
 
 Requires `export` authorization for the project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectExportAsyncDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectExportAsyncDocsRequest
 */
 func (a *ProjectAPIService) ApiProjectExportAsyncDocs(ctx context.Context, project string) ApiApiProjectExportAsyncDocsRequest {
 	return ApiApiProjectExportAsyncDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectExportAsyncDocsExecute(r ApiApiProjectExportAsyncDocsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectExportAsyncDocs")
@@ -1435,8 +1714,8 @@ func (a *ProjectAPIService) ApiProjectExportAsyncDocsExecute(r ApiApiProjectExpo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1454,10 +1733,10 @@ func (a *ProjectAPIService) ApiProjectExportAsyncDocsExecute(r ApiApiProjectExpo
 }
 
 type ApiApiProjectExportAsyncDownloadRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	token      string
+	project string
+	token string
 }
 
 func (r ApiApiProjectExportAsyncDownloadRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1472,29 +1751,28 @@ Download the archive file once the export status is `ready`.
 Requires `export` authorization for the project resource.
 Since: v19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param token Token to retrieve export status
-	@return ApiApiProjectExportAsyncDownloadRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param token Token to retrieve export status
+ @return ApiApiProjectExportAsyncDownloadRequest
 */
 func (a *ProjectAPIService) ApiProjectExportAsyncDownload(ctx context.Context, project string, token string) ApiApiProjectExportAsyncDownloadRequest {
 	return ApiApiProjectExportAsyncDownloadRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		token:      token,
+		ctx: ctx,
+		project: project,
+		token: token,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectExportAsyncDownloadExecute(r ApiApiProjectExportAsyncDownloadRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectExportAsyncDownload")
@@ -1570,8 +1848,8 @@ func (a *ProjectAPIService) ApiProjectExportAsyncDownloadExecute(r ApiApiProject
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1589,10 +1867,10 @@ func (a *ProjectAPIService) ApiProjectExportAsyncDownloadExecute(r ApiApiProject
 }
 
 type ApiApiProjectExportAsyncStatusRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	token      string
+	project string
+	token string
 }
 
 func (r ApiApiProjectExportAsyncStatusRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1602,35 +1880,34 @@ func (r ApiApiProjectExportAsyncStatusRequest) Execute() (map[string]interface{}
 /*
 ApiProjectExportAsyncStatus Get the status of an async export request
 
-Get the status of an async export request.
+Get the status of an async export request. 
 Retrieve the result once ready with `/api/V/project/[PROJECT]/export/download/[TOKEN]`.
 
 Requires `export` authorization for the project resource.
 Since: v19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param token Token to retrieve export status
-	@return ApiApiProjectExportAsyncStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param token Token to retrieve export status
+ @return ApiApiProjectExportAsyncStatusRequest
 */
 func (a *ProjectAPIService) ApiProjectExportAsyncStatus(ctx context.Context, project string, token string) ApiApiProjectExportAsyncStatusRequest {
 	return ApiApiProjectExportAsyncStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		token:      token,
+		ctx: ctx,
+		project: project,
+		token: token,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectExportAsyncStatusExecute(r ApiApiProjectExportAsyncStatusRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectExportAsyncStatus")
@@ -1706,8 +1983,8 @@ func (a *ProjectAPIService) ApiProjectExportAsyncStatusExecute(r ApiApiProjectEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1725,10 +2002,10 @@ func (a *ProjectAPIService) ApiProjectExportAsyncStatusExecute(r ApiApiProjectEx
 }
 
 type ApiApiProjectFileDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	filename   string
+	project string
+	filename string
 }
 
 func (r ApiApiProjectFileDeleteRequest) Execute() (*http.Response, error) {
@@ -1742,26 +2019,26 @@ Delete the `readme.md` and `motd.md` files, which are Markdown formatted and dis
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param filename `readme.md` or `motd.md` file name
-	@return ApiApiProjectFileDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param filename `readme.md` or `motd.md` file name
+ @return ApiApiProjectFileDeleteRequest
 */
 func (a *ProjectAPIService) ApiProjectFileDelete(ctx context.Context, project string, filename string) ApiApiProjectFileDeleteRequest {
 	return ApiApiProjectFileDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		filename:   filename,
+		ctx: ctx,
+		project: project,
+		filename: filename,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIService) ApiProjectFileDeleteExecute(r ApiApiProjectFileDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectFileDelete")
@@ -1837,8 +2114,8 @@ func (a *ProjectAPIService) ApiProjectFileDeleteExecute(r ApiApiProjectFileDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1847,10 +2124,10 @@ func (a *ProjectAPIService) ApiProjectFileDeleteExecute(r ApiApiProjectFileDelet
 }
 
 type ApiApiProjectFileGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	filename   string
+	project string
+	filename string
 }
 
 func (r ApiApiProjectFileGetRequest) Execute() (string, *http.Response, error) {
@@ -1865,29 +2142,28 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param filename `readme.md` or `motd.md` file name
-	@return ApiApiProjectFileGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param filename `readme.md` or `motd.md` file name
+ @return ApiApiProjectFileGetRequest
 */
 func (a *ProjectAPIService) ApiProjectFileGet(ctx context.Context, project string, filename string) ApiApiProjectFileGetRequest {
 	return ApiApiProjectFileGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		filename:   filename,
+		ctx: ctx,
+		project: project,
+		filename: filename,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ProjectAPIService) ApiProjectFileGetExecute(r ApiApiProjectFileGetRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectFileGet")
@@ -1963,8 +2239,8 @@ func (a *ProjectAPIService) ApiProjectFileGetExecute(r ApiApiProjectFileGetReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1982,11 +2258,11 @@ func (a *ProjectAPIService) ApiProjectFileGetExecute(r ApiApiProjectFileGetReque
 }
 
 type ApiApiProjectFilePutRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	filename   string
-	body       *map[string]interface{}
+	project string
+	filename string
+	body *map[string]interface{}
 }
 
 func (r ApiApiProjectFilePutRequest) Body(body map[string]interface{}) ApiApiProjectFilePutRequest {
@@ -2006,29 +2282,28 @@ The response, based on `Accept` header, can be returned in the Text, XML or Json
 
 Authorization required: `configure` access for `project` resource type or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param filename `readme.md` and `motd.md` file name
-	@return ApiApiProjectFilePutRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param filename `readme.md` and `motd.md` file name
+ @return ApiApiProjectFilePutRequest
 */
 func (a *ProjectAPIService) ApiProjectFilePut(ctx context.Context, project string, filename string) ApiApiProjectFilePutRequest {
 	return ApiApiProjectFilePutRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		filename:   filename,
+		ctx: ctx,
+		project: project,
+		filename: filename,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *ProjectAPIService) ApiProjectFilePutExecute(r ApiApiProjectFilePutRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectFilePut")
@@ -2106,8 +2381,8 @@ func (a *ProjectAPIService) ApiProjectFilePutExecute(r ApiApiProjectFilePutReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2125,9 +2400,9 @@ func (a *ProjectAPIService) ApiProjectFilePutExecute(r ApiApiProjectFilePutReque
 }
 
 type ApiApiProjectGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiProjectGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -2142,27 +2417,26 @@ The reponse in XML or JSON format is determined by the Accept request header.
 
 Authorization required: `read` access for `project` resource type to get basic project details and `configure` access to get all properties config or `admin` or `app_admin` access for `user` resource type.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectGetRequest
 */
 func (a *ProjectAPIService) ApiProjectGet(ctx context.Context, project string) ApiApiProjectGetRequest {
 	return ApiApiProjectGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectGetExecute(r ApiApiProjectGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectGet")
@@ -2246,20 +2520,20 @@ func (a *ProjectAPIService) ApiProjectGetExecute(r ApiApiProjectGetRequest) (map
 }
 
 type ApiApiProjectImportRequest struct {
-	ctx                  context.Context
-	ApiService           *ProjectAPIService
-	project              string
-	jobUuidOption        *string
-	importExecutions     *bool
-	importConfig         *bool
-	importACL            *bool
-	importScm            *bool
-	importWebhooks       *bool
-	whkRegenAuthTokens   *bool
-	importNodesSources   *bool
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	jobUuidOption *string
+	importExecutions *bool
+	importConfig *bool
+	importACL *bool
+	importScm *bool
+	importWebhooks *bool
+	whkRegenAuthTokens *bool
+	importNodesSources *bool
 	importComponentsNAME *string
-	importOptsNAMEKEY    *string
-	body                 *os.File
+	importOptsNAMEKEY *string
+	body *os.File
 }
 
 // Option declaring how duplicate Job UUIDs should be handled.  If preserve (default) then imported job UUIDs will not be modified, and may conflict with jobs in other projects.  If remove then all job UUIDs will be removed before importing.
@@ -2339,27 +2613,26 @@ Note: the import status indicates "failed" if any Jobs had failures, otherwise i
 
 Requires `import` authorization for the project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectImportRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectImportRequest
 */
 func (a *ProjectAPIService) ApiProjectImport(ctx context.Context, project string) ApiApiProjectImportRequest {
 	return ApiApiProjectImportRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiProjectImportExecute(r ApiApiProjectImportRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectImport")
@@ -2466,8 +2739,8 @@ func (a *ProjectAPIService) ApiProjectImportExecute(r ApiApiProjectImportRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2485,9 +2758,9 @@ func (a *ProjectAPIService) ApiProjectImportExecute(r ApiApiProjectImportRequest
 }
 
 type ApiApiProjectList1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	meta       *string
+	meta *string
 }
 
 // Comma-separated list of metadata items to include, or \&quot;*\&quot; for all
@@ -2507,25 +2780,25 @@ List the existing projects on the server.
 
 Authorization required: `read` for project resource
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiProjectList1Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiProjectList1Request
 */
 func (a *ProjectAPIService) ApiProjectList1(ctx context.Context) ApiApiProjectList1Request {
 	return ApiApiProjectList1Request{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *ProjectAPIService) ApiProjectList1Execute(r ApiApiProjectList1Request) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectList1")
@@ -2611,10 +2884,10 @@ func (a *ProjectAPIService) ApiProjectList1Execute(r ApiApiProjectList1Request) 
 }
 
 type ApiApiProjectMetaRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	meta       *string
+	project string
+	meta *string
 }
 
 // Comma-separated list of metadata items to include, or \&quot;*\&quot; for all (default)
@@ -2635,27 +2908,26 @@ Get project metadata.
 Requires `read` authorization for the project resource.
 Since: v46
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiProjectMetaRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiProjectMetaRequest
 */
 func (a *ProjectAPIService) ApiProjectMeta(ctx context.Context, project string) ApiApiProjectMetaRequest {
 	return ApiApiProjectMetaRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ItemMeta
+//  @return []ItemMeta
 func (a *ProjectAPIService) ApiProjectMetaExecute(r ApiApiProjectMetaRequest) ([]ItemMeta, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ItemMeta
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ItemMeta
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiProjectMeta")
@@ -2743,10 +3015,10 @@ func (a *ProjectAPIService) ApiProjectMetaExecute(r ApiApiProjectMetaRequest) ([
 }
 
 type ApiApiResourcesv2Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	filter     *string
+	project string
+	filter *string
 }
 
 // Node Filter String
@@ -2773,13 +3045,13 @@ the node filter syntax and usage.
 
 A basic node filter looks like:
 
-	attribute: value attribute2: value2
+    attribute: value attribute2: value2
 
 To specify a Node Filter string as a URL parameter for an API request, use a parameter named `filter`.
 Your HTTP client will have to correctly escape the value of the `filter` parameter.  For example you can
 use `curl` like this;
 
-	curl --data-urlencode "filter=attribute: value"
+    curl --data-urlencode "filter=attribute: value"
 
 Common attributes:
 
@@ -2795,27 +3067,26 @@ Authorization required: `read` for project resource type `node`, as well as `rea
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiResourcesv2Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiResourcesv2Request
 */
 func (a *ProjectAPIService) ApiResourcesv2(ctx context.Context, project string) ApiApiResourcesv2Request {
 	return ApiApiResourcesv2Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiResourcesv2Execute(r ApiApiResourcesv2Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiResourcesv2")
@@ -2902,10 +3173,10 @@ func (a *ProjectAPIService) ApiResourcesv2Execute(r ApiApiResourcesv2Request) (m
 }
 
 type ApiApiResourcev14Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	name       string
+	project string
+	name string
 }
 
 func (r ApiApiResourcev14Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -2917,33 +3188,32 @@ ApiResourcev14 Get Node Info
 
 Get a specific resource within a project.
 
-Authorization required: `read` for project resource type `node`, as well as `read` for the Node
+Authorization required: `read` for project resource type `node`, as well as `read` for the Node 
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param name Node Name
-	@return ApiApiResourcev14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param name Node Name
+ @return ApiApiResourcev14Request
 */
 func (a *ProjectAPIService) ApiResourcev14(ctx context.Context, project string, name string) ApiApiResourcev14Request {
 	return ApiApiResourcev14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		name:       name,
+		ctx: ctx,
+		project: project,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiResourcev14Execute(r ApiApiResourcev14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiResourcev14")
@@ -3028,10 +3298,10 @@ func (a *ProjectAPIService) ApiResourcev14Execute(r ApiApiResourcev14Request) (m
 }
 
 type ApiApiSourceGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	index      int32
+	project string
+	index int32
 }
 
 func (r ApiApiSourceGetRequest) Execute() (*Source, *http.Response, error) {
@@ -3041,7 +3311,7 @@ func (r ApiApiSourceGetRequest) Execute() (*Source, *http.Response, error) {
 /*
 ApiSourceGet Get a Resource Model Source for a Project
 
-The response contains the `index`, the `type`, and
+The response contains the `index`, the `type`, and 
 details about the `resources`. If the
 source had any error, that is included as `errors`.
 
@@ -3052,29 +3322,28 @@ Authorization required: `configure` for project resource
 
 Since: v23
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param index Source Index
-	@return ApiApiSourceGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param index Source Index
+ @return ApiApiSourceGetRequest
 */
 func (a *ProjectAPIService) ApiSourceGet(ctx context.Context, project string, index int32) ApiApiSourceGetRequest {
 	return ApiApiSourceGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		index:      index,
+		ctx: ctx,
+		project: project,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Source
+//  @return Source
 func (a *ProjectAPIService) ApiSourceGetExecute(r ApiApiSourceGetRequest) (*Source, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Source
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Source
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiSourceGet")
@@ -3159,10 +3428,10 @@ func (a *ProjectAPIService) ApiSourceGetExecute(r ApiApiSourceGetRequest) (*Sour
 }
 
 type ApiApiSourceGetContentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	index      int32
+	project string
+	index int32
 }
 
 func (r ApiApiSourceGetContentRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -3172,33 +3441,33 @@ func (r ApiApiSourceGetContentRequest) Execute() (map[string]interface{}, *http.
 /*
 ApiSourceGetContent List Resources of a Resource Model Source
 
+
 Authorization required: `configure` for project resource
 
 Since: v23
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param index Source Index
-	@return ApiApiSourceGetContentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param index Source Index
+ @return ApiApiSourceGetContentRequest
 */
 func (a *ProjectAPIService) ApiSourceGetContent(ctx context.Context, project string, index int32) ApiApiSourceGetContentRequest {
 	return ApiApiSourceGetContentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		index:      index,
+		ctx: ctx,
+		project: project,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiSourceGetContentExecute(r ApiApiSourceGetContentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiSourceGetContent")
@@ -3283,11 +3552,11 @@ func (a *ProjectAPIService) ApiSourceGetContentExecute(r ApiApiSourceGetContentR
 }
 
 type ApiApiSourceWriteContentRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
-	index      int32
-	body       *map[string]interface{}
+	project string
+	index int32
+	body *map[string]interface{}
 }
 
 // Resource model data in the supported format
@@ -3303,33 +3572,33 @@ func (r ApiApiSourceWriteContentRequest) Execute() (map[string]interface{}, *htt
 /*
 ApiSourceWriteContent Update Resources of a Resource Model Source
 
+
 Authorization required: `configure` for project resource
 
 Since: v23
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param index Source Index
-	@return ApiApiSourceWriteContentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param index Source Index
+ @return ApiApiSourceWriteContentRequest
 */
 func (a *ProjectAPIService) ApiSourceWriteContent(ctx context.Context, project string, index int32) ApiApiSourceWriteContentRequest {
 	return ApiApiSourceWriteContentRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		index:      index,
+		ctx: ctx,
+		project: project,
+		index: index,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *ProjectAPIService) ApiSourceWriteContentExecute(r ApiApiSourceWriteContentRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiSourceWriteContent")
@@ -3410,8 +3679,8 @@ func (a *ProjectAPIService) ApiSourceWriteContentExecute(r ApiApiSourceWriteCont
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3429,9 +3698,9 @@ func (a *ProjectAPIService) ApiSourceWriteContentExecute(r ApiApiSourceWriteCont
 }
 
 type ApiApiSourcesListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiSourcesListRequest) Execute() ([]Source, *http.Response, error) {
@@ -3441,7 +3710,7 @@ func (r ApiApiSourcesListRequest) Execute() ([]Source, *http.Response, error) {
 /*
 ApiSourcesList List Resource Model Sources for a Project
 
-The response contains a set of `source` objects, each describes the `index`, the `type`, and
+The response contains a set of `source` objects, each describes the `index`, the `type`, and 
 details about the `resources`. If the
 source had any error, that is included as `errors`.
 
@@ -3452,27 +3721,26 @@ Authorization required: `configure` for project resource
 
 Since: v23
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiSourcesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiSourcesListRequest
 */
 func (a *ProjectAPIService) ApiSourcesList(ctx context.Context, project string) ApiApiSourcesListRequest {
 	return ApiApiSourcesListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []Source
+//  @return []Source
 func (a *ProjectAPIService) ApiSourcesListExecute(r ApiApiSourcesListRequest) ([]Source, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Source
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Source
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiSourcesList")
@@ -3556,9 +3824,9 @@ func (a *ProjectAPIService) ApiSourcesListExecute(r ApiApiSourcesListRequest) ([
 }
 
 type ApiApiTagsForNodesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ProjectAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiTagsForNodesRequest) Execute() (*TagsForNodesResponse, *http.Response, error) {
@@ -3572,27 +3840,26 @@ List tags for project nodes.
 
 Since: v52
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiTagsForNodesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiTagsForNodesRequest
 */
 func (a *ProjectAPIService) ApiTagsForNodes(ctx context.Context, project string) ApiApiTagsForNodesRequest {
 	return ApiApiTagsForNodesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TagsForNodesResponse
+//  @return TagsForNodesResponse
 func (a *ProjectAPIService) ApiTagsForNodesExecute(r ApiApiTagsForNodesRequest) (*TagsForNodesResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TagsForNodesResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TagsForNodesResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.ApiTagsForNodes")
@@ -3676,12 +3943,12 @@ func (a *ProjectAPIService) ApiTagsForNodesExecute(r ApiApiTagsForNodesRequest) 
 }
 
 type ApiSaveProjectPluginsRequest struct {
-	ctx          context.Context
-	ApiService   *ProjectAPIService
-	project      string
-	serviceName  *string
+	ctx context.Context
+	ApiService *ProjectAPIService
+	project string
+	serviceName *string
 	configPrefix *string
-	body         *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Plugin service name (e.g. &#x60;ResourceModelSource&#x60;)
@@ -3713,24 +3980,24 @@ Create/update list-based plugin configurations (e.g. Resource Model Sources).
 Authorization required: `configure` on the project.
 Since: v55
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiSaveProjectPluginsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiSaveProjectPluginsRequest
 */
 func (a *ProjectAPIService) SaveProjectPlugins(ctx context.Context, project string) ApiSaveProjectPluginsRequest {
 	return ApiSaveProjectPluginsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectAPIService) SaveProjectPluginsExecute(r ApiSaveProjectPluginsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAPIService.SaveProjectPlugins")

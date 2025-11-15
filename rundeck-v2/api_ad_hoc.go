@@ -19,18 +19,19 @@ import (
 	"strings"
 )
 
+
 // AdHocAPIService AdHocAPI service
 type AdHocAPIService service
 
 type ApiApiRunCommandv14Request struct {
-	ctx                context.Context
-	ApiService         *AdHocAPIService
-	project            string
-	filter             *string
-	exec               *string
-	nodeThreadcount    *int32
-	nodeKeepgoing      *bool
-	asUser             *string
+	ctx context.Context
+	ApiService *AdHocAPIService
+	project string
+	filter *string
+	exec *string
+	nodeThreadcount *int32
+	nodeKeepgoing *bool
+	asUser *string
 	apiRunAdhocRequest *ApiRunAdhocRequest
 }
 
@@ -83,27 +84,26 @@ Authorization required: `run` for project resource type `adhoc`, as well as `run
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiRunCommandv14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiRunCommandv14Request
 */
 func (a *AdHocAPIService) ApiRunCommandv14(ctx context.Context, project string) ApiApiRunCommandv14Request {
 	return ApiApiRunCommandv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AdHocAPIService) ApiRunCommandv14Execute(r ApiApiRunCommandv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdHocAPIService.ApiRunCommandv14")
@@ -204,18 +204,18 @@ func (a *AdHocAPIService) ApiRunCommandv14Execute(r ApiApiRunCommandv14Request) 
 }
 
 type ApiApiRunScriptUrlv14Request struct {
-	ctx                    context.Context
-	ApiService             *AdHocAPIService
-	project                string
-	filter                 *string
-	argString              *string
-	scriptURL              *string
-	nodeThreadcount        *int32
-	nodeKeepgoing          *bool
-	asUser                 *string
-	scriptInterpreter      *string
-	fileExtension          *string
-	interpreterArgsQuoted  *bool
+	ctx context.Context
+	ApiService *AdHocAPIService
+	project string
+	filter *string
+	argString *string
+	scriptURL *string
+	nodeThreadcount *int32
+	nodeKeepgoing *bool
+	asUser *string
+	scriptInterpreter *string
+	fileExtension *string
+	interpreterArgsQuoted *bool
 	apiRunScriptv14Request *ApiRunScriptv14Request
 }
 
@@ -292,27 +292,26 @@ Authorization required: `run` for project resource type `adhoc`, as well as `run
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiRunScriptUrlv14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiRunScriptUrlv14Request
 */
 func (a *AdHocAPIService) ApiRunScriptUrlv14(ctx context.Context, project string) ApiApiRunScriptUrlv14Request {
 	return ApiApiRunScriptUrlv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AdHocAPIService) ApiRunScriptUrlv14Execute(r ApiApiRunScriptUrlv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdHocAPIService.ApiRunScriptUrlv14")
@@ -425,18 +424,18 @@ func (a *AdHocAPIService) ApiRunScriptUrlv14Execute(r ApiApiRunScriptUrlv14Reque
 }
 
 type ApiApiRunScriptv14Request struct {
-	ctx                   context.Context
-	ApiService            *AdHocAPIService
-	project               string
-	filter                *string
-	argString             *string
-	nodeThreadcount       *int32
-	nodeKeepgoing         *bool
-	asUser                *string
-	scriptInterpreter     *string
-	fileExtension         *string
+	ctx context.Context
+	ApiService *AdHocAPIService
+	project string
+	filter *string
+	argString *string
+	nodeThreadcount *int32
+	nodeKeepgoing *bool
+	asUser *string
+	scriptInterpreter *string
+	fileExtension *string
 	interpreterArgsQuoted *bool
-	runAdhocRequest       *ApiRunAdhocRequest
+	runAdhocRequest *ApiRunAdhocRequest
 }
 
 // Node Filter String
@@ -505,27 +504,26 @@ Authorization required: `run` for project resource type `adhoc`, as well as `run
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiRunScriptv14Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiRunScriptv14Request
 */
 func (a *AdHocAPIService) ApiRunScriptv14(ctx context.Context, project string) ApiApiRunScriptv14Request {
 	return ApiApiRunScriptv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *AdHocAPIService) ApiRunScriptv14Execute(r ApiApiRunScriptv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdHocAPIService.ApiRunScriptv14")

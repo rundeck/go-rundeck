@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // UserAPIService UserAPI service
 type UserAPIService service
 
 type ApiApiCreateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Role Definition
@@ -41,29 +42,29 @@ func (r ApiApiCreateRequest) Execute() (map[string]interface{}, *http.Response, 
 /*
 ApiCreate Create A Local Role [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiCreateRequest
 */
 func (a *UserAPIService) ApiCreate(ctx context.Context) ApiApiCreateRequest {
 	return ApiApiCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiCreateExecute(r ApiApiCreateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiCreate")
@@ -151,7 +152,7 @@ func (a *UserAPIService) ApiCreateExecute(r ApiApiCreateRequest) (map[string]int
 }
 
 type ApiApiCreate1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -162,29 +163,29 @@ func (r ApiApiCreate1Request) Execute() (map[string]interface{}, *http.Response,
 /*
 ApiCreate1 Create A Local User [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiCreate1Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiCreate1Request
 */
 func (a *UserAPIService) ApiCreate1(ctx context.Context) ApiApiCreate1Request {
 	return ApiApiCreate1Request{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiCreate1Execute(r ApiApiCreate1Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiCreate1")
@@ -267,9 +268,9 @@ func (a *UserAPIService) ApiCreate1Execute(r ApiApiCreate1Request) (map[string]i
 }
 
 type ApiApiDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -279,31 +280,31 @@ func (r ApiApiDeleteRequest) Execute() (map[string]interface{}, *http.Response, 
 /*
 ApiDelete Delete A Local Role [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Role ID
-	@return ApiApiDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Role ID
+ @return ApiApiDeleteRequest
 */
 func (a *UserAPIService) ApiDelete(ctx context.Context, id string) ApiApiDeleteRequest {
 	return ApiApiDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiDeleteExecute(r ApiApiDeleteRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiDelete")
@@ -387,9 +388,9 @@ func (a *UserAPIService) ApiDeleteExecute(r ApiApiDeleteRequest) (map[string]int
 }
 
 type ApiApiDelete1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiDelete1Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -399,31 +400,31 @@ func (r ApiApiDelete1Request) Execute() (map[string]interface{}, *http.Response,
 /*
 ApiDelete1 Delete A Local User [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id User ID
-	@return ApiApiDelete1Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id User ID
+ @return ApiApiDelete1Request
 */
 func (a *UserAPIService) ApiDelete1(ctx context.Context, id string) ApiApiDelete1Request {
 	return ApiApiDelete1Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiDelete1Execute(r ApiApiDelete1Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiDelete1")
@@ -507,10 +508,10 @@ func (a *UserAPIService) ApiDelete1Execute(r ApiApiDelete1Request) (map[string]i
 }
 
 type ApiApiEditRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
-	body       *map[string]interface{}
+	id string
+	body *map[string]interface{}
 }
 
 // Role Definition
@@ -532,27 +533,27 @@ Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Role ID
-	@return ApiApiEditRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Role ID
+ @return ApiApiEditRequest
 */
 func (a *UserAPIService) ApiEdit(ctx context.Context, id string) ApiApiEditRequest {
 	return ApiApiEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiEditExecute(r ApiApiEditRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiEdit")
@@ -641,9 +642,9 @@ func (a *UserAPIService) ApiEditExecute(r ApiApiEditRequest) (map[string]interfa
 }
 
 type ApiApiEdit1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiEdit1Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -653,31 +654,31 @@ func (r ApiApiEdit1Request) Execute() (map[string]interface{}, *http.Response, e
 /*
 ApiEdit1 Update A Local User [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id User ID
-	@return ApiApiEdit1Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id User ID
+ @return ApiApiEdit1Request
 */
 func (a *UserAPIService) ApiEdit1(ctx context.Context, id string) ApiApiEdit1Request {
 	return ApiApiEdit1Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiEdit1Execute(r ApiApiEdit1Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiEdit1")
@@ -761,9 +762,9 @@ func (a *UserAPIService) ApiEdit1Execute(r ApiApiEdit1Request) (map[string]inter
 }
 
 type ApiApiGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiGetRequest) Execute() (*LoginRoleData, *http.Response, error) {
@@ -773,31 +774,31 @@ func (r ApiApiGetRequest) Execute() (*LoginRoleData, *http.Response, error) {
 /*
 ApiGet Get A Local Role [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Role ID
-	@return ApiApiGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Role ID
+ @return ApiApiGetRequest
 */
 func (a *UserAPIService) ApiGet(ctx context.Context, id string) ApiApiGetRequest {
 	return ApiApiGetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return LoginRoleData
+//  @return LoginRoleData
 func (a *UserAPIService) ApiGetExecute(r ApiApiGetRequest) (*LoginRoleData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LoginRoleData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LoginRoleData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiGet")
@@ -881,9 +882,9 @@ func (a *UserAPIService) ApiGetExecute(r ApiApiGetRequest) (*LoginRoleData, *htt
 }
 
 type ApiApiGet1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiGet1Request) Execute() (map[string]interface{}, *http.Response, error) {
@@ -893,31 +894,31 @@ func (r ApiApiGet1Request) Execute() (map[string]interface{}, *http.Response, er
 /*
 ApiGet1 Get A Local User [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id User ID
-	@return ApiApiGet1Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id User ID
+ @return ApiApiGet1Request
 */
 func (a *UserAPIService) ApiGet1(ctx context.Context, id string) ApiApiGet1Request {
 	return ApiApiGet1Request{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiGet1Execute(r ApiApiGet1Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiGet1")
@@ -1001,9 +1002,9 @@ func (a *UserAPIService) ApiGet1Execute(r ApiApiGet1Request) (map[string]interfa
 }
 
 type ApiApiGetUserRolesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiGetUserRolesRequest) Execute() ([]LoginRoleData, *http.Response, error) {
@@ -1013,31 +1014,31 @@ func (r ApiApiGetUserRolesRequest) Execute() ([]LoginRoleData, *http.Response, e
 /*
 ApiGetUserRoles Get Roles for a Local User [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id User ID
-	@return ApiApiGetUserRolesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id User ID
+ @return ApiApiGetUserRolesRequest
 */
 func (a *UserAPIService) ApiGetUserRoles(ctx context.Context, id string) ApiApiGetUserRolesRequest {
 	return ApiApiGetUserRolesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []LoginRoleData
+//  @return []LoginRoleData
 func (a *UserAPIService) ApiGetUserRolesExecute(r ApiApiGetUserRolesRequest) ([]LoginRoleData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []LoginRoleData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []LoginRoleData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiGetUserRoles")
@@ -1121,7 +1122,7 @@ func (a *UserAPIService) ApiGetUserRolesExecute(r ApiApiGetUserRolesRequest) ([]
 }
 
 type ApiApiListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -1138,25 +1139,24 @@ Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiListRequest
 */
 func (a *UserAPIService) ApiList(ctx context.Context) ApiApiListRequest {
 	return ApiApiListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []LoginRoleData
+//  @return []LoginRoleData
 func (a *UserAPIService) ApiListExecute(r ApiApiListRequest) ([]LoginRoleData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []LoginRoleData
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []LoginRoleData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiList")
@@ -1239,7 +1239,7 @@ func (a *UserAPIService) ApiListExecute(r ApiApiListRequest) ([]LoginRoleData, *
 }
 
 type ApiApiList1Request struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -1250,29 +1250,29 @@ func (r ApiApiList1Request) Execute() ([]map[string]interface{}, *http.Response,
 /*
 ApiList1 List Local Users [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiList1Request
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiList1Request
 */
 func (a *UserAPIService) ApiList1(ctx context.Context) ApiApiList1Request {
 	return ApiApiList1Request{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *UserAPIService) ApiList1Execute(r ApiApiList1Request) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiList1")
@@ -1355,7 +1355,7 @@ func (a *UserAPIService) ApiList1Execute(r ApiApiList1Request) ([]map[string]int
 }
 
 type ApiApiListRolesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -1370,25 +1370,24 @@ Get a list of the authenticated user's roles.
 
 Since: v30
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiListRolesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiListRolesRequest
 */
 func (a *UserAPIService) ApiListRoles(ctx context.Context) ApiApiListRolesRequest {
 	return ApiApiListRolesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiListRolesExecute(r ApiApiListRolesRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiListRoles")
@@ -1471,10 +1470,10 @@ func (a *UserAPIService) ApiListRolesExecute(r ApiApiListRolesRequest) (map[stri
 }
 
 type ApiApiOtherUserDataPostDocsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	username   string
-	body       *map[string]interface{}
+	username string
+	body *map[string]interface{}
 }
 
 // Request content
@@ -1496,27 +1495,26 @@ Authorization required: `app_admin` for `system` resource, if not the current us
 
 Since: v21
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username Username, for a different user
-	@return ApiApiOtherUserDataPostDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username Username, for a different user
+ @return ApiApiOtherUserDataPostDocsRequest
 */
 func (a *UserAPIService) ApiOtherUserDataPostDocs(ctx context.Context, username string) ApiApiOtherUserDataPostDocsRequest {
 	return ApiApiOtherUserDataPostDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiOtherUserDataPostDocsExecute(r ApiApiOtherUserDataPostDocsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiOtherUserDataPostDocs")
@@ -1593,8 +1591,8 @@ func (a *UserAPIService) ApiOtherUserDataPostDocsExecute(r ApiApiOtherUserDataPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1604,8 +1602,8 @@ func (a *UserAPIService) ApiOtherUserDataPostDocsExecute(r ApiApiOtherUserDataPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -1624,9 +1622,9 @@ func (a *UserAPIService) ApiOtherUserDataPostDocsExecute(r ApiApiOtherUserDataPo
 }
 
 type ApiApiSendPasswordResetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	username   string
+	username string
 }
 
 func (r ApiApiSendPasswordResetRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1642,27 +1640,26 @@ Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username User Name
-	@return ApiApiSendPasswordResetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username User Name
+ @return ApiApiSendPasswordResetRequest
 */
 func (a *UserAPIService) ApiSendPasswordReset(ctx context.Context, username string) ApiApiSendPasswordResetRequest {
 	return ApiApiSendPasswordResetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiSendPasswordResetExecute(r ApiApiSendPasswordResetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiSendPasswordReset")
@@ -1746,10 +1743,10 @@ func (a *UserAPIService) ApiSendPasswordResetExecute(r ApiApiSendPasswordResetRe
 }
 
 type ApiApiUpdateMembersRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	id         string
-	body       *map[string]interface{}
+	id string
+	body *map[string]interface{}
 }
 
 // Role Definition
@@ -1765,31 +1762,31 @@ func (r ApiApiUpdateMembersRequest) Execute() (map[string]interface{}, *http.Res
 /*
 ApiUpdateMembers Update Role Members [Enterprise]
 
+
 Authorization required: `app_admin` for system resource type `user`.
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Role ID
-	@return ApiApiUpdateMembersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Role ID
+ @return ApiApiUpdateMembersRequest
 */
 func (a *UserAPIService) ApiUpdateMembers(ctx context.Context, id string) ApiApiUpdateMembersRequest {
 	return ApiApiUpdateMembersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiUpdateMembersExecute(r ApiApiUpdateMembersRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiUpdateMembers")
@@ -1878,9 +1875,9 @@ func (a *UserAPIService) ApiUpdateMembersExecute(r ApiApiUpdateMembersRequest) (
 }
 
 type ApiApiUserDataRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	username   string
+	username string
 }
 
 func (r ApiApiUserDataRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1896,27 +1893,26 @@ Authorization required: `app_admin` for `system` resource, if not the current us
 
 Since: v21
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username Username, for a different user
-	@return ApiApiUserDataRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username Username, for a different user
+ @return ApiApiUserDataRequest
 */
 func (a *UserAPIService) ApiUserData(ctx context.Context, username string) ApiApiUserDataRequest {
 	return ApiApiUserDataRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiUserDataExecute(r ApiApiUserDataRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiUserData")
@@ -1991,8 +1987,8 @@ func (a *UserAPIService) ApiUserDataExecute(r ApiApiUserDataRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2002,8 +1998,8 @@ func (a *UserAPIService) ApiUserDataExecute(r ApiApiUserDataRequest) (map[string
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2022,7 +2018,7 @@ func (a *UserAPIService) ApiUserDataExecute(r ApiApiUserDataRequest) (map[string
 }
 
 type ApiApiUserDataDocsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -2037,25 +2033,24 @@ Get the user profile data for current user.
 
 Since: v21
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUserDataDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiUserDataDocsRequest
 */
 func (a *UserAPIService) ApiUserDataDocs(ctx context.Context) ApiApiUserDataDocsRequest {
 	return ApiApiUserDataDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiUserDataDocsExecute(r ApiApiUserDataDocsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiUserDataDocs")
@@ -2129,8 +2124,8 @@ func (a *UserAPIService) ApiUserDataDocsExecute(r ApiApiUserDataDocsRequest) (ma
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2140,8 +2135,8 @@ func (a *UserAPIService) ApiUserDataDocsExecute(r ApiApiUserDataDocsRequest) (ma
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2160,9 +2155,9 @@ func (a *UserAPIService) ApiUserDataDocsExecute(r ApiApiUserDataDocsRequest) (ma
 }
 
 type ApiApiUserDataPostDocsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Request content
@@ -2182,25 +2177,24 @@ Modify the user profile data for current user.
 
 Since: v21
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUserDataPostDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiUserDataPostDocsRequest
 */
 func (a *UserAPIService) ApiUserDataPostDocs(ctx context.Context) ApiApiUserDataPostDocsRequest {
 	return ApiApiUserDataPostDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *UserAPIService) ApiUserDataPostDocsExecute(r ApiApiUserDataPostDocsRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiUserDataPostDocs")
@@ -2276,8 +2270,8 @@ func (a *UserAPIService) ApiUserDataPostDocsExecute(r ApiApiUserDataPostDocsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2287,8 +2281,8 @@ func (a *UserAPIService) ApiUserDataPostDocsExecute(r ApiApiUserDataPostDocsRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
@@ -2307,7 +2301,7 @@ func (a *UserAPIService) ApiUserDataPostDocsExecute(r ApiApiUserDataPostDocsRequ
 }
 
 type ApiApiUserListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserAPIService
 }
 
@@ -2324,25 +2318,24 @@ Authorization required: `app_admin` for `system` resource
 
 Since: v21
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiUserListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiUserListRequest
 */
 func (a *UserAPIService) ApiUserList(ctx context.Context) ApiApiUserListRequest {
 	return ApiApiUserListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *UserAPIService) ApiUserListExecute(r ApiApiUserListRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserAPIService.ApiUserList")

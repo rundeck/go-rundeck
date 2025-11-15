@@ -19,9 +19,9 @@ var _ MappedNullable = &Manifest{}
 
 // Manifest struct for Manifest
 type Manifest struct {
-	Name    *string `json:"name,omitempty"`
-	Enabled *bool   `json:"enabled,omitempty"`
-	Tours   []Tour  `json:"tours,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	Tours []Tour `json:"tours,omitempty"`
 }
 
 // NewManifest instantiates a new Manifest object
@@ -138,7 +138,7 @@ func (o *Manifest) SetTours(v []Tour) {
 }
 
 func (o Manifest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableManifest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,7 +19,7 @@ var _ MappedNullable = &JobOption{}
 
 // JobOption struct for JobOption
 type JobOption struct {
-	Name  *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Value *string `json:"value,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *JobOption) SetValue(v string) {
 }
 
 func (o JobOption) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableJobOption) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

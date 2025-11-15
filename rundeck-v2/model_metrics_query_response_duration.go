@@ -20,8 +20,8 @@ var _ MappedNullable = &MetricsQueryResponseDuration{}
 // MetricsQueryResponseDuration struct for MetricsQueryResponseDuration
 type MetricsQueryResponseDuration struct {
 	Average *string `json:"average,omitempty"`
-	Max     *string `json:"max,omitempty"`
-	Min     *string `json:"min,omitempty"`
+	Max *string `json:"max,omitempty"`
+	Min *string `json:"min,omitempty"`
 }
 
 // NewMetricsQueryResponseDuration instantiates a new MetricsQueryResponseDuration object
@@ -138,7 +138,7 @@ func (o *MetricsQueryResponseDuration) SetMin(v string) {
 }
 
 func (o MetricsQueryResponseDuration) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableMetricsQueryResponseDuration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

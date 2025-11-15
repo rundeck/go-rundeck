@@ -32,27 +32,29 @@ tags:
 - description: Access Control List operations
   name: ACL
 - description: Ad-hoc command execution operations
-  name: Ad Hoc
+  name: Adhoc
 - description: API information and utilities
   name: API
-- description: Check User Authorization operations
-  name: Authorization
 - description: Calendar management operations
   name: Calendars
 - description: Cluster management operations
   name: Cluster
 - description: Configuration management
   name: Configuration
-- description: Execution Mode operations
-  name: Execution Mode
+- description: Enterprise license and feature operations
+  name: Enterprise
+- description: Job execution operations
+  name: Execution
+- description: Feature management operations
+  name: Feature
+- description: Generative AI operations
+  name: GenAI
 - description: Health check operations
   name: Health
 - description: Execution history operations
   name: History
 - description: Job management operations
   name: Jobs
-- description: Job execution operations
-  name: Job Executions
 - description: Key storage operations
   name: Key Storage
 - description: License management operations
@@ -1118,7 +1120,7 @@ paths:
           description: No Content
       summary: Delete an Execution
       tags:
-      - Job Executions
+      - Execution
     get:
       description: Get the status for an execution by ID.
       operationId: apiExecution
@@ -1174,7 +1176,7 @@ paths:
             \ v14."
       summary: Execution Info
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/abort:
     post:
       description: Abort a running execution by ID.
@@ -1236,7 +1238,7 @@ paths:
             * resource: `execution`
       summary: Aborting Executions
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/input/files:
     get:
       description: "List input files used for an execution. Since: V19"
@@ -1273,7 +1275,7 @@ paths:
           description: ""
       summary: List Input Files for an Execution
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/output:
     get:
       description: |+
@@ -1568,7 +1570,7 @@ paths:
               style: simple
       summary: Execution Output
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/output/node/{nodename}:
     get:
       description: Get the output for an execution filtered for a specific node.
@@ -1601,7 +1603,7 @@ paths:
             \ parameter."
       summary: Execution Output For Node
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/output/node/{nodename}/step/{stepctx}:
     get:
       description: Get the output for an execution filtered for a specific node and
@@ -1644,7 +1646,7 @@ paths:
             \ and `stepctx` parameters."
       summary: Execution Output For Node and Step
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/output/state:
     get:
       description: |
@@ -1688,7 +1690,7 @@ paths:
             * metadata about the entry may be included in the entry
       summary: Execution Output with State
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/output/step/{stepctx}:
     get:
       description: Get the output for an execution filtered for a specific step.
@@ -1722,7 +1724,7 @@ paths:
             \ parameter."
       summary: Execution Output For Step
       tags:
-      - Job Executions
+      - Execution
   /execution/{id}/result/data:
     get:
       description: |
@@ -2048,7 +2050,7 @@ paths:
             \ execution or workflow.\n"
       summary: Execution State
       tags:
-      - Job Executions
+      - Execution
   /executions/delete:
     post:
       description: "Delete a set of Executions by their IDs.\n\nThe IDs can be specified\
@@ -2105,7 +2107,7 @@ paths:
           description: Summary of bulk delete results
       summary: Bulk Delete Executions
       tags:
-      - Job Executions
+      - Execution
   /executions/metrics:
     get:
       description: Obtain metrics over the result set of an execution query.
@@ -2400,7 +2402,7 @@ paths:
           description: Metrics response
       summary: Execution Query Metrics
       tags:
-      - Job Executions
+      - Execution
   /feature:
     get:
       description: The query will return all system features' status
@@ -2489,7 +2491,7 @@ paths:
             :   Name of framework node
       summary: Summary of executions and projects
       tags:
-      - Job Executions
+      - Execution
   /job/{id}:
     delete:
       description: |-
@@ -5139,7 +5141,7 @@ paths:
               set-project-config:
                 summary: Replace an individual config settings
                 value:
-                  value: key value
+                  '[KEY]': key value
             schema:
               type: object
           text/plain:
@@ -5237,7 +5239,8 @@ paths:
             `msg` field.
       summary: Disable Project executions or schedules after a duration of time
       tags:
-      - Execution Mode
+      - Project
+      - project execution mode
   /project/{project}/enable/later:
     post:
       description: |
@@ -5300,7 +5303,8 @@ paths:
             `msg` field.
       summary: Enable Project executions or schedules after a duration of time
       tags:
-      - Execution Mode
+      - Project
+      - project execution mode
   /project/{project}/executions:
     get:
       description: Query for Executions based on Job or Execution details.
@@ -5659,7 +5663,7 @@ paths:
             if executed in cluster mode.
       summary: Execution Query
       tags:
-      - Job Executions
+      - Execution
   /project/{project}/executions/metrics:
     get:
       description: |
@@ -5685,8 +5689,8 @@ paths:
           description: Metrics response
       summary: Execution Query Metrics
       tags:
-      - Job Executions
-      - Job Executions
+      - Execution
+      - Execution
   /project/{project}/executions/running:
     get:
       description: |
@@ -5811,7 +5815,7 @@ paths:
             \ in cluster mode.\n"
       summary: Listing Running Executions
       tags:
-      - Job Executions
+      - Execution
   /project/{project}/export:
     get:
       description: "Performs the export to a zip archive of the project synchronously.\
@@ -7628,6 +7632,7 @@ paths:
           description: Validation errors.
       summary: Save list-style plugin configurations for a project
       tags:
+      - Configuration
       - Project
   /project/{project}/resource/{name}:
     get:
@@ -8326,6 +8331,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/RegenRunnerCredResponse"
           description: Runner Regenerated Credentials
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Server error while regenerating runner credentials
       summary: Regenerate Runner Creds at Project context
       tags:
       - Runner
@@ -10249,6 +10260,12 @@ paths:
               schema:
                 $ref: "#/components/schemas/RegenRunnerCredResponse"
           description: Runner Regenerated Credentials
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+          description: Server error while regenerating runner credentials
       summary: Regenerate Runner Creds
       tags:
       - Runner
@@ -10758,7 +10775,7 @@ paths:
           description: Successful Response
       summary: Takeover Schedule in Cluster Mode
       tags:
-      - Cluster
+      - Scheduler
   /secure/generatepasswordreset/{username}:
     post:
       description: |-
@@ -11508,7 +11525,7 @@ paths:
           description: apiSystemAcls_DELETE_docs 200 response
       summary: Delete an ACL Policy.
       tags:
-      - ACL
+      - ACLs
     get:
       description: "Retrieve the YAML text of the ACL Policy file.  If YAML or text\
         \ content is requested, the contents will be returned directly.\nOtherwise\
@@ -11569,7 +11586,7 @@ paths:
           description: ACL Policy Document
       summary: Get an ACL Policy.
       tags:
-      - ACL
+      - ACLs
     post:
       description: "\nAuthorization required: `create` or `admin` or `app_admin` access\
         \ for `system_acl` resource type \n\nSince: v14"
@@ -11695,7 +11712,7 @@ paths:
           description: apiSystemAcls_POST_docs 200 response
       summary: Create an ACL Policy.
       tags:
-      - ACL
+      - ACLs
     put:
       description: "\nAuthorization required: `update` or `admin` or `app_admin` access\
         \ for `system_acl` resource type \n\nSince: v14"
@@ -11758,7 +11775,7 @@ paths:
             Because each ACLPOLICY document can contain multiple Yaml documents, each will be listed as a separate policy.
       summary: Update an ACL Policy.
       tags:
-      - ACL
+      - ACLs
   /system/calendars:
     get:
       description: |-
@@ -11963,7 +11980,8 @@ paths:
             `msg` field.
       summary: Disable System executions after a duration of time
       tags:
-      - Execution Mode
+      - System
+      - system execution mode
   /system/executions/enable:
     post:
       description: |
@@ -12035,7 +12053,8 @@ paths:
             `msg` field.
       summary: Enable System executions after a duration of time
       tags:
-      - Execution Mode
+      - System
+      - system execution mode
   /system/executions/status:
     get:
       description: "Gets the current execution mode.\n\nNote:\nPrior to API version\
@@ -13559,18 +13578,22 @@ components:
       type: object
     DefaultMessageSourceResolvable:
       properties:
+        arguments:
+          items:
+            type: object
+          type: array
         code:
+          type: string
+        defaultMessage:
           type: string
         codes:
           items:
             type: string
           type: array
-        defaultMessage:
-          type: string
-        arguments:
-          items:
-            type: object
-          type: array
+      required:
+      - arguments
+      - codes
+      - defaultMessage
       type: object
     DeleteBulkRequest:
       properties:
@@ -13652,7 +13675,7 @@ components:
       type: object
     Errors:
       example:
-        globalErrorCount: 1
+        globalErrorCount: 6
         globalErrors:
         - codes:
           - codes
@@ -13700,7 +13723,7 @@ components:
           - "{}"
         nestedPath: nestedPath
         objectName: objectName
-        fieldErrorCount: 5
+        fieldErrorCount: 1
         fieldError:
           bindingFailure: true
           field: field
@@ -13935,12 +13958,12 @@ components:
         field: field
         rejectedValue: "{}"
       properties:
-        field:
-          type: string
         bindingFailure:
           type: boolean
         rejectedValue:
           type: object
+        field:
+          type: string
       required:
       - field
       type: object
@@ -14437,12 +14460,12 @@ components:
         description: description
         id: 0
       properties:
+        description:
+          type: string
         id:
           format: int64
           type: integer
         authority:
-          type: string
-        description:
           type: string
       type: object
     Manifest:
@@ -14891,12 +14914,10 @@ components:
       allOf:
       - $ref: "#/components/schemas/RdPageable"
       - properties:
-          sortBy:
-            type: string
-          idlist:
-            type: string
           errors:
             $ref: "#/components/schemas/Errors"
+          sortBy:
+            type: string
           sortOrder:
             type: string
           inputParamMap:
@@ -14915,6 +14936,8 @@ components:
           descFilter:
             type: string
           loglevelFilter:
+            type: string
+          idlist:
             type: string
           scheduledFilter:
             type: boolean
@@ -14941,16 +14964,16 @@ components:
         - column: column
           direction: direction
         descFilter: descFilter
-        max: 6
+        max: 5
         scheduleEnabledFilter: true
         projFilter: projFilter
         daysAhead: 2
         sortOrder: sortOrder
         loglevelFilter: loglevelFilter
         runJobLaterFilter: true
-        idlist: idlist
         inputParamMap:
           key: ""
+        idlist: idlist
         executionEnabledFilter: true
         sortBy: sortBy
         scheduledFilter: true
@@ -14958,7 +14981,7 @@ components:
         groupPath: groupPath
         groupPathExact: groupPathExact
         errors:
-          globalErrorCount: 1
+          globalErrorCount: 6
           globalErrors:
           - codes:
             - codes
@@ -15006,7 +15029,7 @@ components:
             - "{}"
           nestedPath: nestedPath
           objectName: objectName
-          fieldErrorCount: 5
+          fieldErrorCount: 1
           fieldError:
             bindingFailure: true
             field: field
@@ -15029,11 +15052,11 @@ components:
         offset:
           format: int32
           type: integer
+        errors:
+          $ref: "#/components/schemas/Errors"
         max:
           format: int32
           type: integer
-        errors:
-          $ref: "#/components/schemas/Errors"
         sortOrders:
           items:
             $ref: "#/components/schemas/SortOrder"
@@ -15354,11 +15377,11 @@ components:
         - tagNames
         - tagNames
         uptime: 6
-        replicaType: EPHEMERAL
+        replicaType: ephemeral
         lastUpdated: 2000-01-23T04:56:07.000+00:00
         hostname: hostname
         dateCreated: 2000-01-23T04:56:07.000+00:00
-        installationType: LINUX
+        installationType: linux
         name: name
         remoteNodeDispatch: true
         id: id
@@ -15416,10 +15439,10 @@ components:
       type: object
     RunnerInstallationType:
       enum:
-      - LINUX
-      - WINDOWS
-      - KUBERNETES
-      - DOCKER
+      - linux
+      - windows
+      - kubernetes
+      - docker
       type: string
     RunnerList:
       example:
@@ -15430,7 +15453,7 @@ components:
           tagNames:
           - tagNames
           - tagNames
-          replicaType: EPHEMERAL
+          replicaType: ephemeral
           uiData:
             features:
             - features
@@ -15455,7 +15478,7 @@ components:
           version: version
           uptime: 2
           healthyRunnerReplicas: 5
-          installationType: LINUX
+          installationType: linux
           name: name
           remoteNodeDispatch: true
           lastCheckin: lastCheckin
@@ -15473,7 +15496,7 @@ components:
           tagNames:
           - tagNames
           - tagNames
-          replicaType: EPHEMERAL
+          replicaType: ephemeral
           uiData:
             features:
             - features
@@ -15498,7 +15521,7 @@ components:
           version: version
           uptime: 2
           healthyRunnerReplicas: 5
-          installationType: LINUX
+          installationType: linux
           name: name
           remoteNodeDispatch: true
           lastCheckin: lastCheckin
@@ -15659,8 +15682,8 @@ components:
       type: object
     RunnerReplicaType:
       enum:
-      - EPHEMERAL
-      - MANUAL
+      - ephemeral
+      - manual
       type: string
     RunnerSummary:
       example:
@@ -15670,7 +15693,7 @@ components:
         tagNames:
         - tagNames
         - tagNames
-        replicaType: EPHEMERAL
+        replicaType: ephemeral
         uiData:
           features:
           - features
@@ -15695,7 +15718,7 @@ components:
         version: version
         uptime: 2
         healthyRunnerReplicas: 5
-        installationType: LINUX
+        installationType: linux
         name: name
         remoteNodeDispatch: true
         lastCheckin: lastCheckin
@@ -16364,19 +16387,15 @@ components:
     StartUpResponse:
       example:
         replicaId: replicaId
-        error: error
+        error: true
         replicaType: replicaType
       properties:
         error:
-          type: string
+          type: boolean
         replicaId:
           type: string
         replicaType:
           type: string
-      required:
-      - error
-      - replicaId
-      - replicaType
       type: object
     Step:
       example:

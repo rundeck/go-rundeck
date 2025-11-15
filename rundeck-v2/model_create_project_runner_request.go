@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -34,7 +34,7 @@ type CreateProjectRunnerRequest struct {
 	// Installation type of the Runner
 	InstallationType *string `json:"installationType,omitempty"`
 	// Replica type of the Runner
-	ReplicaType      *string              `json:"replicaType,omitempty"`
+	ReplicaType *string `json:"replicaType,omitempty"`
 	NewRunnerRequest *CreateRunnerRequest `json:"newRunnerRequest,omitempty"`
 }
 
@@ -300,7 +300,7 @@ func (o *CreateProjectRunnerRequest) SetNewRunnerRequest(v CreateRunnerRequest) 
 }
 
 func (o CreateProjectRunnerRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -346,10 +346,10 @@ func (o *CreateProjectRunnerRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -405,3 +405,5 @@ func (v *NullableCreateProjectRunnerRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

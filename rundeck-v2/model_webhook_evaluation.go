@@ -20,12 +20,12 @@ var _ MappedNullable = &WebhookEvaluation{}
 
 // WebhookEvaluation struct for WebhookEvaluation
 type WebhookEvaluation struct {
-	Id             *string                `json:"id,omitempty"`
-	Time           *time.Time             `json:"time,omitempty"`
-	Event          map[string]interface{} `json:"event,omitempty"`
-	BatchKey       *string                `json:"batchKey,omitempty"`
-	Error          *string                `json:"error,omitempty"`
-	RoutingResults []EventRoutingResult   `json:"routingResults,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Time *time.Time `json:"time,omitempty"`
+	Event map[string]interface{} `json:"event,omitempty"`
+	BatchKey *string `json:"batchKey,omitempty"`
+	Error *string `json:"error,omitempty"`
+	RoutingResults []EventRoutingResult `json:"routingResults,omitempty"`
 }
 
 // NewWebhookEvaluation instantiates a new WebhookEvaluation object
@@ -238,7 +238,7 @@ func (o *WebhookEvaluation) SetRoutingResults(v []EventRoutingResult) {
 }
 
 func (o WebhookEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableWebhookEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

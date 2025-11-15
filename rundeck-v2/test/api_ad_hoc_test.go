@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_AdHocAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_AdHocAPIService(t *testing.T) {
 
 	t.Run("Test AdHocAPIService ApiRunCommandv14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -38,7 +38,7 @@ func Test_openapi_AdHocAPIService(t *testing.T) {
 
 	t.Run("Test AdHocAPIService ApiRunScriptUrlv14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -52,7 +52,7 @@ func Test_openapi_AdHocAPIService(t *testing.T) {
 
 	t.Run("Test AdHocAPIService ApiRunScriptv14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 

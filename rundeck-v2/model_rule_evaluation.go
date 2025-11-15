@@ -19,8 +19,8 @@ var _ MappedNullable = &RuleEvaluation{}
 
 // RuleEvaluation struct for RuleEvaluation
 type RuleEvaluation struct {
-	Satisfied            *bool                 `json:"satisfied,omitempty"`
-	Rule                 *RoutingRule          `json:"rule,omitempty"`
+	Satisfied *bool `json:"satisfied,omitempty"`
+	Rule *RoutingRule `json:"rule,omitempty"`
 	ConditionEvaluations []ConditionEvaluation `json:"conditionEvaluations,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *RuleEvaluation) SetConditionEvaluations(v []ConditionEvaluation) {
 }
 
 func (o RuleEvaluation) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableRuleEvaluation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

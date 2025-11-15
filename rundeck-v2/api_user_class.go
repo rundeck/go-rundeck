@@ -19,11 +19,12 @@ import (
 	"strings"
 )
 
+
 // UserClassAPIService UserClassAPI service
 type UserClassAPIService service
 
 type ApiGetEnabledRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
 }
 
@@ -36,25 +37,24 @@ GetEnabled User Class Feature enablement check
 
 Returns whether the User Class feature is enabled. Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetEnabledRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetEnabledRequest
 */
 func (a *UserClassAPIService) GetEnabled(ctx context.Context) ApiGetEnabledRequest {
 	return ApiGetEnabledRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return EnabledResponse
+//  @return EnabledResponse
 func (a *UserClassAPIService) GetEnabledExecute(r ApiGetEnabledRequest) (*EnabledResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *EnabledResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnabledResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetEnabled")
@@ -137,9 +137,9 @@ func (a *UserClassAPIService) GetEnabledExecute(r ApiGetEnabledRequest) (*Enable
 }
 
 type ApiGetUserClassRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
-	username   string
+	username string
 }
 
 func (r ApiGetUserClassRequest) Execute() (*UserClassResponse, *http.Response, error) {
@@ -154,32 +154,31 @@ Get the User Class assignment of the specified user.
 The response will contain the user class name, or `NONE` if unassigned.
 
 Authorization required for current user: none
-
+ 
 Authorization required for other user: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username User Name
-	@return ApiGetUserClassRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username User Name
+ @return ApiGetUserClassRequest
 */
 func (a *UserClassAPIService) GetUserClass(ctx context.Context, username string) ApiGetUserClassRequest {
 	return ApiGetUserClassRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassResponse
+//  @return UserClassResponse
 func (a *UserClassAPIService) GetUserClassExecute(r ApiGetUserClassRequest) (*UserClassResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetUserClass")
@@ -263,7 +262,7 @@ func (a *UserClassAPIService) GetUserClassExecute(r ApiGetUserClassRequest) (*Us
 }
 
 type ApiGetUserClassAllocationsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
 }
 
@@ -280,27 +279,26 @@ The response will contain the allocation state, the current allocations by usern
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUserClassAllocationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUserClassAllocationsRequest
 */
 func (a *UserClassAPIService) GetUserClassAllocations(ctx context.Context) ApiGetUserClassAllocationsRequest {
 	return ApiGetUserClassAllocationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassAllocationResponse
+//  @return UserClassAllocationResponse
 func (a *UserClassAPIService) GetUserClassAllocationsExecute(r ApiGetUserClassAllocationsRequest) (*UserClassAllocationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassAllocationResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassAllocationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetUserClassAllocations")
@@ -383,7 +381,7 @@ func (a *UserClassAPIService) GetUserClassAllocationsExecute(r ApiGetUserClassAl
 }
 
 type ApiGetUserClassAllocationsStateRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
 }
 
@@ -400,27 +398,26 @@ The response will contain the allocation state, and summary information.
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUserClassAllocationsStateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUserClassAllocationsStateRequest
 */
 func (a *UserClassAPIService) GetUserClassAllocationsState(ctx context.Context) ApiGetUserClassAllocationsStateRequest {
 	return ApiGetUserClassAllocationsStateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassAllocationResponse
+//  @return UserClassAllocationResponse
 func (a *UserClassAPIService) GetUserClassAllocationsStateExecute(r ApiGetUserClassAllocationsStateRequest) (*UserClassAllocationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassAllocationResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassAllocationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetUserClassAllocationsState")
@@ -503,7 +500,7 @@ func (a *UserClassAPIService) GetUserClassAllocationsStateExecute(r ApiGetUserCl
 }
 
 type ApiGetUserClassSelfRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
 }
 
@@ -520,27 +517,26 @@ The response will contain the user class name, or `NONE` if unassigned.
 
 Authorization required: none.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUserClassSelfRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUserClassSelfRequest
 */
 func (a *UserClassAPIService) GetUserClassSelf(ctx context.Context) ApiGetUserClassSelfRequest {
 	return ApiGetUserClassSelfRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassResponse
+//  @return UserClassResponse
 func (a *UserClassAPIService) GetUserClassSelfExecute(r ApiGetUserClassSelfRequest) (*UserClassResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetUserClassSelf")
@@ -623,7 +619,7 @@ func (a *UserClassAPIService) GetUserClassSelfExecute(r ApiGetUserClassSelfReque
 }
 
 type ApiGetUserClassesAvailableRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
 }
 
@@ -640,27 +636,26 @@ The response will be a list of User Class Definitions.
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUserClassesAvailableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUserClassesAvailableRequest
 */
 func (a *UserClassAPIService) GetUserClassesAvailable(ctx context.Context) ApiGetUserClassesAvailableRequest {
 	return ApiGetUserClassesAvailableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassList
+//  @return UserClassList
 func (a *UserClassAPIService) GetUserClassesAvailableExecute(r ApiGetUserClassesAvailableRequest) (*UserClassList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.GetUserClassesAvailable")
@@ -743,9 +738,9 @@ func (a *UserClassAPIService) GetUserClassesAvailableExecute(r ApiGetUserClasses
 }
 
 type ApiRemoveUserClassRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserClassAPIService
-	username   string
+	username string
 }
 
 func (r ApiRemoveUserClassRequest) Execute() (*http.Response, error) {
@@ -761,26 +756,26 @@ The response will be 204 No Content if successful.
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username User Name
-	@return ApiRemoveUserClassRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username User Name
+ @return ApiRemoveUserClassRequest
 */
 func (a *UserClassAPIService) RemoveUserClass(ctx context.Context, username string) ApiRemoveUserClassRequest {
 	return ApiRemoveUserClassRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
 func (a *UserClassAPIService) RemoveUserClassExecute(r ApiRemoveUserClassRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.RemoveUserClass")
@@ -855,9 +850,9 @@ func (a *UserClassAPIService) RemoveUserClassExecute(r ApiRemoveUserClassRequest
 }
 
 type ApiSetUserClassRequest struct {
-	ctx               context.Context
-	ApiService        *UserClassAPIService
-	username          string
+	ctx context.Context
+	ApiService *UserClassAPIService
+	username string
 	setUserclassModel *SetUserclassModel
 }
 
@@ -882,29 +877,28 @@ then a User Class Allocation error will be returned with a 400 status code with 
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param username User Name
-	@return ApiSetUserClassRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param username User Name
+ @return ApiSetUserClassRequest
 */
 func (a *UserClassAPIService) SetUserClass(ctx context.Context, username string) ApiSetUserClassRequest {
 	return ApiSetUserClassRequest{
 		ApiService: a,
-		ctx:        ctx,
-		username:   username,
+		ctx: ctx,
+		username: username,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassResponse
+//  @return UserClassResponse
 func (a *UserClassAPIService) SetUserClassExecute(r ApiSetUserClassRequest) (*UserClassResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.SetUserClass")
@@ -981,8 +975,8 @@ func (a *UserClassAPIService) SetUserClassExecute(r ApiSetUserClassRequest) (*Us
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1000,8 +994,8 @@ func (a *UserClassAPIService) SetUserClassExecute(r ApiSetUserClassRequest) (*Us
 }
 
 type ApiStoreUserClassesRequest struct {
-	ctx                       context.Context
-	ApiService                *UserClassAPIService
+	ctx context.Context
+	ApiService *UserClassAPIService
 	userClassAllocationChange *UserClassAllocationChange
 }
 
@@ -1022,7 +1016,7 @@ Allows modifying multiple User Class assignments in one request.
 This action can operate in one of three behaviors:
 
 1. If the request contains the `allocations` definition, those allocations will be set.
-2. If the request contains `bulkRemove` value `true`, and a set of `usernames`, then the specified
+2. If the request contains `bulkRemove` value `true`, and a set of `usernames`, then the specified 
 usernames will have their user class assignments removed.
 3. If the request values `bulkAssign` and `usernames` are set, then all the specified usernames will be assigned to the User Class specified in `bulkAssign`.
 
@@ -1035,27 +1029,26 @@ then a User Class Allocation error will be returned with a 400 status code with 
 
 Authorization required: `admin` or `app_admin` access for `user` resource type.
 
-	Since v41
+ Since v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStoreUserClassesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStoreUserClassesRequest
 */
 func (a *UserClassAPIService) StoreUserClasses(ctx context.Context) ApiStoreUserClassesRequest {
 	return ApiStoreUserClassesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserClassAllocationResponse
+//  @return UserClassAllocationResponse
 func (a *UserClassAPIService) StoreUserClassesExecute(r ApiStoreUserClassesRequest) (*UserClassAllocationResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserClassAllocationResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserClassAllocationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserClassAPIService.StoreUserClasses")
@@ -1131,8 +1124,8 @@ func (a *UserClassAPIService) StoreUserClassesExecute(r ApiStoreUserClassesReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

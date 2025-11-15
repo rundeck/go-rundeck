@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // MetricsAPIService MetricsAPI service
 type MetricsAPIService service
 
 type ApiApiMetricsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *MetricsAPIService
-	name       string
+	name string
 }
 
 func (r ApiApiMetricsRequest) Execute() (*LinkListResponse, *http.Response, error) {
@@ -37,27 +38,26 @@ ApiMetrics Get Rundeck metrics
 
 Return metrics and information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param name Metric name, or blank to receive list of metrics
-	@return ApiApiMetricsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name Metric name, or blank to receive list of metrics
+ @return ApiApiMetricsRequest
 */
 func (a *MetricsAPIService) ApiMetrics(ctx context.Context, name string) ApiApiMetricsRequest {
 	return ApiApiMetricsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		name:       name,
+		ctx: ctx,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return LinkListResponse
+//  @return LinkListResponse
 func (a *MetricsAPIService) ApiMetricsExecute(r ApiApiMetricsRequest) (*LinkListResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *LinkListResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LinkListResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MetricsAPIService.ApiMetrics")
@@ -132,8 +132,8 @@ func (a *MetricsAPIService) ApiMetricsExecute(r ApiApiMetricsRequest) (*LinkList
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

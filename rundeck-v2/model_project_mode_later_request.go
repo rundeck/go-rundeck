@@ -21,7 +21,7 @@ var _ MappedNullable = &ProjectModeLaterRequest{}
 type ProjectModeLaterRequest struct {
 	// Mode to change, one of `executions` or `schedule`
 	Type *string `json:"type,omitempty"`
-	// Time duration expression.  A series of: an integer followed by a unit.  Units: * `s` - seconds (default) * `m` - minutes * `h` - hours * `d` - days * `w` - weeks * `y` - years.  Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`.
+	// Time duration expression.  A series of: an integer followed by a unit.  Units: * `s` - seconds (default) * `m` - minutes * `h` - hours * `d` - days * `w` - weeks * `y` - years.  Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`. 
 	Value *string `json:"value,omitempty" validate:"regexp=((\\\\d+)[smhdwy]?)+"`
 }
 
@@ -107,7 +107,7 @@ func (o *ProjectModeLaterRequest) SetValue(v string) {
 }
 
 func (o ProjectModeLaterRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableProjectModeLaterRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

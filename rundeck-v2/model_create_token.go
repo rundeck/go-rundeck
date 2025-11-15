@@ -21,7 +21,7 @@ var _ MappedNullable = &CreateToken{}
 type CreateToken struct {
 	// since: v19
 	Roles []string `json:"roles,omitempty"`
-	User  *string  `json:"user,omitempty"`
+	User *string `json:"user,omitempty"`
 	// since: v19
 	Duration *string `json:"duration,omitempty"`
 	// since: v19
@@ -174,7 +174,7 @@ func (o *CreateToken) SetName(v string) {
 }
 
 func (o CreateToken) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -233,3 +233,5 @@ func (v *NullableCreateToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

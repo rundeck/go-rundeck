@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_SystemAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService ApiExecutionModeActive", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeActive(context.Background()).Execute()
 
@@ -34,9 +34,33 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SystemAPIService ApiExecutionModeLaterActive", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeLaterActive(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SystemAPIService ApiExecutionModeLaterPassive", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeLaterPassive(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SystemAPIService ApiExecutionModePassive", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModePassive(context.Background()).Execute()
 
@@ -48,7 +72,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService ApiExecutionModeStatus", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.ApiExecutionModeStatus(context.Background()).Execute()
 
@@ -60,7 +84,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService ApiSystemInfo", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.ApiSystemInfo(context.Background()).Execute()
 
@@ -72,7 +96,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService FeatureQuery", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var featureName string
 
@@ -86,7 +110,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService FeatureQueryAll", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.FeatureQueryAll(context.Background()).Execute()
 
@@ -98,7 +122,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService GetDataset", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var dataset string
 
@@ -112,7 +136,7 @@ func Test_openapi_SystemAPIService(t *testing.T) {
 
 	t.Run("Test SystemAPIService ListDatasets", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SystemAPI.ListDatasets(context.Background()).Execute()
 

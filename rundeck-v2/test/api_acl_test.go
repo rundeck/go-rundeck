@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_ACLAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 	t.Run("Test ACLAPIService ApiProjectAclsDeleteDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
@@ -38,7 +38,7 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 	t.Run("Test ACLAPIService ApiProjectAclsGetDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
@@ -53,7 +53,7 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 	t.Run("Test ACLAPIService ApiProjectAclsPostDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
@@ -68,66 +68,12 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 	t.Run("Test ACLAPIService ApiProjectAclsPutDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
 
 		httpRes, err := apiClient.ACLAPI.ApiProjectAclsPutDocs(context.Background(), project, path).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ACLAPIService ApiSystemAcls", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var path string
-
-		httpRes, err := apiClient.ACLAPI.ApiSystemAcls(context.Background(), path).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ACLAPIService ApiSystemAclsDELETEDocs", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var path string
-
-		resp, httpRes, err := apiClient.ACLAPI.ApiSystemAclsDELETEDocs(context.Background(), path).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ACLAPIService ApiSystemAclsPOSTDocs", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var path string
-
-		resp, httpRes, err := apiClient.ACLAPI.ApiSystemAclsPOSTDocs(context.Background(), path).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ACLAPIService ApiSystemAclsPUTDocs", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var path string
-
-		httpRes, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

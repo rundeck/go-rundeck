@@ -19,8 +19,8 @@ var _ MappedNullable = &UserClassDefinition{}
 
 // UserClassDefinition struct for UserClassDefinition
 type UserClassDefinition struct {
-	Name        *string `json:"name,omitempty"`
-	Title       *string `json:"title,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Title *string `json:"title,omitempty"`
 	Description *string `json:"description,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *UserClassDefinition) SetDescription(v string) {
 }
 
 func (o UserClassDefinition) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableUserClassDefinition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,11 +19,12 @@ import (
 	"strings"
 )
 
+
 // SystemAPIService SystemAPI service
 type SystemAPIService service
 
 type ApiApiExecutionModeActiveRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
 }
 
@@ -45,25 +46,25 @@ Authorization Required: `enable_executions` on `system` resource.
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiExecutionModeActiveRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionModeActiveRequest
 */
 func (a *SystemAPIService) ApiExecutionModeActive(ctx context.Context) ApiApiExecutionModeActiveRequest {
 	return ApiApiExecutionModeActiveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ExecutionModeResult
+//  @return ExecutionModeResult
 func (a *SystemAPIService) ApiExecutionModeActiveExecute(r ApiApiExecutionModeActiveRequest) (*ExecutionModeResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExecutionModeResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ExecutionModeResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiExecutionModeActive")
@@ -145,8 +146,284 @@ func (a *SystemAPIService) ApiExecutionModeActiveExecute(r ApiApiExecutionModeAc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiApiExecutionModeLaterActiveRequest struct {
+	ctx context.Context
+	ApiService *SystemAPIService
+	modeLaterRequest *ModeLaterRequest
+}
+
+// Enable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.) 
+func (r ApiApiExecutionModeLaterActiveRequest) ModeLaterRequest(modeLaterRequest ModeLaterRequest) ApiApiExecutionModeLaterActiveRequest {
+	r.modeLaterRequest = &modeLaterRequest
+	return r
+}
+
+func (r ApiApiExecutionModeLaterActiveRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiExecutionModeLaterActiveExecute(r)
+}
+
+/*
+ApiExecutionModeLaterActive Enable System executions after a duration of time
+
+Sets System execution mode to Active at a later time.
+
+Since: v34
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionModeLaterActiveRequest
+*/
+func (a *SystemAPIService) ApiExecutionModeLaterActive(ctx context.Context) ApiApiExecutionModeLaterActiveRequest {
+	return ApiApiExecutionModeLaterActiveRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ModeLaterResponse
+func (a *SystemAPIService) ApiExecutionModeLaterActiveExecute(r ApiApiExecutionModeLaterActiveRequest) (*ModeLaterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiExecutionModeLaterActive")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/system/executions/enable/later"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.modeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("modeLaterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.modeLaterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiExecutionModeLaterPassiveRequest struct {
+	ctx context.Context
+	ApiService *SystemAPIService
+	modeLaterRequest *ModeLaterRequest
+}
+
+// Disable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.) 
+func (r ApiApiExecutionModeLaterPassiveRequest) ModeLaterRequest(modeLaterRequest ModeLaterRequest) ApiApiExecutionModeLaterPassiveRequest {
+	r.modeLaterRequest = &modeLaterRequest
+	return r
+}
+
+func (r ApiApiExecutionModeLaterPassiveRequest) Execute() (*ModeLaterResponse, *http.Response, error) {
+	return r.ApiService.ApiExecutionModeLaterPassiveExecute(r)
+}
+
+/*
+ApiExecutionModeLaterPassive Disable System executions after a duration of time
+
+Sets System execution mode to Passive at a later time.
+
+Since: v34
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionModeLaterPassiveRequest
+*/
+func (a *SystemAPIService) ApiExecutionModeLaterPassive(ctx context.Context) ApiApiExecutionModeLaterPassiveRequest {
+	return ApiApiExecutionModeLaterPassiveRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ModeLaterResponse
+func (a *SystemAPIService) ApiExecutionModeLaterPassiveExecute(r ApiApiExecutionModeLaterPassiveRequest) (*ModeLaterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ModeLaterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiExecutionModeLaterPassive")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/system/executions/disable/later"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.modeLaterRequest == nil {
+		return localVarReturnValue, nil, reportError("modeLaterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.modeLaterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["rundeckApiToken"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["X-Rundeck-Auth-Token"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ModeLaterResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiExecutionModePassiveRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
 }
 
@@ -168,25 +445,25 @@ Authorization Required: `disable_executions` on `system` resource.
 
 Since: v14
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiExecutionModePassiveRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionModePassiveRequest
 */
 func (a *SystemAPIService) ApiExecutionModePassive(ctx context.Context) ApiApiExecutionModePassiveRequest {
 	return ApiApiExecutionModePassiveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ExecutionModeResult
+//  @return ExecutionModeResult
 func (a *SystemAPIService) ApiExecutionModePassiveExecute(r ApiApiExecutionModePassiveRequest) (*ExecutionModeResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExecutionModeResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ExecutionModeResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiExecutionModePassive")
@@ -269,8 +546,8 @@ func (a *SystemAPIService) ApiExecutionModePassiveExecute(r ApiApiExecutionModeP
 }
 
 type ApiApiExecutionModeStatusRequest struct {
-	ctx          context.Context
-	ApiService   *SystemAPIService
+	ctx context.Context
+	ApiService *SystemAPIService
 	passiveAs503 *bool
 }
 
@@ -292,31 +569,31 @@ Gets the current execution mode.
 Note:
 Prior to API version 36 if the mode was **passive** a status `HTTP 503 - Service Unavailable` would be returned.
 As of API v36 a `200` status will now be returned when the mode is **passive**.
-To return a 503 when the mode is **passive** add `?passiveAs503=true` to the API call.
+To return a 503 when the mode is **passive** add `?passiveAs503=true` to the API call.  
 
 Authorization Required: `read` for `system` resource
 
 Since: V32
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiExecutionModeStatusRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionModeStatusRequest
 */
 func (a *SystemAPIService) ApiExecutionModeStatus(ctx context.Context) ApiApiExecutionModeStatusRequest {
 	return ApiApiExecutionModeStatusRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ExecutionModeResult
+//  @return ExecutionModeResult
 func (a *SystemAPIService) ApiExecutionModeStatusExecute(r ApiApiExecutionModeStatusRequest) (*ExecutionModeResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExecutionModeResult
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ExecutionModeResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiExecutionModeStatus")
@@ -393,8 +670,8 @@ func (a *SystemAPIService) ApiExecutionModeStatusExecute(r ApiApiExecutionModeSt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -412,7 +689,7 @@ func (a *SystemAPIService) ApiExecutionModeStatusExecute(r ApiApiExecutionModeSt
 }
 
 type ApiApiSystemInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
 }
 
@@ -425,25 +702,24 @@ ApiSystemInfo Get Rundeck server information and stats
 
 Display stats and info about the rundeck server
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiSystemInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiSystemInfoRequest
 */
 func (a *SystemAPIService) ApiSystemInfo(ctx context.Context) ApiApiSystemInfoRequest {
 	return ApiApiSystemInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return SystemInfoModel
+//  @return SystemInfoModel
 func (a *SystemAPIService) ApiSystemInfoExecute(r ApiApiSystemInfoRequest) (*SystemInfoModel, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *SystemInfoModel
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SystemInfoModel
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ApiSystemInfo")
@@ -526,8 +802,8 @@ func (a *SystemAPIService) ApiSystemInfoExecute(r ApiApiSystemInfoRequest) (*Sys
 }
 
 type ApiFeatureQueryRequest struct {
-	ctx         context.Context
-	ApiService  *SystemAPIService
+	ctx context.Context
+	ApiService *SystemAPIService
 	featureName string
 }
 
@@ -540,27 +816,26 @@ FeatureQuery Get Rundeck System Feature Status
 
 Return whether a feature is enabled or disabled.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param featureName Feature name without the `feature.` prefix, or blank to receive list of all system features
-	@return ApiFeatureQueryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param featureName Feature name without the `feature.` prefix, or blank to receive list of all system features
+ @return ApiFeatureQueryRequest
 */
 func (a *SystemAPIService) FeatureQuery(ctx context.Context, featureName string) ApiFeatureQueryRequest {
 	return ApiFeatureQueryRequest{
-		ApiService:  a,
-		ctx:         ctx,
+		ApiService: a,
+		ctx: ctx,
 		featureName: featureName,
 	}
 }
 
 // Execute executes the request
-//
-//	@return FeatureEnabledResult
+//  @return FeatureEnabledResult
 func (a *SystemAPIService) FeatureQueryExecute(r ApiFeatureQueryRequest) (*FeatureEnabledResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *FeatureEnabledResult
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FeatureEnabledResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.FeatureQuery")
@@ -644,7 +919,7 @@ func (a *SystemAPIService) FeatureQueryExecute(r ApiFeatureQueryRequest) (*Featu
 }
 
 type ApiFeatureQueryAllRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
 }
 
@@ -657,25 +932,24 @@ FeatureQueryAll List all System Feature on/off Status
 
 The query will return all system features' status
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiFeatureQueryAllRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFeatureQueryAllRequest
 */
 func (a *SystemAPIService) FeatureQueryAll(ctx context.Context) ApiFeatureQueryAllRequest {
 	return ApiFeatureQueryAllRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []FeatureEnabledResult
+//  @return []FeatureEnabledResult
 func (a *SystemAPIService) FeatureQueryAllExecute(r ApiFeatureQueryAllRequest) ([]FeatureEnabledResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []FeatureEnabledResult
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []FeatureEnabledResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.FeatureQueryAll")
@@ -758,9 +1032,9 @@ func (a *SystemAPIService) FeatureQueryAllExecute(r ApiFeatureQueryAllRequest) (
 }
 
 type ApiGetDatasetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
-	dataset    string
+	dataset string
 }
 
 func (r ApiGetDatasetRequest) Execute() ([]DataSet, *http.Response, error) {
@@ -776,27 +1050,27 @@ Authorization required: `ops_admin` for `system`
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param dataset Dataset Name
-	@return ApiGetDatasetRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param dataset Dataset Name
+ @return ApiGetDatasetRequest
 */
 func (a *SystemAPIService) GetDataset(ctx context.Context, dataset string) ApiGetDatasetRequest {
 	return ApiGetDatasetRequest{
 		ApiService: a,
-		ctx:        ctx,
-		dataset:    dataset,
+		ctx: ctx,
+		dataset: dataset,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []DataSet
+//  @return []DataSet
 func (a *SystemAPIService) GetDatasetExecute(r ApiGetDatasetRequest) ([]DataSet, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []DataSet
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []DataSet
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.GetDataset")
@@ -880,7 +1154,7 @@ func (a *SystemAPIService) GetDatasetExecute(r ApiGetDatasetRequest) ([]DataSet,
 }
 
 type ApiListDatasetsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SystemAPIService
 }
 
@@ -897,25 +1171,25 @@ Authorization required: `ops_admin` for `system`
 
 Since: v44
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListDatasetsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListDatasetsRequest
 */
 func (a *SystemAPIService) ListDatasets(ctx context.Context) ApiListDatasetsRequest {
 	return ApiListDatasetsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []SystemReportItem
+//  @return []SystemReportItem
 func (a *SystemAPIService) ListDatasetsExecute(r ApiListDatasetsRequest) ([]SystemReportItem, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []SystemReportItem
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SystemReportItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SystemAPIService.ListDatasets")

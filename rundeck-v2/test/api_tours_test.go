@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_ToursAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiGetProjectResource", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
@@ -39,7 +39,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiGetSystemResource", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var path string
 
@@ -53,7 +53,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiProjectImportTour", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var tourFolder string
@@ -69,7 +69,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiProjectList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -83,7 +83,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiProjectLoadResource", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var path string
@@ -98,7 +98,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiRundeckEndpoints", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ToursAPI.ApiRundeckEndpoints(context.Background()).Execute()
 
@@ -110,7 +110,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiSystemImportTour", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var tourFolder string
 		var manifestFileName string
@@ -125,7 +125,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiSystemList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ToursAPI.ApiSystemList(context.Background()).Execute()
 
@@ -137,7 +137,7 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	t.Run("Test ToursAPIService ApiSystemLoadResource", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var path string
 

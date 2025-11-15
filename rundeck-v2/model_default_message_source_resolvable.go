@@ -12,6 +12,8 @@ package openapi
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DefaultMessageSourceResolvable type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,23 @@ var _ MappedNullable = &DefaultMessageSourceResolvable{}
 
 // DefaultMessageSourceResolvable struct for DefaultMessageSourceResolvable
 type DefaultMessageSourceResolvable struct {
-	Code           *string                  `json:"code,omitempty"`
-	Codes          []string                 `json:"codes,omitempty"`
-	DefaultMessage *string                  `json:"defaultMessage,omitempty"`
-	Arguments      []map[string]interface{} `json:"arguments,omitempty"`
+	Arguments []map[string]interface{} `json:"arguments"`
+	Code *string `json:"code,omitempty"`
+	DefaultMessage string `json:"defaultMessage"`
+	Codes []string `json:"codes"`
 }
+
+type _DefaultMessageSourceResolvable DefaultMessageSourceResolvable
 
 // NewDefaultMessageSourceResolvable instantiates a new DefaultMessageSourceResolvable object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDefaultMessageSourceResolvable() *DefaultMessageSourceResolvable {
+func NewDefaultMessageSourceResolvable(arguments []map[string]interface{}, defaultMessage string, codes []string) *DefaultMessageSourceResolvable {
 	this := DefaultMessageSourceResolvable{}
+	this.Arguments = arguments
+	this.DefaultMessage = defaultMessage
+	this.Codes = codes
 	return &this
 }
 
@@ -40,6 +47,30 @@ func NewDefaultMessageSourceResolvable() *DefaultMessageSourceResolvable {
 func NewDefaultMessageSourceResolvableWithDefaults() *DefaultMessageSourceResolvable {
 	this := DefaultMessageSourceResolvable{}
 	return &this
+}
+
+// GetArguments returns the Arguments field value
+func (o *DefaultMessageSourceResolvable) GetArguments() []map[string]interface{} {
+	if o == nil {
+		var ret []map[string]interface{}
+		return ret
+	}
+
+	return o.Arguments
+}
+
+// GetArgumentsOk returns a tuple with the Arguments field value
+// and a boolean to check if the value has been set.
+func (o *DefaultMessageSourceResolvable) GetArgumentsOk() ([]map[string]interface{}, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Arguments, true
+}
+
+// SetArguments sets field value
+func (o *DefaultMessageSourceResolvable) SetArguments(v []map[string]interface{}) {
+	o.Arguments = v
 }
 
 // GetCode returns the Code field value if set, zero value otherwise.
@@ -74,104 +105,56 @@ func (o *DefaultMessageSourceResolvable) SetCode(v string) {
 	o.Code = &v
 }
 
-// GetCodes returns the Codes field value if set, zero value otherwise.
+// GetDefaultMessage returns the DefaultMessage field value
+func (o *DefaultMessageSourceResolvable) GetDefaultMessage() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DefaultMessage
+}
+
+// GetDefaultMessageOk returns a tuple with the DefaultMessage field value
+// and a boolean to check if the value has been set.
+func (o *DefaultMessageSourceResolvable) GetDefaultMessageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DefaultMessage, true
+}
+
+// SetDefaultMessage sets field value
+func (o *DefaultMessageSourceResolvable) SetDefaultMessage(v string) {
+	o.DefaultMessage = v
+}
+
+// GetCodes returns the Codes field value
 func (o *DefaultMessageSourceResolvable) GetCodes() []string {
-	if o == nil || IsNil(o.Codes) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Codes
 }
 
-// GetCodesOk returns a tuple with the Codes field value if set, nil otherwise
+// GetCodesOk returns a tuple with the Codes field value
 // and a boolean to check if the value has been set.
 func (o *DefaultMessageSourceResolvable) GetCodesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Codes) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Codes, true
 }
 
-// HasCodes returns a boolean if a field has been set.
-func (o *DefaultMessageSourceResolvable) HasCodes() bool {
-	if o != nil && !IsNil(o.Codes) {
-		return true
-	}
-
-	return false
-}
-
-// SetCodes gets a reference to the given []string and assigns it to the Codes field.
+// SetCodes sets field value
 func (o *DefaultMessageSourceResolvable) SetCodes(v []string) {
 	o.Codes = v
 }
 
-// GetDefaultMessage returns the DefaultMessage field value if set, zero value otherwise.
-func (o *DefaultMessageSourceResolvable) GetDefaultMessage() string {
-	if o == nil || IsNil(o.DefaultMessage) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultMessage
-}
-
-// GetDefaultMessageOk returns a tuple with the DefaultMessage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DefaultMessageSourceResolvable) GetDefaultMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.DefaultMessage) {
-		return nil, false
-	}
-	return o.DefaultMessage, true
-}
-
-// HasDefaultMessage returns a boolean if a field has been set.
-func (o *DefaultMessageSourceResolvable) HasDefaultMessage() bool {
-	if o != nil && !IsNil(o.DefaultMessage) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultMessage gets a reference to the given string and assigns it to the DefaultMessage field.
-func (o *DefaultMessageSourceResolvable) SetDefaultMessage(v string) {
-	o.DefaultMessage = &v
-}
-
-// GetArguments returns the Arguments field value if set, zero value otherwise.
-func (o *DefaultMessageSourceResolvable) GetArguments() []map[string]interface{} {
-	if o == nil || IsNil(o.Arguments) {
-		var ret []map[string]interface{}
-		return ret
-	}
-	return o.Arguments
-}
-
-// GetArgumentsOk returns a tuple with the Arguments field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DefaultMessageSourceResolvable) GetArgumentsOk() ([]map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Arguments) {
-		return nil, false
-	}
-	return o.Arguments, true
-}
-
-// HasArguments returns a boolean if a field has been set.
-func (o *DefaultMessageSourceResolvable) HasArguments() bool {
-	if o != nil && !IsNil(o.Arguments) {
-		return true
-	}
-
-	return false
-}
-
-// SetArguments gets a reference to the given []map[string]interface{} and assigns it to the Arguments field.
-func (o *DefaultMessageSourceResolvable) SetArguments(v []map[string]interface{}) {
-	o.Arguments = v
-}
-
 func (o DefaultMessageSourceResolvable) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -180,19 +163,52 @@ func (o DefaultMessageSourceResolvable) MarshalJSON() ([]byte, error) {
 
 func (o DefaultMessageSourceResolvable) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["arguments"] = o.Arguments
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-	if !IsNil(o.Codes) {
-		toSerialize["codes"] = o.Codes
-	}
-	if !IsNil(o.DefaultMessage) {
-		toSerialize["defaultMessage"] = o.DefaultMessage
-	}
-	if !IsNil(o.Arguments) {
-		toSerialize["arguments"] = o.Arguments
-	}
+	toSerialize["defaultMessage"] = o.DefaultMessage
+	toSerialize["codes"] = o.Codes
 	return toSerialize, nil
+}
+
+func (o *DefaultMessageSourceResolvable) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"arguments",
+		"defaultMessage",
+		"codes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDefaultMessageSourceResolvable := _DefaultMessageSourceResolvable{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDefaultMessageSourceResolvable)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DefaultMessageSourceResolvable(varDefaultMessageSourceResolvable)
+
+	return err
 }
 
 type NullableDefaultMessageSourceResolvable struct {
@@ -230,3 +246,5 @@ func (v *NullableDefaultMessageSourceResolvable) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

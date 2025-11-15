@@ -19,10 +19,10 @@ var _ MappedNullable = &Source{}
 
 // Source struct for Source
 type Source struct {
-	Project   *string    `json:"project,omitempty"`
-	Index     *int32     `json:"index,omitempty"`
-	Type      *string    `json:"type,omitempty"`
-	Errors    *string    `json:"errors,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Index *int32 `json:"index,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Errors *string `json:"errors,omitempty"`
 	Resources *Resources `json:"resources,omitempty"`
 }
 
@@ -204,7 +204,7 @@ func (o *Source) SetResources(v Resources) {
 }
 
 func (o Source) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -266,3 +266,5 @@ func (v *NullableSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

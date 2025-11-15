@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
+
 // KeyStorageAPIService KeyStorageAPI service
 type KeyStorageAPIService service
 
 type ApiApiDeleteResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KeyStorageAPIService
-	path       string
+	path string
 }
 
 func (r ApiApiDeleteResourceRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -41,27 +42,27 @@ Authorization required: `delete` for the `key` resource.
 
 Authorization under the key path `project/{project}` can be granted at the project context.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
-	@return ApiApiDeleteResourceRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
+ @return ApiApiDeleteResourceRequest
 */
 func (a *KeyStorageAPIService) ApiDeleteResource(ctx context.Context, path string) ApiApiDeleteResourceRequest {
 	return ApiApiDeleteResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *KeyStorageAPIService) ApiDeleteResourceExecute(r ApiApiDeleteResourceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeyStorageAPIService.ApiDeleteResource")
@@ -145,9 +146,9 @@ func (a *KeyStorageAPIService) ApiDeleteResourceExecute(r ApiApiDeleteResourceRe
 }
 
 type ApiApiGetResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KeyStorageAPIService
-	path       string
+	path string
 }
 
 func (r ApiApiGetResourceRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -156,6 +157,7 @@ func (r ApiApiGetResourceRequest) Execute() (map[string]interface{}, *http.Respo
 
 /*
 ApiGetResource List and Get Keys and Key Metadata
+
 
 Lists resources at the specified PATH if it is a directory.
 
@@ -169,27 +171,27 @@ Authorization required: `read` for the `key` resource
 
 Authorization under the key path `project/{project}` can be granted at the project context.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
-	@return ApiApiGetResourceRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
+ @return ApiApiGetResourceRequest
 */
 func (a *KeyStorageAPIService) ApiGetResource(ctx context.Context, path string) ApiApiGetResourceRequest {
 	return ApiApiGetResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *KeyStorageAPIService) ApiGetResourceExecute(r ApiApiGetResourceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeyStorageAPIService.ApiGetResource")
@@ -273,10 +275,10 @@ func (a *KeyStorageAPIService) ApiGetResourceExecute(r ApiApiGetResourceRequest)
 }
 
 type ApiApiPostResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KeyStorageAPIService
-	path       string
-	body       *string
+	path string
+	body *string
 }
 
 // Private key, public key, or password content
@@ -292,6 +294,7 @@ func (r ApiApiPostResourceRequest) Execute() (map[string]interface{}, *http.Resp
 /*
 ApiPostResource Create Keys
 
+
 Specify the type of key via the `Content-type` header:
 
 * `application/octet-stream` specifies a **private key**
@@ -299,30 +302,30 @@ Specify the type of key via the `Content-type` header:
 * `application/x-rundeck-data-password` specifies a **password**
 
 Authorization required: `create` for the `key` resource.
-
+ 
 Authorization under the key path `project/{project}` can be granted at the project context.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
-	@return ApiApiPostResourceRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
+ @return ApiApiPostResourceRequest
 */
 func (a *KeyStorageAPIService) ApiPostResource(ctx context.Context, path string) ApiApiPostResourceRequest {
 	return ApiApiPostResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *KeyStorageAPIService) ApiPostResourceExecute(r ApiApiPostResourceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeyStorageAPIService.ApiPostResource")
@@ -411,10 +414,10 @@ func (a *KeyStorageAPIService) ApiPostResourceExecute(r ApiApiPostResourceReques
 }
 
 type ApiApiPutResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KeyStorageAPIService
-	path       string
-	body       *string
+	path string
+	body *string
 }
 
 // Private key, public key, or password content
@@ -430,6 +433,7 @@ func (r ApiApiPutResourceRequest) Execute() (map[string]interface{}, *http.Respo
 /*
 ApiPutResource Modify A Key
 
+
 Specify the type of key via the `Content-type` header:
 
 * `application/octet-stream` specifies a **private key**
@@ -440,27 +444,27 @@ Authorization required: `update` for the `key` resource.
 
 Authorization under the key path `project/{project}` can be granted at the project context.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
-	@return ApiApiPutResourceRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Path and Key file name. Can be a directory path such as `subdir/` or include a filename `subdir/file.password`
+ @return ApiApiPutResourceRequest
 */
 func (a *KeyStorageAPIService) ApiPutResource(ctx context.Context, path string) ApiApiPutResourceRequest {
 	return ApiApiPutResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
+//  @return map[string]interface{}
 func (a *KeyStorageAPIService) ApiPutResourceExecute(r ApiApiPutResourceRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPut
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KeyStorageAPIService.ApiPutResource")

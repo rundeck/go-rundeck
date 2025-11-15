@@ -19,7 +19,7 @@ var _ MappedNullable = &UserClassResponse{}
 
 // UserClassResponse struct for UserClassResponse
 type UserClassResponse struct {
-	Username  *string `json:"username,omitempty"`
+	Username *string `json:"username,omitempty"`
 	Userclass *string `json:"userclass,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *UserClassResponse) SetUserclass(v string) {
 }
 
 func (o UserClassResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableUserClassResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

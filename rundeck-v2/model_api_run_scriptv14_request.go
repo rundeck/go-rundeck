@@ -19,21 +19,21 @@ var _ MappedNullable = &ApiRunScriptv14Request{}
 
 // ApiRunScriptv14Request struct for ApiRunScriptv14Request
 type ApiRunScriptv14Request struct {
-	RunAdhocRequest       *ApiRunAdhocRequest `json:"runAdhocRequest,omitempty"`
-	Project               *string             `json:"project,omitempty"`
-	Exec                  *string             `json:"exec,omitempty"`
-	Script                *string             `json:"script,omitempty"`
-	ScriptInterpreter     *string             `json:"scriptInterpreter,omitempty"`
-	ArgString             *string             `json:"argString,omitempty"`
-	InterpreterArgsQuoted *bool               `json:"interpreterArgsQuoted,omitempty"`
-	Url                   *string             `json:"url,omitempty"`
-	Description           *string             `json:"description,omitempty"`
-	Filter                *string             `json:"filter,omitempty"`
-	AsUser                *string             `json:"asUser,omitempty"`
-	FileExtension         *string             `json:"fileExtension,omitempty"`
-	NodeKeepgoing         *bool               `json:"nodeKeepgoing,omitempty"`
-	NodeThreadcount       *int32              `json:"nodeThreadcount,omitempty"`
-	Meta                  *map[string]string  `json:"meta,omitempty"`
+	RunAdhocRequest *ApiRunAdhocRequest `json:"runAdhocRequest,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Exec *string `json:"exec,omitempty"`
+	Script *string `json:"script,omitempty"`
+	ScriptInterpreter *string `json:"scriptInterpreter,omitempty"`
+	ArgString *string `json:"argString,omitempty"`
+	InterpreterArgsQuoted *bool `json:"interpreterArgsQuoted,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Filter *string `json:"filter,omitempty"`
+	AsUser *string `json:"asUser,omitempty"`
+	FileExtension *string `json:"fileExtension,omitempty"`
+	NodeKeepgoing *bool `json:"nodeKeepgoing,omitempty"`
+	NodeThreadcount *int32 `json:"nodeThreadcount,omitempty"`
+	Meta *map[string]string `json:"meta,omitempty"`
 }
 
 // NewApiRunScriptv14Request instantiates a new ApiRunScriptv14Request object
@@ -534,7 +534,7 @@ func (o *ApiRunScriptv14Request) SetMeta(v map[string]string) {
 }
 
 func (o ApiRunScriptv14Request) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -626,3 +626,5 @@ func (v *NullableApiRunScriptv14Request) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

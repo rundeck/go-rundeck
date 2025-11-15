@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_JobsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiExecutionDataAvailable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -38,7 +38,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiExecutionDataExport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -51,7 +51,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipExecutionDisabled", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -65,7 +65,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipExecutionDisabledBulk", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiFlipExecutionDisabledBulk(context.Background()).Execute()
 
@@ -77,7 +77,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipExecutionEnabled", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -91,7 +91,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipExecutionEnabledBulk", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiFlipExecutionEnabledBulk(context.Background()).Execute()
 
@@ -103,7 +103,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipScheduleDisabled", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -117,7 +117,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipScheduleDisabledBulk", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiFlipScheduleDisabledBulk(context.Background()).Execute()
 
@@ -129,7 +129,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipScheduleEnabled", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -143,7 +143,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiFlipScheduleEnabledBulk", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiFlipScheduleEnabledBulk(context.Background()).Execute()
 
@@ -155,7 +155,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobBrowse", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -169,7 +169,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobBrowseGetDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -183,7 +183,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -197,7 +197,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobDeleteBulk", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiJobDeleteBulk(context.Background()).Execute()
 
@@ -209,7 +209,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobDeleteBulkDocs2", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiJobDeleteBulkDocs2(context.Background()).Execute()
 
@@ -221,7 +221,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobDetail", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -235,7 +235,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobExecutions", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -249,7 +249,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobExecutionsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -263,7 +263,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobExport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -277,7 +277,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobFileInfo", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -291,7 +291,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobFileMultiUpload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -305,7 +305,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobFileUpload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var optionName string
@@ -320,7 +320,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobForecast", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -334,7 +334,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobMeta", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -348,7 +348,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobRetry", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var executionId string
@@ -362,7 +362,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobRun", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -375,7 +375,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobRun1", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -388,7 +388,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobWorkflow", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 
@@ -402,7 +402,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobsExportv14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -416,7 +416,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobsImportv14", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -429,7 +429,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobsImportv14_1", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -442,7 +442,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiJobsListv2", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -456,7 +456,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiListAllJobsInProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -470,7 +470,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiSchedulerListJobs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var uuid string
 
@@ -484,7 +484,7 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 	t.Run("Test JobsAPIService ApiSchedulerListJobsCurrentDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiSchedulerListJobsCurrentDocs(context.Background()).Execute()
 

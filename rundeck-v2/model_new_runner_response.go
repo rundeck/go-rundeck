@@ -23,10 +23,10 @@ type NewRunnerResponse struct {
 	// Runner authentication token
 	Token *string `json:"token,omitempty"`
 	// Runner package download token
-	DownloadTk          *string            `json:"downloadTk,omitempty"`
-	ReplicaId           *string            `json:"replicaId,omitempty"`
-	Name                *string            `json:"name,omitempty"`
-	Description         *string            `json:"description,omitempty"`
+	DownloadTk *string `json:"downloadTk,omitempty"`
+	ReplicaId *string `json:"replicaId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	ProjectAssociations *map[string]string `json:"projectAssociations,omitempty"`
 }
 
@@ -272,7 +272,7 @@ func (o *NewRunnerResponse) SetProjectAssociations(v map[string]string) {
 }
 
 func (o NewRunnerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -340,3 +340,5 @@ func (v *NullableNewRunnerResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

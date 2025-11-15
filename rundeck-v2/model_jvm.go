@@ -19,9 +19,9 @@ var _ MappedNullable = &Jvm{}
 
 // Jvm Jvm System Information
 type Jvm struct {
-	Name                  *string `json:"name,omitempty"`
-	Vendor                *string `json:"vendor,omitempty"`
-	Version               *string `json:"version,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Vendor *string `json:"vendor,omitempty"`
+	Version *string `json:"version,omitempty"`
 	ImplementationVersion *string `json:"implementationVersion,omitempty"`
 }
 
@@ -171,7 +171,7 @@ func (o *Jvm) SetImplementationVersion(v string) {
 }
 
 func (o Jvm) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableJvm) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

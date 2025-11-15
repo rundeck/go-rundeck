@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_WebhookAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService CreateWebhookDocs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -38,7 +38,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService Get", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string
@@ -53,7 +53,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService GetDebugEvents", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string
@@ -68,7 +68,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService List", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 
@@ -82,7 +82,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService Post", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var authtoken string
 
@@ -95,7 +95,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService Remove", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string
@@ -110,7 +110,7 @@ func Test_openapi_WebhookAPIService(t *testing.T) {
 
 	t.Run("Test WebhookAPIService Save", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var id string

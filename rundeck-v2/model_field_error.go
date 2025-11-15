@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,9 +21,9 @@ var _ MappedNullable = &FieldError{}
 
 // FieldError struct for FieldError
 type FieldError struct {
-	Field          string                 `json:"field"`
-	BindingFailure *bool                  `json:"bindingFailure,omitempty"`
-	RejectedValue  map[string]interface{} `json:"rejectedValue,omitempty"`
+	BindingFailure *bool `json:"bindingFailure,omitempty"`
+	RejectedValue map[string]interface{} `json:"rejectedValue,omitempty"`
+	Field string `json:"field"`
 }
 
 type _FieldError FieldError
@@ -44,30 +44,6 @@ func NewFieldError(field string) *FieldError {
 func NewFieldErrorWithDefaults() *FieldError {
 	this := FieldError{}
 	return &this
-}
-
-// GetField returns the Field field value
-func (o *FieldError) GetField() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Field
-}
-
-// GetFieldOk returns a tuple with the Field field value
-// and a boolean to check if the value has been set.
-func (o *FieldError) GetFieldOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Field, true
-}
-
-// SetField sets field value
-func (o *FieldError) SetField(v string) {
-	o.Field = v
 }
 
 // GetBindingFailure returns the BindingFailure field value if set, zero value otherwise.
@@ -134,8 +110,32 @@ func (o *FieldError) SetRejectedValue(v map[string]interface{}) {
 	o.RejectedValue = v
 }
 
+// GetField returns the Field field value
+func (o *FieldError) GetField() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Field
+}
+
+// GetFieldOk returns a tuple with the Field field value
+// and a boolean to check if the value has been set.
+func (o *FieldError) GetFieldOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Field, true
+}
+
+// SetField sets field value
+func (o *FieldError) SetField(v string) {
+	o.Field = v
+}
+
 func (o FieldError) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -144,13 +144,13 @@ func (o FieldError) MarshalJSON() ([]byte, error) {
 
 func (o FieldError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["field"] = o.Field
 	if !IsNil(o.BindingFailure) {
 		toSerialize["bindingFailure"] = o.BindingFailure
 	}
 	if !IsNil(o.RejectedValue) {
 		toSerialize["rejectedValue"] = o.RejectedValue
 	}
+	toSerialize["field"] = o.Field
 	return toSerialize, nil
 }
 
@@ -167,10 +167,10 @@ func (o *FieldError) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -226,3 +226,5 @@ func (v *NullableFieldError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectCalendarsResponse{}
 // ProjectCalendarsResponse Response to POST request to to create or update a calendar at project level
 type ProjectCalendarsResponse struct {
 	Calendar *Calendar `json:"calendar,omitempty"`
-	Msg      *string   `json:"msg,omitempty"`
-	Saved    *bool     `json:"saved,omitempty"`
+	Msg *string `json:"msg,omitempty"`
+	Saved *bool `json:"saved,omitempty"`
 }
 
 // NewProjectCalendarsResponse instantiates a new ProjectCalendarsResponse object
@@ -138,7 +138,7 @@ func (o *ProjectCalendarsResponse) SetSaved(v bool) {
 }
 
 func (o ProjectCalendarsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableProjectCalendarsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

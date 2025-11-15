@@ -5,11 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Offset** | Pointer to **int32** |  | [optional] 
-**Max** | Pointer to **int32** |  | [optional] 
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
+**Max** | Pointer to **int32** |  | [optional] 
 **SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] 
-**Idlist** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **string** |  | [optional] 
 **InputParamMap** | Pointer to **map[string]interface{}** |  | [optional] 
 **JobFilter** | Pointer to **string** |  | [optional] 
@@ -19,6 +18,7 @@ Name | Type | Description | Notes
 **GroupPathExact** | Pointer to **string** |  | [optional] 
 **DescFilter** | Pointer to **string** |  | [optional] 
 **LoglevelFilter** | Pointer to **string** |  | [optional] 
+**Idlist** | Pointer to **string** |  | [optional] 
 **ScheduledFilter** | Pointer to **bool** |  | [optional] 
 **ScheduleEnabledFilter** | Pointer to **bool** |  | [optional] 
 **ExecutionEnabledFilter** | Pointer to **bool** |  | [optional] 
@@ -71,31 +71,6 @@ SetOffset sets Offset field to given value.
 
 HasOffset returns a boolean if a field has been set.
 
-### GetMax
-
-`func (o *RdJobQueryInput) GetMax() int32`
-
-GetMax returns the Max field if non-nil, zero value otherwise.
-
-### GetMaxOk
-
-`func (o *RdJobQueryInput) GetMaxOk() (*int32, bool)`
-
-GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMax
-
-`func (o *RdJobQueryInput) SetMax(v int32)`
-
-SetMax sets Max field to given value.
-
-### HasMax
-
-`func (o *RdJobQueryInput) HasMax() bool`
-
-HasMax returns a boolean if a field has been set.
-
 ### GetErrors
 
 `func (o *RdJobQueryInput) GetErrors() Errors`
@@ -120,6 +95,31 @@ SetErrors sets Errors field to given value.
 `func (o *RdJobQueryInput) HasErrors() bool`
 
 HasErrors returns a boolean if a field has been set.
+
+### GetMax
+
+`func (o *RdJobQueryInput) GetMax() int32`
+
+GetMax returns the Max field if non-nil, zero value otherwise.
+
+### GetMaxOk
+
+`func (o *RdJobQueryInput) GetMaxOk() (*int32, bool)`
+
+GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMax
+
+`func (o *RdJobQueryInput) SetMax(v int32)`
+
+SetMax sets Max field to given value.
+
+### HasMax
+
+`func (o *RdJobQueryInput) HasMax() bool`
+
+HasMax returns a boolean if a field has been set.
 
 ### GetSortOrders
 
@@ -170,31 +170,6 @@ SetSortBy sets SortBy field to given value.
 `func (o *RdJobQueryInput) HasSortBy() bool`
 
 HasSortBy returns a boolean if a field has been set.
-
-### GetIdlist
-
-`func (o *RdJobQueryInput) GetIdlist() string`
-
-GetIdlist returns the Idlist field if non-nil, zero value otherwise.
-
-### GetIdlistOk
-
-`func (o *RdJobQueryInput) GetIdlistOk() (*string, bool)`
-
-GetIdlistOk returns a tuple with the Idlist field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIdlist
-
-`func (o *RdJobQueryInput) SetIdlist(v string)`
-
-SetIdlist sets Idlist field to given value.
-
-### HasIdlist
-
-`func (o *RdJobQueryInput) HasIdlist() bool`
-
-HasIdlist returns a boolean if a field has been set.
 
 ### GetSortOrder
 
@@ -420,6 +395,31 @@ SetLoglevelFilter sets LoglevelFilter field to given value.
 `func (o *RdJobQueryInput) HasLoglevelFilter() bool`
 
 HasLoglevelFilter returns a boolean if a field has been set.
+
+### GetIdlist
+
+`func (o *RdJobQueryInput) GetIdlist() string`
+
+GetIdlist returns the Idlist field if non-nil, zero value otherwise.
+
+### GetIdlistOk
+
+`func (o *RdJobQueryInput) GetIdlistOk() (*string, bool)`
+
+GetIdlistOk returns a tuple with the Idlist field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIdlist
+
+`func (o *RdJobQueryInput) SetIdlist(v string)`
+
+SetIdlist sets Idlist field to given value.
+
+### HasIdlist
+
+`func (o *RdJobQueryInput) HasIdlist() bool`
+
+HasIdlist returns a boolean if a field has been set.
 
 ### GetScheduledFilter
 

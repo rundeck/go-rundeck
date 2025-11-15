@@ -20,31 +20,31 @@ var _ MappedNullable = &RunnerSummary{}
 
 // RunnerSummary struct for RunnerSummary
 type RunnerSummary struct {
-	Id                    *string                 `json:"id,omitempty"`
-	Name                  *string                 `json:"name,omitempty"`
-	Description           *string                 `json:"description,omitempty"`
-	Status                *string                 `json:"status,omitempty"`
-	Version               *string                 `json:"version,omitempty"`
-	AssociatedProjects    *int32                  `json:"associatedProjects,omitempty"`
-	LastCheckin           *string                 `json:"lastCheckin,omitempty"`
-	RunnerAsNodeEnabled   *bool                   `json:"runnerAsNodeEnabled,omitempty"`
-	LastCheckinAlert      *bool                   `json:"lastCheckinAlert,omitempty"`
-	Selected              *bool                   `json:"selected,omitempty"`
-	TagNames              []string                `json:"tagNames,omitempty"`
-	UiData                *UiData                 `json:"uiData,omitempty"`
-	RunnerNodeFilter      *string                 `json:"runnerNodeFilter,omitempty"`
-	RemoteNodeDispatch    *bool                   `json:"remoteNodeDispatch,omitempty"`
-	Hostname              *string                 `json:"hostname,omitempty"`
-	OsFamily              *string                 `json:"osFamily,omitempty"`
-	ReplicaType           *RunnerReplicaType      `json:"replicaType,omitempty"`
-	InstallationType      *RunnerInstallationType `json:"installationType,omitempty"`
-	Providers             []RunnerProviderSummary `json:"providers,omitempty"`
-	RunnerReplicas        *int32                  `json:"runnerReplicas,omitempty"`
-	HealthyRunnerReplicas *int32                  `json:"healthyRunnerReplicas,omitempty"`
-	RunningOperations     *int32                  `json:"runningOperations,omitempty"`
-	Uptime                *int64                  `json:"uptime,omitempty"`
-	DateCreated           *time.Time              `json:"dateCreated,omitempty"`
-	LastUpdated           *time.Time              `json:"lastUpdated,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Version *string `json:"version,omitempty"`
+	AssociatedProjects *int32 `json:"associatedProjects,omitempty"`
+	LastCheckin *string `json:"lastCheckin,omitempty"`
+	RunnerAsNodeEnabled *bool `json:"runnerAsNodeEnabled,omitempty"`
+	LastCheckinAlert *bool `json:"lastCheckinAlert,omitempty"`
+	Selected *bool `json:"selected,omitempty"`
+	TagNames []string `json:"tagNames,omitempty"`
+	UiData *UiData `json:"uiData,omitempty"`
+	RunnerNodeFilter *string `json:"runnerNodeFilter,omitempty"`
+	RemoteNodeDispatch *bool `json:"remoteNodeDispatch,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
+	OsFamily *string `json:"osFamily,omitempty"`
+	ReplicaType *RunnerReplicaType `json:"replicaType,omitempty"`
+	InstallationType *RunnerInstallationType `json:"installationType,omitempty"`
+	Providers []RunnerProviderSummary `json:"providers,omitempty"`
+	RunnerReplicas *int32 `json:"runnerReplicas,omitempty"`
+	HealthyRunnerReplicas *int32 `json:"healthyRunnerReplicas,omitempty"`
+	RunningOperations *int32 `json:"runningOperations,omitempty"`
+	Uptime *int64 `json:"uptime,omitempty"`
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 }
 
 // NewRunnerSummary instantiates a new RunnerSummary object
@@ -865,7 +865,7 @@ func (o *RunnerSummary) SetLastUpdated(v time.Time) {
 }
 
 func (o RunnerSummary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -987,3 +987,5 @@ func (v *NullableRunnerSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

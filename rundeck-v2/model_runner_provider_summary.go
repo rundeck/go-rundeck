@@ -19,9 +19,9 @@ var _ MappedNullable = &RunnerProviderSummary{}
 
 // RunnerProviderSummary struct for RunnerProviderSummary
 type RunnerProviderSummary struct {
-	Provider    *string `json:"provider,omitempty"`
+	Provider *string `json:"provider,omitempty"`
 	ServiceName *string `json:"serviceName,omitempty"`
-	PluginName  *string `json:"pluginName,omitempty"`
+	PluginName *string `json:"pluginName,omitempty"`
 }
 
 // NewRunnerProviderSummary instantiates a new RunnerProviderSummary object
@@ -138,7 +138,7 @@ func (o *RunnerProviderSummary) SetPluginName(v string) {
 }
 
 func (o RunnerProviderSummary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableRunnerProviderSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

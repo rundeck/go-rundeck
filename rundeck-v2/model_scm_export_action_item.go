@@ -22,8 +22,8 @@ type ScmExportActionItem struct {
 	// ID of the repo item, e.g. a file path
 	ItemId *string `json:"itemId,omitempty"`
 	// ID of a repo item if the job was renamed and now is stored at a different repo path, or empty/null
-	OriginalId *string       `json:"originalId,omitempty"`
-	Job        *JobReference `json:"job,omitempty"`
+	OriginalId *string `json:"originalId,omitempty"`
+	Job *JobReference `json:"job,omitempty"`
 	// whether the job was deleted and requires deleting the associated repo item
 	Deleted *bool `json:"deleted,omitempty"`
 	// boolean if the job was renamed
@@ -242,7 +242,7 @@ func (o *ScmExportActionItem) SetStatus(v string) {
 }
 
 func (o ScmExportActionItem) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -307,3 +307,5 @@ func (v *NullableScmExportActionItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

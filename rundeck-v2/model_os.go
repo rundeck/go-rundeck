@@ -19,8 +19,8 @@ var _ MappedNullable = &Os{}
 
 // Os Operating System Information
 type Os struct {
-	Arch    *string `json:"arch,omitempty"`
-	Name    *string `json:"name,omitempty"`
+	Arch *string `json:"arch,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Version *string `json:"version,omitempty"`
 }
 
@@ -138,7 +138,7 @@ func (o *Os) SetVersion(v string) {
 }
 
 func (o Os) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableOs) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

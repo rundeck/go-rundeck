@@ -19,13 +19,14 @@ import (
 	"strings"
 )
 
-// JobExecutionsAPIService JobExecutionsAPI service
-type JobExecutionsAPIService service
+
+// ExecutionAPIService ExecutionAPI service
+type ExecutionAPIService service
 
 type ApiApiExecutionRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
 }
 
 func (r ApiApiExecutionRequest) Execute() (*http.Response, error) {
@@ -37,27 +38,27 @@ ApiExecution Execution Info
 
 Get the status for an execution by ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionRequest
 */
-func (a *JobExecutionsAPIService) ApiExecution(ctx context.Context, id string) ApiApiExecutionRequest {
+func (a *ExecutionAPIService) ApiExecution(ctx context.Context, id string) ApiApiExecutionRequest {
 	return ApiApiExecutionRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *JobExecutionsAPIService) ApiExecutionExecute(r ApiApiExecutionRequest) (*http.Response, error) {
+func (a *ExecutionAPIService) ApiExecutionExecute(r ApiApiExecutionRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecution")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecution")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -129,10 +130,10 @@ func (a *JobExecutionsAPIService) ApiExecutionExecute(r ApiApiExecutionRequest) 
 }
 
 type ApiApiExecutionAbortRequest struct {
-	ctx             context.Context
-	ApiService      *JobExecutionsAPIService
-	id              string
-	asUser          *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	asUser *string
 	forceIncomplete *bool
 }
 
@@ -157,27 +158,27 @@ ApiExecutionAbort Aborting Executions
 
 Abort a running execution by ID.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionAbortRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionAbortRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionAbort(ctx context.Context, id string) ApiApiExecutionAbortRequest {
+func (a *ExecutionAPIService) ApiExecutionAbort(ctx context.Context, id string) ApiApiExecutionAbortRequest {
 	return ApiApiExecutionAbortRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *JobExecutionsAPIService) ApiExecutionAbortExecute(r ApiApiExecutionAbortRequest) (*http.Response, error) {
+func (a *ExecutionAPIService) ApiExecutionAbortExecute(r ApiApiExecutionAbortRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionAbort")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionAbort")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -255,9 +256,9 @@ func (a *JobExecutionsAPIService) ApiExecutionAbortExecute(r ApiApiExecutionAbor
 }
 
 type ApiApiExecutionDeleteRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
 }
 
 func (r ApiApiExecutionDeleteRequest) Execute() (*http.Response, error) {
@@ -273,27 +274,29 @@ Authorization requirement: Requires the `delete_execution` action allowed for a 
 
 See: [Administration - Access Control Policy - Application Scope Resources and Actions](https://docs.rundeck.com/docs/administration/security/authorization.html#application-scope-resources-and-actions)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionDeleteRequest
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionDeleteRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionDelete(ctx context.Context, id string) ApiApiExecutionDeleteRequest {
+func (a *ExecutionAPIService) ApiExecutionDelete(ctx context.Context, id string) ApiApiExecutionDeleteRequest {
 	return ApiApiExecutionDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *JobExecutionsAPIService) ApiExecutionDeleteExecute(r ApiApiExecutionDeleteRequest) (*http.Response, error) {
+func (a *ExecutionAPIService) ApiExecutionDeleteExecute(r ApiApiExecutionDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -365,9 +368,9 @@ func (a *JobExecutionsAPIService) ApiExecutionDeleteExecute(r ApiApiExecutionDel
 }
 
 type ApiApiExecutionDeleteBulkRequest struct {
-	ctx                           context.Context
-	ApiService                    *JobExecutionsAPIService
-	ids                           *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	ids *string
 	apiExecutionDeleteBulkRequest *ApiExecutionDeleteBulkRequest
 }
 
@@ -396,35 +399,35 @@ The IDs can be specified in two ways:
 
 1. Using a URL parameter `ids`, as a comma separated list, with no body content
 
-	POST /api/12/executions/delete?ids=1,2,17
-	Content-Length: 0
+        POST /api/12/executions/delete?ids=1,2,17
+        Content-Length: 0
 
 2. Using a request body of JSON data.
 
-Note: the JSON schema also supports a basic JSON array
+Note: the JSON schema also supports a basic JSON array 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiExecutionDeleteBulkRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionDeleteBulkRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionDeleteBulk(ctx context.Context) ApiApiExecutionDeleteBulkRequest {
+func (a *ExecutionAPIService) ApiExecutionDeleteBulk(ctx context.Context) ApiApiExecutionDeleteBulkRequest {
 	return ApiApiExecutionDeleteBulkRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return DeleteBulkResponse
-func (a *JobExecutionsAPIService) ApiExecutionDeleteBulkExecute(r ApiApiExecutionDeleteBulkRequest) (*DeleteBulkResponse, *http.Response, error) {
+//  @return DeleteBulkResponse
+func (a *ExecutionAPIService) ApiExecutionDeleteBulkExecute(r ApiApiExecutionDeleteBulkRequest) (*DeleteBulkResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *DeleteBulkResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DeleteBulkResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionDeleteBulk")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionDeleteBulk")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -509,9 +512,9 @@ func (a *JobExecutionsAPIService) ApiExecutionDeleteBulkExecute(r ApiApiExecutio
 }
 
 type ApiApiExecutionInputFilesRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
 }
 
 func (r ApiApiExecutionInputFilesRequest) Execute() (*ExecutionFileInfoList, *http.Response, error) {
@@ -523,30 +526,29 @@ ApiExecutionInputFiles List Input Files for an Execution
 
 List input files used for an execution. Since: V19
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionInputFilesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionInputFilesRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionInputFiles(ctx context.Context, id string) ApiApiExecutionInputFilesRequest {
+func (a *ExecutionAPIService) ApiExecutionInputFiles(ctx context.Context, id string) ApiApiExecutionInputFilesRequest {
 	return ApiApiExecutionInputFilesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ExecutionFileInfoList
-func (a *JobExecutionsAPIService) ApiExecutionInputFilesExecute(r ApiApiExecutionInputFilesRequest) (*ExecutionFileInfoList, *http.Response, error) {
+//  @return ExecutionFileInfoList
+func (a *ExecutionAPIService) ApiExecutionInputFilesExecute(r ApiApiExecutionInputFilesRequest) (*ExecutionFileInfoList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ExecutionFileInfoList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ExecutionFileInfoList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionInputFiles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionInputFiles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -627,36 +629,36 @@ func (a *JobExecutionsAPIService) ApiExecutionInputFilesExecute(r ApiApiExecutio
 }
 
 type ApiApiExecutionMetricsDocsRequest struct {
-	ctx                    context.Context
-	ApiService             *JobExecutionsAPIService
-	project                *string
-	statusFilter           *string
-	abortedbyFilter        *string
-	jobIdListFilter        *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	project *string
+	statusFilter *string
+	abortedbyFilter *string
+	jobIdListFilter *string
 	excludeJobIdListFilter *string
-	jobListFilter          *string
-	excludeJobListFilter   *string
-	groupPath              *string
-	groupPathExact         *string
-	excludeGroupPath       *string
-	excludeGroupPathExact  *string
-	jobFilter              *string
-	excludeJobFilter       *string
-	jobExactFilter         *string
-	excludeJobExactFilter  *string
-	startafterFilter       *string
-	startbeforeFilter      *string
-	endafterFilter         *string
-	endbeforeFilter        *string
-	begin                  *string
-	end                    *string
-	adhoc                  *bool
-	recentFilter           *string
-	olderFilter            *string
-	userFilter             *string
-	executionTypeFilter    *string
-	max                    *int32
-	offset                 *int32
+	jobListFilter *string
+	excludeJobListFilter *string
+	groupPath *string
+	groupPathExact *string
+	excludeGroupPath *string
+	excludeGroupPathExact *string
+	jobFilter *string
+	excludeJobFilter *string
+	jobExactFilter *string
+	excludeJobExactFilter *string
+	startafterFilter *string
+	startbeforeFilter *string
+	endafterFilter *string
+	endbeforeFilter *string
+	begin *string
+	end *string
+	adhoc *bool
+	recentFilter *string
+	olderFilter *string
+	userFilter *string
+	executionTypeFilter *string
+	max *int32
+	offset *int32
 }
 
 // Project name
@@ -791,7 +793,7 @@ func (r ApiApiExecutionMetricsDocsRequest) Adhoc(adhoc bool) ApiApiExecutionMetr
 	return r
 }
 
-// Use a simple text format to filter executions that completed within a period of time. The format is \&quot;XY\&quot; where X is an integer, and \&quot;Y\&quot; is one of: * &#x60;s&#x60;: second * &#x60;n&#x60;: minute * &#x60;h&#x60;: hour * &#x60;d&#x60;: day * &#x60;w&#x60;: week * &#x60;m&#x60;: month * &#x60;y&#x60;: year  So a value of &#x60;2w&#x60; would return executions that completed within the last two weeks.
+// Use a simple text format to filter executions that completed within a period of time. The format is \&quot;XY\&quot; where X is an integer, and \&quot;Y\&quot; is one of: * &#x60;s&#x60;: second * &#x60;n&#x60;: minute * &#x60;h&#x60;: hour * &#x60;d&#x60;: day * &#x60;w&#x60;: week * &#x60;m&#x60;: month * &#x60;y&#x60;: year  So a value of &#x60;2w&#x60; would return executions that completed within the last two weeks. 
 func (r ApiApiExecutionMetricsDocsRequest) RecentFilter(recentFilter string) ApiApiExecutionMetricsDocsRequest {
 	r.recentFilter = &recentFilter
 	return r
@@ -836,28 +838,27 @@ ApiExecutionMetricsDocs Execution Query Metrics
 
 Obtain metrics over the result set of an execution query.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiExecutionMetricsDocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiExecutionMetricsDocsRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionMetricsDocs(ctx context.Context) ApiApiExecutionMetricsDocsRequest {
+func (a *ExecutionAPIService) ApiExecutionMetricsDocs(ctx context.Context) ApiApiExecutionMetricsDocsRequest {
 	return ApiApiExecutionMetricsDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MetricsQueryResponse
-func (a *JobExecutionsAPIService) ApiExecutionMetricsDocsExecute(r ApiApiExecutionMetricsDocsRequest) (*MetricsQueryResponse, *http.Response, error) {
+//  @return MetricsQueryResponse
+func (a *ExecutionAPIService) ApiExecutionMetricsDocsExecute(r ApiApiExecutionMetricsDocsRequest) (*MetricsQueryResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricsQueryResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MetricsQueryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionMetricsDocs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionMetricsDocs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1021,9 +1022,9 @@ func (a *JobExecutionsAPIService) ApiExecutionMetricsDocsExecute(r ApiApiExecuti
 }
 
 type ApiApiExecutionMetricsProjectDocsRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	project    string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	project string
 }
 
 func (r ApiApiExecutionMetricsProjectDocsRequest) Execute() (*MetricsQueryResponse, *http.Response, error) {
@@ -1037,30 +1038,30 @@ Obtain metrics over the result set of an execution query over the executions of 
 
 Note: This endpoint has the same query parameters and response as the `/executions/metrics` endpoint.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiExecutionMetricsProjectDocsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiExecutionMetricsProjectDocsRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocs(ctx context.Context, project string) ApiApiExecutionMetricsProjectDocsRequest {
+func (a *ExecutionAPIService) ApiExecutionMetricsProjectDocs(ctx context.Context, project string) ApiApiExecutionMetricsProjectDocsRequest {
 	return ApiApiExecutionMetricsProjectDocsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MetricsQueryResponse
-func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocsExecute(r ApiApiExecutionMetricsProjectDocsRequest) (*MetricsQueryResponse, *http.Response, error) {
+//  @return MetricsQueryResponse
+func (a *ExecutionAPIService) ApiExecutionMetricsProjectDocsExecute(r ApiApiExecutionMetricsProjectDocsRequest) (*MetricsQueryResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricsQueryResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MetricsQueryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionMetricsProjectDocs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionMetricsProjectDocs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1141,9 +1142,9 @@ func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocsExecute(r ApiApi
 }
 
 type ApiApiExecutionMetricsProjectDocs_0Request struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	project    string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	project string
 }
 
 func (r ApiApiExecutionMetricsProjectDocs_0Request) Execute() (*MetricsQueryResponse, *http.Response, error) {
@@ -1157,30 +1158,30 @@ Obtain metrics over the result set of an execution query over the executions of 
 
 Note: This endpoint has the same query parameters and response as the `/executions/metrics` endpoint.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiExecutionMetricsProjectDocs_0Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiExecutionMetricsProjectDocs_0Request
 */
-func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocs_1(ctx context.Context, project string) ApiApiExecutionMetricsProjectDocs_0Request {
+func (a *ExecutionAPIService) ApiExecutionMetricsProjectDocs_1(ctx context.Context, project string) ApiApiExecutionMetricsProjectDocs_0Request {
 	return ApiApiExecutionMetricsProjectDocs_0Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return MetricsQueryResponse
-func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocs_1Execute(r ApiApiExecutionMetricsProjectDocs_0Request) (*MetricsQueryResponse, *http.Response, error) {
+//  @return MetricsQueryResponse
+func (a *ExecutionAPIService) ApiExecutionMetricsProjectDocs_1Execute(r ApiApiExecutionMetricsProjectDocs_0Request) (*MetricsQueryResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *MetricsQueryResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MetricsQueryResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionMetricsProjectDocs_1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionMetricsProjectDocs_1")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1261,17 +1262,17 @@ func (a *JobExecutionsAPIService) ApiExecutionMetricsProjectDocs_1Execute(r ApiA
 }
 
 type ApiApiExecutionOutputRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
-	nodename   *string
-	stepctx    *string
-	offset     *int32
-	lastlines  *int32
-	lastmod    *int64
-	maxlines   *int32
-	compacted  *bool
-	format     *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	nodename *string
+	stepctx *string
+	offset *int32
+	lastlines *int32
+	lastmod *int64
+	maxlines *int32
+	compacted *bool
+	format *string
 }
 
 // Node Name, all results will be filtered for only this node.
@@ -1363,40 +1364,41 @@ Below is some example pseudo-code for using this API endpoint to follow the outp
 * set offset to 0
 * set lastmod to 0
 * Repeat until `iscompleted` response value is "true":
-  - perform request sending `offset` and `lastmod` parameters
-  - print any log entries, update progress bar, etc.
-  - Record the resulting `dataoffset` and `lastmod` response values for the next request
-  - if `unmodified` is "true", sleep for 5 seconds
-  - otherwise sleep for 2 seconds
+    * perform request sending `offset` and `lastmod` parameters
+    * print any log entries, update progress bar, etc.
+    * Record the resulting `dataoffset` and `lastmod` response values for the next request
+    * if `unmodified` is "true", sleep for 5 seconds
+    * otherwise sleep for 2 seconds
 
 **Authorization:**
 
 This endpoint requires that the user have `read` access to the Job or to Adhoc executions to retrieve the output content.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionOutputRequest
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionOutputRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionOutput(ctx context.Context, id string) ApiApiExecutionOutputRequest {
+func (a *ExecutionAPIService) ApiExecutionOutput(ctx context.Context, id string) ApiApiExecutionOutputRequest {
 	return ApiApiExecutionOutputRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionOutputExecute(r ApiApiExecutionOutputRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionOutputExecute(r ApiApiExecutionOutputRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionOutput")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1501,10 +1503,10 @@ func (a *JobExecutionsAPIService) ApiExecutionOutputExecute(r ApiApiExecutionOut
 }
 
 type ApiApiExecutionOutputNodeFilterRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
-	nodename   string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	nodename string
 }
 
 func (r ApiApiExecutionOutputNodeFilterRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1516,32 +1518,31 @@ ApiExecutionOutputNodeFilter Execution Output For Node
 
 Get the output for an execution filtered for a specific node.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@param nodename Node Name, all results will be filtered for only this node.
-	@return ApiApiExecutionOutputNodeFilterRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @param nodename Node Name, all results will be filtered for only this node.
+ @return ApiApiExecutionOutputNodeFilterRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionOutputNodeFilter(ctx context.Context, id string, nodename string) ApiApiExecutionOutputNodeFilterRequest {
+func (a *ExecutionAPIService) ApiExecutionOutputNodeFilter(ctx context.Context, id string, nodename string) ApiApiExecutionOutputNodeFilterRequest {
 	return ApiApiExecutionOutputNodeFilterRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		nodename:   nodename,
+		ctx: ctx,
+		id: id,
+		nodename: nodename,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionOutputNodeFilterExecute(r ApiApiExecutionOutputNodeFilterRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionOutputNodeFilterExecute(r ApiApiExecutionOutputNodeFilterRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionOutputNodeFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionOutputNodeFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1623,11 +1624,11 @@ func (a *JobExecutionsAPIService) ApiExecutionOutputNodeFilterExecute(r ApiApiEx
 }
 
 type ApiApiExecutionOutputNodeStepFilterRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
-	nodename   string
-	stepctx    string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	nodename string
+	stepctx string
 }
 
 func (r ApiApiExecutionOutputNodeStepFilterRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1639,34 +1640,33 @@ ApiExecutionOutputNodeStepFilter Execution Output For Node and Step
 
 Get the output for an execution filtered for a specific node and step.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@param nodename Node Name, all results will be filtered for only this node.
-	@param stepctx Step Context ID. This is a string in the form `1/2/3` indicating the step context.
-	@return ApiApiExecutionOutputNodeStepFilterRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @param nodename Node Name, all results will be filtered for only this node.
+ @param stepctx Step Context ID. This is a string in the form `1/2/3` indicating the step context.
+ @return ApiApiExecutionOutputNodeStepFilterRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionOutputNodeStepFilter(ctx context.Context, id string, nodename string, stepctx string) ApiApiExecutionOutputNodeStepFilterRequest {
+func (a *ExecutionAPIService) ApiExecutionOutputNodeStepFilter(ctx context.Context, id string, nodename string, stepctx string) ApiApiExecutionOutputNodeStepFilterRequest {
 	return ApiApiExecutionOutputNodeStepFilterRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		nodename:   nodename,
-		stepctx:    stepctx,
+		ctx: ctx,
+		id: id,
+		nodename: nodename,
+		stepctx: stepctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionOutputNodeStepFilterExecute(r ApiApiExecutionOutputNodeStepFilterRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionOutputNodeStepFilterExecute(r ApiApiExecutionOutputNodeStepFilterRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionOutputNodeStepFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionOutputNodeStepFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1749,10 +1749,10 @@ func (a *JobExecutionsAPIService) ApiExecutionOutputNodeStepFilterExecute(r ApiA
 }
 
 type ApiApiExecutionOutputStepFilterRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
-	stepctx    string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	stepctx string
 }
 
 func (r ApiApiExecutionOutputStepFilterRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1764,32 +1764,31 @@ ApiExecutionOutputStepFilter Execution Output For Step
 
 Get the output for an execution filtered for a specific step.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@param stepctx Step Context ID. This is a string in the form `1/2/3` indicating the step context.
-	@return ApiApiExecutionOutputStepFilterRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @param stepctx Step Context ID. This is a string in the form `1/2/3` indicating the step context.
+ @return ApiApiExecutionOutputStepFilterRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionOutputStepFilter(ctx context.Context, id string, stepctx string) ApiApiExecutionOutputStepFilterRequest {
+func (a *ExecutionAPIService) ApiExecutionOutputStepFilter(ctx context.Context, id string, stepctx string) ApiApiExecutionOutputStepFilterRequest {
 	return ApiApiExecutionOutputStepFilterRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
-		stepctx:    stepctx,
+		ctx: ctx,
+		id: id,
+		stepctx: stepctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionOutputStepFilterExecute(r ApiApiExecutionOutputStepFilterRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionOutputStepFilterExecute(r ApiApiExecutionOutputStepFilterRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionOutputStepFilter")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionOutputStepFilter")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1871,9 +1870,9 @@ func (a *JobExecutionsAPIService) ApiExecutionOutputStepFilterExecute(r ApiApiEx
 }
 
 type ApiApiExecutionStateRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
 }
 
 func (r ApiApiExecutionStateRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1887,30 +1886,30 @@ Get detail about the node and step state of an execution by ID. The execution ca
 
 JSON response requires API v14.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionStateRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionStateRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionState(ctx context.Context, id string) ApiApiExecutionStateRequest {
+func (a *ExecutionAPIService) ApiExecutionState(ctx context.Context, id string) ApiApiExecutionStateRequest {
 	return ApiApiExecutionStateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionStateExecute(r ApiApiExecutionStateRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionStateExecute(r ApiApiExecutionStateRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionState")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionState")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1991,10 +1990,10 @@ func (a *JobExecutionsAPIService) ApiExecutionStateExecute(r ApiApiExecutionStat
 }
 
 type ApiApiExecutionStateOutputRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
-	id         string
-	stateOnly  *bool
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	id string
+	stateOnly *bool
 }
 
 // Whether to include only state information. When false, log entries will be included.
@@ -2014,30 +2013,30 @@ Get the metadata associated with workflow step state changes along with the log 
 
 JSON response requires API v14.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Execution ID
-	@return ApiApiExecutionStateOutputRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Execution ID
+ @return ApiApiExecutionStateOutputRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionStateOutput(ctx context.Context, id string) ApiApiExecutionStateOutputRequest {
+func (a *ExecutionAPIService) ApiExecutionStateOutput(ctx context.Context, id string) ApiApiExecutionStateOutputRequest {
 	return ApiApiExecutionStateOutputRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionStateOutputExecute(r ApiApiExecutionStateOutputRequest) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionStateOutputExecute(r ApiApiExecutionStateOutputRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionStateOutput")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionStateOutput")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2121,36 +2120,36 @@ func (a *JobExecutionsAPIService) ApiExecutionStateOutputExecute(r ApiApiExecuti
 }
 
 type ApiApiExecutionsQueryv14DocsRequest struct {
-	ctx                    context.Context
-	ApiService             *JobExecutionsAPIService
-	project                string
-	statusFilter           *string
-	abortedbyFilter        *string
-	jobIdListFilter        *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	project string
+	statusFilter *string
+	abortedbyFilter *string
+	jobIdListFilter *string
 	excludeJobIdListFilter *string
-	jobListFilter          *string
-	excludeJobListFilter   *string
-	groupPath              *string
-	groupPathExact         *string
-	excludeGroupPath       *string
-	excludeGroupPathExact  *string
-	jobFilter              *string
-	excludeJobFilter       *string
-	jobExactFilter         *string
-	excludeJobExactFilter  *string
-	startafterFilter       *string
-	startbeforeFilter      *string
-	endafterFilter         *string
-	endbeforeFilter        *string
-	begin                  *string
-	end                    *string
-	adhoc                  *bool
-	recentFilter           *string
-	olderFilter            *string
-	userFilter             *string
-	executionTypeFilter    *string
-	max                    *int32
-	offset                 *int32
+	jobListFilter *string
+	excludeJobListFilter *string
+	groupPath *string
+	groupPathExact *string
+	excludeGroupPath *string
+	excludeGroupPathExact *string
+	jobFilter *string
+	excludeJobFilter *string
+	jobExactFilter *string
+	excludeJobExactFilter *string
+	startafterFilter *string
+	startbeforeFilter *string
+	endafterFilter *string
+	endbeforeFilter *string
+	begin *string
+	end *string
+	adhoc *bool
+	recentFilter *string
+	olderFilter *string
+	userFilter *string
+	executionTypeFilter *string
+	max *int32
+	offset *int32
 }
 
 // Execution status
@@ -2279,7 +2278,7 @@ func (r ApiApiExecutionsQueryv14DocsRequest) Adhoc(adhoc bool) ApiApiExecutionsQ
 	return r
 }
 
-// Use a simple text format to filter executions that completed within a period of time. The format is \&quot;XY\&quot; where X is an integer, and \&quot;Y\&quot; is one of: * &#x60;s&#x60;: second * &#x60;n&#x60;: minute * &#x60;h&#x60;: hour * &#x60;d&#x60;: day * &#x60;w&#x60;: week * &#x60;m&#x60;: month * &#x60;y&#x60;: year  So a value of &#x60;2w&#x60; would return executions that completed within the last two weeks.
+// Use a simple text format to filter executions that completed within a period of time. The format is \&quot;XY\&quot; where X is an integer, and \&quot;Y\&quot; is one of: * &#x60;s&#x60;: second * &#x60;n&#x60;: minute * &#x60;h&#x60;: hour * &#x60;d&#x60;: day * &#x60;w&#x60;: week * &#x60;m&#x60;: month * &#x60;y&#x60;: year  So a value of &#x60;2w&#x60; would return executions that completed within the last two weeks. 
 func (r ApiApiExecutionsQueryv14DocsRequest) RecentFilter(recentFilter string) ApiApiExecutionsQueryv14DocsRequest {
 	r.recentFilter = &recentFilter
 	return r
@@ -2324,27 +2323,27 @@ ApiExecutionsQueryv14Docs Execution Query
 
 Query for Executions based on Job or Execution details.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project name
-	@return ApiApiExecutionsQueryv14DocsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project name
+ @return ApiApiExecutionsQueryv14DocsRequest
 */
-func (a *JobExecutionsAPIService) ApiExecutionsQueryv14Docs(ctx context.Context, project string) ApiApiExecutionsQueryv14DocsRequest {
+func (a *ExecutionAPIService) ApiExecutionsQueryv14Docs(ctx context.Context, project string) ApiApiExecutionsQueryv14DocsRequest {
 	return ApiApiExecutionsQueryv14DocsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-func (a *JobExecutionsAPIService) ApiExecutionsQueryv14DocsExecute(r ApiApiExecutionsQueryv14DocsRequest) (*http.Response, error) {
+func (a *ExecutionAPIService) ApiExecutionsQueryv14DocsExecute(r ApiApiExecutionsQueryv14DocsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionsQueryv14Docs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionsQueryv14Docs")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2497,12 +2496,12 @@ func (a *JobExecutionsAPIService) ApiExecutionsQueryv14DocsExecute(r ApiApiExecu
 }
 
 type ApiApiExecutionsRunningv14Request struct {
-	ctx              context.Context
-	ApiService       *JobExecutionsAPIService
-	project          string
-	max              *int32
-	offset           *int32
-	jobIdFilter      *string
+	ctx context.Context
+	ApiService *ExecutionAPIService
+	project string
+	max *int32
+	offset *int32
+	jobIdFilter *string
 	includePostponed *bool
 }
 
@@ -2541,30 +2540,30 @@ List the currently running executions for a project or all projects.
 
 Authorization required: `read` for project resource type `event`
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name, or * for all projects
-	@return ApiApiExecutionsRunningv14Request
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name, or * for all projects
+ @return ApiApiExecutionsRunningv14Request
 */
-func (a *JobExecutionsAPIService) ApiExecutionsRunningv14(ctx context.Context, project string) ApiApiExecutionsRunningv14Request {
+func (a *ExecutionAPIService) ApiExecutionsRunningv14(ctx context.Context, project string) ApiApiExecutionsRunningv14Request {
 	return ApiApiExecutionsRunningv14Request{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *JobExecutionsAPIService) ApiExecutionsRunningv14Execute(r ApiApiExecutionsRunningv14Request) (map[string]interface{}, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *ExecutionAPIService) ApiExecutionsRunningv14Execute(r ApiApiExecutionsRunningv14Request) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiExecutionsRunningv14")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiExecutionsRunningv14")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2657,8 +2656,8 @@ func (a *JobExecutionsAPIService) ApiExecutionsRunningv14Execute(r ApiApiExecuti
 }
 
 type ApiApiHomeSummaryRequest struct {
-	ctx        context.Context
-	ApiService *JobExecutionsAPIService
+	ctx context.Context
+	ApiService *ExecutionAPIService
 }
 
 func (r ApiApiHomeSummaryRequest) Execute() (*HomeSummary, *http.Response, error) {
@@ -2672,28 +2671,28 @@ Get Summary information about executions and projects.
 
 Since: V45
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiHomeSummaryRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiHomeSummaryRequest
 */
-func (a *JobExecutionsAPIService) ApiHomeSummary(ctx context.Context) ApiApiHomeSummaryRequest {
+func (a *ExecutionAPIService) ApiHomeSummary(ctx context.Context) ApiApiHomeSummaryRequest {
 	return ApiApiHomeSummaryRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return HomeSummary
-func (a *JobExecutionsAPIService) ApiHomeSummaryExecute(r ApiApiHomeSummaryRequest) (*HomeSummary, *http.Response, error) {
+//  @return HomeSummary
+func (a *ExecutionAPIService) ApiHomeSummaryExecute(r ApiApiHomeSummaryRequest) (*HomeSummary, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *HomeSummary
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HomeSummary
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobExecutionsAPIService.ApiHomeSummary")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutionAPIService.ApiHomeSummary")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

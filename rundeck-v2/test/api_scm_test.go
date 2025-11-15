@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_SCMAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiJobActionInput", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var integration string
@@ -40,7 +40,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiJobActionPerform", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var integration string
@@ -56,7 +56,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiJobDiff", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var integration string
@@ -71,7 +71,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiJobStatus", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id string
 		var integration string
@@ -86,7 +86,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiPluginInput", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -102,7 +102,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiPlugins", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -117,7 +117,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectActionInput", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -133,7 +133,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectActionPerform", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -149,7 +149,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectConfig", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -164,7 +164,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectDisable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -180,7 +180,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectEnable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -196,7 +196,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectSetup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -212,7 +212,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectStatus", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var integration string
@@ -227,7 +227,7 @@ func Test_openapi_SCMAPIService(t *testing.T) {
 
 	t.Run("Test SCMAPIService ApiProjectToggleSCM", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 

@@ -19,9 +19,9 @@ var _ MappedNullable = &Uptime{}
 
 // Uptime Uptime Information
 type Uptime struct {
-	Duration *int32  `json:"duration,omitempty"`
-	Unit     *string `json:"unit,omitempty"`
-	Since    *Since  `json:"since,omitempty"`
+	Duration *int32 `json:"duration,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	Since *Since `json:"since,omitempty"`
 }
 
 // NewUptime instantiates a new Uptime object
@@ -138,7 +138,7 @@ func (o *Uptime) SetSince(v Since) {
 }
 
 func (o Uptime) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableUptime) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

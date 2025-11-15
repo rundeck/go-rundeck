@@ -19,11 +19,11 @@ var _ MappedNullable = &ScmProjectStatus{}
 
 // ScmProjectStatus struct for ScmProjectStatus
 type ScmProjectStatus struct {
-	Project     *string `json:"project,omitempty"`
+	Project *string `json:"project,omitempty"`
 	Integration *string `json:"integration,omitempty"`
-	// Indicates the state.  Import plugin values for `synchState`:  * `CLEAN` - no changes * `UNKNOWN` - status unknown * `REFRESH_NEEDED` - plugin needs to refresh * `IMPORT_NEEDED` - some changes need to be imported * `DELETE_NEEDED` - some jobs need to be deleted  Export plugin values for `synchState`:  * `CLEAN` - no changes * `REFRESH_NEEDED` - plugin needs to refresh * `EXPORT_NEEDED` - some changes need to be exported * `CREATE_NEEDED` - some jobs need to be added to the repo
+	// Indicates the state.  Import plugin values for `synchState`:  * `CLEAN` - no changes * `UNKNOWN` - status unknown * `REFRESH_NEEDED` - plugin needs to refresh * `IMPORT_NEEDED` - some changes need to be imported * `DELETE_NEEDED` - some jobs need to be deleted  Export plugin values for `synchState`:  * `CLEAN` - no changes * `REFRESH_NEEDED` - plugin needs to refresh * `EXPORT_NEEDED` - some changes need to be exported * `CREATE_NEEDED` - some jobs need to be added to the repo 
 	SynchState *string `json:"synchState,omitempty"`
-	Message    *string `json:"message,omitempty"`
+	Message *string `json:"message,omitempty"`
 	// empty, or a list of action ID strings.
 	Actions []string `json:"actions,omitempty"`
 }
@@ -206,7 +206,7 @@ func (o *ScmProjectStatus) SetActions(v []string) {
 }
 
 func (o ScmProjectStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -268,3 +268,5 @@ func (v *NullableScmProjectStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

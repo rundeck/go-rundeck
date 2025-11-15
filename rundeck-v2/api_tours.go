@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // ToursAPIService ToursAPI service
 type ToursAPIService service
 
 type ApiApiGetProjectResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ToursAPIService
-	project    string
-	path       string
+	project string
+	path string
 }
 
 func (r ApiApiGetProjectResourceRequest) Execute() (*Tour, *http.Response, error) {
@@ -40,29 +41,28 @@ Get a tour at a specific path.
 
 Authorization required: `admin` for the Project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param path Resource Path
-	@return ApiApiGetProjectResourceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param path Resource Path
+ @return ApiApiGetProjectResourceRequest
 */
 func (a *ToursAPIService) ApiGetProjectResource(ctx context.Context, project string, path string) ApiApiGetProjectResourceRequest {
 	return ApiApiGetProjectResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		path:       path,
+		ctx: ctx,
+		project: project,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Tour
+//  @return Tour
 func (a *ToursAPIService) ApiGetProjectResourceExecute(r ApiApiGetProjectResourceRequest) (*Tour, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Tour
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Tour
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiGetProjectResource")
@@ -147,9 +147,9 @@ func (a *ToursAPIService) ApiGetProjectResourceExecute(r ApiApiGetProjectResourc
 }
 
 type ApiApiGetSystemResourceRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ToursAPIService
-	path       string
+	path string
 }
 
 func (r ApiApiGetSystemResourceRequest) Execute() (*Tour, *http.Response, error) {
@@ -163,27 +163,26 @@ Get a tour at a specific path.
 
 Authorization required: `app_admin` for the `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Resource Path
-	@return ApiApiGetSystemResourceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Resource Path
+ @return ApiApiGetSystemResourceRequest
 */
 func (a *ToursAPIService) ApiGetSystemResource(ctx context.Context, path string) ApiApiGetSystemResourceRequest {
 	return ApiApiGetSystemResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Tour
+//  @return Tour
 func (a *ToursAPIService) ApiGetSystemResourceExecute(r ApiApiGetSystemResourceRequest) (*Tour, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Tour
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Tour
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiGetSystemResource")
@@ -267,12 +266,12 @@ func (a *ToursAPIService) ApiGetSystemResourceExecute(r ApiApiGetSystemResourceR
 }
 
 type ApiApiProjectImportTourRequest struct {
-	ctx              context.Context
-	ApiService       *ToursAPIService
-	project          string
-	tourFolder       string
+	ctx context.Context
+	ApiService *ToursAPIService
+	project string
+	tourFolder string
 	manifestFileName string
-	body             *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Zip archive of Tours
@@ -292,31 +291,30 @@ Import a zip archive of Tours to a Project.
 
 Authorization required: `admin` for the Project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param tourFolder Tour Folder Name: the name of the zip content folder containing tour.json files.
-	@param manifestFileName Manifest File Name: the name of the manifest.json file within the archive
-	@return ApiApiProjectImportTourRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param tourFolder Tour Folder Name: the name of the zip content folder containing tour.json files.
+ @param manifestFileName Manifest File Name: the name of the manifest.json file within the archive
+ @return ApiApiProjectImportTourRequest
 */
 func (a *ToursAPIService) ApiProjectImportTour(ctx context.Context, project string, tourFolder string, manifestFileName string) ApiApiProjectImportTourRequest {
 	return ApiApiProjectImportTourRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		project:          project,
-		tourFolder:       tourFolder,
+		ApiService: a,
+		ctx: ctx,
+		project: project,
+		tourFolder: tourFolder,
 		manifestFileName: manifestFileName,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TourManagerSuccessResponse
+//  @return TourManagerSuccessResponse
 func (a *ToursAPIService) ApiProjectImportTourExecute(r ApiApiProjectImportTourRequest) (*TourManagerSuccessResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TourManagerSuccessResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TourManagerSuccessResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiProjectImportTour")
@@ -395,8 +393,8 @@ func (a *ToursAPIService) ApiProjectImportTourExecute(r ApiApiProjectImportTourR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -414,9 +412,9 @@ func (a *ToursAPIService) ApiProjectImportTourExecute(r ApiApiProjectImportTourR
 }
 
 type ApiApiProjectListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ToursAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiProjectListRequest) Execute() (*Manifest, *http.Response, error) {
@@ -430,27 +428,27 @@ Get the manifest of tours for the project.
 
 Authorization required: `admin` for the Project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectListRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectListRequest
 */
 func (a *ToursAPIService) ApiProjectList(ctx context.Context, project string) ApiApiProjectListRequest {
 	return ApiApiProjectListRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Manifest
+//  @return Manifest
 func (a *ToursAPIService) ApiProjectListExecute(r ApiApiProjectListRequest) (*Manifest, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Manifest
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Manifest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiProjectList")
@@ -534,10 +532,10 @@ func (a *ToursAPIService) ApiProjectListExecute(r ApiApiProjectListRequest) (*Ma
 }
 
 type ApiApiProjectLoadResourceRequest struct {
-	ctx                           context.Context
-	ApiService                    *ToursAPIService
-	project                       string
-	path                          string
+	ctx context.Context
+	ApiService *ToursAPIService
+	project string
+	path string
 	apiProjectLoadResourceRequest *ApiProjectLoadResourceRequest
 }
 
@@ -558,29 +556,28 @@ Upload a tour resource at a specific path.
 
 Authorization required: `admin` for the Project resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param path Resource Path
-	@return ApiApiProjectLoadResourceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param path Resource Path
+ @return ApiApiProjectLoadResourceRequest
 */
 func (a *ToursAPIService) ApiProjectLoadResource(ctx context.Context, project string, path string) ApiApiProjectLoadResourceRequest {
 	return ApiApiProjectLoadResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		path:       path,
+		ctx: ctx,
+		project: project,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TourManagerSuccessResponse
+//  @return TourManagerSuccessResponse
 func (a *ToursAPIService) ApiProjectLoadResourceExecute(r ApiApiProjectLoadResourceRequest) (*TourManagerSuccessResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TourManagerSuccessResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TourManagerSuccessResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiProjectLoadResource")
@@ -658,8 +655,8 @@ func (a *ToursAPIService) ApiProjectLoadResourceExecute(r ApiApiProjectLoadResou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -677,7 +674,7 @@ func (a *ToursAPIService) ApiProjectLoadResourceExecute(r ApiApiProjectLoadResou
 }
 
 type ApiApiRundeckEndpointsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ToursAPIService
 }
 
@@ -690,25 +687,24 @@ ApiRundeckEndpoints Get Tour Endpoints List [Enterprise]
 
 List the endpoints usable by Tours
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiRundeckEndpointsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiRundeckEndpointsRequest
 */
 func (a *ToursAPIService) ApiRundeckEndpoints(ctx context.Context) ApiApiRundeckEndpointsRequest {
 	return ApiApiRundeckEndpointsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *ToursAPIService) ApiRundeckEndpointsExecute(r ApiApiRundeckEndpointsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiRundeckEndpoints")
@@ -791,11 +787,11 @@ func (a *ToursAPIService) ApiRundeckEndpointsExecute(r ApiApiRundeckEndpointsReq
 }
 
 type ApiApiSystemImportTourRequest struct {
-	ctx              context.Context
-	ApiService       *ToursAPIService
-	tourFolder       string
+	ctx context.Context
+	ApiService *ToursAPIService
+	tourFolder string
 	manifestFileName string
-	body             *map[string]interface{}
+	body *map[string]interface{}
 }
 
 // Zip archive of Tours
@@ -815,29 +811,28 @@ Import a zip archive of Tours to the System.
 
 Authorization required: `app_admin` for the `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param tourFolder Tour Folder Name: the name of the zip content folder containing tour.json files.
-	@param manifestFileName Manifest File Name: the name of the manifest.json file within the archive
-	@return ApiApiSystemImportTourRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tourFolder Tour Folder Name: the name of the zip content folder containing tour.json files.
+ @param manifestFileName Manifest File Name: the name of the manifest.json file within the archive
+ @return ApiApiSystemImportTourRequest
 */
 func (a *ToursAPIService) ApiSystemImportTour(ctx context.Context, tourFolder string, manifestFileName string) ApiApiSystemImportTourRequest {
 	return ApiApiSystemImportTourRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		tourFolder:       tourFolder,
+		ApiService: a,
+		ctx: ctx,
+		tourFolder: tourFolder,
 		manifestFileName: manifestFileName,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TourManagerSuccessResponse
+//  @return TourManagerSuccessResponse
 func (a *ToursAPIService) ApiSystemImportTourExecute(r ApiApiSystemImportTourRequest) (*TourManagerSuccessResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TourManagerSuccessResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TourManagerSuccessResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiSystemImportTour")
@@ -915,8 +910,8 @@ func (a *ToursAPIService) ApiSystemImportTourExecute(r ApiApiSystemImportTourReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -934,7 +929,7 @@ func (a *ToursAPIService) ApiSystemImportTourExecute(r ApiApiSystemImportTourReq
 }
 
 type ApiApiSystemListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *ToursAPIService
 }
 
@@ -949,25 +944,25 @@ Get the manifest of tours for the system.
 
 Authorization required: `app_admin` for the `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiSystemListRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiSystemListRequest
 */
 func (a *ToursAPIService) ApiSystemList(ctx context.Context) ApiApiSystemListRequest {
 	return ApiApiSystemListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return Manifest
+//  @return Manifest
 func (a *ToursAPIService) ApiSystemListExecute(r ApiApiSystemListRequest) (*Manifest, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Manifest
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Manifest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiSystemList")
@@ -1050,9 +1045,9 @@ func (a *ToursAPIService) ApiSystemListExecute(r ApiApiSystemListRequest) (*Mani
 }
 
 type ApiApiSystemLoadResourceRequest struct {
-	ctx                           context.Context
-	ApiService                    *ToursAPIService
-	path                          string
+	ctx context.Context
+	ApiService *ToursAPIService
+	path string
 	apiProjectLoadResourceRequest *ApiProjectLoadResourceRequest
 }
 
@@ -1073,27 +1068,26 @@ Upload a system tour resource at a specific path.
 
 Authorization required: `app_admin` for the `system` resource.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param path Resource Path
-	@return ApiApiSystemLoadResourceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param path Resource Path
+ @return ApiApiSystemLoadResourceRequest
 */
 func (a *ToursAPIService) ApiSystemLoadResource(ctx context.Context, path string) ApiApiSystemLoadResourceRequest {
 	return ApiApiSystemLoadResourceRequest{
 		ApiService: a,
-		ctx:        ctx,
-		path:       path,
+		ctx: ctx,
+		path: path,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TourManagerSuccessResponse
+//  @return TourManagerSuccessResponse
 func (a *ToursAPIService) ApiSystemLoadResourceExecute(r ApiApiSystemLoadResourceRequest) (*TourManagerSuccessResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TourManagerSuccessResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TourManagerSuccessResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ToursAPIService.ApiSystemLoadResource")
@@ -1170,8 +1164,8 @@ func (a *ToursAPIService) ApiSystemLoadResourceExecute(r ApiApiSystemLoadResourc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

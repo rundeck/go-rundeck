@@ -33,7 +33,7 @@ type ScmPluginInputField struct {
 	DefaultValue *string `json:"defaultValue,omitempty"`
 	// if the type is `Select` or `FreeSelect`, a list of string values to choose from
 	Values []string `json:"values,omitempty"`
-	Scope  *string  `json:"scope,omitempty"`
+	Scope *string `json:"scope,omitempty"`
 	// a key/value map of options, such as declaring that GUI display the input as a password field.
 	RenderingOptions *map[string]string `json:"renderingOptions,omitempty"`
 }
@@ -344,7 +344,7 @@ func (o *ScmPluginInputField) SetRenderingOptions(v map[string]string) {
 }
 
 func (o ScmPluginInputField) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -418,3 +418,5 @@ func (v *NullableScmPluginInputField) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

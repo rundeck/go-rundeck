@@ -19,9 +19,9 @@ var _ MappedNullable = &UiData{}
 
 // UiData struct for UiData
 type UiData struct {
-	ProjectCount        *int32   `json:"projectCount,omitempty"`
-	AllowedActions      []string `json:"allowedActions,omitempty"`
-	Features            []string `json:"features,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	AllowedActions []string `json:"allowedActions,omitempty"`
+	Features []string `json:"features,omitempty"`
 	RunnerInstanceTypes []string `json:"runnerInstanceTypes,omitempty"`
 }
 
@@ -171,7 +171,7 @@ func (o *UiData) SetRunnerInstanceTypes(v []string) {
 }
 
 func (o UiData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableUiData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

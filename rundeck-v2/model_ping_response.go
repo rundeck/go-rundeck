@@ -19,10 +19,10 @@ var _ MappedNullable = &PingResponse{}
 
 // PingResponse struct for PingResponse
 type PingResponse struct {
-	RunnerId  *string `json:"runnerId,omitempty"`
-	Completed *bool   `json:"completed,omitempty"`
-	Message   *string `json:"message,omitempty"`
-	Iserror   *bool   `json:"iserror,omitempty"`
+	RunnerId *string `json:"runnerId,omitempty"`
+	Completed *bool `json:"completed,omitempty"`
+	Message *string `json:"message,omitempty"`
+	Iserror *bool `json:"iserror,omitempty"`
 }
 
 // NewPingResponse instantiates a new PingResponse object
@@ -171,7 +171,7 @@ func (o *PingResponse) SetIserror(v bool) {
 }
 
 func (o PingResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullablePingResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

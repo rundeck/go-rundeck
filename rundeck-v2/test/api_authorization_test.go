@@ -11,10 +11,10 @@ package openapi
 
 import (
 	"context"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
 )
 
 func Test_openapi_AuthorizationAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_openapi_AuthorizationAPIService(t *testing.T) {
 
 	t.Run("Test AuthorizationAPIService AppContextAuthorizationsForResourceKind", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var kind string
 
@@ -38,7 +38,7 @@ func Test_openapi_AuthorizationAPIService(t *testing.T) {
 
 	t.Run("Test AuthorizationAPIService AppContextAuthorizationsForTypeWithSpecifier", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 		var specifier string
@@ -53,7 +53,7 @@ func Test_openapi_AuthorizationAPIService(t *testing.T) {
 
 	t.Run("Test AuthorizationAPIService ProjectContextAuthorizationsForJob", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var specifier string
@@ -68,7 +68,7 @@ func Test_openapi_AuthorizationAPIService(t *testing.T) {
 
 	t.Run("Test AuthorizationAPIService ProjectContextAuthorizationsForResourceKind", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var kind string
@@ -83,7 +83,7 @@ func Test_openapi_AuthorizationAPIService(t *testing.T) {
 
 	t.Run("Test AuthorizationAPIService ProjectContextAuthorizationsForTypeWithSpecifier", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var project string
 		var type_ string

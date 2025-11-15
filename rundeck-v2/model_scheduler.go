@@ -19,7 +19,7 @@ var _ MappedNullable = &Scheduler{}
 
 // Scheduler Scheduler Information
 type Scheduler struct {
-	Running        *int32 `json:"running,omitempty"`
+	Running *int32 `json:"running,omitempty"`
 	ThreadPoolSize *int32 `json:"threadPoolSize,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *Scheduler) SetThreadPoolSize(v int32) {
 }
 
 func (o Scheduler) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableScheduler) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

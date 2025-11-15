@@ -19,7 +19,7 @@ var _ MappedNullable = &MetricsQueryResponse{}
 
 // MetricsQueryResponse struct for MetricsQueryResponse
 type MetricsQueryResponse struct {
-	Total    *int64                        `json:"total,omitempty"`
+	Total *int64 `json:"total,omitempty"`
 	Duration *MetricsQueryResponseDuration `json:"duration,omitempty"`
 }
 
@@ -105,7 +105,7 @@ func (o *MetricsQueryResponse) SetDuration(v MetricsQueryResponseDuration) {
 }
 
 func (o MetricsQueryResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableMetricsQueryResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,28 +19,28 @@ var _ MappedNullable = &RdJobQueryInput{}
 
 // RdJobQueryInput struct for RdJobQueryInput
 type RdJobQueryInput struct {
-	Offset                 *int32                 `json:"offset,omitempty"`
-	Max                    *int32                 `json:"max,omitempty"`
-	Errors                 *Errors                `json:"errors,omitempty"`
-	SortOrders             []SortOrder            `json:"sortOrders,omitempty"`
-	SortBy                 *string                `json:"sortBy,omitempty"`
-	Idlist                 *string                `json:"idlist,omitempty"`
-	SortOrder              *string                `json:"sortOrder,omitempty"`
-	InputParamMap          map[string]interface{} `json:"inputParamMap,omitempty"`
-	JobFilter              *string                `json:"jobFilter,omitempty"`
-	JobExactFilter         *string                `json:"jobExactFilter,omitempty"`
-	ProjFilter             *string                `json:"projFilter,omitempty"`
-	GroupPath              *string                `json:"groupPath,omitempty"`
-	GroupPathExact         *string                `json:"groupPathExact,omitempty"`
-	DescFilter             *string                `json:"descFilter,omitempty"`
-	LoglevelFilter         *string                `json:"loglevelFilter,omitempty"`
-	ScheduledFilter        *bool                  `json:"scheduledFilter,omitempty"`
-	ScheduleEnabledFilter  *bool                  `json:"scheduleEnabledFilter,omitempty"`
-	ExecutionEnabledFilter *bool                  `json:"executionEnabledFilter,omitempty"`
-	ServerNodeUUIDFilter   *string                `json:"serverNodeUUIDFilter,omitempty"`
-	DaysAhead              *int32                 `json:"daysAhead,omitempty"`
-	RunJobLaterFilter      *bool                  `json:"runJobLaterFilter,omitempty"`
-	PaginatedRequired      *bool                  `json:"paginatedRequired,omitempty"`
+	Offset *int32 `json:"offset,omitempty"`
+	Errors *Errors `json:"errors,omitempty"`
+	Max *int32 `json:"max,omitempty"`
+	SortOrders []SortOrder `json:"sortOrders,omitempty"`
+	SortBy *string `json:"sortBy,omitempty"`
+	SortOrder *string `json:"sortOrder,omitempty"`
+	InputParamMap map[string]interface{} `json:"inputParamMap,omitempty"`
+	JobFilter *string `json:"jobFilter,omitempty"`
+	JobExactFilter *string `json:"jobExactFilter,omitempty"`
+	ProjFilter *string `json:"projFilter,omitempty"`
+	GroupPath *string `json:"groupPath,omitempty"`
+	GroupPathExact *string `json:"groupPathExact,omitempty"`
+	DescFilter *string `json:"descFilter,omitempty"`
+	LoglevelFilter *string `json:"loglevelFilter,omitempty"`
+	Idlist *string `json:"idlist,omitempty"`
+	ScheduledFilter *bool `json:"scheduledFilter,omitempty"`
+	ScheduleEnabledFilter *bool `json:"scheduleEnabledFilter,omitempty"`
+	ExecutionEnabledFilter *bool `json:"executionEnabledFilter,omitempty"`
+	ServerNodeUUIDFilter *string `json:"serverNodeUUIDFilter,omitempty"`
+	DaysAhead *int32 `json:"daysAhead,omitempty"`
+	RunJobLaterFilter *bool `json:"runJobLaterFilter,omitempty"`
+	PaginatedRequired *bool `json:"paginatedRequired,omitempty"`
 }
 
 // NewRdJobQueryInput instantiates a new RdJobQueryInput object
@@ -92,38 +92,6 @@ func (o *RdJobQueryInput) SetOffset(v int32) {
 	o.Offset = &v
 }
 
-// GetMax returns the Max field value if set, zero value otherwise.
-func (o *RdJobQueryInput) GetMax() int32 {
-	if o == nil || IsNil(o.Max) {
-		var ret int32
-		return ret
-	}
-	return *o.Max
-}
-
-// GetMaxOk returns a tuple with the Max field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RdJobQueryInput) GetMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.Max) {
-		return nil, false
-	}
-	return o.Max, true
-}
-
-// HasMax returns a boolean if a field has been set.
-func (o *RdJobQueryInput) HasMax() bool {
-	if o != nil && !IsNil(o.Max) {
-		return true
-	}
-
-	return false
-}
-
-// SetMax gets a reference to the given int32 and assigns it to the Max field.
-func (o *RdJobQueryInput) SetMax(v int32) {
-	o.Max = &v
-}
-
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *RdJobQueryInput) GetErrors() Errors {
 	if o == nil || IsNil(o.Errors) {
@@ -154,6 +122,38 @@ func (o *RdJobQueryInput) HasErrors() bool {
 // SetErrors gets a reference to the given Errors and assigns it to the Errors field.
 func (o *RdJobQueryInput) SetErrors(v Errors) {
 	o.Errors = &v
+}
+
+// GetMax returns the Max field value if set, zero value otherwise.
+func (o *RdJobQueryInput) GetMax() int32 {
+	if o == nil || IsNil(o.Max) {
+		var ret int32
+		return ret
+	}
+	return *o.Max
+}
+
+// GetMaxOk returns a tuple with the Max field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RdJobQueryInput) GetMaxOk() (*int32, bool) {
+	if o == nil || IsNil(o.Max) {
+		return nil, false
+	}
+	return o.Max, true
+}
+
+// HasMax returns a boolean if a field has been set.
+func (o *RdJobQueryInput) HasMax() bool {
+	if o != nil && !IsNil(o.Max) {
+		return true
+	}
+
+	return false
+}
+
+// SetMax gets a reference to the given int32 and assigns it to the Max field.
+func (o *RdJobQueryInput) SetMax(v int32) {
+	o.Max = &v
 }
 
 // GetSortOrders returns the SortOrders field value if set, zero value otherwise.
@@ -218,38 +218,6 @@ func (o *RdJobQueryInput) HasSortBy() bool {
 // SetSortBy gets a reference to the given string and assigns it to the SortBy field.
 func (o *RdJobQueryInput) SetSortBy(v string) {
 	o.SortBy = &v
-}
-
-// GetIdlist returns the Idlist field value if set, zero value otherwise.
-func (o *RdJobQueryInput) GetIdlist() string {
-	if o == nil || IsNil(o.Idlist) {
-		var ret string
-		return ret
-	}
-	return *o.Idlist
-}
-
-// GetIdlistOk returns a tuple with the Idlist field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RdJobQueryInput) GetIdlistOk() (*string, bool) {
-	if o == nil || IsNil(o.Idlist) {
-		return nil, false
-	}
-	return o.Idlist, true
-}
-
-// HasIdlist returns a boolean if a field has been set.
-func (o *RdJobQueryInput) HasIdlist() bool {
-	if o != nil && !IsNil(o.Idlist) {
-		return true
-	}
-
-	return false
-}
-
-// SetIdlist gets a reference to the given string and assigns it to the Idlist field.
-func (o *RdJobQueryInput) SetIdlist(v string) {
-	o.Idlist = &v
 }
 
 // GetSortOrder returns the SortOrder field value if set, zero value otherwise.
@@ -540,6 +508,38 @@ func (o *RdJobQueryInput) SetLoglevelFilter(v string) {
 	o.LoglevelFilter = &v
 }
 
+// GetIdlist returns the Idlist field value if set, zero value otherwise.
+func (o *RdJobQueryInput) GetIdlist() string {
+	if o == nil || IsNil(o.Idlist) {
+		var ret string
+		return ret
+	}
+	return *o.Idlist
+}
+
+// GetIdlistOk returns a tuple with the Idlist field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RdJobQueryInput) GetIdlistOk() (*string, bool) {
+	if o == nil || IsNil(o.Idlist) {
+		return nil, false
+	}
+	return o.Idlist, true
+}
+
+// HasIdlist returns a boolean if a field has been set.
+func (o *RdJobQueryInput) HasIdlist() bool {
+	if o != nil && !IsNil(o.Idlist) {
+		return true
+	}
+
+	return false
+}
+
+// SetIdlist gets a reference to the given string and assigns it to the Idlist field.
+func (o *RdJobQueryInput) SetIdlist(v string) {
+	o.Idlist = &v
+}
+
 // GetScheduledFilter returns the ScheduledFilter field value if set, zero value otherwise.
 func (o *RdJobQueryInput) GetScheduledFilter() bool {
 	if o == nil || IsNil(o.ScheduledFilter) {
@@ -765,7 +765,7 @@ func (o *RdJobQueryInput) SetPaginatedRequired(v bool) {
 }
 
 func (o RdJobQueryInput) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -777,20 +777,17 @@ func (o RdJobQueryInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Offset) {
 		toSerialize["offset"] = o.Offset
 	}
-	if !IsNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
+	}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
 	}
 	if !IsNil(o.SortOrders) {
 		toSerialize["sortOrders"] = o.SortOrders
 	}
 	if !IsNil(o.SortBy) {
 		toSerialize["sortBy"] = o.SortBy
-	}
-	if !IsNil(o.Idlist) {
-		toSerialize["idlist"] = o.Idlist
 	}
 	if !IsNil(o.SortOrder) {
 		toSerialize["sortOrder"] = o.SortOrder
@@ -818,6 +815,9 @@ func (o RdJobQueryInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LoglevelFilter) {
 		toSerialize["loglevelFilter"] = o.LoglevelFilter
+	}
+	if !IsNil(o.Idlist) {
+		toSerialize["idlist"] = o.Idlist
 	}
 	if !IsNil(o.ScheduledFilter) {
 		toSerialize["scheduledFilter"] = o.ScheduledFilter
@@ -878,3 +878,5 @@ func (v *NullableRdJobQueryInput) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

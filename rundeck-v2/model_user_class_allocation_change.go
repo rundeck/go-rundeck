@@ -19,9 +19,9 @@ var _ MappedNullable = &UserClassAllocationChange{}
 
 // UserClassAllocationChange struct for UserClassAllocationChange
 type UserClassAllocationChange struct {
-	Usernames  []string `json:"usernames,omitempty"`
-	BulkAssign *string  `json:"bulkAssign,omitempty"`
-	BulkRemove *bool    `json:"bulkRemove,omitempty"`
+	Usernames []string `json:"usernames,omitempty"`
+	BulkAssign *string `json:"bulkAssign,omitempty"`
+	BulkRemove *bool `json:"bulkRemove,omitempty"`
 	// The current User Class allocation set, as a map of user name to user class name.
 	Allocations *map[string]string `json:"allocations,omitempty"`
 }
@@ -172,7 +172,7 @@ func (o *UserClassAllocationChange) SetAllocations(v map[string]string) {
 }
 
 func (o UserClassAllocationChange) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -231,3 +231,5 @@ func (v *NullableUserClassAllocationChange) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

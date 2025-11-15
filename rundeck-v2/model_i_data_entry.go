@@ -19,15 +19,15 @@ var _ MappedNullable = &IDataEntry{}
 
 // IDataEntry struct for IDataEntry
 type IDataEntry struct {
-	Key         *string                `json:"key,omitempty"`
-	Value       map[string]interface{} `json:"value,omitempty"`
-	Description *string                `json:"description,omitempty"`
-	Label       *string                `json:"label,omitempty"`
-	Unit        *string                `json:"unit,omitempty"`
-	Status      *string                `json:"status,omitempty"`
-	Secured     *bool                  `json:"secured,omitempty"`
-	Concealed   *bool                  `json:"concealed,omitempty"`
-	Whitelist   *bool                  `json:"whitelist,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Value map[string]interface{} `json:"value,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Label *string `json:"label,omitempty"`
+	Unit *string `json:"unit,omitempty"`
+	Status *string `json:"status,omitempty"`
+	Secured *bool `json:"secured,omitempty"`
+	Concealed *bool `json:"concealed,omitempty"`
+	Whitelist *bool `json:"whitelist,omitempty"`
 }
 
 // NewIDataEntry instantiates a new IDataEntry object
@@ -336,7 +336,7 @@ func (o *IDataEntry) SetWhitelist(v bool) {
 }
 
 func (o IDataEntry) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -410,3 +410,5 @@ func (v *NullableIDataEntry) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

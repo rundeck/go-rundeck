@@ -19,9 +19,9 @@ var _ MappedNullable = &LicenseEntitlementDescription{}
 
 // LicenseEntitlementDescription struct for LicenseEntitlementDescription
 type LicenseEntitlementDescription struct {
-	Title       *string             `json:"title,omitempty"`
-	Description *string             `json:"description,omitempty"`
-	Properties  []map[string]string `json:"properties,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Properties []map[string]string `json:"properties,omitempty"`
 }
 
 // NewLicenseEntitlementDescription instantiates a new LicenseEntitlementDescription object
@@ -138,7 +138,7 @@ func (o *LicenseEntitlementDescription) SetProperties(v []map[string]string) {
 }
 
 func (o LicenseEntitlementDescription) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -194,3 +194,5 @@ func (v *NullableLicenseEntitlementDescription) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

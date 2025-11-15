@@ -19,20 +19,20 @@ var _ MappedNullable = &ApiRunAdhocRequest{}
 
 // ApiRunAdhocRequest struct for ApiRunAdhocRequest
 type ApiRunAdhocRequest struct {
-	Project               *string            `json:"project,omitempty"`
-	Exec                  *string            `json:"exec,omitempty"`
-	Script                *string            `json:"script,omitempty"`
-	ScriptInterpreter     *string            `json:"scriptInterpreter,omitempty"`
-	ArgString             *string            `json:"argString,omitempty"`
-	InterpreterArgsQuoted *bool              `json:"interpreterArgsQuoted,omitempty"`
-	Url                   *string            `json:"url,omitempty"`
-	Description           *string            `json:"description,omitempty"`
-	Filter                *string            `json:"filter,omitempty"`
-	AsUser                *string            `json:"asUser,omitempty"`
-	FileExtension         *string            `json:"fileExtension,omitempty"`
-	NodeKeepgoing         *bool              `json:"nodeKeepgoing,omitempty"`
-	NodeThreadcount       *int32             `json:"nodeThreadcount,omitempty"`
-	Meta                  *map[string]string `json:"meta,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Exec *string `json:"exec,omitempty"`
+	Script *string `json:"script,omitempty"`
+	ScriptInterpreter *string `json:"scriptInterpreter,omitempty"`
+	ArgString *string `json:"argString,omitempty"`
+	InterpreterArgsQuoted *bool `json:"interpreterArgsQuoted,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Filter *string `json:"filter,omitempty"`
+	AsUser *string `json:"asUser,omitempty"`
+	FileExtension *string `json:"fileExtension,omitempty"`
+	NodeKeepgoing *bool `json:"nodeKeepgoing,omitempty"`
+	NodeThreadcount *int32 `json:"nodeThreadcount,omitempty"`
+	Meta *map[string]string `json:"meta,omitempty"`
 }
 
 // NewApiRunAdhocRequest instantiates a new ApiRunAdhocRequest object
@@ -501,7 +501,7 @@ func (o *ApiRunAdhocRequest) SetMeta(v map[string]string) {
 }
 
 func (o ApiRunAdhocRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -590,3 +590,5 @@ func (v *NullableApiRunAdhocRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

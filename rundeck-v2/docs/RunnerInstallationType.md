@@ -3,13 +3,13 @@
 ## Enum
 
 
-* `LINUX` (value: `"LINUX"`)
+* `LINUX` (value: `"linux"`)
 
-* `WINDOWS` (value: `"WINDOWS"`)
+* `WINDOWS` (value: `"windows"`)
 
-* `KUBERNETES` (value: `"KUBERNETES"`)
+* `KUBERNETES` (value: `"kubernetes"`)
 
-* `DOCKER` (value: `"DOCKER"`)
+* `DOCKER` (value: `"docker"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

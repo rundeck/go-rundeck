@@ -19,8 +19,8 @@ var _ MappedNullable = &SaveProjectRunnerConfigRequest{}
 
 // SaveProjectRunnerConfigRequest struct for SaveProjectRunnerConfigRequest
 type SaveProjectRunnerConfigRequest struct {
-	Project   *string `json:"project,omitempty"`
-	Automatic *bool   `json:"automatic,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Automatic *bool `json:"automatic,omitempty"`
 }
 
 // NewSaveProjectRunnerConfigRequest instantiates a new SaveProjectRunnerConfigRequest object
@@ -105,7 +105,7 @@ func (o *SaveProjectRunnerConfigRequest) SetAutomatic(v bool) {
 }
 
 func (o SaveProjectRunnerConfigRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableSaveProjectRunnerConfigRequest) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,8 +21,8 @@ var _ MappedNullable = &ExecutionFileInfoList{}
 
 // ExecutionFileInfoList struct for ExecutionFileInfoList
 type ExecutionFileInfoList struct {
-	Paging *Paging       `json:"paging,omitempty"`
-	Files  []JobFileInfo `json:"files"`
+	Paging *Paging `json:"paging,omitempty"`
+	Files []JobFileInfo `json:"files"`
 }
 
 type _ExecutionFileInfoList ExecutionFileInfoList
@@ -102,7 +102,7 @@ func (o *ExecutionFileInfoList) SetFiles(v []JobFileInfo) {
 }
 
 func (o ExecutionFileInfoList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -131,10 +131,10 @@ func (o *ExecutionFileInfoList) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -190,3 +190,5 @@ func (v *NullableExecutionFileInfoList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

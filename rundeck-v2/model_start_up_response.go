@@ -11,9 +11,7 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the StartUpResponse type satisfies the MappedNullable interface at compile time
@@ -21,22 +19,17 @@ var _ MappedNullable = &StartUpResponse{}
 
 // StartUpResponse struct for StartUpResponse
 type StartUpResponse struct {
-	Error       string `json:"error"`
-	ReplicaId   string `json:"replicaId"`
-	ReplicaType string `json:"replicaType"`
+	Error *bool `json:"error,omitempty"`
+	ReplicaId *string `json:"replicaId,omitempty"`
+	ReplicaType *string `json:"replicaType,omitempty"`
 }
-
-type _StartUpResponse StartUpResponse
 
 // NewStartUpResponse instantiates a new StartUpResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStartUpResponse(error_ string, replicaId string, replicaType string) *StartUpResponse {
+func NewStartUpResponse() *StartUpResponse {
 	this := StartUpResponse{}
-	this.Error = error_
-	this.ReplicaId = replicaId
-	this.ReplicaType = replicaType
 	return &this
 }
 
@@ -48,80 +41,104 @@ func NewStartUpResponseWithDefaults() *StartUpResponse {
 	return &this
 }
 
-// GetError returns the Error field value
-func (o *StartUpResponse) GetError() string {
-	if o == nil {
-		var ret string
+// GetError returns the Error field value if set, zero value otherwise.
+func (o *StartUpResponse) GetError() bool {
+	if o == nil || IsNil(o.Error) {
+		var ret bool
 		return ret
 	}
-
-	return o.Error
+	return *o.Error
 }
 
-// GetErrorOk returns a tuple with the Error field value
+// GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StartUpResponse) GetErrorOk() (*string, bool) {
-	if o == nil {
+func (o *StartUpResponse) GetErrorOk() (*bool, bool) {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
-	return &o.Error, true
+	return o.Error, true
 }
 
-// SetError sets field value
-func (o *StartUpResponse) SetError(v string) {
-	o.Error = v
+// HasError returns a boolean if a field has been set.
+func (o *StartUpResponse) HasError() bool {
+	if o != nil && !IsNil(o.Error) {
+		return true
+	}
+
+	return false
 }
 
-// GetReplicaId returns the ReplicaId field value
+// SetError gets a reference to the given bool and assigns it to the Error field.
+func (o *StartUpResponse) SetError(v bool) {
+	o.Error = &v
+}
+
+// GetReplicaId returns the ReplicaId field value if set, zero value otherwise.
 func (o *StartUpResponse) GetReplicaId() string {
-	if o == nil {
+	if o == nil || IsNil(o.ReplicaId) {
 		var ret string
 		return ret
 	}
-
-	return o.ReplicaId
+	return *o.ReplicaId
 }
 
-// GetReplicaIdOk returns a tuple with the ReplicaId field value
+// GetReplicaIdOk returns a tuple with the ReplicaId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartUpResponse) GetReplicaIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ReplicaId) {
 		return nil, false
 	}
-	return &o.ReplicaId, true
+	return o.ReplicaId, true
 }
 
-// SetReplicaId sets field value
+// HasReplicaId returns a boolean if a field has been set.
+func (o *StartUpResponse) HasReplicaId() bool {
+	if o != nil && !IsNil(o.ReplicaId) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaId gets a reference to the given string and assigns it to the ReplicaId field.
 func (o *StartUpResponse) SetReplicaId(v string) {
-	o.ReplicaId = v
+	o.ReplicaId = &v
 }
 
-// GetReplicaType returns the ReplicaType field value
+// GetReplicaType returns the ReplicaType field value if set, zero value otherwise.
 func (o *StartUpResponse) GetReplicaType() string {
-	if o == nil {
+	if o == nil || IsNil(o.ReplicaType) {
 		var ret string
 		return ret
 	}
-
-	return o.ReplicaType
+	return *o.ReplicaType
 }
 
-// GetReplicaTypeOk returns a tuple with the ReplicaType field value
+// GetReplicaTypeOk returns a tuple with the ReplicaType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartUpResponse) GetReplicaTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ReplicaType) {
 		return nil, false
 	}
-	return &o.ReplicaType, true
+	return o.ReplicaType, true
 }
 
-// SetReplicaType sets field value
+// HasReplicaType returns a boolean if a field has been set.
+func (o *StartUpResponse) HasReplicaType() bool {
+	if o != nil && !IsNil(o.ReplicaType) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicaType gets a reference to the given string and assigns it to the ReplicaType field.
 func (o *StartUpResponse) SetReplicaType(v string) {
-	o.ReplicaType = v
+	o.ReplicaType = &v
 }
 
 func (o StartUpResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -130,49 +147,16 @@ func (o StartUpResponse) MarshalJSON() ([]byte, error) {
 
 func (o StartUpResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["error"] = o.Error
-	toSerialize["replicaId"] = o.ReplicaId
-	toSerialize["replicaType"] = o.ReplicaType
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
+	}
+	if !IsNil(o.ReplicaId) {
+		toSerialize["replicaId"] = o.ReplicaId
+	}
+	if !IsNil(o.ReplicaType) {
+		toSerialize["replicaType"] = o.ReplicaType
+	}
 	return toSerialize, nil
-}
-
-func (o *StartUpResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"error",
-		"replicaId",
-		"replicaType",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStartUpResponse := _StartUpResponse{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStartUpResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StartUpResponse(varStartUpResponse)
-
-	return err
 }
 
 type NullableStartUpResponse struct {
@@ -210,3 +194,5 @@ func (v *NullableStartUpResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

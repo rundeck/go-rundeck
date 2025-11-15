@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,11 +21,11 @@ var _ MappedNullable = &SaveProjectRunnerNodeDispatchSettingsRequest{}
 
 // SaveProjectRunnerNodeDispatchSettingsRequest struct for SaveProjectRunnerNodeDispatchSettingsRequest
 type SaveProjectRunnerNodeDispatchSettingsRequest struct {
-	RunnerId            string                           `json:"runnerId"`
-	RunnerAsNodeEnabled *bool                            `json:"runnerAsNodeEnabled,omitempty"`
-	RemoteNodeDispatch  *bool                            `json:"remoteNodeDispatch,omitempty"`
-	RunnerNodeFilter    *string                          `json:"runnerNodeFilter,omitempty"`
-	Data                *UpdateRunnerNodeDispatchRequest `json:"data,omitempty"`
+	RunnerId string `json:"runnerId"`
+	RunnerAsNodeEnabled *bool `json:"runnerAsNodeEnabled,omitempty"`
+	RemoteNodeDispatch *bool `json:"remoteNodeDispatch,omitempty"`
+	RunnerNodeFilter *string `json:"runnerNodeFilter,omitempty"`
+	Data *UpdateRunnerNodeDispatchRequest `json:"data,omitempty"`
 }
 
 type _SaveProjectRunnerNodeDispatchSettingsRequest SaveProjectRunnerNodeDispatchSettingsRequest
@@ -201,7 +201,7 @@ func (o *SaveProjectRunnerNodeDispatchSettingsRequest) SetData(v UpdateRunnerNod
 }
 
 func (o SaveProjectRunnerNodeDispatchSettingsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -239,10 +239,10 @@ func (o *SaveProjectRunnerNodeDispatchSettingsRequest) UnmarshalJSON(data []byte
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -298,3 +298,5 @@ func (v *NullableSaveProjectRunnerNodeDispatchSettingsRequest) UnmarshalJSON(src
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

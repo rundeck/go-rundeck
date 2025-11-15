@@ -19,10 +19,10 @@ var _ MappedNullable = &RunnerProjectAssociations{}
 
 // RunnerProjectAssociations struct for RunnerProjectAssociations
 type RunnerProjectAssociations struct {
-	ProjectNodeFilters         *map[string]string `json:"projectNodeFilters,omitempty"`
-	ProjectRunnerAsNodeEnabled *map[string]bool   `json:"projectRunnerAsNodeEnabled,omitempty"`
-	ProjectRemoteNodeDispatch  *map[string]bool   `json:"projectRemoteNodeDispatch,omitempty"`
-	ProjectRunnerNodeFilter    *map[string]string `json:"projectRunnerNodeFilter,omitempty"`
+	ProjectNodeFilters *map[string]string `json:"projectNodeFilters,omitempty"`
+	ProjectRunnerAsNodeEnabled *map[string]bool `json:"projectRunnerAsNodeEnabled,omitempty"`
+	ProjectRemoteNodeDispatch *map[string]bool `json:"projectRemoteNodeDispatch,omitempty"`
+	ProjectRunnerNodeFilter *map[string]string `json:"projectRunnerNodeFilter,omitempty"`
 }
 
 // NewRunnerProjectAssociations instantiates a new RunnerProjectAssociations object
@@ -171,7 +171,7 @@ func (o *RunnerProjectAssociations) SetProjectRunnerNodeFilter(v map[string]stri
 }
 
 func (o RunnerProjectAssociations) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,3 +230,5 @@ func (v *NullableRunnerProjectAssociations) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,16 +19,16 @@ var _ MappedNullable = &LicenseInfoResponse{}
 
 // LicenseInfoResponse License Information
 type LicenseInfoResponse struct {
-	Authorized         *bool    `json:"authorized,omitempty"`
-	Company            *string  `json:"company,omitempty"`
-	ContactEmail       *string  `json:"contactEmail,omitempty"`
-	Application        *string  `json:"application,omitempty"`
-	Editions           []string `json:"editions,omitempty"`
+	Authorized *bool `json:"authorized,omitempty"`
+	Company *string `json:"company,omitempty"`
+	ContactEmail *string `json:"contactEmail,omitempty"`
+	Application *string `json:"application,omitempty"`
+	Editions []string `json:"editions,omitempty"`
 	ApplicationVersion []string `json:"applicationVersion,omitempty"`
 	// Expiry Grace Period in Days
-	GracePeriod    *int32  `json:"gracePeriod,omitempty"`
-	Type           *string `json:"type,omitempty"`
-	LicenseId      *string `json:"licenseId,omitempty"`
+	GracePeriod *int32 `json:"gracePeriod,omitempty"`
+	Type *string `json:"type,omitempty"`
+	LicenseId *string `json:"licenseId,omitempty"`
 	LicenseVersion *string `json:"licenseVersion,omitempty"`
 	// Issue Date
 	IssueDate *string `json:"issueDate,omitempty"`
@@ -38,18 +38,18 @@ type LicenseInfoResponse struct {
 	ValidUntil *string `json:"validUntil,omitempty"`
 	// Grace Period until Date
 	GraceUntil *string `json:"graceUntil,omitempty"`
-	State      *string `json:"state,omitempty"`
-	Perpetual  *bool   `json:"perpetual,omitempty"`
-	Active     *bool   `json:"active,omitempty"`
+	State *string `json:"state,omitempty"`
+	Perpetual *bool `json:"perpetual,omitempty"`
+	Active *bool `json:"active,omitempty"`
 	// License Remaining Period in Days
-	Remaining    *int32               `json:"remaining,omitempty"`
-	ShouldWarn   *bool                `json:"shouldWarn,omitempty"`
-	BaseUrl      *string              `json:"baseUrl,omitempty"`
-	Edition      *string              `json:"edition,omitempty"`
-	ServerUUIDs  []string             `json:"serverUUIDs,omitempty"`
-	Reason       *string              `json:"reason,omitempty"`
-	Warning      *string              `json:"warning,omitempty"`
-	InvalidCode  *string              `json:"invalidCode,omitempty"`
+	Remaining *int32 `json:"remaining,omitempty"`
+	ShouldWarn *bool `json:"shouldWarn,omitempty"`
+	BaseUrl *string `json:"baseUrl,omitempty"`
+	Edition *string `json:"edition,omitempty"`
+	ServerUUIDs []string `json:"serverUUIDs,omitempty"`
+	Reason *string `json:"reason,omitempty"`
+	Warning *string `json:"warning,omitempty"`
+	InvalidCode *string `json:"invalidCode,omitempty"`
 	Entitlements []LicenseEntitlement `json:"entitlements,omitempty"`
 }
 
@@ -903,7 +903,7 @@ func (o *LicenseInfoResponse) SetEntitlements(v []LicenseEntitlement) {
 }
 
 func (o LicenseInfoResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1028,3 +1028,5 @@ func (v *NullableLicenseInfoResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

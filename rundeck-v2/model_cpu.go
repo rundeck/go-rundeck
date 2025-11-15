@@ -20,7 +20,7 @@ var _ MappedNullable = &Cpu{}
 // Cpu Cpu Information
 type Cpu struct {
 	LoadAverage *LoadAverage `json:"loadAverage,omitempty"`
-	Processors  *int32       `json:"processors,omitempty"`
+	Processors *int32 `json:"processors,omitempty"`
 }
 
 // NewCpu instantiates a new Cpu object
@@ -105,7 +105,7 @@ func (o *Cpu) SetProcessors(v int32) {
 }
 
 func (o Cpu) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableCpu) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

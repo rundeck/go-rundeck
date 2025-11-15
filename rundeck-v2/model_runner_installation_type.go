@@ -20,18 +20,18 @@ type RunnerInstallationType string
 
 // List of RunnerInstallationType
 const (
-	LINUX      RunnerInstallationType = "LINUX"
-	WINDOWS    RunnerInstallationType = "WINDOWS"
-	KUBERNETES RunnerInstallationType = "KUBERNETES"
-	DOCKER     RunnerInstallationType = "DOCKER"
+	LINUX RunnerInstallationType = "linux"
+	WINDOWS RunnerInstallationType = "windows"
+	KUBERNETES RunnerInstallationType = "kubernetes"
+	DOCKER RunnerInstallationType = "docker"
 )
 
 // All allowed values of RunnerInstallationType enum
 var AllowedRunnerInstallationTypeEnumValues = []RunnerInstallationType{
-	"LINUX",
-	"WINDOWS",
-	"KUBERNETES",
-	"DOCKER",
+	"linux",
+	"windows",
+	"kubernetes",
+	"docker",
 }
 
 func (v *RunnerInstallationType) UnmarshalJSON(src []byte) error {
@@ -112,3 +112,4 @@ func (v *NullableRunnerInstallationType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

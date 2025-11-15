@@ -19,9 +19,9 @@ var _ MappedNullable = &RdPageable{}
 
 // RdPageable struct for RdPageable
 type RdPageable struct {
-	Offset     *int32      `json:"offset,omitempty"`
-	Max        *int32      `json:"max,omitempty"`
-	Errors     *Errors     `json:"errors,omitempty"`
+	Offset *int32 `json:"offset,omitempty"`
+	Errors *Errors `json:"errors,omitempty"`
+	Max *int32 `json:"max,omitempty"`
 	SortOrders []SortOrder `json:"sortOrders,omitempty"`
 }
 
@@ -74,38 +74,6 @@ func (o *RdPageable) SetOffset(v int32) {
 	o.Offset = &v
 }
 
-// GetMax returns the Max field value if set, zero value otherwise.
-func (o *RdPageable) GetMax() int32 {
-	if o == nil || IsNil(o.Max) {
-		var ret int32
-		return ret
-	}
-	return *o.Max
-}
-
-// GetMaxOk returns a tuple with the Max field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RdPageable) GetMaxOk() (*int32, bool) {
-	if o == nil || IsNil(o.Max) {
-		return nil, false
-	}
-	return o.Max, true
-}
-
-// HasMax returns a boolean if a field has been set.
-func (o *RdPageable) HasMax() bool {
-	if o != nil && !IsNil(o.Max) {
-		return true
-	}
-
-	return false
-}
-
-// SetMax gets a reference to the given int32 and assigns it to the Max field.
-func (o *RdPageable) SetMax(v int32) {
-	o.Max = &v
-}
-
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *RdPageable) GetErrors() Errors {
 	if o == nil || IsNil(o.Errors) {
@@ -136,6 +104,38 @@ func (o *RdPageable) HasErrors() bool {
 // SetErrors gets a reference to the given Errors and assigns it to the Errors field.
 func (o *RdPageable) SetErrors(v Errors) {
 	o.Errors = &v
+}
+
+// GetMax returns the Max field value if set, zero value otherwise.
+func (o *RdPageable) GetMax() int32 {
+	if o == nil || IsNil(o.Max) {
+		var ret int32
+		return ret
+	}
+	return *o.Max
+}
+
+// GetMaxOk returns a tuple with the Max field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RdPageable) GetMaxOk() (*int32, bool) {
+	if o == nil || IsNil(o.Max) {
+		return nil, false
+	}
+	return o.Max, true
+}
+
+// HasMax returns a boolean if a field has been set.
+func (o *RdPageable) HasMax() bool {
+	if o != nil && !IsNil(o.Max) {
+		return true
+	}
+
+	return false
+}
+
+// SetMax gets a reference to the given int32 and assigns it to the Max field.
+func (o *RdPageable) SetMax(v int32) {
+	o.Max = &v
 }
 
 // GetSortOrders returns the SortOrders field value if set, zero value otherwise.
@@ -171,7 +171,7 @@ func (o *RdPageable) SetSortOrders(v []SortOrder) {
 }
 
 func (o RdPageable) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -183,11 +183,11 @@ func (o RdPageable) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Offset) {
 		toSerialize["offset"] = o.Offset
 	}
-	if !IsNil(o.Max) {
-		toSerialize["max"] = o.Max
-	}
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
+	}
+	if !IsNil(o.Max) {
+		toSerialize["max"] = o.Max
 	}
 	if !IsNil(o.SortOrders) {
 		toSerialize["sortOrders"] = o.SortOrders
@@ -230,3 +230,5 @@ func (v *NullableRdPageable) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

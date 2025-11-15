@@ -11,8 +11,8 @@ API version: 56
 package openapi
 
 import (
-	"bytes"
 	"encoding/json"
+	"bytes"
 	"fmt"
 )
 
@@ -21,13 +21,13 @@ var _ MappedNullable = &UpdateRunnerRequest{}
 
 // UpdateRunnerRequest struct for UpdateRunnerRequest
 type UpdateRunnerRequest struct {
-	RunnerId         string             `json:"runnerId"`
-	Name             *string            `json:"name,omitempty"`
-	Description      *string            `json:"description,omitempty"`
+	RunnerId string `json:"runnerId"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	AssignedProjects *map[string]string `json:"assignedProjects,omitempty"`
-	TagNames         *string            `json:"tagNames,omitempty"`
-	InstallationType *string            `json:"installationType,omitempty"`
-	ReplicaType      *string            `json:"replicaType,omitempty"`
+	TagNames *string `json:"tagNames,omitempty"`
+	InstallationType *string `json:"installationType,omitempty"`
+	ReplicaType *string `json:"replicaType,omitempty"`
 }
 
 type _UpdateRunnerRequest UpdateRunnerRequest
@@ -267,7 +267,7 @@ func (o *UpdateRunnerRequest) SetReplicaType(v string) {
 }
 
 func (o UpdateRunnerRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,10 +311,10 @@ func (o *UpdateRunnerRequest) UnmarshalJSON(data []byte) (err error) {
 	err = json.Unmarshal(data, &allProperties)
 
 	if err != nil {
-		return err
+		return err;
 	}
 
-	for _, requiredProperty := range requiredProperties {
+	for _, requiredProperty := range(requiredProperties) {
 		if _, exists := allProperties[requiredProperty]; !exists {
 			return fmt.Errorf("no value given for required property %v", requiredProperty)
 		}
@@ -370,3 +370,5 @@ func (v *NullableUpdateRunnerRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

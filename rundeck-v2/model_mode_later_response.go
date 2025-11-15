@@ -19,8 +19,8 @@ var _ MappedNullable = &ModeLaterResponse{}
 
 // ModeLaterResponse struct for ModeLaterResponse
 type ModeLaterResponse struct {
-	Saved *bool   `json:"saved,omitempty"`
-	Msg   *string `json:"msg,omitempty"`
+	Saved *bool `json:"saved,omitempty"`
+	Msg *string `json:"msg,omitempty"`
 }
 
 // NewModeLaterResponse instantiates a new ModeLaterResponse object
@@ -105,7 +105,7 @@ func (o *ModeLaterResponse) SetMsg(v string) {
 }
 
 func (o ModeLaterResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -158,3 +158,5 @@ func (v *NullableModeLaterResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

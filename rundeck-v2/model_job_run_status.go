@@ -20,9 +20,9 @@ type JobRunStatus string
 
 // List of JobRunStatus
 const (
-	NOT_STARTED   JobRunStatus = "NOT_STARTED"
-	STARTED       JobRunStatus = "STARTED"
-	NOT_FOUND     JobRunStatus = "NOT_FOUND"
+	NOT_STARTED JobRunStatus = "NOT_STARTED"
+	STARTED JobRunStatus = "STARTED"
+	NOT_FOUND JobRunStatus = "NOT_FOUND"
 	UNKNOWN_ERROR JobRunStatus = "UNKNOWN_ERROR"
 )
 
@@ -112,3 +112,4 @@ func (v *NullableJobRunStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

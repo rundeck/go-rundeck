@@ -19,11 +19,11 @@ var _ MappedNullable = &Step{}
 
 // Step struct for Step
 type Step struct {
-	Title                 *string `json:"title,omitempty"`
-	Content               *string `json:"content,omitempty"`
-	NextStepUrl           *string `json:"nextStepUrl,omitempty"`
-	CurrentUrl            *string `json:"currentUrl,omitempty"`
-	StepIndicator         *string `json:"stepIndicator,omitempty"`
+	Title *string `json:"title,omitempty"`
+	Content *string `json:"content,omitempty"`
+	NextStepUrl *string `json:"nextStepUrl,omitempty"`
+	CurrentUrl *string `json:"currentUrl,omitempty"`
+	StepIndicator *string `json:"stepIndicator,omitempty"`
 	StepIndicatorPosition *string `json:"stepIndicatorPosition,omitempty"`
 }
 
@@ -237,7 +237,7 @@ func (o *Step) SetStepIndicatorPosition(v string) {
 }
 
 func (o Step) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableStep) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

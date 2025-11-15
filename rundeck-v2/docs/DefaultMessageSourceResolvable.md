@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Arguments** | **[]map[string]interface{}** |  | 
 **Code** | Pointer to **string** |  | [optional] 
-**Codes** | Pointer to **[]string** |  | [optional] 
-**DefaultMessage** | Pointer to **string** |  | [optional] 
-**Arguments** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**DefaultMessage** | **string** |  | 
+**Codes** | **[]string** |  | 
 
 ## Methods
 
 ### NewDefaultMessageSourceResolvable
 
-`func NewDefaultMessageSourceResolvable() *DefaultMessageSourceResolvable`
+`func NewDefaultMessageSourceResolvable(arguments []map[string]interface{}, defaultMessage string, codes []string, ) *DefaultMessageSourceResolvable`
 
 NewDefaultMessageSourceResolvable instantiates a new DefaultMessageSourceResolvable object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +27,26 @@ will change when the set of required properties is changed
 NewDefaultMessageSourceResolvableWithDefaults instantiates a new DefaultMessageSourceResolvable object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetArguments
+
+`func (o *DefaultMessageSourceResolvable) GetArguments() []map[string]interface{}`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *DefaultMessageSourceResolvable) GetArgumentsOk() (*[]map[string]interface{}, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *DefaultMessageSourceResolvable) SetArguments(v []map[string]interface{})`
+
+SetArguments sets Arguments field to given value.
+
 
 ### GetCode
 
@@ -53,31 +73,6 @@ SetCode sets Code field to given value.
 
 HasCode returns a boolean if a field has been set.
 
-### GetCodes
-
-`func (o *DefaultMessageSourceResolvable) GetCodes() []string`
-
-GetCodes returns the Codes field if non-nil, zero value otherwise.
-
-### GetCodesOk
-
-`func (o *DefaultMessageSourceResolvable) GetCodesOk() (*[]string, bool)`
-
-GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCodes
-
-`func (o *DefaultMessageSourceResolvable) SetCodes(v []string)`
-
-SetCodes sets Codes field to given value.
-
-### HasCodes
-
-`func (o *DefaultMessageSourceResolvable) HasCodes() bool`
-
-HasCodes returns a boolean if a field has been set.
-
 ### GetDefaultMessage
 
 `func (o *DefaultMessageSourceResolvable) GetDefaultMessage() string`
@@ -97,36 +92,26 @@ and a boolean to check if the value has been set.
 
 SetDefaultMessage sets DefaultMessage field to given value.
 
-### HasDefaultMessage
 
-`func (o *DefaultMessageSourceResolvable) HasDefaultMessage() bool`
+### GetCodes
 
-HasDefaultMessage returns a boolean if a field has been set.
+`func (o *DefaultMessageSourceResolvable) GetCodes() []string`
 
-### GetArguments
+GetCodes returns the Codes field if non-nil, zero value otherwise.
 
-`func (o *DefaultMessageSourceResolvable) GetArguments() []map[string]interface{}`
+### GetCodesOk
 
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
+`func (o *DefaultMessageSourceResolvable) GetCodesOk() (*[]string, bool)`
 
-### GetArgumentsOk
-
-`func (o *DefaultMessageSourceResolvable) GetArgumentsOk() (*[]map[string]interface{}, bool)`
-
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+GetCodesOk returns a tuple with the Codes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetArguments
+### SetCodes
 
-`func (o *DefaultMessageSourceResolvable) SetArguments(v []map[string]interface{})`
+`func (o *DefaultMessageSourceResolvable) SetCodes(v []string)`
 
-SetArguments sets Arguments field to given value.
+SetCodes sets Codes field to given value.
 
-### HasArguments
-
-`func (o *DefaultMessageSourceResolvable) HasArguments() bool`
-
-HasArguments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

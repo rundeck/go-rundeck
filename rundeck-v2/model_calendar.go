@@ -20,21 +20,21 @@ var _ MappedNullable = &Calendar{}
 
 // Calendar struct for Calendar
 type Calendar struct {
-	Name               *string                  `json:"name,omitempty"`
-	Description        *string                  `json:"description,omitempty"`
-	CalendarType       *string                  `json:"calendarType,omitempty"`
-	Scope              *string                  `json:"scope,omitempty"`
-	AllReference       *bool                    `json:"allReference,omitempty"`
-	Enable             *bool                    `json:"enable,omitempty"`
-	DateType           *string                  `json:"dateType,omitempty"`
-	DateDefinitionJson *string                  `json:"dateDefinitionJson,omitempty"`
-	Project            *string                  `json:"project,omitempty"`
-	JsonData           *string                  `json:"jsonData,omitempty"`
-	Recurrent          *bool                    `json:"recurrent,omitempty"`
-	DateCreated        *time.Time               `json:"dateCreated,omitempty"`
-	LastUpdated        *time.Time               `json:"lastUpdated,omitempty"`
-	DateDefinition     []map[string]interface{} `json:"dateDefinition,omitempty"`
-	Reference          []map[string]interface{} `json:"reference,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
+	CalendarType *string `json:"calendarType,omitempty"`
+	Scope *string `json:"scope,omitempty"`
+	AllReference *bool `json:"allReference,omitempty"`
+	Enable *bool `json:"enable,omitempty"`
+	DateType *string `json:"dateType,omitempty"`
+	DateDefinitionJson *string `json:"dateDefinitionJson,omitempty"`
+	Project *string `json:"project,omitempty"`
+	JsonData *string `json:"jsonData,omitempty"`
+	Recurrent *bool `json:"recurrent,omitempty"`
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
+	DateDefinition []map[string]interface{} `json:"dateDefinition,omitempty"`
+	Reference []map[string]interface{} `json:"reference,omitempty"`
 }
 
 // NewCalendar instantiates a new Calendar object
@@ -535,7 +535,7 @@ func (o *Calendar) SetReference(v []map[string]interface{}) {
 }
 
 func (o Calendar) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -627,3 +627,5 @@ func (v *NullableCalendar) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,14 +19,15 @@ import (
 	"strings"
 )
 
+
 // CalendarsAPIService CalendarsAPI service
 type CalendarsAPIService service
 
 type ApiApiDeleteProjectCalendarRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
-	project    string
-	id         string
+	project string
+	id string
 }
 
 func (r ApiApiDeleteProjectCalendarRequest) Execute() (*http.Response, error) {
@@ -42,26 +43,26 @@ Authorization required: `delete` access for `project` resource type or `admin` o
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@param id Calendar Id to be deleted
-	@return ApiApiDeleteProjectCalendarRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @param id Calendar Id to be deleted
+ @return ApiApiDeleteProjectCalendarRequest
 */
 func (a *CalendarsAPIService) ApiDeleteProjectCalendar(ctx context.Context, project string, id string) ApiApiDeleteProjectCalendarRequest {
 	return ApiApiDeleteProjectCalendarRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
-		id:         id,
+		ctx: ctx,
+		project: project,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *CalendarsAPIService) ApiDeleteProjectCalendarExecute(r ApiApiDeleteProjectCalendarRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiDeleteProjectCalendar")
@@ -137,9 +138,9 @@ func (a *CalendarsAPIService) ApiDeleteProjectCalendarExecute(r ApiApiDeleteProj
 }
 
 type ApiApiDeleteSystemCalendarRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
-	id         string
+	id string
 }
 
 func (r ApiApiDeleteSystemCalendarRequest) Execute() (*http.Response, error) {
@@ -155,24 +156,24 @@ Authorization required: `delete` access for `project` resource type or `admin` o
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Calendar Id to be deleted
-	@return ApiApiDeleteSystemCalendarRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Calendar Id to be deleted
+ @return ApiApiDeleteSystemCalendarRequest
 */
 func (a *CalendarsAPIService) ApiDeleteSystemCalendar(ctx context.Context, id string) ApiApiDeleteSystemCalendarRequest {
 	return ApiApiDeleteSystemCalendarRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *CalendarsAPIService) ApiDeleteSystemCalendarExecute(r ApiApiDeleteSystemCalendarRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiDeleteSystemCalendar")
@@ -247,10 +248,10 @@ func (a *CalendarsAPIService) ApiDeleteSystemCalendarExecute(r ApiApiDeleteSyste
 }
 
 type ApiApiLoadProjectCalendarsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
-	project    string
-	body       *map[string]interface{}
+	project string
+	body *map[string]interface{}
 }
 
 func (r ApiApiLoadProjectCalendarsRequest) Body(body map[string]interface{}) ApiApiLoadProjectCalendarsRequest {
@@ -272,27 +273,26 @@ Authorization required: `admin` or `app_admin` access for `user` resource type.
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiLoadProjectCalendarsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiLoadProjectCalendarsRequest
 */
 func (a *CalendarsAPIService) ApiLoadProjectCalendars(ctx context.Context, project string) ApiApiLoadProjectCalendarsRequest {
 	return ApiApiLoadProjectCalendarsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectCalendarsResponse
+//  @return ProjectCalendarsResponse
 func (a *CalendarsAPIService) ApiLoadProjectCalendarsExecute(r ApiApiLoadProjectCalendarsRequest) (*ProjectCalendarsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectCalendarsResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectCalendarsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiLoadProjectCalendars")
@@ -378,9 +378,9 @@ func (a *CalendarsAPIService) ApiLoadProjectCalendarsExecute(r ApiApiLoadProject
 }
 
 type ApiApiLoadSystemCalendarsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
-	body       *map[string]interface{}
+	body *map[string]interface{}
 }
 
 func (r ApiApiLoadSystemCalendarsRequest) Body(body map[string]interface{}) ApiApiLoadSystemCalendarsRequest {
@@ -402,25 +402,24 @@ Authorization required: `admin` or `app_admin` access for `user` resource type.
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiLoadSystemCalendarsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiLoadSystemCalendarsRequest
 */
 func (a *CalendarsAPIService) ApiLoadSystemCalendars(ctx context.Context) ApiApiLoadSystemCalendarsRequest {
 	return ApiApiLoadSystemCalendarsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectCalendarsResponse
+//  @return ProjectCalendarsResponse
 func (a *CalendarsAPIService) ApiLoadSystemCalendarsExecute(r ApiApiLoadSystemCalendarsRequest) (*ProjectCalendarsResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectCalendarsResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectCalendarsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiLoadSystemCalendars")
@@ -505,9 +504,9 @@ func (a *CalendarsAPIService) ApiLoadSystemCalendarsExecute(r ApiApiLoadSystemCa
 }
 
 type ApiApiProjectCalendarsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
-	project    string
+	project string
 }
 
 func (r ApiApiProjectCalendarsRequest) Execute() ([]map[string]interface{}, *http.Response, error) {
@@ -523,27 +522,26 @@ Authorization required: `admin` or `app_admin` access for `user` resource type.
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param project Project Name
-	@return ApiApiProjectCalendarsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param project Project Name
+ @return ApiApiProjectCalendarsRequest
 */
 func (a *CalendarsAPIService) ApiProjectCalendars(ctx context.Context, project string) ApiApiProjectCalendarsRequest {
 	return ApiApiProjectCalendarsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		project:    project,
+		ctx: ctx,
+		project: project,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *CalendarsAPIService) ApiProjectCalendarsExecute(r ApiApiProjectCalendarsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiProjectCalendars")
@@ -627,7 +625,7 @@ func (a *CalendarsAPIService) ApiProjectCalendarsExecute(r ApiApiProjectCalendar
 }
 
 type ApiApiSystemCalendarsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *CalendarsAPIService
 }
 
@@ -644,25 +642,24 @@ Authorization required: `admin` or `app_admin` access for `user` resource type.
 
 Since: v41
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiSystemCalendarsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiSystemCalendarsRequest
 */
 func (a *CalendarsAPIService) ApiSystemCalendars(ctx context.Context) ApiApiSystemCalendarsRequest {
 	return ApiApiSystemCalendarsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []map[string]interface{}
+//  @return []map[string]interface{}
 func (a *CalendarsAPIService) ApiSystemCalendarsExecute(r ApiApiSystemCalendarsRequest) ([]map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []map[string]interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CalendarsAPIService.ApiSystemCalendars")

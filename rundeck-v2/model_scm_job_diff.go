@@ -19,12 +19,12 @@ var _ MappedNullable = &ScmJobDiff{}
 
 // ScmJobDiff struct for ScmJobDiff
 type ScmJobDiff struct {
-	Id             *string    `json:"id,omitempty"`
-	Project        *string    `json:"project,omitempty"`
-	Integration    *string    `json:"integration,omitempty"`
-	Commit         *ScmCommit `json:"commit,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Integration *string `json:"integration,omitempty"`
+	Commit *ScmCommit `json:"commit,omitempty"`
 	IncomingCommit *ScmCommit `json:"incomingCommit,omitempty"`
-	DiffContent    *string    `json:"diffContent,omitempty"`
+	DiffContent *string `json:"diffContent,omitempty"`
 }
 
 // NewScmJobDiff instantiates a new ScmJobDiff object
@@ -237,7 +237,7 @@ func (o *ScmJobDiff) SetDiffContent(v string) {
 }
 
 func (o ScmJobDiff) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -302,3 +302,5 @@ func (v *NullableScmJobDiff) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
