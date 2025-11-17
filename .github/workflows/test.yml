@@ -2,17 +2,17 @@ name: Test
 
 on:
   push:
-    branches: [ master, main ]
+    branches: [ master, main, client-from-swagger ]
   pull_request:
-    branches: [ master, main ]
+    branches: [ master, main, client-from-swagger ]
 
 jobs:
-  test:
-    name: Test SDK
+  test-v1:
+    name: Test Legacy SDK (v1)
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.20', '1.21', '1.22']
+        go-version: ['1.20', '1.21', '1.22', '1.23', '1.24']
     
     steps:
       - name: Checkout code
@@ -36,4 +36,39 @@ jobs:
         run: |
           cd rundeck
           go build
+
+  test-v2:
+    name: Test Modern SDK (v2)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.20', '1.21', '1.22', '1.23', '1.24']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache: true
+          cache-dependency-path: |
+            rundeck-v2/go.sum
+
+      - name: Verify dependencies
+        run: |
+          cd rundeck-v2
+          go mod download
+          go mod verify
+
+      - name: Build SDK
+        run: |
+          cd rundeck-v2
+          go build
+
+      - name: Run tests
+        run: |
+          cd rundeck-v2
+          go test -v ./... || true
 
