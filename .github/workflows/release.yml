@@ -22,9 +22,6 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.21'
-          cache: true
-          cache-dependency-path: |
-            rundeck-v2/go.sum
 
       - name: Get version from tag
         id: version
@@ -95,9 +92,19 @@ jobs:
           ### Installation
           
           ```bash
-          # For rundeck-v2 (if available)
+          EOF
+          
+          # Add v2 installation if present
+          if [ -n "$HAS_V2" ]; then
+            cat >> /tmp/release_body.md << 'EOF'
+          # For rundeck-v2 (recommended)
           go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}
           
+          EOF
+          fi
+          
+          # Add v1 installation (always present)
+          cat >> /tmp/release_body.md << 'EOF'
           # For legacy rundeck package
           go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
           ```
@@ -140,8 +147,15 @@ jobs:
       - name: Update Go proxy
         run: |
           # Trigger Go proxy to cache the new version
-          curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/${{ steps.version.outputs.VERSION }}.info" || true
-          
           echo "✅ Release ${{ steps.version.outputs.VERSION }} created successfully!"
-          echo "📦 Module can be installed with: go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}"
+          
+          # Update proxy for rundeck (v1)
+          curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck/@v/${{ steps.version.outputs.VERSION }}.info" || true
+          echo "📦 rundeck: go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}"
+          
+          # Update proxy for rundeck-v2 (if present)
+          if [ -d "rundeck-v2" ]; then
+            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/${{ steps.version.outputs.VERSION }}.info" || true
+            echo "📦 rundeck-v2: go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}"
+          fi
 
