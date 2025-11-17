@@ -1,8 +1,23 @@
 Rundeck Go SDK
 ==============
-Go SDK generated from an OpenApi 2.0 spec via Autorest.
 
-> WARNING: The OpenApi spec and SDK are under heavy development. The spec, methods, interfaces, and project structure may change heavily between releases.
+[![Release](https://img.shields.io/github/v/release/rundeck/go-rundeck)](https://github.com/rundeck/go-rundeck/releases)
+[![Go Reference](https://pkg.go.dev/badge/github.com/rundeck/go-rundeck/rundeck-v2.svg)](https://pkg.go.dev/github.com/rundeck/go-rundeck/rundeck-v2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rundeck/go-rundeck)](https://goreportcard.com/report/github.com/rundeck/go-rundeck)
+
+Go SDK for the Rundeck / Runbook Automation API, generated from OpenAPI specification.
+
+## Installation
+
+```bash
+go get github.com/rundeck/go-rundeck/rundeck-v2@latest
+```
+
+Or pin to a specific version:
+
+```bash
+go get github.com/rundeck/go-rundeck/rundeck-v2@v1.0.0
+```
 
 
 ## Example Usage
@@ -34,20 +49,43 @@ func main() {
 autorest autorest.md
 ```
 
-# Rundeck Go Client V2
+## Versioning and Releases
+
+This repository uses semantic versioning. Releases are automated via GitHub Actions when version tags are pushed.
+
+### For Maintainers
+
+To create a new release:
 
 ```bash
-openapi-generator generate \
-  -i rundeck-api.yml \
-  -g go \
-  --git-user-id rundeck \
-  --git-repo-id go-rundeck/rundeck-v2 \
-  -o ./rundeck-v2 
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin v1.0.0
 ```
 
-```bash
-cd rundeck-v2
-go mod tidy
-go mod vendor   
-go install
+See [RELEASING.md](RELEASING.md) for detailed release instructions.
+
+### For Consumers
+
+Use standard Go module versioning:
+
+```go
+// go.mod
+require (
+    github.com/rundeck/go-rundeck/rundeck-v2 v1.0.0
+)
 ```
+
+Or use pseudo-versions for unreleased commits:
+
+```go
+github.com/rundeck/go-rundeck/rundeck-v2 v0.0.0-20251115214811-7b8e53bdb31e
+```
+
+## SDK Structure
+
+- **rundeck/** - Legacy SDK (AutoRest-based, deprecated)
+- **rundeck-v2/** - Current SDK (OpenAPI Generator-based) ⭐
+
+## Contributing
+
+See [RELEASING.md](RELEASING.md) for information about the release process.

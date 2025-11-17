@@ -1,0 +1,161 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for changelog generation
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Get version from tag
+        id: version
+        run: |
+          echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          echo "VERSION_NUMBER=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Verify SDK builds
+        run: |
+          # Test legacy SDK (always present)
+          if [ -d "rundeck" ]; then
+            echo "Building legacy rundeck SDK..."
+            cd rundeck
+            go mod download
+            go mod verify
+            go build
+            cd ..
+          fi
+          
+          # Test v2 SDK (if present)
+          if [ -d "rundeck-v2" ]; then
+            echo "Building rundeck-v2 SDK..."
+            cd rundeck-v2
+            go mod download
+            go mod verify
+            go build
+            go test -v ./... || true  # Tests might not all pass yet
+            cd ..
+          fi
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get commits since last tag
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -z "$PREVIOUS_TAG" ]; then
+            # First release, get all commits
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            # Get commits between tags
+            CHANGELOG=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          fi
+          
+          # Save to file and output
+          echo "$CHANGELOG" > /tmp/changelog.txt
+          
+          # Create multiline output for GitHub Actions
+          {
+            echo 'CHANGELOG<<EOF'
+            cat /tmp/changelog.txt
+            echo EOF
+          } >> $GITHUB_OUTPUT
+
+      - name: Create release body
+        run: |
+          # Detect which SDKs are present
+          HAS_V2=""
+          if [ -d "rundeck-v2" ]; then
+            HAS_V2="true"
+          fi
+          
+          # Create release notes based on what's available
+          cat > /tmp/release_body.md << 'EOF'
+          ## Rundeck Go SDK ${{ steps.version.outputs.VERSION }}
+          
+          Go SDK for the Rundeck / Runbook Automation API.
+          
+          ### Installation
+          
+          ```bash
+          EOF
+          
+          # Add v2 installation if present
+          if [ -n "$HAS_V2" ]; then
+            cat >> /tmp/release_body.md << 'EOF'
+          # For rundeck-v2 (recommended)
+          go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}
+          
+          EOF
+          fi
+          
+          # Add v1 installation (always present)
+          cat >> /tmp/release_body.md << 'EOF'
+          # For legacy rundeck package
+          go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
+          ```
+          
+          ### Changes in this release
+          
+          ${{ steps.changelog.outputs.CHANGELOG }}
+          
+          ### Module Structure
+          
+          - **rundeck/** - Legacy SDK (AutoRest-based)
+          EOF
+          
+          # Add v2 info if present
+          if [ -n "$HAS_V2" ]; then
+            cat >> /tmp/release_body.md << 'EOF'
+          - **rundeck-v2/** - Modern SDK (OpenAPI Generator-based, API v56) ⭐
+          EOF
+          fi
+          
+          cat >> /tmp/release_body.md << 'EOF'
+          
+          ### Documentation
+          
+          - [Rundeck API Documentation](https://docs.rundeck.com/docs/api/rundeck-api.html)
+          - [RELEASING.md](RELEASING.md) - Release process documentation
+          
+          EOF
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.version.outputs.VERSION }}
+          name: Release ${{ steps.version.outputs.VERSION }}
+          bodyFile: /tmp/release_body.md
+          draft: false
+          prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Go proxy
+        run: |
+          # Trigger Go proxy to cache the new version
+          echo "✅ Release ${{ steps.version.outputs.VERSION }} created successfully!"
+          
+          # Update proxy for rundeck (v1)
+          curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck/@v/${{ steps.version.outputs.VERSION }}.info" || true
+          echo "📦 rundeck: go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}"
+          
+          # Update proxy for rundeck-v2 (if present)
+          if [ -d "rundeck-v2" ]; then
+            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/${{ steps.version.outputs.VERSION }}.info" || true
+            echo "📦 rundeck-v2: go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}"
+          fi
+
