@@ -13537,14 +13537,17 @@ components:
     CreateToken:
       allOf:
       - $ref: "#/components/schemas/CreateTokenBase"
-      description: Create Token request using a list of Roles
-      properties:
-        roles:
-          description: "since: v19"
-          items:
-            type: string
-          type: array
+      - description: Create Token request using a list of Roles
+        properties:
+          roles:
+            description: "since: v19"
+            items:
+              type: string
+            type: array
+        type: object
+        example: null
       type: object
+      example: null
     CreateTokenBase:
       properties:
         user:
@@ -13561,12 +13564,15 @@ components:
     CreateTokenStringRoles:
       allOf:
       - $ref: "#/components/schemas/CreateTokenBase"
-      description: Create Token request using a comma-separated string for Roles
-      properties:
-        roles:
-          description: "since: v19"
-          type: string
+      - description: Create Token request using a comma-separated string for Roles
+        properties:
+          roles:
+            description: "since: v19"
+            type: string
+        type: object
+        example: null
       type: object
+      example: null
     DataSet:
       example:
         big: true
@@ -13700,7 +13706,7 @@ components:
       type: object
     Errors:
       example:
-        globalErrorCount: 0
+        globalErrorCount: 6
         globalErrors:
         - codes:
           - codes
@@ -13721,31 +13727,12 @@ components:
           - "{}"
           - "{}"
         fieldErrors:
-        - codes:
-          - codes
-          - codes
-          bindingFailure: true
-          code: code
+        - bindingFailure: true
           field: field
-          defaultMessage: defaultMessage
-          objectName: objectName
-          arguments:
-          - "{}"
-          - "{}"
-          rejectedValue: null
-        - codes:
-          - codes
-          - codes
-          bindingFailure: true
-          code: code
+          rejectedValue: "{}"
+        - bindingFailure: true
           field: field
-          defaultMessage: defaultMessage
-          objectName: objectName
-          arguments:
-          - "{}"
-          - "{}"
-          rejectedValue: null
-        nestedPath: nestedPath
+          rejectedValue: "{}"
         allErrors:
         - codes:
           - codes
@@ -13765,21 +13752,13 @@ components:
           arguments:
           - "{}"
           - "{}"
+        nestedPath: nestedPath
         objectName: objectName
-        fieldErrorCount: 6
+        fieldErrorCount: 1
         fieldError:
-          codes:
-          - codes
-          - codes
           bindingFailure: true
-          code: code
           field: field
-          defaultMessage: defaultMessage
-          objectName: objectName
-          arguments:
-          - "{}"
-          - "{}"
-          rejectedValue: null
+          rejectedValue: "{}"
         globalError:
           codes:
           - codes
@@ -13790,8 +13769,17 @@ components:
           arguments:
           - "{}"
           - "{}"
-        errorCount: 1
+        errorCount: 0
       properties:
+        errorCount:
+          format: int32
+          type: integer
+        allErrors:
+          items:
+            $ref: "#/components/schemas/ObjectError"
+          type: array
+        fieldError:
+          $ref: "#/components/schemas/FieldError"
         objectName:
           type: string
         nestedPath:
@@ -13812,15 +13800,6 @@ components:
           items:
             $ref: "#/components/schemas/FieldError"
           type: array
-        allErrors:
-          items:
-            $ref: "#/components/schemas/ObjectError"
-          type: array
-        fieldError:
-          $ref: "#/components/schemas/FieldError"
-        errorCount:
-          format: int32
-          type: integer
       type: object
     EventRoutingResult:
       example:
@@ -14005,31 +13984,19 @@ components:
           type: string
       type: object
     FieldError:
-      allOf:
-      - $ref: "#/components/schemas/ObjectError"
-      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
-      - properties:
-          bindingFailure:
-            type: boolean
-          rejectedValue:
-            $ref: "#/components/schemas/FieldError_allOf_rejectedValue"
-          field:
-            type: string
-        required:
-        - field
       example:
-        codes:
-        - codes
-        - codes
         bindingFailure: true
-        code: code
         field: field
-        defaultMessage: defaultMessage
-        objectName: objectName
-        arguments:
-        - "{}"
-        - "{}"
-        rejectedValue: null
+        rejectedValue: "{}"
+      properties:
+        bindingFailure:
+          type: boolean
+        rejectedValue:
+          type: object
+        field:
+          type: string
+      required:
+      - field
       type: object
     HomeSummary:
       example:
@@ -14524,12 +14491,12 @@ components:
         description: description
         id: 0
       properties:
-        description:
-          type: string
         id:
           format: int64
           type: integer
         authority:
+          type: string
+        description:
           type: string
       type: object
     Manifest:
@@ -14707,50 +14674,53 @@ components:
     OptionValidateRequest:
       allOf:
       - $ref: "#/components/schemas/OptionInput"
-      properties:
-        type:
-          type: string
-        storagePath:
-          type: string
-        valuesUrl:
-          type: string
-        value:
-          type: string
-        values:
-          items:
+      - properties:
+          type:
             type: string
-          type: array
-        secure:
-          type: boolean
-        valueExposed:
-          type: boolean
-        valuesType:
-          type: string
-        remoteUrlAuthenticationType:
-          type: string
-        configRemoteUrl:
-          additionalProperties: true
-          type: object
-        optionType:
-          type: string
-        defaultStoragePath:
-          type: string
-        realValuesUrl:
-          format: url
-          type: string
-        defaultValue:
-          type: string
-        valuesList:
-          type: string
-        optionValues:
-          items:
+          storagePath:
             type: string
-          type: array
-        secureInput:
-          type: boolean
-        secureExposed:
-          type: boolean
+          valuesUrl:
+            type: string
+          value:
+            type: string
+          values:
+            items:
+              type: string
+            type: array
+          secure:
+            type: boolean
+          valueExposed:
+            type: boolean
+          valuesType:
+            type: string
+          remoteUrlAuthenticationType:
+            type: string
+          configRemoteUrl:
+            additionalProperties: true
+            type: object
+          optionType:
+            type: string
+          defaultStoragePath:
+            type: string
+          realValuesUrl:
+            format: url
+            type: string
+          defaultValue:
+            type: string
+          valuesList:
+            type: string
+          optionValues:
+            items:
+              type: string
+            type: array
+          secureInput:
+            type: boolean
+          secureExposed:
+            type: boolean
+        type: object
+        example: null
       type: object
+      example: null
     OptionValidateResponse:
       example:
         valid: true
@@ -14931,32 +14901,34 @@ components:
     ProjectModeLaterRequest:
       allOf:
       - $ref: "#/components/schemas/ModeLaterRequest"
-      description: Request to enable/disable executions or schedules after a time
-        delay.
+      - description: Request to enable/disable executions or schedules after a time
+          delay.
+        properties:
+          type:
+            description: "Mode to change, one of `executions` or `schedule`"
+            type: string
+          value:
+            description: |
+              Time duration expression.
+
+              A series of: an integer followed by a unit.
+
+              Units:
+              * `s` - seconds (default)
+              * `m` - minutes
+              * `h` - hours
+              * `d` - days
+              * `w` - weeks
+              * `y` - years.
+
+              Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`.
+            pattern: "((\\d+)[smhdwy]?)+"
+            type: string
+        type: object
+        example: null
       example:
         type: type
         value: value
-      properties:
-        type:
-          description: "Mode to change, one of `executions` or `schedule`"
-          type: string
-        value:
-          description: |
-            Time duration expression.
-
-            A series of: an integer followed by a unit.
-
-            Units:
-            * `s` - seconds (default)
-            * `m` - minutes
-            * `h` - hours
-            * `d` - days
-            * `w` - weeks
-            * `y` - years.
-
-            Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`.
-          pattern: "((\\d+)[smhdwy]?)+"
-          type: string
       type: object
     ROIDataBasicErrorResponse:
       example:
@@ -15045,7 +15017,7 @@ components:
         groupPath: groupPath
         groupPathExact: groupPathExact
         errors:
-          globalErrorCount: 0
+          globalErrorCount: 6
           globalErrors:
           - codes:
             - codes
@@ -15066,31 +15038,12 @@ components:
             - "{}"
             - "{}"
           fieldErrors:
-          - codes:
-            - codes
-            - codes
-            bindingFailure: true
-            code: code
+          - bindingFailure: true
             field: field
-            defaultMessage: defaultMessage
-            objectName: objectName
-            arguments:
-            - "{}"
-            - "{}"
-            rejectedValue: null
-          - codes:
-            - codes
-            - codes
-            bindingFailure: true
-            code: code
+            rejectedValue: "{}"
+          - bindingFailure: true
             field: field
-            defaultMessage: defaultMessage
-            objectName: objectName
-            arguments:
-            - "{}"
-            - "{}"
-            rejectedValue: null
-          nestedPath: nestedPath
+            rejectedValue: "{}"
           allErrors:
           - codes:
             - codes
@@ -15110,21 +15063,13 @@ components:
             arguments:
             - "{}"
             - "{}"
+          nestedPath: nestedPath
           objectName: objectName
-          fieldErrorCount: 6
+          fieldErrorCount: 1
           fieldError:
-            codes:
-            - codes
-            - codes
             bindingFailure: true
-            code: code
             field: field
-            defaultMessage: defaultMessage
-            objectName: objectName
-            arguments:
-            - "{}"
-            - "{}"
-            rejectedValue: null
+            rejectedValue: "{}"
           globalError:
             codes:
             - codes
@@ -15135,7 +15080,7 @@ components:
             arguments:
             - "{}"
             - "{}"
-          errorCount: 1
+          errorCount: 0
         paginatedRequired: true
       type: object
     RdPageable:
@@ -16742,43 +16687,51 @@ components:
     UserClassAllocationChange:
       allOf:
       - $ref: "#/components/schemas/UserClassAllocationModel"
+      - properties:
+          usernames:
+            items:
+              type: string
+            type: array
+          bulkAssign:
+            type: string
+          bulkRemove:
+            type: boolean
+        type: object
+        example: null
       example:
         bulkAssign: bulkAssign
+        allocations:
+          key: allocations
         usernames:
         - usernames
         - usernames
         bulkRemove: true
-      properties:
-        usernames:
-          items:
-            type: string
-          type: array
-        bulkAssign:
-          type: string
-        bulkRemove:
-          type: boolean
       type: object
     UserClassAllocationError:
       allOf:
       - $ref: "#/components/schemas/BasicError"
+      - properties:
+          excessions:
+            additionalProperties:
+              format: int64
+              type: integer
+            description: "Exceeded User Class assignments, by user class name"
+            type: object
+          limits:
+            additionalProperties:
+              format: int64
+              type: integer
+            description: "Allowed User Class assignment limits, by user class name"
+            type: object
+        type: object
+        example: null
       example:
+        errorCode: errorCode
         excessions:
           key: 0
+        error: error
         limits:
           key: 6
-      properties:
-        excessions:
-          additionalProperties:
-            format: int64
-            type: integer
-          description: "Exceeded User Class assignments, by user class name"
-          type: object
-        limits:
-          additionalProperties:
-            format: int64
-            type: integer
-          description: "Allowed User Class assignment limits, by user class name"
-          type: object
       type: object
     UserClassAllocationModel:
       properties:
@@ -16792,6 +16745,33 @@ components:
     UserClassAllocationResponse:
       allOf:
       - $ref: "#/components/schemas/UserClassAllocationModel"
+      - properties:
+          state:
+            description: "The current state of the user classe allocations. One of:\
+              \ VALID, EXCEEDED, UPGRADED"
+            type: string
+          message:
+            type: string
+          summary:
+            additionalProperties:
+              format: int64
+              type: integer
+            description: Current allocations by user class name.
+            type: object
+          exceeded:
+            additionalProperties:
+              format: int64
+              type: integer
+            description: Exceeded allocations count by user class name.
+            type: object
+          entitled:
+            additionalProperties:
+              format: int64
+              type: integer
+            description: Entitled allocations count by user class name.
+            type: object
+        type: object
+        example: null
       example:
         summary:
           key: 0
@@ -16799,33 +16779,10 @@ components:
           key: 1
         exceeded:
           key: 6
+        allocations:
+          key: allocations
         state: state
         message: message
-      properties:
-        state:
-          description: "The current state of the user classe allocations. One of:\
-            \ VALID, EXCEEDED, UPGRADED"
-          type: string
-        message:
-          type: string
-        summary:
-          additionalProperties:
-            format: int64
-            type: integer
-          description: Current allocations by user class name.
-          type: object
-        exceeded:
-          additionalProperties:
-            format: int64
-            type: integer
-          description: Exceeded allocations count by user class name.
-          type: object
-        entitled:
-          additionalProperties:
-            format: int64
-            type: integer
-          description: Entitled allocations count by user class name.
-          type: object
       type: object
     UserClassDefinition:
       example:
@@ -17316,18 +17273,24 @@ components:
       - properties:
           optionData:
             $ref: "#/components/schemas/OptionValidateRequest"
-      properties:
-        optionData:
-          $ref: "#/components/schemas/OptionValidateRequest"
+      - properties:
+          optionData:
+            $ref: "#/components/schemas/OptionValidateRequest"
+        type: object
+        example: null
+      example: null
     apiRunScriptv14_request:
       allOf:
       - $ref: "#/components/schemas/ApiRunAdhocRequest"
       - properties:
           runAdhocRequest:
             $ref: "#/components/schemas/ApiRunAdhocRequest"
-      properties:
-        runAdhocRequest:
-          $ref: "#/components/schemas/ApiRunAdhocRequest"
+      - properties:
+          runAdhocRequest:
+            $ref: "#/components/schemas/ApiRunAdhocRequest"
+        type: object
+        example: null
+      example: null
     saveProjectContextRunnerConfig_request:
       properties:
         runnerConfigRequest:
@@ -17359,8 +17322,6 @@ components:
       oneOf:
       - $ref: "#/components/schemas/CreateToken"
       - $ref: "#/components/schemas/CreateTokenStringRoles"
-    FieldError_allOf_rejectedValue:
-      type: object
   securitySchemes:
     rundeckApiToken:
       description: API Token authentication. Include your API token in the X-Rundeck-Auth-Token

@@ -17,15 +17,15 @@ import (
 // checks if the CreateToken type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CreateToken{}
 
-// CreateToken Create Token request using a list of Roles
+// CreateToken struct for CreateToken
 type CreateToken struct {
-	// since: v19
-	Roles []string `json:"roles,omitempty"`
 	User *string `json:"user,omitempty"`
 	// since: v19
 	Duration *string `json:"duration,omitempty"`
 	// since: v19
 	Name *string `json:"name,omitempty"`
+	// since: v19
+	Roles []string `json:"roles,omitempty"`
 }
 
 // NewCreateToken instantiates a new CreateToken object
@@ -43,38 +43,6 @@ func NewCreateToken() *CreateToken {
 func NewCreateTokenWithDefaults() *CreateToken {
 	this := CreateToken{}
 	return &this
-}
-
-// GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *CreateToken) GetRoles() []string {
-	if o == nil || IsNil(o.Roles) {
-		var ret []string
-		return ret
-	}
-	return o.Roles
-}
-
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateToken) GetRolesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Roles) {
-		return nil, false
-	}
-	return o.Roles, true
-}
-
-// HasRoles returns a boolean if a field has been set.
-func (o *CreateToken) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []string and assigns it to the Roles field.
-func (o *CreateToken) SetRoles(v []string) {
-	o.Roles = v
 }
 
 // GetUser returns the User field value if set, zero value otherwise.
@@ -173,6 +141,38 @@ func (o *CreateToken) SetName(v string) {
 	o.Name = &v
 }
 
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *CreateToken) GetRoles() []string {
+	if o == nil || IsNil(o.Roles) {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateToken) GetRolesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Roles) {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *CreateToken) HasRoles() bool {
+	if o != nil && !IsNil(o.Roles) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *CreateToken) SetRoles(v []string) {
+	o.Roles = v
+}
+
 func (o CreateToken) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,9 +183,6 @@ func (o CreateToken) MarshalJSON() ([]byte, error) {
 
 func (o CreateToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
 	if !IsNil(o.User) {
 		toSerialize["user"] = o.User
 	}
@@ -194,6 +191,9 @@ func (o CreateToken) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
 }

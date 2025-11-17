@@ -19,12 +19,12 @@ var _ MappedNullable = &UserClassAllocationError{}
 
 // UserClassAllocationError struct for UserClassAllocationError
 type UserClassAllocationError struct {
+	Error *string `json:"error,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty"`
 	// Exceeded User Class assignments, by user class name
 	Excessions *map[string]int64 `json:"excessions,omitempty"`
 	// Allowed User Class assignment limits, by user class name
 	Limits *map[string]int64 `json:"limits,omitempty"`
-	Error *string `json:"error,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty"`
 }
 
 // NewUserClassAllocationError instantiates a new UserClassAllocationError object
@@ -42,70 +42,6 @@ func NewUserClassAllocationError() *UserClassAllocationError {
 func NewUserClassAllocationErrorWithDefaults() *UserClassAllocationError {
 	this := UserClassAllocationError{}
 	return &this
-}
-
-// GetExcessions returns the Excessions field value if set, zero value otherwise.
-func (o *UserClassAllocationError) GetExcessions() map[string]int64 {
-	if o == nil || IsNil(o.Excessions) {
-		var ret map[string]int64
-		return ret
-	}
-	return *o.Excessions
-}
-
-// GetExcessionsOk returns a tuple with the Excessions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserClassAllocationError) GetExcessionsOk() (*map[string]int64, bool) {
-	if o == nil || IsNil(o.Excessions) {
-		return nil, false
-	}
-	return o.Excessions, true
-}
-
-// HasExcessions returns a boolean if a field has been set.
-func (o *UserClassAllocationError) HasExcessions() bool {
-	if o != nil && !IsNil(o.Excessions) {
-		return true
-	}
-
-	return false
-}
-
-// SetExcessions gets a reference to the given map[string]int64 and assigns it to the Excessions field.
-func (o *UserClassAllocationError) SetExcessions(v map[string]int64) {
-	o.Excessions = &v
-}
-
-// GetLimits returns the Limits field value if set, zero value otherwise.
-func (o *UserClassAllocationError) GetLimits() map[string]int64 {
-	if o == nil || IsNil(o.Limits) {
-		var ret map[string]int64
-		return ret
-	}
-	return *o.Limits
-}
-
-// GetLimitsOk returns a tuple with the Limits field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserClassAllocationError) GetLimitsOk() (*map[string]int64, bool) {
-	if o == nil || IsNil(o.Limits) {
-		return nil, false
-	}
-	return o.Limits, true
-}
-
-// HasLimits returns a boolean if a field has been set.
-func (o *UserClassAllocationError) HasLimits() bool {
-	if o != nil && !IsNil(o.Limits) {
-		return true
-	}
-
-	return false
-}
-
-// SetLimits gets a reference to the given map[string]int64 and assigns it to the Limits field.
-func (o *UserClassAllocationError) SetLimits(v map[string]int64) {
-	o.Limits = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
@@ -172,6 +108,70 @@ func (o *UserClassAllocationError) SetErrorCode(v string) {
 	o.ErrorCode = &v
 }
 
+// GetExcessions returns the Excessions field value if set, zero value otherwise.
+func (o *UserClassAllocationError) GetExcessions() map[string]int64 {
+	if o == nil || IsNil(o.Excessions) {
+		var ret map[string]int64
+		return ret
+	}
+	return *o.Excessions
+}
+
+// GetExcessionsOk returns a tuple with the Excessions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserClassAllocationError) GetExcessionsOk() (*map[string]int64, bool) {
+	if o == nil || IsNil(o.Excessions) {
+		return nil, false
+	}
+	return o.Excessions, true
+}
+
+// HasExcessions returns a boolean if a field has been set.
+func (o *UserClassAllocationError) HasExcessions() bool {
+	if o != nil && !IsNil(o.Excessions) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcessions gets a reference to the given map[string]int64 and assigns it to the Excessions field.
+func (o *UserClassAllocationError) SetExcessions(v map[string]int64) {
+	o.Excessions = &v
+}
+
+// GetLimits returns the Limits field value if set, zero value otherwise.
+func (o *UserClassAllocationError) GetLimits() map[string]int64 {
+	if o == nil || IsNil(o.Limits) {
+		var ret map[string]int64
+		return ret
+	}
+	return *o.Limits
+}
+
+// GetLimitsOk returns a tuple with the Limits field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserClassAllocationError) GetLimitsOk() (*map[string]int64, bool) {
+	if o == nil || IsNil(o.Limits) {
+		return nil, false
+	}
+	return o.Limits, true
+}
+
+// HasLimits returns a boolean if a field has been set.
+func (o *UserClassAllocationError) HasLimits() bool {
+	if o != nil && !IsNil(o.Limits) {
+		return true
+	}
+
+	return false
+}
+
+// SetLimits gets a reference to the given map[string]int64 and assigns it to the Limits field.
+func (o *UserClassAllocationError) SetLimits(v map[string]int64) {
+	o.Limits = &v
+}
+
 func (o UserClassAllocationError) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -182,17 +182,17 @@ func (o UserClassAllocationError) MarshalJSON() ([]byte, error) {
 
 func (o UserClassAllocationError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Excessions) {
-		toSerialize["excessions"] = o.Excessions
-	}
-	if !IsNil(o.Limits) {
-		toSerialize["limits"] = o.Limits
-	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}
 	if !IsNil(o.ErrorCode) {
 		toSerialize["errorCode"] = o.ErrorCode
+	}
+	if !IsNil(o.Excessions) {
+		toSerialize["excessions"] = o.Excessions
+	}
+	if !IsNil(o.Limits) {
+		toSerialize["limits"] = o.Limits
 	}
 	return toSerialize, nil
 }

@@ -17,12 +17,12 @@ import (
 // checks if the ProjectModeLaterRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProjectModeLaterRequest{}
 
-// ProjectModeLaterRequest Request to enable/disable executions or schedules after a time delay.
+// ProjectModeLaterRequest struct for ProjectModeLaterRequest
 type ProjectModeLaterRequest struct {
-	// Mode to change, one of `executions` or `schedule`
-	Type *string `json:"type,omitempty"`
 	// Time duration expression.  A series of: an integer followed by a unit.  Units: * `s` - seconds (default) * `m` - minutes * `h` - hours * `d` - days * `w` - weeks * `y` - years.  Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`. 
 	Value *string `json:"value,omitempty" validate:"regexp=((\\\\d+)[smhdwy]?)+"`
+	// Mode to change, one of `executions` or `schedule`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewProjectModeLaterRequest instantiates a new ProjectModeLaterRequest object
@@ -40,38 +40,6 @@ func NewProjectModeLaterRequest() *ProjectModeLaterRequest {
 func NewProjectModeLaterRequestWithDefaults() *ProjectModeLaterRequest {
 	this := ProjectModeLaterRequest{}
 	return &this
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *ProjectModeLaterRequest) GetType() string {
-	if o == nil || IsNil(o.Type) {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectModeLaterRequest) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *ProjectModeLaterRequest) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ProjectModeLaterRequest) SetType(v string) {
-	o.Type = &v
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
@@ -106,6 +74,38 @@ func (o *ProjectModeLaterRequest) SetValue(v string) {
 	o.Value = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *ProjectModeLaterRequest) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectModeLaterRequest) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *ProjectModeLaterRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *ProjectModeLaterRequest) SetType(v string) {
+	o.Type = &v
+}
+
 func (o ProjectModeLaterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -116,11 +116,11 @@ func (o ProjectModeLaterRequest) MarshalJSON() ([]byte, error) {
 
 func (o ProjectModeLaterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

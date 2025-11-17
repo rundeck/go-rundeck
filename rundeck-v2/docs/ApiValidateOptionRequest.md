@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OptionData** | Pointer to [**OptionValidateRequest**](OptionValidateRequest.md) |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **StoragePath** | Pointer to **string** |  | [optional] 
 **ValuesUrl** | Pointer to **string** |  | [optional] 
@@ -23,6 +22,7 @@ Name | Type | Description | Notes
 **OptionValues** | Pointer to **[]string** |  | [optional] 
 **SecureInput** | Pointer to **bool** |  | [optional] 
 **SecureExposed** | Pointer to **bool** |  | [optional] 
+**OptionData** | Pointer to [**OptionValidateRequest**](OptionValidateRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -42,31 +42,6 @@ will change when the set of required properties is changed
 NewApiValidateOptionRequestWithDefaults instantiates a new ApiValidateOptionRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetOptionData
-
-`func (o *ApiValidateOptionRequest) GetOptionData() OptionValidateRequest`
-
-GetOptionData returns the OptionData field if non-nil, zero value otherwise.
-
-### GetOptionDataOk
-
-`func (o *ApiValidateOptionRequest) GetOptionDataOk() (*OptionValidateRequest, bool)`
-
-GetOptionDataOk returns a tuple with the OptionData field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetOptionData
-
-`func (o *ApiValidateOptionRequest) SetOptionData(v OptionValidateRequest)`
-
-SetOptionData sets OptionData field to given value.
-
-### HasOptionData
-
-`func (o *ApiValidateOptionRequest) HasOptionData() bool`
-
-HasOptionData returns a boolean if a field has been set.
 
 ### GetType
 
@@ -517,6 +492,31 @@ SetSecureExposed sets SecureExposed field to given value.
 `func (o *ApiValidateOptionRequest) HasSecureExposed() bool`
 
 HasSecureExposed returns a boolean if a field has been set.
+
+### GetOptionData
+
+`func (o *ApiValidateOptionRequest) GetOptionData() OptionValidateRequest`
+
+GetOptionData returns the OptionData field if non-nil, zero value otherwise.
+
+### GetOptionDataOk
+
+`func (o *ApiValidateOptionRequest) GetOptionDataOk() (*OptionValidateRequest, bool)`
+
+GetOptionDataOk returns a tuple with the OptionData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOptionData
+
+`func (o *ApiValidateOptionRequest) SetOptionData(v OptionValidateRequest)`
+
+SetOptionData sets OptionData field to given value.
+
+### HasOptionData
+
+`func (o *ApiValidateOptionRequest) HasOptionData() bool`
+
+HasOptionData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

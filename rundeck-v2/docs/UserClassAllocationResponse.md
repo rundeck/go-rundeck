@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Allocations** | Pointer to **map[string]string** | The current User Class allocation set, as a map of user name to user class name. | [optional] 
 **State** | Pointer to **string** | The current state of the user classe allocations. One of: VALID, EXCEEDED, UPGRADED | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
 **Summary** | Pointer to **map[string]int64** | Current allocations by user class name. | [optional] 
 **Exceeded** | Pointer to **map[string]int64** | Exceeded allocations count by user class name. | [optional] 
 **Entitled** | Pointer to **map[string]int64** | Entitled allocations count by user class name. | [optional] 
-**Allocations** | Pointer to **map[string]string** | The current User Class allocation set, as a map of user name to user class name. | [optional] 
 
 ## Methods
 
@@ -29,6 +29,31 @@ will change when the set of required properties is changed
 NewUserClassAllocationResponseWithDefaults instantiates a new UserClassAllocationResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllocations
+
+`func (o *UserClassAllocationResponse) GetAllocations() map[string]string`
+
+GetAllocations returns the Allocations field if non-nil, zero value otherwise.
+
+### GetAllocationsOk
+
+`func (o *UserClassAllocationResponse) GetAllocationsOk() (*map[string]string, bool)`
+
+GetAllocationsOk returns a tuple with the Allocations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllocations
+
+`func (o *UserClassAllocationResponse) SetAllocations(v map[string]string)`
+
+SetAllocations sets Allocations field to given value.
+
+### HasAllocations
+
+`func (o *UserClassAllocationResponse) HasAllocations() bool`
+
+HasAllocations returns a boolean if a field has been set.
 
 ### GetState
 
@@ -154,31 +179,6 @@ SetEntitled sets Entitled field to given value.
 `func (o *UserClassAllocationResponse) HasEntitled() bool`
 
 HasEntitled returns a boolean if a field has been set.
-
-### GetAllocations
-
-`func (o *UserClassAllocationResponse) GetAllocations() map[string]string`
-
-GetAllocations returns the Allocations field if non-nil, zero value otherwise.
-
-### GetAllocationsOk
-
-`func (o *UserClassAllocationResponse) GetAllocationsOk() (*map[string]string, bool)`
-
-GetAllocationsOk returns a tuple with the Allocations field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAllocations
-
-`func (o *UserClassAllocationResponse) SetAllocations(v map[string]string)`
-
-SetAllocations sets Allocations field to given value.
-
-### HasAllocations
-
-`func (o *UserClassAllocationResponse) HasAllocations() bool`
-
-HasAllocations returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -19,7 +19,6 @@ var _ MappedNullable = &ApiValidateOptionRequest{}
 
 // ApiValidateOptionRequest struct for ApiValidateOptionRequest
 type ApiValidateOptionRequest struct {
-	OptionData *OptionValidateRequest `json:"optionData,omitempty"`
 	Type *string `json:"type,omitempty"`
 	StoragePath *string `json:"storagePath,omitempty"`
 	ValuesUrl *string `json:"valuesUrl,omitempty"`
@@ -38,6 +37,7 @@ type ApiValidateOptionRequest struct {
 	OptionValues []string `json:"optionValues,omitempty"`
 	SecureInput *bool `json:"secureInput,omitempty"`
 	SecureExposed *bool `json:"secureExposed,omitempty"`
+	OptionData *OptionValidateRequest `json:"optionData,omitempty"`
 }
 
 // NewApiValidateOptionRequest instantiates a new ApiValidateOptionRequest object
@@ -55,38 +55,6 @@ func NewApiValidateOptionRequest() *ApiValidateOptionRequest {
 func NewApiValidateOptionRequestWithDefaults() *ApiValidateOptionRequest {
 	this := ApiValidateOptionRequest{}
 	return &this
-}
-
-// GetOptionData returns the OptionData field value if set, zero value otherwise.
-func (o *ApiValidateOptionRequest) GetOptionData() OptionValidateRequest {
-	if o == nil || IsNil(o.OptionData) {
-		var ret OptionValidateRequest
-		return ret
-	}
-	return *o.OptionData
-}
-
-// GetOptionDataOk returns a tuple with the OptionData field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApiValidateOptionRequest) GetOptionDataOk() (*OptionValidateRequest, bool) {
-	if o == nil || IsNil(o.OptionData) {
-		return nil, false
-	}
-	return o.OptionData, true
-}
-
-// HasOptionData returns a boolean if a field has been set.
-func (o *ApiValidateOptionRequest) HasOptionData() bool {
-	if o != nil && !IsNil(o.OptionData) {
-		return true
-	}
-
-	return false
-}
-
-// SetOptionData gets a reference to the given OptionValidateRequest and assigns it to the OptionData field.
-func (o *ApiValidateOptionRequest) SetOptionData(v OptionValidateRequest) {
-	o.OptionData = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -665,6 +633,38 @@ func (o *ApiValidateOptionRequest) SetSecureExposed(v bool) {
 	o.SecureExposed = &v
 }
 
+// GetOptionData returns the OptionData field value if set, zero value otherwise.
+func (o *ApiValidateOptionRequest) GetOptionData() OptionValidateRequest {
+	if o == nil || IsNil(o.OptionData) {
+		var ret OptionValidateRequest
+		return ret
+	}
+	return *o.OptionData
+}
+
+// GetOptionDataOk returns a tuple with the OptionData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiValidateOptionRequest) GetOptionDataOk() (*OptionValidateRequest, bool) {
+	if o == nil || IsNil(o.OptionData) {
+		return nil, false
+	}
+	return o.OptionData, true
+}
+
+// HasOptionData returns a boolean if a field has been set.
+func (o *ApiValidateOptionRequest) HasOptionData() bool {
+	if o != nil && !IsNil(o.OptionData) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptionData gets a reference to the given OptionValidateRequest and assigns it to the OptionData field.
+func (o *ApiValidateOptionRequest) SetOptionData(v OptionValidateRequest) {
+	o.OptionData = &v
+}
+
 func (o ApiValidateOptionRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -675,9 +675,6 @@ func (o ApiValidateOptionRequest) MarshalJSON() ([]byte, error) {
 
 func (o ApiValidateOptionRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.OptionData) {
-		toSerialize["optionData"] = o.OptionData
-	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
@@ -731,6 +728,9 @@ func (o ApiValidateOptionRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureExposed) {
 		toSerialize["secureExposed"] = o.SecureExposed
+	}
+	if !IsNil(o.OptionData) {
+		toSerialize["optionData"] = o.OptionData
 	}
 	return toSerialize, nil
 }

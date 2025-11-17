@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RunAdhocRequest** | Pointer to [**ApiRunAdhocRequest**](ApiRunAdhocRequest.md) |  | [optional] 
 **Project** | Pointer to **string** |  | [optional] 
 **Exec** | Pointer to **string** |  | [optional] 
 **Script** | Pointer to **string** |  | [optional] 
@@ -19,6 +18,7 @@ Name | Type | Description | Notes
 **NodeKeepgoing** | Pointer to **bool** |  | [optional] 
 **NodeThreadcount** | Pointer to **int32** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
+**RunAdhocRequest** | Pointer to [**ApiRunAdhocRequest**](ApiRunAdhocRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -38,31 +38,6 @@ will change when the set of required properties is changed
 NewApiRunScriptv14RequestWithDefaults instantiates a new ApiRunScriptv14Request object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetRunAdhocRequest
-
-`func (o *ApiRunScriptv14Request) GetRunAdhocRequest() ApiRunAdhocRequest`
-
-GetRunAdhocRequest returns the RunAdhocRequest field if non-nil, zero value otherwise.
-
-### GetRunAdhocRequestOk
-
-`func (o *ApiRunScriptv14Request) GetRunAdhocRequestOk() (*ApiRunAdhocRequest, bool)`
-
-GetRunAdhocRequestOk returns a tuple with the RunAdhocRequest field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRunAdhocRequest
-
-`func (o *ApiRunScriptv14Request) SetRunAdhocRequest(v ApiRunAdhocRequest)`
-
-SetRunAdhocRequest sets RunAdhocRequest field to given value.
-
-### HasRunAdhocRequest
-
-`func (o *ApiRunScriptv14Request) HasRunAdhocRequest() bool`
-
-HasRunAdhocRequest returns a boolean if a field has been set.
 
 ### GetProject
 
@@ -413,6 +388,31 @@ SetMeta sets Meta field to given value.
 `func (o *ApiRunScriptv14Request) HasMeta() bool`
 
 HasMeta returns a boolean if a field has been set.
+
+### GetRunAdhocRequest
+
+`func (o *ApiRunScriptv14Request) GetRunAdhocRequest() ApiRunAdhocRequest`
+
+GetRunAdhocRequest returns the RunAdhocRequest field if non-nil, zero value otherwise.
+
+### GetRunAdhocRequestOk
+
+`func (o *ApiRunScriptv14Request) GetRunAdhocRequestOk() (*ApiRunAdhocRequest, bool)`
+
+GetRunAdhocRequestOk returns a tuple with the RunAdhocRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRunAdhocRequest
+
+`func (o *ApiRunScriptv14Request) SetRunAdhocRequest(v ApiRunAdhocRequest)`
+
+SetRunAdhocRequest sets RunAdhocRequest field to given value.
+
+### HasRunAdhocRequest
+
+`func (o *ApiRunScriptv14Request) HasRunAdhocRequest() bool`
+
+HasRunAdhocRequest returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

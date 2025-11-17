@@ -19,7 +19,6 @@ var _ MappedNullable = &ApiRunScriptv14Request{}
 
 // ApiRunScriptv14Request struct for ApiRunScriptv14Request
 type ApiRunScriptv14Request struct {
-	RunAdhocRequest *ApiRunAdhocRequest `json:"runAdhocRequest,omitempty"`
 	Project *string `json:"project,omitempty"`
 	Exec *string `json:"exec,omitempty"`
 	Script *string `json:"script,omitempty"`
@@ -34,6 +33,7 @@ type ApiRunScriptv14Request struct {
 	NodeKeepgoing *bool `json:"nodeKeepgoing,omitempty"`
 	NodeThreadcount *int32 `json:"nodeThreadcount,omitempty"`
 	Meta *map[string]string `json:"meta,omitempty"`
+	RunAdhocRequest *ApiRunAdhocRequest `json:"runAdhocRequest,omitempty"`
 }
 
 // NewApiRunScriptv14Request instantiates a new ApiRunScriptv14Request object
@@ -51,38 +51,6 @@ func NewApiRunScriptv14Request() *ApiRunScriptv14Request {
 func NewApiRunScriptv14RequestWithDefaults() *ApiRunScriptv14Request {
 	this := ApiRunScriptv14Request{}
 	return &this
-}
-
-// GetRunAdhocRequest returns the RunAdhocRequest field value if set, zero value otherwise.
-func (o *ApiRunScriptv14Request) GetRunAdhocRequest() ApiRunAdhocRequest {
-	if o == nil || IsNil(o.RunAdhocRequest) {
-		var ret ApiRunAdhocRequest
-		return ret
-	}
-	return *o.RunAdhocRequest
-}
-
-// GetRunAdhocRequestOk returns a tuple with the RunAdhocRequest field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ApiRunScriptv14Request) GetRunAdhocRequestOk() (*ApiRunAdhocRequest, bool) {
-	if o == nil || IsNil(o.RunAdhocRequest) {
-		return nil, false
-	}
-	return o.RunAdhocRequest, true
-}
-
-// HasRunAdhocRequest returns a boolean if a field has been set.
-func (o *ApiRunScriptv14Request) HasRunAdhocRequest() bool {
-	if o != nil && !IsNil(o.RunAdhocRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetRunAdhocRequest gets a reference to the given ApiRunAdhocRequest and assigns it to the RunAdhocRequest field.
-func (o *ApiRunScriptv14Request) SetRunAdhocRequest(v ApiRunAdhocRequest) {
-	o.RunAdhocRequest = &v
 }
 
 // GetProject returns the Project field value if set, zero value otherwise.
@@ -533,6 +501,38 @@ func (o *ApiRunScriptv14Request) SetMeta(v map[string]string) {
 	o.Meta = &v
 }
 
+// GetRunAdhocRequest returns the RunAdhocRequest field value if set, zero value otherwise.
+func (o *ApiRunScriptv14Request) GetRunAdhocRequest() ApiRunAdhocRequest {
+	if o == nil || IsNil(o.RunAdhocRequest) {
+		var ret ApiRunAdhocRequest
+		return ret
+	}
+	return *o.RunAdhocRequest
+}
+
+// GetRunAdhocRequestOk returns a tuple with the RunAdhocRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiRunScriptv14Request) GetRunAdhocRequestOk() (*ApiRunAdhocRequest, bool) {
+	if o == nil || IsNil(o.RunAdhocRequest) {
+		return nil, false
+	}
+	return o.RunAdhocRequest, true
+}
+
+// HasRunAdhocRequest returns a boolean if a field has been set.
+func (o *ApiRunScriptv14Request) HasRunAdhocRequest() bool {
+	if o != nil && !IsNil(o.RunAdhocRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetRunAdhocRequest gets a reference to the given ApiRunAdhocRequest and assigns it to the RunAdhocRequest field.
+func (o *ApiRunScriptv14Request) SetRunAdhocRequest(v ApiRunAdhocRequest) {
+	o.RunAdhocRequest = &v
+}
+
 func (o ApiRunScriptv14Request) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -543,9 +543,6 @@ func (o ApiRunScriptv14Request) MarshalJSON() ([]byte, error) {
 
 func (o ApiRunScriptv14Request) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RunAdhocRequest) {
-		toSerialize["runAdhocRequest"] = o.RunAdhocRequest
-	}
 	if !IsNil(o.Project) {
 		toSerialize["project"] = o.Project
 	}
@@ -587,6 +584,9 @@ func (o ApiRunScriptv14Request) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Meta) {
 		toSerialize["meta"] = o.Meta
+	}
+	if !IsNil(o.RunAdhocRequest) {
+		toSerialize["runAdhocRequest"] = o.RunAdhocRequest
 	}
 	return toSerialize, nil
 }

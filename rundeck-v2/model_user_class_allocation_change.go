@@ -19,11 +19,11 @@ var _ MappedNullable = &UserClassAllocationChange{}
 
 // UserClassAllocationChange struct for UserClassAllocationChange
 type UserClassAllocationChange struct {
+	// The current User Class allocation set, as a map of user name to user class name.
+	Allocations *map[string]string `json:"allocations,omitempty"`
 	Usernames []string `json:"usernames,omitempty"`
 	BulkAssign *string `json:"bulkAssign,omitempty"`
 	BulkRemove *bool `json:"bulkRemove,omitempty"`
-	// The current User Class allocation set, as a map of user name to user class name.
-	Allocations *map[string]string `json:"allocations,omitempty"`
 }
 
 // NewUserClassAllocationChange instantiates a new UserClassAllocationChange object
@@ -41,6 +41,38 @@ func NewUserClassAllocationChange() *UserClassAllocationChange {
 func NewUserClassAllocationChangeWithDefaults() *UserClassAllocationChange {
 	this := UserClassAllocationChange{}
 	return &this
+}
+
+// GetAllocations returns the Allocations field value if set, zero value otherwise.
+func (o *UserClassAllocationChange) GetAllocations() map[string]string {
+	if o == nil || IsNil(o.Allocations) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Allocations
+}
+
+// GetAllocationsOk returns a tuple with the Allocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserClassAllocationChange) GetAllocationsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Allocations) {
+		return nil, false
+	}
+	return o.Allocations, true
+}
+
+// HasAllocations returns a boolean if a field has been set.
+func (o *UserClassAllocationChange) HasAllocations() bool {
+	if o != nil && !IsNil(o.Allocations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocations gets a reference to the given map[string]string and assigns it to the Allocations field.
+func (o *UserClassAllocationChange) SetAllocations(v map[string]string) {
+	o.Allocations = &v
 }
 
 // GetUsernames returns the Usernames field value if set, zero value otherwise.
@@ -139,38 +171,6 @@ func (o *UserClassAllocationChange) SetBulkRemove(v bool) {
 	o.BulkRemove = &v
 }
 
-// GetAllocations returns the Allocations field value if set, zero value otherwise.
-func (o *UserClassAllocationChange) GetAllocations() map[string]string {
-	if o == nil || IsNil(o.Allocations) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Allocations
-}
-
-// GetAllocationsOk returns a tuple with the Allocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserClassAllocationChange) GetAllocationsOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Allocations) {
-		return nil, false
-	}
-	return o.Allocations, true
-}
-
-// HasAllocations returns a boolean if a field has been set.
-func (o *UserClassAllocationChange) HasAllocations() bool {
-	if o != nil && !IsNil(o.Allocations) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocations gets a reference to the given map[string]string and assigns it to the Allocations field.
-func (o *UserClassAllocationChange) SetAllocations(v map[string]string) {
-	o.Allocations = &v
-}
-
 func (o UserClassAllocationChange) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,6 +181,9 @@ func (o UserClassAllocationChange) MarshalJSON() ([]byte, error) {
 
 func (o UserClassAllocationChange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Allocations) {
+		toSerialize["allocations"] = o.Allocations
+	}
 	if !IsNil(o.Usernames) {
 		toSerialize["usernames"] = o.Usernames
 	}
@@ -189,9 +192,6 @@ func (o UserClassAllocationChange) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BulkRemove) {
 		toSerialize["bulkRemove"] = o.BulkRemove
-	}
-	if !IsNil(o.Allocations) {
-		toSerialize["allocations"] = o.Allocations
 	}
 	return toSerialize, nil
 }

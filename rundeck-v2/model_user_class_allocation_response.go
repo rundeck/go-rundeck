@@ -19,6 +19,8 @@ var _ MappedNullable = &UserClassAllocationResponse{}
 
 // UserClassAllocationResponse struct for UserClassAllocationResponse
 type UserClassAllocationResponse struct {
+	// The current User Class allocation set, as a map of user name to user class name.
+	Allocations *map[string]string `json:"allocations,omitempty"`
 	// The current state of the user classe allocations. One of: VALID, EXCEEDED, UPGRADED
 	State *string `json:"state,omitempty"`
 	Message *string `json:"message,omitempty"`
@@ -28,8 +30,6 @@ type UserClassAllocationResponse struct {
 	Exceeded *map[string]int64 `json:"exceeded,omitempty"`
 	// Entitled allocations count by user class name.
 	Entitled *map[string]int64 `json:"entitled,omitempty"`
-	// The current User Class allocation set, as a map of user name to user class name.
-	Allocations *map[string]string `json:"allocations,omitempty"`
 }
 
 // NewUserClassAllocationResponse instantiates a new UserClassAllocationResponse object
@@ -47,6 +47,38 @@ func NewUserClassAllocationResponse() *UserClassAllocationResponse {
 func NewUserClassAllocationResponseWithDefaults() *UserClassAllocationResponse {
 	this := UserClassAllocationResponse{}
 	return &this
+}
+
+// GetAllocations returns the Allocations field value if set, zero value otherwise.
+func (o *UserClassAllocationResponse) GetAllocations() map[string]string {
+	if o == nil || IsNil(o.Allocations) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Allocations
+}
+
+// GetAllocationsOk returns a tuple with the Allocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserClassAllocationResponse) GetAllocationsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.Allocations) {
+		return nil, false
+	}
+	return o.Allocations, true
+}
+
+// HasAllocations returns a boolean if a field has been set.
+func (o *UserClassAllocationResponse) HasAllocations() bool {
+	if o != nil && !IsNil(o.Allocations) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocations gets a reference to the given map[string]string and assigns it to the Allocations field.
+func (o *UserClassAllocationResponse) SetAllocations(v map[string]string) {
+	o.Allocations = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise.
@@ -209,38 +241,6 @@ func (o *UserClassAllocationResponse) SetEntitled(v map[string]int64) {
 	o.Entitled = &v
 }
 
-// GetAllocations returns the Allocations field value if set, zero value otherwise.
-func (o *UserClassAllocationResponse) GetAllocations() map[string]string {
-	if o == nil || IsNil(o.Allocations) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Allocations
-}
-
-// GetAllocationsOk returns a tuple with the Allocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserClassAllocationResponse) GetAllocationsOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.Allocations) {
-		return nil, false
-	}
-	return o.Allocations, true
-}
-
-// HasAllocations returns a boolean if a field has been set.
-func (o *UserClassAllocationResponse) HasAllocations() bool {
-	if o != nil && !IsNil(o.Allocations) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocations gets a reference to the given map[string]string and assigns it to the Allocations field.
-func (o *UserClassAllocationResponse) SetAllocations(v map[string]string) {
-	o.Allocations = &v
-}
-
 func (o UserClassAllocationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -251,6 +251,9 @@ func (o UserClassAllocationResponse) MarshalJSON() ([]byte, error) {
 
 func (o UserClassAllocationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Allocations) {
+		toSerialize["allocations"] = o.Allocations
+	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
@@ -265,9 +268,6 @@ func (o UserClassAllocationResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Entitled) {
 		toSerialize["entitled"] = o.Entitled
-	}
-	if !IsNil(o.Allocations) {
-		toSerialize["allocations"] = o.Allocations
 	}
 	return toSerialize, nil
 }

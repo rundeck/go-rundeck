@@ -19,6 +19,9 @@ var _ MappedNullable = &Errors{}
 
 // Errors struct for Errors
 type Errors struct {
+	ErrorCount *int32 `json:"errorCount,omitempty"`
+	AllErrors []ObjectError `json:"allErrors,omitempty"`
+	FieldError *FieldError `json:"fieldError,omitempty"`
 	ObjectName *string `json:"objectName,omitempty"`
 	NestedPath *string `json:"nestedPath,omitempty"`
 	GlobalErrorCount *int32 `json:"globalErrorCount,omitempty"`
@@ -26,9 +29,6 @@ type Errors struct {
 	GlobalError *ObjectError `json:"globalError,omitempty"`
 	FieldErrorCount *int32 `json:"fieldErrorCount,omitempty"`
 	FieldErrors []FieldError `json:"fieldErrors,omitempty"`
-	AllErrors []ObjectError `json:"allErrors,omitempty"`
-	FieldError *FieldError `json:"fieldError,omitempty"`
-	ErrorCount *int32 `json:"errorCount,omitempty"`
 }
 
 // NewErrors instantiates a new Errors object
@@ -46,6 +46,102 @@ func NewErrors() *Errors {
 func NewErrorsWithDefaults() *Errors {
 	this := Errors{}
 	return &this
+}
+
+// GetErrorCount returns the ErrorCount field value if set, zero value otherwise.
+func (o *Errors) GetErrorCount() int32 {
+	if o == nil || IsNil(o.ErrorCount) {
+		var ret int32
+		return ret
+	}
+	return *o.ErrorCount
+}
+
+// GetErrorCountOk returns a tuple with the ErrorCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Errors) GetErrorCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.ErrorCount) {
+		return nil, false
+	}
+	return o.ErrorCount, true
+}
+
+// HasErrorCount returns a boolean if a field has been set.
+func (o *Errors) HasErrorCount() bool {
+	if o != nil && !IsNil(o.ErrorCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorCount gets a reference to the given int32 and assigns it to the ErrorCount field.
+func (o *Errors) SetErrorCount(v int32) {
+	o.ErrorCount = &v
+}
+
+// GetAllErrors returns the AllErrors field value if set, zero value otherwise.
+func (o *Errors) GetAllErrors() []ObjectError {
+	if o == nil || IsNil(o.AllErrors) {
+		var ret []ObjectError
+		return ret
+	}
+	return o.AllErrors
+}
+
+// GetAllErrorsOk returns a tuple with the AllErrors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Errors) GetAllErrorsOk() ([]ObjectError, bool) {
+	if o == nil || IsNil(o.AllErrors) {
+		return nil, false
+	}
+	return o.AllErrors, true
+}
+
+// HasAllErrors returns a boolean if a field has been set.
+func (o *Errors) HasAllErrors() bool {
+	if o != nil && !IsNil(o.AllErrors) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllErrors gets a reference to the given []ObjectError and assigns it to the AllErrors field.
+func (o *Errors) SetAllErrors(v []ObjectError) {
+	o.AllErrors = v
+}
+
+// GetFieldError returns the FieldError field value if set, zero value otherwise.
+func (o *Errors) GetFieldError() FieldError {
+	if o == nil || IsNil(o.FieldError) {
+		var ret FieldError
+		return ret
+	}
+	return *o.FieldError
+}
+
+// GetFieldErrorOk returns a tuple with the FieldError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Errors) GetFieldErrorOk() (*FieldError, bool) {
+	if o == nil || IsNil(o.FieldError) {
+		return nil, false
+	}
+	return o.FieldError, true
+}
+
+// HasFieldError returns a boolean if a field has been set.
+func (o *Errors) HasFieldError() bool {
+	if o != nil && !IsNil(o.FieldError) {
+		return true
+	}
+
+	return false
+}
+
+// SetFieldError gets a reference to the given FieldError and assigns it to the FieldError field.
+func (o *Errors) SetFieldError(v FieldError) {
+	o.FieldError = &v
 }
 
 // GetObjectName returns the ObjectName field value if set, zero value otherwise.
@@ -272,102 +368,6 @@ func (o *Errors) SetFieldErrors(v []FieldError) {
 	o.FieldErrors = v
 }
 
-// GetAllErrors returns the AllErrors field value if set, zero value otherwise.
-func (o *Errors) GetAllErrors() []ObjectError {
-	if o == nil || IsNil(o.AllErrors) {
-		var ret []ObjectError
-		return ret
-	}
-	return o.AllErrors
-}
-
-// GetAllErrorsOk returns a tuple with the AllErrors field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Errors) GetAllErrorsOk() ([]ObjectError, bool) {
-	if o == nil || IsNil(o.AllErrors) {
-		return nil, false
-	}
-	return o.AllErrors, true
-}
-
-// HasAllErrors returns a boolean if a field has been set.
-func (o *Errors) HasAllErrors() bool {
-	if o != nil && !IsNil(o.AllErrors) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllErrors gets a reference to the given []ObjectError and assigns it to the AllErrors field.
-func (o *Errors) SetAllErrors(v []ObjectError) {
-	o.AllErrors = v
-}
-
-// GetFieldError returns the FieldError field value if set, zero value otherwise.
-func (o *Errors) GetFieldError() FieldError {
-	if o == nil || IsNil(o.FieldError) {
-		var ret FieldError
-		return ret
-	}
-	return *o.FieldError
-}
-
-// GetFieldErrorOk returns a tuple with the FieldError field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Errors) GetFieldErrorOk() (*FieldError, bool) {
-	if o == nil || IsNil(o.FieldError) {
-		return nil, false
-	}
-	return o.FieldError, true
-}
-
-// HasFieldError returns a boolean if a field has been set.
-func (o *Errors) HasFieldError() bool {
-	if o != nil && !IsNil(o.FieldError) {
-		return true
-	}
-
-	return false
-}
-
-// SetFieldError gets a reference to the given FieldError and assigns it to the FieldError field.
-func (o *Errors) SetFieldError(v FieldError) {
-	o.FieldError = &v
-}
-
-// GetErrorCount returns the ErrorCount field value if set, zero value otherwise.
-func (o *Errors) GetErrorCount() int32 {
-	if o == nil || IsNil(o.ErrorCount) {
-		var ret int32
-		return ret
-	}
-	return *o.ErrorCount
-}
-
-// GetErrorCountOk returns a tuple with the ErrorCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Errors) GetErrorCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ErrorCount) {
-		return nil, false
-	}
-	return o.ErrorCount, true
-}
-
-// HasErrorCount returns a boolean if a field has been set.
-func (o *Errors) HasErrorCount() bool {
-	if o != nil && !IsNil(o.ErrorCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetErrorCount gets a reference to the given int32 and assigns it to the ErrorCount field.
-func (o *Errors) SetErrorCount(v int32) {
-	o.ErrorCount = &v
-}
-
 func (o Errors) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -378,6 +378,15 @@ func (o Errors) MarshalJSON() ([]byte, error) {
 
 func (o Errors) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ErrorCount) {
+		toSerialize["errorCount"] = o.ErrorCount
+	}
+	if !IsNil(o.AllErrors) {
+		toSerialize["allErrors"] = o.AllErrors
+	}
+	if !IsNil(o.FieldError) {
+		toSerialize["fieldError"] = o.FieldError
+	}
 	if !IsNil(o.ObjectName) {
 		toSerialize["objectName"] = o.ObjectName
 	}
@@ -398,15 +407,6 @@ func (o Errors) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FieldErrors) {
 		toSerialize["fieldErrors"] = o.FieldErrors
-	}
-	if !IsNil(o.AllErrors) {
-		toSerialize["allErrors"] = o.AllErrors
-	}
-	if !IsNil(o.FieldError) {
-		toSerialize["fieldError"] = o.FieldError
-	}
-	if !IsNil(o.ErrorCount) {
-		toSerialize["errorCount"] = o.ErrorCount
 	}
 	return toSerialize, nil
 }

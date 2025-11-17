@@ -12473,6 +12473,15 @@ components:
     Errors:
       type: object
       properties:
+        errorCount:
+          type: integer
+          format: int32
+        allErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ObjectError'
+        fieldError:
+          $ref: '#/components/schemas/FieldError'
         objectName:
           type: string
         nestedPath:
@@ -12493,15 +12502,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FieldError'
-        allErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ObjectError'
-        fieldError:
-          $ref: '#/components/schemas/FieldError'
-        errorCount:
-          type: integer
-          format: int32
     EventRoutingResult:
       type: object
       properties:
@@ -12549,19 +12549,16 @@ components:
           type: string
           description: 'since: v42'
     FieldError:
+      required:
+      - field
       type: object
-      allOf:
-      - $ref: '#/components/schemas/ObjectError'
-      - $ref: '#/components/schemas/DefaultMessageSourceResolvable'
-      - required:
-        - field
-        properties:
-          bindingFailure:
-            type: boolean
-          rejectedValue:
-            type: object
-          field:
-            type: string
+      properties:
+        bindingFailure:
+          type: boolean
+        rejectedValue:
+          type: object
+        field:
+          type: string
     HomeSummary:
       required:
       - execCount
@@ -12869,12 +12866,12 @@ components:
     LoginRoleData:
       type: object
       properties:
-        description:
-          type: string
         id:
           type: integer
           format: int64
         authority:
+          type: string
+        description:
           type: string
     Manifest:
       type: object
