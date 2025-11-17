@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ master, main, client-from-swagger ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master, main, client-from-swagger ]
+    branches: [ master, main ]
 
 jobs:
   test-v1:
