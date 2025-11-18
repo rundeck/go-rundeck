@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorCount** | Pointer to **int32** |  | [optional] 
 **AllErrors** | Pointer to [**[]ObjectError**](ObjectError.md) |  | [optional] 
 **FieldError** | Pointer to [**FieldError**](FieldError.md) |  | [optional] 
 **ObjectName** | Pointer to **string** |  | [optional] 
@@ -14,6 +13,7 @@ Name | Type | Description | Notes
 **GlobalError** | Pointer to [**ObjectError**](ObjectError.md) |  | [optional] 
 **FieldErrorCount** | Pointer to **int32** |  | [optional] 
 **FieldErrors** | Pointer to [**[]FieldError**](FieldError.md) |  | [optional] 
+**ErrorCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -33,31 +33,6 @@ will change when the set of required properties is changed
 NewErrorsWithDefaults instantiates a new Errors object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetErrorCount
-
-`func (o *Errors) GetErrorCount() int32`
-
-GetErrorCount returns the ErrorCount field if non-nil, zero value otherwise.
-
-### GetErrorCountOk
-
-`func (o *Errors) GetErrorCountOk() (*int32, bool)`
-
-GetErrorCountOk returns a tuple with the ErrorCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrorCount
-
-`func (o *Errors) SetErrorCount(v int32)`
-
-SetErrorCount sets ErrorCount field to given value.
-
-### HasErrorCount
-
-`func (o *Errors) HasErrorCount() bool`
-
-HasErrorCount returns a boolean if a field has been set.
 
 ### GetAllErrors
 
@@ -283,6 +258,31 @@ SetFieldErrors sets FieldErrors field to given value.
 `func (o *Errors) HasFieldErrors() bool`
 
 HasFieldErrors returns a boolean if a field has been set.
+
+### GetErrorCount
+
+`func (o *Errors) GetErrorCount() int32`
+
+GetErrorCount returns the ErrorCount field if non-nil, zero value otherwise.
+
+### GetErrorCountOk
+
+`func (o *Errors) GetErrorCountOk() (*int32, bool)`
+
+GetErrorCountOk returns a tuple with the ErrorCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorCount
+
+`func (o *Errors) SetErrorCount(v int32)`
+
+SetErrorCount sets ErrorCount field to given value.
+
+### HasErrorCount
+
+`func (o *Errors) HasErrorCount() bool`
+
+HasErrorCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

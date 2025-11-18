@@ -130,10 +130,6 @@ Class | Method | HTTP request | Description
 *ConfigurationAPI* | [**StorageConfigList**](docs/ConfigurationAPI.md#storageconfiglist) | **Get** /config/listStoragePlugins | List All Currently configured Storage Plugins [Enterprise]
 *ConfigurationAPI* | [**StorageConfigSave**](docs/ConfigurationAPI.md#storageconfigsave) | **Post** /config/saveStoragePlugins | Create or Update Storage Plugins [Enterprise]
 *DefaultAPI* | [**ApiValidateOption**](docs/DefaultAPI.md#apivalidateoption) | **Post** /project/{project}/jobs/validateOption | Validate an option
-*ExecutionModeAPI* | [**ApiExecutionModeLaterActive**](docs/ExecutionModeAPI.md#apiexecutionmodelateractive) | **Post** /system/executions/enable/later | Enable System executions after a duration of time
-*ExecutionModeAPI* | [**ApiExecutionModeLaterPassive**](docs/ExecutionModeAPI.md#apiexecutionmodelaterpassive) | **Post** /system/executions/disable/later | Disable System executions after a duration of time
-*ExecutionModeAPI* | [**ApiProjectDisableLater**](docs/ExecutionModeAPI.md#apiprojectdisablelater) | **Post** /project/{project}/disable/later | Disable Project executions or schedules after a duration of time
-*ExecutionModeAPI* | [**ApiProjectEnableLater**](docs/ExecutionModeAPI.md#apiprojectenablelater) | **Post** /project/{project}/enable/later | Enable Project executions or schedules after a duration of time
 *HealthAPI* | [**ApiNodeHealth**](docs/HealthAPI.md#apinodehealth) | **Get** /project/{project}/healthcheck/status | Get Node Healthcheck Status [Enterprise]
 *HealthAPI* | [**ApiNodeHealthAll**](docs/HealthAPI.md#apinodehealthall) | **Get** /project/{project}/healthcheck/status/all | Get Node Healthcheck Status for All Nodes [Enterprise]
 *HealthAPI* | [**ApiProjectHasHealthStatusEnhancer**](docs/HealthAPI.md#apiprojecthashealthstatusenhancer) | **Get** /project/{project}/healthcheck/enhancer | Check Health Status Node Enhancer is Configured [Enterprise]
@@ -190,6 +186,8 @@ Class | Method | HTTP request | Description
 *JobsAPI* | [**ApiListAllJobsInProject**](docs/JobsAPI.md#apilistalljobsinproject) | **Get** /project/{project}/listAllJobs | List all Jobs in Summarized Form [Enterprise]
 *JobsAPI* | [**ApiSchedulerListJobs**](docs/JobsAPI.md#apischedulerlistjobs) | **Get** /scheduler/server/{uuid}/jobs | List Scheduled Jobs For a Cluster Server
 *JobsAPI* | [**ApiSchedulerListJobsCurrentDocs**](docs/JobsAPI.md#apischedulerlistjobscurrentdocs) | **Get** /scheduler/jobs | List Scheduled Jobs For this Cluster Server
+*JobsAPI* | [**Job**](docs/JobsAPI.md#job) | **Get** /job/{id}/tags | Get Job Tags (Enterprise)
+*JobsAPI* | [**Query**](docs/JobsAPI.md#query) | **Get** /project/{project}/jobTags/query | Query Project Job Tags [Enterprise]
 *KeyStorageAPI* | [**ApiDeleteResource**](docs/KeyStorageAPI.md#apideleteresource) | **Delete** /storage/keys/{path} | Delete A Key
 *KeyStorageAPI* | [**ApiGetResource**](docs/KeyStorageAPI.md#apigetresource) | **Get** /storage/keys/{path} | List and Get Keys and Key Metadata
 *KeyStorageAPI* | [**ApiPostResource**](docs/KeyStorageAPI.md#apipostresource) | **Post** /storage/keys/{path} | Create Keys
@@ -370,7 +368,6 @@ Class | Method | HTTP request | Description
  - [DeleteBulkRequestLong](docs/DeleteBulkRequestLong.md)
  - [DeleteBulkResponse](docs/DeleteBulkResponse.md)
  - [EnabledResponse](docs/EnabledResponse.md)
- - [ErrorResponse](docs/ErrorResponse.md)
  - [Errors](docs/Errors.md)
  - [EventRoutingResult](docs/EventRoutingResult.md)
  - [ExecutionFileInfoList](docs/ExecutionFileInfoList.md)
@@ -404,8 +401,6 @@ Class | Method | HTTP request | Description
  - [Metrics](docs/Metrics.md)
  - [MetricsQueryResponse](docs/MetricsQueryResponse.md)
  - [MetricsQueryResponseDuration](docs/MetricsQueryResponseDuration.md)
- - [ModeLaterRequest](docs/ModeLaterRequest.md)
- - [ModeLaterResponse](docs/ModeLaterResponse.md)
  - [NewRunnerReplicaResponse](docs/NewRunnerReplicaResponse.md)
  - [NewRunnerResponse](docs/NewRunnerResponse.md)
  - [ObjectError](docs/ObjectError.md)
@@ -420,7 +415,6 @@ Class | Method | HTTP request | Description
  - [ProjectArchiveParams](docs/ProjectArchiveParams.md)
  - [ProjectCalendarsResponse](docs/ProjectCalendarsResponse.md)
  - [ProjectContextRunnerConfig](docs/ProjectContextRunnerConfig.md)
- - [ProjectModeLaterRequest](docs/ProjectModeLaterRequest.md)
  - [ROIDataBasicErrorResponse](docs/ROIDataBasicErrorResponse.md)
  - [ROIDataLoadingState](docs/ROIDataLoadingState.md)
  - [RdJobQueryInput](docs/RdJobQueryInput.md)

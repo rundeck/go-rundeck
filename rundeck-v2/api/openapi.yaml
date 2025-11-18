@@ -3855,6 +3855,34 @@ paths:
       summary: Get Job SCM Status
       tags:
       - SCM
+  /job/{id}/tags:
+    get:
+      description: |
+        Returns the list of tags for a job.
+
+        Since: v46
+      operationId: job
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: Success
+      summary: Get Job Tags (Enterprise)
+      tags:
+      - Jobs
   /job/{id}/workflow:
     get:
       description: |-
@@ -5203,132 +5231,6 @@ paths:
       summary: Set the value.
       tags:
       - Project
-  /project/{project}/disable/later:
-    post:
-      description: |
-        Sets project execution mode to Passive or disables Schedules at a later time.
-
-        Since: v34
-      operationId: apiProjectDisableLater
-      parameters:
-      - description: project name
-        explode: false
-        in: path
-        name: project
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            examples:
-              Disable-Schedule:
-                value:
-                  type: schedule
-                  value: 2h30m
-              Disable-Executions:
-                value:
-                  type: executions
-                  value: 1d
-            schema:
-              $ref: "#/components/schemas/ProjectModeLaterRequest"
-        description: |
-          Disable Schedule or Executions.
-          Specify the `type` to enable, and a `value` with a time duration expression.
-          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: true
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
-        "400":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: false
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request error response. A description of the error is in the
-            `msg` field.
-      summary: Disable Project executions or schedules after a duration of time
-      tags:
-      - Execution Mode
-  /project/{project}/enable/later:
-    post:
-      description: |
-        Sets project execution mode to Active or enable Schedules at a later time.
-
-        Since: v34
-      operationId: apiProjectEnableLater
-      parameters:
-      - description: project name
-        explode: false
-        in: path
-        name: project
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            examples:
-              Enable-Schedule:
-                value:
-                  type: schedule
-                  value: 2h30m
-              Enable-Executions:
-                value:
-                  type: executions
-                  value: 1d
-            schema:
-              $ref: "#/components/schemas/ProjectModeLaterRequest"
-        description: |
-          Enable Schedule or Executions.
-          Specify the `type` to enable, and a `value` with a time duration expression.
-          The request must contain a `value` with a "Time duration expression". (See request schema for syntax.)
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: true
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
-        "400":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: false
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request error response. A description of the error is in the
-            `msg` field.
-      summary: Enable Project executions or schedules after a duration of time
-      tags:
-      - Execution Mode
   /project/{project}/executions:
     get:
       description: Query for Executions based on Job or Execution details.
@@ -6778,6 +6680,183 @@ paths:
       summary: Import a zip archive.
       tags:
       - Project
+  /project/{project}/jobTags/query:
+    get:
+      description: "Returns the list of available tags, along with the count of jobs\
+        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
+      operationId: query
+      parameters:
+      - explode: true
+        in: query
+        name: jobFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: jobExactFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: projFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: groupPath
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: groupPathExact
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: descFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: loglevelFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: idlist
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: scheduledFilter
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: scheduleEnabledFilter
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: executionEnabledFilter
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: serverNodeUUIDFilter
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: daysAhead
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: runJobLaterFilter
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: max
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: sortOrder
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: inputParamMap
+        required: false
+        schema:
+          additionalProperties: true
+          type: object
+        style: form
+      - explode: true
+        in: query
+        name: paginatedRequired
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: sortOrders
+        required: false
+        schema:
+          items:
+            $ref: "#/components/schemas/SortOrder"
+          type: array
+        style: form
+      - explode: false
+        in: path
+        name: project
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+          description: Success
+      summary: "Query Project Job Tags [Enterprise]"
+      tags:
+      - Jobs
   /project/{project}/jobs:
     get:
       description: |
@@ -8364,7 +8443,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Server error while regenerating runner credentials
       summary: Regenerate Runner Creds at Project context
       tags:
@@ -8583,8 +8662,14 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Failed to create the runner
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+          description: Not authorized to create runner replica at project level
       summary: Create a Runner Replica without ephemeral mode at project context
       tags:
       - Runner
@@ -8680,7 +8765,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Failed to create the runner
       summary: Create a Runner at Project Context
       tags:
@@ -10157,7 +10242,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Failed to init the runner
       summary: "Runner: Init agent process to register replicas [Enterprise Runner]"
       tags:
@@ -10293,7 +10378,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Server error while regenerating runner credentials
       summary: Regenerate Runner Creds
       tags:
@@ -10459,7 +10544,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Failed to create the runner replica
       summary: Create a Runner Replica in no-ephemeral mode
       tags:
@@ -10541,7 +10626,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: "#/components/schemas/ApiErrorResponse"
           description: Failed to create the runner
       summary: Create a Runner
       tags:
@@ -11962,54 +12047,6 @@ paths:
       summary: Set Execution Mode Passive
       tags:
       - System
-  /system/executions/disable/later:
-    post:
-      description: |
-        Sets System execution mode to Passive at a later time.
-
-        Since: v34
-      operationId: apiExecutionModeLaterPassive
-      requestBody:
-        content:
-          application/json:
-            examples:
-              example:
-                value:
-                  value: 2h30m
-            schema:
-              $ref: "#/components/schemas/ModeLaterRequest"
-        description: |
-          Disable Executions.
-          Specify a `value` with a time duration expression. (See request schema for syntax.)
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: true
-                    msg: Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already disabled.
-        "400":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: false
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request error response. A description of the error is in the
-            `msg` field.
-      summary: Disable System executions after a duration of time
-      tags:
-      - Execution Mode
   /system/executions/enable:
     post:
       description: |
@@ -12034,54 +12071,6 @@ paths:
       summary: Set Execution Mode Active
       tags:
       - System
-  /system/executions/enable/later:
-    post:
-      description: |
-        Sets System execution mode to Active at a later time.
-
-        Since: v34
-      operationId: apiExecutionModeLaterActive
-      requestBody:
-        content:
-          application/json:
-            examples:
-              example:
-                value:
-                  value: 2h30m
-            schema:
-              $ref: "#/components/schemas/ModeLaterRequest"
-        description: |
-          Enable Executions.
-          Specify a `value` with a time duration expression. (See request schema for syntax.)
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: true
-                    msg: Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request processed. The `saved` value may be false if e.g. the
-            current execution mode is already enabled.
-        "400":
-          content:
-            application/json:
-              examples:
-                example:
-                  value:
-                    saved: false
-                    msg: Project Execution Mode Later saved
-              schema:
-                $ref: "#/components/schemas/ModeLaterResponse"
-          description: Request error response. A description of the error is in the
-            `msg` field.
-      summary: Enable System executions after a duration of time
-      tags:
-      - Execution Mode
   /system/executions/status:
     get:
       description: "Gets the current execution mode.\n\nNote:\nPrior to API version\
@@ -13210,19 +13199,27 @@ components:
     ApiErrorResponse:
       description: Error Response
       example:
+        errorMessage: errorMessage
         errorCode: errorCode
-        apiversion: 0
+        apiversion: 56
         error: true
         message: message
       properties:
         error:
+          description: Always true to indicate an error response
           type: boolean
         apiversion:
+          description: Rundeck / Runbook Automation API version number
+          example: 56
           format: int32
           type: integer
         errorCode:
+          description: Error code (HTTP status or custom error code)
           type: string
         message:
+          description: Human-readable error message
+          type: string
+        errorMessage:
           type: string
       type: object
     ApiPluginListProvider:
@@ -13680,33 +13677,9 @@ components:
         enabled:
           type: boolean
       type: object
-    ErrorResponse:
-      example:
-        apiVersion: 0
-        errorMessage: errorMessage
-        errorCode: errorCode
-        apiversion: 6
-        error: error
-        message: message
-      properties:
-        errorCode:
-          type: string
-        apiVersion:
-          format: int32
-          type: integer
-        errorMessage:
-          type: string
-        error:
-          type: string
-        apiversion:
-          format: int32
-          type: integer
-        message:
-          type: string
-      type: object
     Errors:
       example:
-        globalErrorCount: 6
+        globalErrorCount: 0
         globalErrors:
         - codes:
           - codes
@@ -13754,7 +13727,7 @@ components:
           - "{}"
         nestedPath: nestedPath
         objectName: objectName
-        fieldErrorCount: 1
+        fieldErrorCount: 6
         fieldError:
           bindingFailure: true
           field: field
@@ -13769,11 +13742,8 @@ components:
           arguments:
           - "{}"
           - "{}"
-        errorCount: 0
+        errorCount: 1
       properties:
-        errorCount:
-          format: int32
-          type: integer
         allErrors:
           items:
             $ref: "#/components/schemas/ObjectError"
@@ -13800,6 +13770,9 @@ components:
           items:
             $ref: "#/components/schemas/FieldError"
           type: array
+        errorCount:
+          format: int32
+          type: integer
       type: object
     EventRoutingResult:
       example:
@@ -14491,12 +14464,12 @@ components:
         description: description
         id: 0
       properties:
+        description:
+          type: string
         id:
           format: int64
           type: integer
         authority:
-          type: string
-        description:
           type: string
       type: object
     Manifest:
@@ -14573,39 +14546,6 @@ components:
         max:
           type: string
         min:
-          type: string
-      type: object
-    ModeLaterRequest:
-      description: Request to enable/disable the mode after a time delay.
-      example:
-        value: value
-      properties:
-        value:
-          description: |
-            Time duration expression.
-
-            A series of: an integer followed by a unit.
-
-            Units:
-            * `s` - seconds (default)
-            * `m` - minutes
-            * `h` - hours
-            * `d` - days
-            * `w` - weeks
-            * `y` - years.
-
-            Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`.
-          pattern: "((\\d+)[smhdwy]?)+"
-          type: string
-      type: object
-    ModeLaterResponse:
-      example:
-        msg: msg
-        saved: true
-      properties:
-        saved:
-          type: boolean
-        msg:
           type: string
       type: object
     NewRunnerReplicaResponse:
@@ -14898,38 +14838,6 @@ components:
         automatic:
           type: boolean
       type: object
-    ProjectModeLaterRequest:
-      allOf:
-      - $ref: "#/components/schemas/ModeLaterRequest"
-      - description: Request to enable/disable executions or schedules after a time
-          delay.
-        properties:
-          type:
-            description: "Mode to change, one of `executions` or `schedule`"
-            type: string
-          value:
-            description: |
-              Time duration expression.
-
-              A series of: an integer followed by a unit.
-
-              Units:
-              * `s` - seconds (default)
-              * `m` - minutes
-              * `h` - hours
-              * `d` - days
-              * `w` - weeks
-              * `y` - years.
-
-              Examples: `1d12h`, `3600` (defaults to seconds), `15m30s`.
-            pattern: "((\\d+)[smhdwy]?)+"
-            type: string
-        type: object
-        example: null
-      example:
-        type: type
-        value: value
-      type: object
     ROIDataBasicErrorResponse:
       example:
         error: error
@@ -15017,7 +14925,7 @@ components:
         groupPath: groupPath
         groupPathExact: groupPathExact
         errors:
-          globalErrorCount: 6
+          globalErrorCount: 0
           globalErrors:
           - codes:
             - codes
@@ -15065,7 +14973,7 @@ components:
             - "{}"
           nestedPath: nestedPath
           objectName: objectName
-          fieldErrorCount: 1
+          fieldErrorCount: 6
           fieldError:
             bindingFailure: true
             field: field
@@ -15080,7 +14988,7 @@ components:
             arguments:
             - "{}"
             - "{}"
-          errorCount: 0
+          errorCount: 1
         paginatedRequired: true
       type: object
     RdPageable:
