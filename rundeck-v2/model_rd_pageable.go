@@ -20,8 +20,8 @@ var _ MappedNullable = &RdPageable{}
 // RdPageable struct for RdPageable
 type RdPageable struct {
 	Errors *Errors `json:"errors,omitempty"`
-	SortOrders []SortOrder `json:"sortOrders,omitempty"`
 	Max *int32 `json:"max,omitempty"`
+	SortOrders []SortOrder `json:"sortOrders,omitempty"`
 	Offset *int32 `json:"offset,omitempty"`
 }
 
@@ -74,38 +74,6 @@ func (o *RdPageable) SetErrors(v Errors) {
 	o.Errors = &v
 }
 
-// GetSortOrders returns the SortOrders field value if set, zero value otherwise.
-func (o *RdPageable) GetSortOrders() []SortOrder {
-	if o == nil || IsNil(o.SortOrders) {
-		var ret []SortOrder
-		return ret
-	}
-	return o.SortOrders
-}
-
-// GetSortOrdersOk returns a tuple with the SortOrders field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RdPageable) GetSortOrdersOk() ([]SortOrder, bool) {
-	if o == nil || IsNil(o.SortOrders) {
-		return nil, false
-	}
-	return o.SortOrders, true
-}
-
-// HasSortOrders returns a boolean if a field has been set.
-func (o *RdPageable) HasSortOrders() bool {
-	if o != nil && !IsNil(o.SortOrders) {
-		return true
-	}
-
-	return false
-}
-
-// SetSortOrders gets a reference to the given []SortOrder and assigns it to the SortOrders field.
-func (o *RdPageable) SetSortOrders(v []SortOrder) {
-	o.SortOrders = v
-}
-
 // GetMax returns the Max field value if set, zero value otherwise.
 func (o *RdPageable) GetMax() int32 {
 	if o == nil || IsNil(o.Max) {
@@ -136,6 +104,38 @@ func (o *RdPageable) HasMax() bool {
 // SetMax gets a reference to the given int32 and assigns it to the Max field.
 func (o *RdPageable) SetMax(v int32) {
 	o.Max = &v
+}
+
+// GetSortOrders returns the SortOrders field value if set, zero value otherwise.
+func (o *RdPageable) GetSortOrders() []SortOrder {
+	if o == nil || IsNil(o.SortOrders) {
+		var ret []SortOrder
+		return ret
+	}
+	return o.SortOrders
+}
+
+// GetSortOrdersOk returns a tuple with the SortOrders field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RdPageable) GetSortOrdersOk() ([]SortOrder, bool) {
+	if o == nil || IsNil(o.SortOrders) {
+		return nil, false
+	}
+	return o.SortOrders, true
+}
+
+// HasSortOrders returns a boolean if a field has been set.
+func (o *RdPageable) HasSortOrders() bool {
+	if o != nil && !IsNil(o.SortOrders) {
+		return true
+	}
+
+	return false
+}
+
+// SetSortOrders gets a reference to the given []SortOrder and assigns it to the SortOrders field.
+func (o *RdPageable) SetSortOrders(v []SortOrder) {
+	o.SortOrders = v
 }
 
 // GetOffset returns the Offset field value if set, zero value otherwise.
@@ -183,11 +183,11 @@ func (o RdPageable) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Errors) {
 		toSerialize["errors"] = o.Errors
 	}
-	if !IsNil(o.SortOrders) {
-		toSerialize["sortOrders"] = o.SortOrders
-	}
 	if !IsNil(o.Max) {
 		toSerialize["max"] = o.Max
+	}
+	if !IsNil(o.SortOrders) {
+		toSerialize["sortOrders"] = o.SortOrders
 	}
 	if !IsNil(o.Offset) {
 		toSerialize["offset"] = o.Offset

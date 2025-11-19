@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
-**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **Max** | Pointer to **int32** |  | [optional] 
+**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -53,31 +53,6 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### GetSortOrders
-
-`func (o *RdPageable) GetSortOrders() []SortOrder`
-
-GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
-
-### GetSortOrdersOk
-
-`func (o *RdPageable) GetSortOrdersOk() (*[]SortOrder, bool)`
-
-GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSortOrders
-
-`func (o *RdPageable) SetSortOrders(v []SortOrder)`
-
-SetSortOrders sets SortOrders field to given value.
-
-### HasSortOrders
-
-`func (o *RdPageable) HasSortOrders() bool`
-
-HasSortOrders returns a boolean if a field has been set.
-
 ### GetMax
 
 `func (o *RdPageable) GetMax() int32`
@@ -102,6 +77,31 @@ SetMax sets Max field to given value.
 `func (o *RdPageable) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
+
+### GetSortOrders
+
+`func (o *RdPageable) GetSortOrders() []SortOrder`
+
+GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
+
+### GetSortOrdersOk
+
+`func (o *RdPageable) GetSortOrdersOk() (*[]SortOrder, bool)`
+
+GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSortOrders
+
+`func (o *RdPageable) SetSortOrders(v []SortOrder)`
+
+SetSortOrders sets SortOrders field to given value.
+
+### HasSortOrders
+
+`func (o *RdPageable) HasSortOrders() bool`
+
+HasSortOrders returns a boolean if a field has been set.
 
 ### GetOffset
 

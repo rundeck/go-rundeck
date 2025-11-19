@@ -190,6 +190,8 @@ Class | Method | HTTP request | Description
 *JobsAPI* | [**ApiListAllJobsInProject**](docs/JobsAPI.md#apilistalljobsinproject) | **Get** /project/{project}/listAllJobs | List all Jobs in Summarized Form [Enterprise]
 *JobsAPI* | [**ApiSchedulerListJobs**](docs/JobsAPI.md#apischedulerlistjobs) | **Get** /scheduler/server/{uuid}/jobs | List Scheduled Jobs For a Cluster Server
 *JobsAPI* | [**ApiSchedulerListJobsCurrentDocs**](docs/JobsAPI.md#apischedulerlistjobscurrentdocs) | **Get** /scheduler/jobs | List Scheduled Jobs For this Cluster Server
+*JobsAPI* | [**Job**](docs/JobsAPI.md#job) | **Get** /job/{id}/tags | Get Job Tags (Enterprise)
+*JobsAPI* | [**Query**](docs/JobsAPI.md#query) | **Get** /project/{project}/jobTags/query | Query Project Job Tags [Enterprise]
 *KeyStorageAPI* | [**ApiDeleteResource**](docs/KeyStorageAPI.md#apideleteresource) | **Delete** /storage/keys/{path} | Delete A Key
 *KeyStorageAPI* | [**ApiGetResource**](docs/KeyStorageAPI.md#apigetresource) | **Get** /storage/keys/{path} | List and Get Keys and Key Metadata
 *KeyStorageAPI* | [**ApiPostResource**](docs/KeyStorageAPI.md#apipostresource) | **Post** /storage/keys/{path} | Create Keys

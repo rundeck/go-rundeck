@@ -3495,6 +3495,32 @@ paths:
                     message: $statusMessage
                     project: $project
                     synchState: $synchState
+  /job/{id}/tags:
+    get:
+      tags:
+      - Jobs
+      summary: Get Job Tags (Enterprise)
+      description: |
+        Returns the list of tags for a job.
+
+        Since: v46
+      operationId: job
+      parameters:
+      - name: id
+        in: path
+        description: Job ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
   /job/{id}/workflow:
     get:
       tags:
@@ -6135,6 +6161,118 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiErrorResponse"
+  /project/{project}/jobTags/query:
+    get:
+      tags:
+      - Jobs
+      summary: "Query Project Job Tags [Enterprise]"
+      description: "Returns the list of available tags, along with the count of jobs\
+        \ per each tag, for the job \nquery result received.\n\nSince: v46\n"
+      operationId: query
+      parameters:
+      - name: jobFilter
+        in: query
+        schema:
+          type: string
+      - name: jobExactFilter
+        in: query
+        schema:
+          type: string
+      - name: projFilter
+        in: query
+        schema:
+          type: string
+      - name: groupPath
+        in: query
+        schema:
+          type: string
+      - name: groupPathExact
+        in: query
+        schema:
+          type: string
+      - name: descFilter
+        in: query
+        schema:
+          type: string
+      - name: loglevelFilter
+        in: query
+        schema:
+          type: string
+      - name: idlist
+        in: query
+        schema:
+          type: string
+      - name: scheduledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: scheduleEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: executionEnabledFilter
+        in: query
+        schema:
+          type: boolean
+      - name: serverNodeUUIDFilter
+        in: query
+        schema:
+          type: string
+      - name: daysAhead
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: runJobLaterFilter
+        in: query
+        schema:
+          type: boolean
+      - name: max
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: sortBy
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        in: query
+        schema:
+          type: string
+      - name: inputParamMap
+        in: query
+        schema:
+          type: object
+          additionalProperties: true
+      - name: paginatedRequired
+        in: query
+        schema:
+          type: boolean
+      - name: sortOrders
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: "#/components/schemas/SortOrder"
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
   /project/{project}/jobs:
     get:
       tags:
@@ -12441,6 +12579,12 @@ components:
         errorCount:
           type: integer
           format: int32
+        allErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ObjectError"
+        fieldError:
+          $ref: "#/components/schemas/FieldError"
         objectName:
           type: string
         nestedPath:
@@ -12461,12 +12605,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/FieldError"
-        allErrors:
-          type: array
-          items:
-            $ref: "#/components/schemas/ObjectError"
-        fieldError:
-          $ref: "#/components/schemas/FieldError"
     EventRoutingResult:
       type: object
       properties:
@@ -12514,19 +12652,16 @@ components:
           type: string
           description: "since: v42"
     FieldError:
+      required:
+      - field
       type: object
-      allOf:
-      - $ref: "#/components/schemas/ObjectError"
-      - $ref: "#/components/schemas/DefaultMessageSourceResolvable"
-      - required:
-        - field
-        properties:
-          bindingFailure:
-            type: boolean
-          rejectedValue:
-            type: object
-          field:
-            type: string
+      properties:
+        bindingFailure:
+          type: boolean
+        rejectedValue:
+          type: object
+        field:
+          type: string
     HomeSummary:
       required:
       - execCount
@@ -13205,13 +13340,13 @@ components:
       properties:
         errors:
           $ref: "#/components/schemas/Errors"
+        max:
+          type: integer
+          format: int32
         sortOrders:
           type: array
           items:
             $ref: "#/components/schemas/SortOrder"
-        max:
-          type: integer
-          format: int32
         offset:
           type: integer
           format: int32

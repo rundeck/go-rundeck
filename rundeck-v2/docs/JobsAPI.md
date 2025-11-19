@@ -38,6 +38,8 @@ Method | HTTP request | Description
 [**ApiListAllJobsInProject**](JobsAPI.md#ApiListAllJobsInProject) | **Get** /project/{project}/listAllJobs | List all Jobs in Summarized Form [Enterprise]
 [**ApiSchedulerListJobs**](JobsAPI.md#ApiSchedulerListJobs) | **Get** /scheduler/server/{uuid}/jobs | List Scheduled Jobs For a Cluster Server
 [**ApiSchedulerListJobsCurrentDocs**](JobsAPI.md#ApiSchedulerListJobsCurrentDocs) | **Get** /scheduler/jobs | List Scheduled Jobs For this Cluster Server
+[**Job**](JobsAPI.md#Job) | **Get** /job/{id}/tags | Get Job Tags (Enterprise)
+[**Query**](JobsAPI.md#Query) | **Get** /project/{project}/jobTags/query | Query Project Job Tags [Enterprise]
 
 
 
@@ -2552,6 +2554,188 @@ Other parameters are passed through a pointer to a apiApiSchedulerListJobsCurren
 ### Return type
 
 [**[]JobInfo**](JobInfo.md)
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Job
+
+> []string Job(ctx, id).Execute()
+
+Get Job Tags (Enterprise)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	id := "id_example" // string | Job ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobsAPI.Job(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.Job``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Job`: []string
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.Job`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Job ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**[]string**
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Query
+
+> map[string]interface{} Query(ctx, project).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).SortOrders(sortOrders).Execute()
+
+Query Project Job Tags [Enterprise]
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	project := "project_example" // string | 
+	jobFilter := "jobFilter_example" // string |  (optional)
+	jobExactFilter := "jobExactFilter_example" // string |  (optional)
+	projFilter := "projFilter_example" // string |  (optional)
+	groupPath := "groupPath_example" // string |  (optional)
+	groupPathExact := "groupPathExact_example" // string |  (optional)
+	descFilter := "descFilter_example" // string |  (optional)
+	loglevelFilter := "loglevelFilter_example" // string |  (optional)
+	idlist := "idlist_example" // string |  (optional)
+	scheduledFilter := true // bool |  (optional)
+	scheduleEnabledFilter := true // bool |  (optional)
+	executionEnabledFilter := true // bool |  (optional)
+	serverNodeUUIDFilter := "serverNodeUUIDFilter_example" // string |  (optional)
+	daysAhead := int32(56) // int32 |  (optional)
+	runJobLaterFilter := true // bool |  (optional)
+	max := int32(56) // int32 |  (optional)
+	offset := int32(56) // int32 |  (optional)
+	sortBy := "sortBy_example" // string |  (optional)
+	sortOrder := "sortOrder_example" // string |  (optional)
+	inputParamMap := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
+	paginatedRequired := true // bool |  (optional)
+	sortOrders := []openapiclient.SortOrder{*openapiclient.NewSortOrder()} // []SortOrder |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobsAPI.Query(context.Background(), project).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).SortOrders(sortOrders).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.Query``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Query`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.Query`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**project** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiQueryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **jobFilter** | **string** |  | 
+ **jobExactFilter** | **string** |  | 
+ **projFilter** | **string** |  | 
+ **groupPath** | **string** |  | 
+ **groupPathExact** | **string** |  | 
+ **descFilter** | **string** |  | 
+ **loglevelFilter** | **string** |  | 
+ **idlist** | **string** |  | 
+ **scheduledFilter** | **bool** |  | 
+ **scheduleEnabledFilter** | **bool** |  | 
+ **executionEnabledFilter** | **bool** |  | 
+ **serverNodeUUIDFilter** | **string** |  | 
+ **daysAhead** | **int32** |  | 
+ **runJobLaterFilter** | **bool** |  | 
+ **max** | **int32** |  | 
+ **offset** | **int32** |  | 
+ **sortBy** | **string** |  | 
+ **sortOrder** | **string** |  | 
+ **inputParamMap** | **map[string]interface{}** |  | 
+ **paginatedRequired** | **bool** |  | 
+ **sortOrders** | [**[]SortOrder**](SortOrder.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 
