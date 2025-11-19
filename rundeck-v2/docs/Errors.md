@@ -4,8 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllErrors** | Pointer to [**[]ObjectError**](ObjectError.md) |  | [optional] 
-**FieldError** | Pointer to [**FieldError**](FieldError.md) |  | [optional] 
+**ErrorCount** | Pointer to **int32** |  | [optional] 
 **ObjectName** | Pointer to **string** |  | [optional] 
 **NestedPath** | Pointer to **string** |  | [optional] 
 **GlobalErrorCount** | Pointer to **int32** |  | [optional] 
@@ -13,7 +12,8 @@ Name | Type | Description | Notes
 **GlobalError** | Pointer to [**ObjectError**](ObjectError.md) |  | [optional] 
 **FieldErrorCount** | Pointer to **int32** |  | [optional] 
 **FieldErrors** | Pointer to [**[]FieldError**](FieldError.md) |  | [optional] 
-**ErrorCount** | Pointer to **int32** |  | [optional] 
+**AllErrors** | Pointer to [**[]ObjectError**](ObjectError.md) |  | [optional] 
+**FieldError** | Pointer to [**FieldError**](FieldError.md) |  | [optional] 
 
 ## Methods
 
@@ -34,55 +34,30 @@ NewErrorsWithDefaults instantiates a new Errors object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAllErrors
+### GetErrorCount
 
-`func (o *Errors) GetAllErrors() []ObjectError`
+`func (o *Errors) GetErrorCount() int32`
 
-GetAllErrors returns the AllErrors field if non-nil, zero value otherwise.
+GetErrorCount returns the ErrorCount field if non-nil, zero value otherwise.
 
-### GetAllErrorsOk
+### GetErrorCountOk
 
-`func (o *Errors) GetAllErrorsOk() (*[]ObjectError, bool)`
+`func (o *Errors) GetErrorCountOk() (*int32, bool)`
 
-GetAllErrorsOk returns a tuple with the AllErrors field if it's non-nil, zero value otherwise
+GetErrorCountOk returns a tuple with the ErrorCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllErrors
+### SetErrorCount
 
-`func (o *Errors) SetAllErrors(v []ObjectError)`
+`func (o *Errors) SetErrorCount(v int32)`
 
-SetAllErrors sets AllErrors field to given value.
+SetErrorCount sets ErrorCount field to given value.
 
-### HasAllErrors
+### HasErrorCount
 
-`func (o *Errors) HasAllErrors() bool`
+`func (o *Errors) HasErrorCount() bool`
 
-HasAllErrors returns a boolean if a field has been set.
-
-### GetFieldError
-
-`func (o *Errors) GetFieldError() FieldError`
-
-GetFieldError returns the FieldError field if non-nil, zero value otherwise.
-
-### GetFieldErrorOk
-
-`func (o *Errors) GetFieldErrorOk() (*FieldError, bool)`
-
-GetFieldErrorOk returns a tuple with the FieldError field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFieldError
-
-`func (o *Errors) SetFieldError(v FieldError)`
-
-SetFieldError sets FieldError field to given value.
-
-### HasFieldError
-
-`func (o *Errors) HasFieldError() bool`
-
-HasFieldError returns a boolean if a field has been set.
+HasErrorCount returns a boolean if a field has been set.
 
 ### GetObjectName
 
@@ -259,30 +234,55 @@ SetFieldErrors sets FieldErrors field to given value.
 
 HasFieldErrors returns a boolean if a field has been set.
 
-### GetErrorCount
+### GetAllErrors
 
-`func (o *Errors) GetErrorCount() int32`
+`func (o *Errors) GetAllErrors() []ObjectError`
 
-GetErrorCount returns the ErrorCount field if non-nil, zero value otherwise.
+GetAllErrors returns the AllErrors field if non-nil, zero value otherwise.
 
-### GetErrorCountOk
+### GetAllErrorsOk
 
-`func (o *Errors) GetErrorCountOk() (*int32, bool)`
+`func (o *Errors) GetAllErrorsOk() (*[]ObjectError, bool)`
 
-GetErrorCountOk returns a tuple with the ErrorCount field if it's non-nil, zero value otherwise
+GetAllErrorsOk returns a tuple with the AllErrors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetErrorCount
+### SetAllErrors
 
-`func (o *Errors) SetErrorCount(v int32)`
+`func (o *Errors) SetAllErrors(v []ObjectError)`
 
-SetErrorCount sets ErrorCount field to given value.
+SetAllErrors sets AllErrors field to given value.
 
-### HasErrorCount
+### HasAllErrors
 
-`func (o *Errors) HasErrorCount() bool`
+`func (o *Errors) HasAllErrors() bool`
 
-HasErrorCount returns a boolean if a field has been set.
+HasAllErrors returns a boolean if a field has been set.
+
+### GetFieldError
+
+`func (o *Errors) GetFieldError() FieldError`
+
+GetFieldError returns the FieldError field if non-nil, zero value otherwise.
+
+### GetFieldErrorOk
+
+`func (o *Errors) GetFieldErrorOk() (*FieldError, bool)`
+
+GetFieldErrorOk returns a tuple with the FieldError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFieldError
+
+`func (o *Errors) SetFieldError(v FieldError)`
+
+SetFieldError sets FieldError field to given value.
+
+### HasFieldError
+
+`func (o *Errors) HasFieldError() bool`
+
+HasFieldError returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

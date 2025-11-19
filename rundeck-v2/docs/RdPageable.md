@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
-**Max** | Pointer to **int32** |  | [optional] 
 **SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
+**Max** | Pointer to **int32** |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -53,31 +53,6 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### GetMax
-
-`func (o *RdPageable) GetMax() int32`
-
-GetMax returns the Max field if non-nil, zero value otherwise.
-
-### GetMaxOk
-
-`func (o *RdPageable) GetMaxOk() (*int32, bool)`
-
-GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMax
-
-`func (o *RdPageable) SetMax(v int32)`
-
-SetMax sets Max field to given value.
-
-### HasMax
-
-`func (o *RdPageable) HasMax() bool`
-
-HasMax returns a boolean if a field has been set.
-
 ### GetSortOrders
 
 `func (o *RdPageable) GetSortOrders() []SortOrder`
@@ -102,6 +77,31 @@ SetSortOrders sets SortOrders field to given value.
 `func (o *RdPageable) HasSortOrders() bool`
 
 HasSortOrders returns a boolean if a field has been set.
+
+### GetMax
+
+`func (o *RdPageable) GetMax() int32`
+
+GetMax returns the Max field if non-nil, zero value otherwise.
+
+### GetMaxOk
+
+`func (o *RdPageable) GetMaxOk() (*int32, bool)`
+
+GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMax
+
+`func (o *RdPageable) SetMax(v int32)`
+
+SetMax sets Max field to given value.
+
+### HasMax
+
+`func (o *RdPageable) HasMax() bool`
+
+HasMax returns a boolean if a field has been set.
 
 ### GetOffset
 

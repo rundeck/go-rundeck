@@ -4,11 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Error** | Pointer to **bool** | Always true to indicate an error response | [optional] 
-**Apiversion** | Pointer to **int32** | Rundeck / Runbook Automation API version number | [optional] 
-**ErrorCode** | Pointer to **string** | Error code (HTTP status or custom error code) | [optional] 
-**Message** | Pointer to **string** | Human-readable error message | [optional] 
-**ErrorMessage** | Pointer to **string** |  | [optional] 
+**Error** | Pointer to **bool** |  | [optional] 
+**Apiversion** | Pointer to **int32** |  | [optional] 
+**ErrorCode** | Pointer to **string** |  | [optional] 
+**Message** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -128,31 +127,6 @@ SetMessage sets Message field to given value.
 `func (o *ApiErrorResponse) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
-
-### GetErrorMessage
-
-`func (o *ApiErrorResponse) GetErrorMessage() string`
-
-GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
-
-### GetErrorMessageOk
-
-`func (o *ApiErrorResponse) GetErrorMessageOk() (*string, bool)`
-
-GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetErrorMessage
-
-`func (o *ApiErrorResponse) SetErrorMessage(v string)`
-
-SetErrorMessage sets ErrorMessage field to given value.
-
-### HasErrorMessage
-
-`func (o *ApiErrorResponse) HasErrorMessage() bool`
-
-HasErrorMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

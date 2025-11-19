@@ -65,6 +65,8 @@ type APIClient struct {
 
 	DefaultAPI *DefaultAPIService
 
+	ExecutionModeAPI *ExecutionModeAPIService
+
 	HealthAPI *HealthAPIService
 
 	HistoryAPI *HistoryAPIService
@@ -128,6 +130,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ClusterAPI = (*ClusterAPIService)(&c.common)
 	c.ConfigurationAPI = (*ConfigurationAPIService)(&c.common)
 	c.DefaultAPI = (*DefaultAPIService)(&c.common)
+	c.ExecutionModeAPI = (*ExecutionModeAPIService)(&c.common)
 	c.HealthAPI = (*HealthAPIService)(&c.common)
 	c.HistoryAPI = (*HistoryAPIService)(&c.common)
 	c.JobExecutionsAPI = (*JobExecutionsAPIService)(&c.common)

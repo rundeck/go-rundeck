@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
-**Max** | Pointer to **int32** |  | [optional] 
 **SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
+**Max** | Pointer to **int32** |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **string** |  | [optional] 
@@ -71,31 +71,6 @@ SetErrors sets Errors field to given value.
 
 HasErrors returns a boolean if a field has been set.
 
-### GetMax
-
-`func (o *RdJobQueryInput) GetMax() int32`
-
-GetMax returns the Max field if non-nil, zero value otherwise.
-
-### GetMaxOk
-
-`func (o *RdJobQueryInput) GetMaxOk() (*int32, bool)`
-
-GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMax
-
-`func (o *RdJobQueryInput) SetMax(v int32)`
-
-SetMax sets Max field to given value.
-
-### HasMax
-
-`func (o *RdJobQueryInput) HasMax() bool`
-
-HasMax returns a boolean if a field has been set.
-
 ### GetSortOrders
 
 `func (o *RdJobQueryInput) GetSortOrders() []SortOrder`
@@ -120,6 +95,31 @@ SetSortOrders sets SortOrders field to given value.
 `func (o *RdJobQueryInput) HasSortOrders() bool`
 
 HasSortOrders returns a boolean if a field has been set.
+
+### GetMax
+
+`func (o *RdJobQueryInput) GetMax() int32`
+
+GetMax returns the Max field if non-nil, zero value otherwise.
+
+### GetMaxOk
+
+`func (o *RdJobQueryInput) GetMaxOk() (*int32, bool)`
+
+GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMax
+
+`func (o *RdJobQueryInput) SetMax(v int32)`
+
+SetMax sets Max field to given value.
+
+### HasMax
+
+`func (o *RdJobQueryInput) HasMax() bool`
+
+HasMax returns a boolean if a field has been set.
 
 ### GetOffset
 
