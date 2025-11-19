@@ -3,7 +3,9 @@ name: Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
+      - 'v*.*.*'           # Root tags like v1.0.0
+      - 'rundeck/v*.*.*'   # Legacy module tags
+      - 'rundeck-v2/v*.*.*' # V2 module tags
 
 permissions:
   contents: write
@@ -23,43 +25,94 @@ jobs:
         with:
           go-version: '1.24'
 
-      - name: Get version from tag
+      - name: Extract module and version from tag
         id: version
         run: |
-          echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-          echo "VERSION_NUMBER=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "Full tag: $TAG"
+          
+          # Check if tag has module prefix
+          if [[ "$TAG" == */* ]]; then
+            # Module-prefixed tag: rundeck-v2/v1.2.0
+            MODULE="${TAG%/v*}"
+            VERSION="${TAG#*/}"
+            VERSION_NUMBER="${VERSION#v}"
+            IS_MODULE_TAG="true"
+          else
+            # Root tag: v1.0.0 (legacy, for both modules)
+            MODULE="root"
+            VERSION="$TAG"
+            VERSION_NUMBER="${TAG#v}"
+            IS_MODULE_TAG="false"
+          fi
+          
+          echo "MODULE=$MODULE" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION_NUMBER=$VERSION_NUMBER" >> $GITHUB_OUTPUT
+          echo "FULL_TAG=$TAG" >> $GITHUB_OUTPUT
+          echo "IS_MODULE_TAG=$IS_MODULE_TAG" >> $GITHUB_OUTPUT
+          
+          echo "Detected: module=$MODULE, version=$VERSION"
 
       - name: Verify SDK builds
         run: |
-          # Test legacy SDK (always present)
-          if [ -d "rundeck" ]; then
+          MODULE="${{ steps.version.outputs.MODULE }}"
+          
+          # For module-specific tags, only build that module
+          if [ "$MODULE" = "rundeck" ]; then
             echo "Building legacy rundeck SDK..."
             cd rundeck
             go mod download
             go mod verify
             go build
             cd ..
-          fi
-          
-          # Test v2 SDK (if present)
-          if [ -d "rundeck-v2" ]; then
+          elif [ "$MODULE" = "rundeck-v2" ]; then
             echo "Building rundeck-v2 SDK..."
             cd rundeck-v2
             go mod download
             go mod verify
             go build
-            go test -v ./... || true  # Tests might not all pass yet
+            go test -v ./... || true
             cd ..
+          else
+            # Root tag - build all modules
+            if [ -d "rundeck" ]; then
+              echo "Building legacy rundeck SDK..."
+              cd rundeck
+              go mod download
+              go mod verify
+              go build
+              cd ..
+            fi
+            
+            if [ -d "rundeck-v2" ]; then
+              echo "Building rundeck-v2 SDK..."
+              cd rundeck-v2
+              go mod download
+              go mod verify
+              go build
+              go test -v ./... || true
+              cd ..
+            fi
           fi
 
       - name: Generate changelog
         id: changelog
         run: |
-          # Get commits since last tag
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          MODULE="${{ steps.version.outputs.MODULE }}"
+          FULL_TAG="${{ steps.version.outputs.FULL_TAG }}"
+          
+          # Get previous tag for this module (or any tag if root)
+          if [ "$MODULE" = "root" ]; then
+            PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          else
+            # Find previous tag for this specific module
+            PREVIOUS_TAG=$(git tag -l "${MODULE}/v*" --sort=-version:refname | sed -n '2p' || echo "")
+          fi
+          
           if [ -z "$PREVIOUS_TAG" ]; then
-            # First release, get all commits
-            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
+            # First release for this module, get all commits
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges | head -20)
           else
             # Get commits between tags
             CHANGELOG=$(git log ${PREVIOUS_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
@@ -77,68 +130,124 @@ jobs:
 
       - name: Create release body
         run: |
-          # Detect which SDKs are present
-          HAS_V2=""
-          if [ -d "rundeck-v2" ]; then
-            HAS_V2="true"
-          fi
+          MODULE="${{ steps.version.outputs.MODULE }}"
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          FULL_TAG="${{ steps.version.outputs.FULL_TAG }}"
           
-          # Create release notes based on what's available
-          cat > /tmp/release_body.md << 'EOF'
-          ## Rundeck Go SDK ${{ steps.version.outputs.VERSION }}
+          if [ "$MODULE" = "rundeck-v2" ]; then
+            # rundeck-v2 specific release
+            cat > /tmp/release_body.md << 'EOFBODY'
+          ## Rundeck SDK v2 - ${{ steps.version.outputs.VERSION }}
           
-          Go SDK for the Rundeck / Runbook Automation API.
+          Complete, production-ready SDK generated from OpenAPI specification (API v56).
           
-          ### Installation
+          ### ✨ Features
+          
+          - ✅ **196 API endpoints** - Complete API coverage
+          - ✅ **Runner API** - Full runner management with correct error handling
+          - ✅ **Job Tags** (Enterprise v46+)
+            - `GET /job/{id}/tags` - Get job tags
+            - `GET /project/{project}/jobTags/query` - Query project job tags
+          - ✅ **Execution Mode Scheduling**
+            - Project-level: `/project/{project}/disable|enable/later`
+            - System-level: `/system/executions/disable|enable/later`
+          - ✅ **Go 1.20+ compatibility**
+          
+          ### 📦 Installation
           
           ```bash
-          EOF
-          
-          # Add v2 installation if present
-          if [ -n "$HAS_V2" ]; then
-            cat >> /tmp/release_body.md << 'EOF'
-          # For rundeck-v2 (recommended)
           go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}
-          
-          EOF
-          fi
-          
-          # Add v1 installation (always present)
-          cat >> /tmp/release_body.md << 'EOF'
-          # For legacy rundeck package
-          go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
           ```
           
-          ### Changes in this release
+          ### 📝 Changes in this release
           
           ${{ steps.changelog.outputs.CHANGELOG }}
           
-          ### Module Structure
+          ### 📚 Documentation
           
-          - **rundeck/** - Legacy SDK (AutoRest-based)
-          EOF
-          
-          # Add v2 info if present
-          if [ -n "$HAS_V2" ]; then
-            cat >> /tmp/release_body.md << 'EOF'
-          - **rundeck-v2/** - Modern SDK (OpenAPI Generator-based, API v56) ⭐
-          EOF
-          fi
-          
-          cat >> /tmp/release_body.md << 'EOF'
-          
-          ### Documentation
-          
+          - [SDK README](https://github.com/rundeck/go-rundeck/tree/master/rundeck-v2)
           - [Rundeck API Documentation](https://docs.rundeck.com/docs/api/rundeck-api.html)
-          - [RELEASING.md](RELEASING.md) - Release process documentation
+          - [Examples](https://github.com/rundeck/go-rundeck/tree/master/rundeck-v2/examples)
           
-          EOF
+          EOFBODY
+          
+          elif [ "$MODULE" = "rundeck" ]; then
+            # Legacy rundeck specific release
+            cat > /tmp/release_body.md << 'EOFBODY'
+          ## Rundeck SDK (Legacy) - ${{ steps.version.outputs.VERSION }}
+          
+          ⚠️ **Deprecated**: Please use `rundeck-v2` for new projects.
+          
+          This is the legacy AutoRest-based SDK. It remains available for backward compatibility but is no longer actively developed.
+          
+          ### 📦 Installation
+          
+          ```bash
+          go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
+          ```
+          
+          ### 🔄 Migration to rundeck-v2
+          
+          We recommend migrating to the new SDK:
+          
+          ```go
+          // Old
+          import "github.com/rundeck/go-rundeck/rundeck"
+          
+          // New
+          import "github.com/rundeck/go-rundeck/rundeck-v2"
+          ```
+          
+          See [rundeck-v2 README](https://github.com/rundeck/go-rundeck/tree/master/rundeck-v2) for migration guide.
+          
+          ### 📝 Changes in this release
+          
+          ${{ steps.changelog.outputs.CHANGELOG }}
+          
+          EOFBODY
+          
+          else
+            # Root tag - release for both modules
+            cat > /tmp/release_body.md << 'EOFBODY'
+          ## Rundeck Go SDK ${{ steps.version.outputs.VERSION }}
+          
+          Go SDKs for the Rundeck / Runbook Automation API.
+          
+          ### 📦 Installation
+          
+          **rundeck-v2 (Recommended):**
+          ```bash
+          go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}
+          ```
+          
+          **rundeck (Legacy):**
+          ```bash
+          go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}
+          ```
+          
+          ### 📦 Module Structure
+          
+          - **rundeck-v2/** - Modern SDK (OpenAPI Generator, API v56) ⭐ Recommended
+          - **rundeck/** - Legacy SDK (AutoRest-based) ⚠️ Deprecated
+          
+          ### 📝 Changes in this release
+          
+          ${{ steps.changelog.outputs.CHANGELOG }}
+          
+          ### 📚 Documentation
+          
+          - [rundeck-v2 README](https://github.com/rundeck/go-rundeck/tree/master/rundeck-v2)
+          - [Rundeck API Documentation](https://docs.rundeck.com/docs/api/rundeck-api.html)
+          - [RELEASING.md](RELEASING.md)
+          
+          EOFBODY
+          fi
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.version.outputs.VERSION }}
-          name: Release ${{ steps.version.outputs.VERSION }}
+          tag: ${{ steps.version.outputs.FULL_TAG }}
+          name: ${{ steps.version.outputs.MODULE == 'rundeck-v2' && format('rundeck-v2 {0}', steps.version.outputs.VERSION) || steps.version.outputs.MODULE == 'rundeck' && format('rundeck {0}', steps.version.outputs.VERSION) || format('Release {0}', steps.version.outputs.VERSION) }}
           bodyFile: /tmp/release_body.md
           draft: false
           prerelease: false
@@ -146,16 +255,30 @@ jobs:
 
       - name: Update Go proxy
         run: |
-          # Trigger Go proxy to cache the new version
-          echo "✅ Release ${{ steps.version.outputs.VERSION }} created successfully!"
+          MODULE="${{ steps.version.outputs.MODULE }}"
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          FULL_TAG="${{ steps.version.outputs.FULL_TAG }}"
           
-          # Update proxy for rundeck (v1)
-          curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck/@v/${{ steps.version.outputs.VERSION }}.info" || true
-          echo "📦 rundeck: go get github.com/rundeck/go-rundeck/rundeck@${{ steps.version.outputs.VERSION }}"
+          echo "✅ Release $FULL_TAG created successfully!"
           
-          # Update proxy for rundeck-v2 (if present)
-          if [ -d "rundeck-v2" ]; then
-            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/${{ steps.version.outputs.VERSION }}.info" || true
-            echo "📦 rundeck-v2: go get github.com/rundeck/go-rundeck/rundeck-v2@${{ steps.version.outputs.VERSION }}"
+          if [ "$MODULE" = "rundeck" ]; then
+            # Update proxy for rundeck module
+            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck/@v/$VERSION.info" || true
+            echo "📦 rundeck: go get github.com/rundeck/go-rundeck/rundeck@$VERSION"
+            
+          elif [ "$MODULE" = "rundeck-v2" ]; then
+            # Update proxy for rundeck-v2 module
+            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/$VERSION.info" || true
+            echo "📦 rundeck-v2: go get github.com/rundeck/go-rundeck/rundeck-v2@$VERSION"
+            
+          else
+            # Root tag - update both
+            curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck/@v/$VERSION.info" || true
+            echo "📦 rundeck: go get github.com/rundeck/go-rundeck/rundeck@$VERSION"
+            
+            if [ -d "rundeck-v2" ]; then
+              curl -f "https://proxy.golang.org/github.com/rundeck/go-rundeck/rundeck-v2/@v/$VERSION.info" || true
+              echo "📦 rundeck-v2: go get github.com/rundeck/go-rundeck/rundeck-v2@$VERSION"
+            fi
           fi
 
