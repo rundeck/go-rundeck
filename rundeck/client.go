@@ -3759,6 +3759,337 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
             return
         }
 
+    // ProjectACLPolicyCreate sends the project acl policy create request.
+        // Parameters:
+            // project - project name
+            // policyName - policy file name
+    func (client BaseClient) ProjectACLPolicyCreate(ctx context.Context, project string, policyName string, projectACLPolicyCreateRequest *SystemACLPolicyCreateRequest) (result SetObject, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectACLPolicyCreate")
+            defer func() {
+                sc := -1
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+                if err := validation.Validate([]validation.Validation{
+                { TargetValue: projectACLPolicyCreateRequest,
+                 Constraints: []validation.Constraint{	{Target: "projectACLPolicyCreateRequest", Name: validation.Null, Rule: false ,
+                Chain: []validation.Constraint{	{Target: "projectACLPolicyCreateRequest.Contents", Name: validation.Null, Rule: true, Chain: nil },
+                }}}}}); err != nil {
+                return result, validation.NewError("rundeck.BaseClient", "ProjectACLPolicyCreate", err.Error())
+                }
+                    req, err := client.ProjectACLPolicyCreatePreparer(ctx, project, policyName, projectACLPolicyCreateRequest)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyCreate", nil , "Failure preparing request")
+        return
+        }
+                resp, err := client.ProjectACLPolicyCreateSender(req)
+                if err != nil {
+                result.Response = autorest.Response{Response: resp}
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyCreate", resp, "Failure sending request")
+                return
+                }
+                result, err = client.ProjectACLPolicyCreateResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyCreate", resp, "Failure responding to request")
+                }
+        return
+        }
+        // ProjectACLPolicyCreatePreparer prepares the ProjectACLPolicyCreate request.
+        func (client BaseClient) ProjectACLPolicyCreatePreparer(ctx context.Context, project string, policyName string, projectACLPolicyCreateRequest *SystemACLPolicyCreateRequest) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "project": autorest.Encode("path",project),
+                "policyName": autorest.Encode("path",policyName),
+                }
+            preparer := autorest.CreatePreparer(
+        autorest.AsContentType("application/json; charset=utf-8"),
+        autorest.AsPost(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/project/{project}/acl/{policyName}",pathParameters))
+                if projectACLPolicyCreateRequest != nil {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithJSON(projectACLPolicyCreateRequest))
+                }
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+        // ProjectACLPolicyCreateSender sends the ProjectACLPolicyCreate request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) ProjectACLPolicyCreateSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+    // ProjectACLPolicyCreateResponder handles the response to the ProjectACLPolicyCreate request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) ProjectACLPolicyCreateResponder(resp *http.Response) (result SetObject, err error) {
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusCreated,http.StatusBadRequest,http.StatusConflict),
+        autorest.ByUnmarshallingJSON(&result.Value),
+        autorest.ByClosing())
+        result.Response = autorest.Response{Response: resp}
+            return
+        }
+    // ProjectACLPolicyDelete sends the project acl policy delete request.
+        // Parameters:
+            // project - project name
+            // policyName - policy file name
+    func (client BaseClient) ProjectACLPolicyDelete(ctx context.Context, project string, policyName string) (result autorest.Response, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectACLPolicyDelete")
+            defer func() {
+                sc := -1
+                if result.Response != nil {
+                    sc = result.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+            req, err := client.ProjectACLPolicyDeletePreparer(ctx, project, policyName)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyDelete", nil , "Failure preparing request")
+        return
+        }
+                resp, err := client.ProjectACLPolicyDeleteSender(req)
+                if err != nil {
+                result.Response = resp
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyDelete", resp, "Failure sending request")
+                return
+                }
+                result, err = client.ProjectACLPolicyDeleteResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyDelete", resp, "Failure responding to request")
+                }
+        return
+        }
+        // ProjectACLPolicyDeletePreparer prepares the ProjectACLPolicyDelete request.
+        func (client BaseClient) ProjectACLPolicyDeletePreparer(ctx context.Context, project string, policyName string) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "project": autorest.Encode("path",project),
+                "policyName": autorest.Encode("path",policyName),
+                }
+            preparer := autorest.CreatePreparer(
+        autorest.AsDelete(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/project/{project}/acl/{policyName}",pathParameters))
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+        // ProjectACLPolicyDeleteSender sends the ProjectACLPolicyDelete request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) ProjectACLPolicyDeleteSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+    // ProjectACLPolicyDeleteResponder handles the response to the ProjectACLPolicyDelete request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) ProjectACLPolicyDeleteResponder(resp *http.Response) (result autorest.Response, err error) {
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNoContent,http.StatusNotFound),
+        autorest.ByClosing())
+        result.Response = resp
+            return
+        }
+    // ProjectACLPolicyGet sends the project acl policy get request.
+        // Parameters:
+            // project - project name
+            // policyName - policy file name
+    func (client BaseClient) ProjectACLPolicyGet(ctx context.Context, project string, policyName string) (result ACLPolicyResponse, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectACLPolicyGet")
+            defer func() {
+                sc := -1
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+            req, err := client.ProjectACLPolicyGetPreparer(ctx, project, policyName)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyGet", nil , "Failure preparing request")
+        return
+        }
+                resp, err := client.ProjectACLPolicyGetSender(req)
+                if err != nil {
+                result.Response = autorest.Response{Response: resp}
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyGet", resp, "Failure sending request")
+                return
+                }
+                result, err = client.ProjectACLPolicyGetResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyGet", resp, "Failure responding to request")
+                }
+        return
+        }
+        // ProjectACLPolicyGetPreparer prepares the ProjectACLPolicyGet request.
+        func (client BaseClient) ProjectACLPolicyGetPreparer(ctx context.Context, project string, policyName string) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "project": autorest.Encode("path",project),
+                "policyName": autorest.Encode("path",policyName),
+                }
+            preparer := autorest.CreatePreparer(
+        autorest.AsGet(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/project/{project}/acl/{policyName}",pathParameters))
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+        // ProjectACLPolicyGetSender sends the ProjectACLPolicyGet request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) ProjectACLPolicyGetSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+    // ProjectACLPolicyGetResponder handles the response to the ProjectACLPolicyGet request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) ProjectACLPolicyGetResponder(resp *http.Response) (result ACLPolicyResponse, err error) {
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNotFound),
+        autorest.ByUnmarshallingJSON(&result),
+        autorest.ByClosing())
+        result.Response = autorest.Response{Response: resp}
+            return
+        }
+    // ProjectACLPolicyList sends the project acl policy list request.
+        // Parameters:
+            // project - project name
+    func (client BaseClient) ProjectACLPolicyList(ctx context.Context, project string) (result ACLList, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectACLPolicyList")
+            defer func() {
+                sc := -1
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+            req, err := client.ProjectACLPolicyListPreparer(ctx, project)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyList", nil , "Failure preparing request")
+        return
+        }
+                resp, err := client.ProjectACLPolicyListSender(req)
+                if err != nil {
+                result.Response = autorest.Response{Response: resp}
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyList", resp, "Failure sending request")
+                return
+                }
+                result, err = client.ProjectACLPolicyListResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyList", resp, "Failure responding to request")
+                }
+        return
+        }
+        // ProjectACLPolicyListPreparer prepares the ProjectACLPolicyList request.
+        func (client BaseClient) ProjectACLPolicyListPreparer(ctx context.Context, project string) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "project": autorest.Encode("path",project),
+                }
+            preparer := autorest.CreatePreparer(
+        autorest.AsGet(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/project/{project}/acl/",pathParameters))
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+        // ProjectACLPolicyListSender sends the ProjectACLPolicyList request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) ProjectACLPolicyListSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+    // ProjectACLPolicyListResponder handles the response to the ProjectACLPolicyList request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) ProjectACLPolicyListResponder(resp *http.Response) (result ACLList, err error) {
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNotFound),
+        autorest.ByUnmarshallingJSON(&result),
+        autorest.ByClosing())
+        result.Response = autorest.Response{Response: resp}
+            return
+        }
+    // ProjectACLPolicyUpdate sends the project acl policy update request.
+        // Parameters:
+            // project - project name
+            // policyName - policy file name
+    func (client BaseClient) ProjectACLPolicyUpdate(ctx context.Context, project string, policyName string, projectACLPolicyUpdateRequest *SystemACLPolicyUpdateRequest) (result ACLPolicyResponse, err error) {
+        if tracing.IsEnabled() {
+            ctx = tracing.StartSpan(ctx, fqdn + "/BaseClient.ProjectACLPolicyUpdate")
+            defer func() {
+                sc := -1
+                if result.Response.Response != nil {
+                    sc = result.Response.Response.StatusCode
+                }
+                tracing.EndSpan(ctx, sc, err)
+            }()
+        }
+                if err := validation.Validate([]validation.Validation{
+                { TargetValue: projectACLPolicyUpdateRequest,
+                 Constraints: []validation.Constraint{	{Target: "projectACLPolicyUpdateRequest", Name: validation.Null, Rule: false ,
+                Chain: []validation.Constraint{	{Target: "projectACLPolicyUpdateRequest.Contents", Name: validation.Null, Rule: true, Chain: nil },
+                }}}}}); err != nil {
+                return result, validation.NewError("rundeck.BaseClient", "ProjectACLPolicyUpdate", err.Error())
+                }
+                    req, err := client.ProjectACLPolicyUpdatePreparer(ctx, project, policyName, projectACLPolicyUpdateRequest)
+        if err != nil {
+        err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyUpdate", nil , "Failure preparing request")
+        return
+        }
+                resp, err := client.ProjectACLPolicyUpdateSender(req)
+                if err != nil {
+                result.Response = autorest.Response{Response: resp}
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyUpdate", resp, "Failure sending request")
+                return
+                }
+                result, err = client.ProjectACLPolicyUpdateResponder(resp)
+                if err != nil {
+                err = autorest.NewErrorWithError(err, "rundeck.BaseClient", "ProjectACLPolicyUpdate", resp, "Failure responding to request")
+                }
+        return
+        }
+        // ProjectACLPolicyUpdatePreparer prepares the ProjectACLPolicyUpdate request.
+        func (client BaseClient) ProjectACLPolicyUpdatePreparer(ctx context.Context, project string, policyName string, projectACLPolicyUpdateRequest *SystemACLPolicyUpdateRequest) (*http.Request, error) {
+                pathParameters := map[string]interface{} {
+                "project": autorest.Encode("path",project),
+                "policyName": autorest.Encode("path",policyName),
+                }
+            preparer := autorest.CreatePreparer(
+        autorest.AsContentType("application/json; charset=utf-8"),
+        autorest.AsPut(),
+        autorest.WithBaseURL(client.BaseURI),
+        autorest.WithPathParameters("/project/{project}/acl/{policyName}",pathParameters))
+                if projectACLPolicyUpdateRequest != nil {
+                preparer = autorest.DecoratePreparer(preparer,
+                autorest.WithJSON(projectACLPolicyUpdateRequest))
+                }
+        return preparer.Prepare((&http.Request{}).WithContext(ctx))
+        }
+        // ProjectACLPolicyUpdateSender sends the ProjectACLPolicyUpdate request. The method will close the
+        // http.Response Body if it receives an error.
+        func (client BaseClient) ProjectACLPolicyUpdateSender(req *http.Request) (*http.Response, error) {
+                return autorest.SendWithSender(client, req,
+                autorest.DoRetryForStatusCodes(client.RetryAttempts, client.RetryDuration, autorest.StatusCodesForRetry...))
+                }
+    // ProjectACLPolicyUpdateResponder handles the response to the ProjectACLPolicyUpdate request. The method always
+    // closes the http.Response Body.
+    func (client BaseClient) ProjectACLPolicyUpdateResponder(resp *http.Response) (result ACLPolicyResponse, err error) {
+        err = autorest.Respond(
+        resp,
+        client.ByInspecting(),
+        azure.WithErrorUnlessStatusCode(http.StatusOK,http.StatusNotFound),
+        autorest.ByUnmarshallingJSON(&result),
+        autorest.ByClosing())
+        result.Response = autorest.Response{Response: resp}
+            return
+        }
     // SystemACLPolicyCreate sends the system acl policy create request.
         // Parameters:
             // policyName - policy file name
@@ -5091,4 +5422,3 @@ func NewWithBaseURI(baseURI string, ) BaseClient {
         result.Response = autorest.Response{Response: resp}
             return
         }
-
