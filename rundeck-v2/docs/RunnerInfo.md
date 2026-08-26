@@ -15,6 +15,9 @@ Name | Type | Description | Notes
 **LastCheckin** | Pointer to **string** |  | [optional] 
 **LastCheckinAlert** | Pointer to **bool** |  | [optional] 
 **RunningOperations** | Pointer to **int32** |  | [optional] 
+**MaxRunningOperations** | Pointer to **int32** |  | [optional] 
+**QueuedOperations** | Pointer to **int32** |  | [optional] 
+**CompletedOperations** | Pointer to **int32** |  | [optional] 
 **Uptime** | Pointer to **int64** |  | [optional] 
 **TagNames** | Pointer to **[]string** |  | [optional] 
 **RunnerAsNodeEnabled** | Pointer to **bool** |  | [optional] 
@@ -319,6 +322,81 @@ SetRunningOperations sets RunningOperations field to given value.
 `func (o *RunnerInfo) HasRunningOperations() bool`
 
 HasRunningOperations returns a boolean if a field has been set.
+
+### GetMaxRunningOperations
+
+`func (o *RunnerInfo) GetMaxRunningOperations() int32`
+
+GetMaxRunningOperations returns the MaxRunningOperations field if non-nil, zero value otherwise.
+
+### GetMaxRunningOperationsOk
+
+`func (o *RunnerInfo) GetMaxRunningOperationsOk() (*int32, bool)`
+
+GetMaxRunningOperationsOk returns a tuple with the MaxRunningOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRunningOperations
+
+`func (o *RunnerInfo) SetMaxRunningOperations(v int32)`
+
+SetMaxRunningOperations sets MaxRunningOperations field to given value.
+
+### HasMaxRunningOperations
+
+`func (o *RunnerInfo) HasMaxRunningOperations() bool`
+
+HasMaxRunningOperations returns a boolean if a field has been set.
+
+### GetQueuedOperations
+
+`func (o *RunnerInfo) GetQueuedOperations() int32`
+
+GetQueuedOperations returns the QueuedOperations field if non-nil, zero value otherwise.
+
+### GetQueuedOperationsOk
+
+`func (o *RunnerInfo) GetQueuedOperationsOk() (*int32, bool)`
+
+GetQueuedOperationsOk returns a tuple with the QueuedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueuedOperations
+
+`func (o *RunnerInfo) SetQueuedOperations(v int32)`
+
+SetQueuedOperations sets QueuedOperations field to given value.
+
+### HasQueuedOperations
+
+`func (o *RunnerInfo) HasQueuedOperations() bool`
+
+HasQueuedOperations returns a boolean if a field has been set.
+
+### GetCompletedOperations
+
+`func (o *RunnerInfo) GetCompletedOperations() int32`
+
+GetCompletedOperations returns the CompletedOperations field if non-nil, zero value otherwise.
+
+### GetCompletedOperationsOk
+
+`func (o *RunnerInfo) GetCompletedOperationsOk() (*int32, bool)`
+
+GetCompletedOperationsOk returns a tuple with the CompletedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletedOperations
+
+`func (o *RunnerInfo) SetCompletedOperations(v int32)`
+
+SetCompletedOperations sets CompletedOperations field to given value.
+
+### HasCompletedOperations
+
+`func (o *RunnerInfo) HasCompletedOperations() bool`
+
+HasCompletedOperations returns a boolean if a field has been set.
 
 ### GetUptime
 

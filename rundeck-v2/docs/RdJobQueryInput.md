@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
 **Max** | Pointer to **int32** |  | [optional] 
-**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
+**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] 
 **SortOrder** | Pointer to **string** |  | [optional] 
-**InputParamMap** | Pointer to **map[string]interface{}** |  | [optional] 
+**InputParamMap** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 **JobFilter** | Pointer to **string** |  | [optional] 
 **JobExactFilter** | Pointer to **string** |  | [optional] 
 **ProjFilter** | Pointer to **string** |  | [optional] 
@@ -96,31 +96,6 @@ SetMax sets Max field to given value.
 
 HasMax returns a boolean if a field has been set.
 
-### GetSortOrders
-
-`func (o *RdJobQueryInput) GetSortOrders() []SortOrder`
-
-GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
-
-### GetSortOrdersOk
-
-`func (o *RdJobQueryInput) GetSortOrdersOk() (*[]SortOrder, bool)`
-
-GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSortOrders
-
-`func (o *RdJobQueryInput) SetSortOrders(v []SortOrder)`
-
-SetSortOrders sets SortOrders field to given value.
-
-### HasSortOrders
-
-`func (o *RdJobQueryInput) HasSortOrders() bool`
-
-HasSortOrders returns a boolean if a field has been set.
-
 ### GetOffset
 
 `func (o *RdJobQueryInput) GetOffset() int32`
@@ -145,6 +120,31 @@ SetOffset sets Offset field to given value.
 `func (o *RdJobQueryInput) HasOffset() bool`
 
 HasOffset returns a boolean if a field has been set.
+
+### GetSortOrders
+
+`func (o *RdJobQueryInput) GetSortOrders() []SortOrder`
+
+GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
+
+### GetSortOrdersOk
+
+`func (o *RdJobQueryInput) GetSortOrdersOk() (*[]SortOrder, bool)`
+
+GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSortOrders
+
+`func (o *RdJobQueryInput) SetSortOrders(v []SortOrder)`
+
+SetSortOrders sets SortOrders field to given value.
+
+### HasSortOrders
+
+`func (o *RdJobQueryInput) HasSortOrders() bool`
+
+HasSortOrders returns a boolean if a field has been set.
 
 ### GetSortBy
 
@@ -198,20 +198,20 @@ HasSortOrder returns a boolean if a field has been set.
 
 ### GetInputParamMap
 
-`func (o *RdJobQueryInput) GetInputParamMap() map[string]interface{}`
+`func (o *RdJobQueryInput) GetInputParamMap() map[string]map[string]interface{}`
 
 GetInputParamMap returns the InputParamMap field if non-nil, zero value otherwise.
 
 ### GetInputParamMapOk
 
-`func (o *RdJobQueryInput) GetInputParamMapOk() (*map[string]interface{}, bool)`
+`func (o *RdJobQueryInput) GetInputParamMapOk() (*map[string]map[string]interface{}, bool)`
 
 GetInputParamMapOk returns a tuple with the InputParamMap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInputParamMap
 
-`func (o *RdJobQueryInput) SetInputParamMap(v map[string]interface{})`
+`func (o *RdJobQueryInput) SetInputParamMap(v map[string]map[string]interface{})`
 
 SetInputParamMap sets InputParamMap field to given value.
 

@@ -28,9 +28,10 @@ func Test_openapi_ROIAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.ROIAPI.GetRoiMetricsDataApi(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.ROIAPI.GetRoiMetricsDataApi(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

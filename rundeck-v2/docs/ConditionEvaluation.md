@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Satisfied** | Pointer to **bool** |  | [optional] 
 **Value** | Pointer to **map[string]interface{}** |  | [optional] 
 **Condition** | Pointer to [**Condition**](Condition.md) |  | [optional] 
-**Error** | Pointer to **map[string]interface{}** |  | [optional] 
+**Error** | Pointer to [**Throwable**](Throwable.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasCondition returns a boolean if a field has been set.
 
 ### GetError
 
-`func (o *ConditionEvaluation) GetError() map[string]interface{}`
+`func (o *ConditionEvaluation) GetError() Throwable`
 
 GetError returns the Error field if non-nil, zero value otherwise.
 
 ### GetErrorOk
 
-`func (o *ConditionEvaluation) GetErrorOk() (*map[string]interface{}, bool)`
+`func (o *ConditionEvaluation) GetErrorOk() (*Throwable, bool)`
 
 GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetError
 
-`func (o *ConditionEvaluation) SetError(v map[string]interface{})`
+`func (o *ConditionEvaluation) SetError(v Throwable)`
 
 SetError sets Error field to given value.
 

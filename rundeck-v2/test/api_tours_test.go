@@ -67,20 +67,6 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ToursAPIService ApiProjectList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		resp, httpRes, err := apiClient.ToursAPI.ApiProjectList(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ToursAPIService ApiProjectLoadResource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -89,6 +75,20 @@ func Test_openapi_ToursAPIService(t *testing.T) {
 		var path string
 
 		resp, httpRes, err := apiClient.ToursAPI.ApiProjectLoadResource(context.Background(), project, path).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ToursAPIService ApiProjectToursList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.ToursAPI.ApiProjectToursList(context.Background(), project).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

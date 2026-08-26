@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Pagination** | Pointer to [**BaseQuery**](BaseQuery.md) |  | [optional] 
 **Max** | Pointer to **int32** |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewBaseQueryWithDefaults instantiates a new BaseQuery object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetPagination
+
+`func (o *BaseQuery) GetPagination() BaseQuery`
+
+GetPagination returns the Pagination field if non-nil, zero value otherwise.
+
+### GetPaginationOk
+
+`func (o *BaseQuery) GetPaginationOk() (*BaseQuery, bool)`
+
+GetPaginationOk returns a tuple with the Pagination field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPagination
+
+`func (o *BaseQuery) SetPagination(v BaseQuery)`
+
+SetPagination sets Pagination field to given value.
+
+### HasPagination
+
+`func (o *BaseQuery) HasPagination() bool`
+
+HasPagination returns a boolean if a field has been set.
 
 ### GetMax
 
