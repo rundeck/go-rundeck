@@ -1,6 +1,6 @@
 # \AdHocAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## ApiRunScriptUrlv14
 
-> map[string]interface{} ApiRunScriptUrlv14(ctx, project).Filter(filter).ArgString(argString).ScriptURL(scriptURL).NodeThreadcount(nodeThreadcount).NodeKeepgoing(nodeKeepgoing).AsUser(asUser).ScriptInterpreter(scriptInterpreter).FileExtension(fileExtension).InterpreterArgsQuoted(interpreterArgsQuoted).ApiRunScriptv14Request(apiRunScriptv14Request).Execute()
+> map[string]interface{} ApiRunScriptUrlv14(ctx, project).Filter(filter).ArgString(argString).ScriptURL(scriptURL).NodeThreadcount(nodeThreadcount).NodeKeepgoing(nodeKeepgoing).AsUser(asUser).ScriptInterpreter(scriptInterpreter).FileExtension(fileExtension).InterpreterArgsQuoted(interpreterArgsQuoted).ApiRunScriptv14Request1(apiRunScriptv14Request1).Execute()
 
 Run Adhoc Script URL
 
@@ -123,11 +123,11 @@ func main() {
 	scriptInterpreter := "scriptInterpreter_example" // string | a command to use to run the script (optional)
 	fileExtension := "fileExtension_example" // string | extension of the script file on the remote node (since v14) (optional)
 	interpreterArgsQuoted := true // bool | if true, the script file and arguments will be quoted as the last argument to the `scriptInterpreter` (optional)
-	apiRunScriptv14Request := *openapiclient.NewApiRunScriptv14Request() // ApiRunScriptv14Request | Adhoc Script URL Request (optional)
+	apiRunScriptv14Request1 := *openapiclient.NewApiRunScriptv14Request1() // ApiRunScriptv14Request1 | Adhoc Script URL Request (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AdHocAPI.ApiRunScriptUrlv14(context.Background(), project).Filter(filter).ArgString(argString).ScriptURL(scriptURL).NodeThreadcount(nodeThreadcount).NodeKeepgoing(nodeKeepgoing).AsUser(asUser).ScriptInterpreter(scriptInterpreter).FileExtension(fileExtension).InterpreterArgsQuoted(interpreterArgsQuoted).ApiRunScriptv14Request(apiRunScriptv14Request).Execute()
+	resp, r, err := apiClient.AdHocAPI.ApiRunScriptUrlv14(context.Background(), project).Filter(filter).ArgString(argString).ScriptURL(scriptURL).NodeThreadcount(nodeThreadcount).NodeKeepgoing(nodeKeepgoing).AsUser(asUser).ScriptInterpreter(scriptInterpreter).FileExtension(fileExtension).InterpreterArgsQuoted(interpreterArgsQuoted).ApiRunScriptv14Request1(apiRunScriptv14Request1).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AdHocAPI.ApiRunScriptUrlv14``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
  **scriptInterpreter** | **string** | a command to use to run the script | 
  **fileExtension** | **string** | extension of the script file on the remote node (since v14) | 
  **interpreterArgsQuoted** | **bool** | if true, the script file and arguments will be quoted as the last argument to the &#x60;scriptInterpreter&#x60; | 
- **apiRunScriptv14Request** | [**ApiRunScriptv14Request**](ApiRunScriptv14Request.md) | Adhoc Script URL Request | 
+ **apiRunScriptv14Request1** | [**ApiRunScriptv14Request1**](ApiRunScriptv14Request1.md) | Adhoc Script URL Request | 
 
 ### Return type
 

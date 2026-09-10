@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Valid** | Pointer to **bool** |  | [optional] 
-**Messages** | Pointer to **map[string][]string** | Mapping of input key to list of validation error messages | [optional] 
+**Messages** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 

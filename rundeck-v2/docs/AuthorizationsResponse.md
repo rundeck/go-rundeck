@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthorizationContext** | **map[string]interface{}** |  | 
-**Resource** | **map[string]interface{}** |  | 
+**AuthorizationContext** | [**AuthorizationsResponseAuthorizationContext**](AuthorizationsResponseAuthorizationContext.md) |  | 
+**Resource** | [**AuthorizationsResponseResource**](AuthorizationsResponseResource.md) |  | 
 **ActionAuthorizations** | [**[]ActionAuthorization**](ActionAuthorization.md) | Action authorization | 
 
 ## Methods
 
 ### NewAuthorizationsResponse
 
-`func NewAuthorizationsResponse(authorizationContext map[string]interface{}, resource map[string]interface{}, actionAuthorizations []ActionAuthorization, ) *AuthorizationsResponse`
+`func NewAuthorizationsResponse(authorizationContext AuthorizationsResponseAuthorizationContext, resource AuthorizationsResponseResource, actionAuthorizations []ActionAuthorization, ) *AuthorizationsResponse`
 
 NewAuthorizationsResponse instantiates a new AuthorizationsResponse object
 This constructor will assign default values to properties that have it defined,
@@ -29,40 +29,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAuthorizationContext
 
-`func (o *AuthorizationsResponse) GetAuthorizationContext() map[string]interface{}`
+`func (o *AuthorizationsResponse) GetAuthorizationContext() AuthorizationsResponseAuthorizationContext`
 
 GetAuthorizationContext returns the AuthorizationContext field if non-nil, zero value otherwise.
 
 ### GetAuthorizationContextOk
 
-`func (o *AuthorizationsResponse) GetAuthorizationContextOk() (*map[string]interface{}, bool)`
+`func (o *AuthorizationsResponse) GetAuthorizationContextOk() (*AuthorizationsResponseAuthorizationContext, bool)`
 
 GetAuthorizationContextOk returns a tuple with the AuthorizationContext field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizationContext
 
-`func (o *AuthorizationsResponse) SetAuthorizationContext(v map[string]interface{})`
+`func (o *AuthorizationsResponse) SetAuthorizationContext(v AuthorizationsResponseAuthorizationContext)`
 
 SetAuthorizationContext sets AuthorizationContext field to given value.
 
 
 ### GetResource
 
-`func (o *AuthorizationsResponse) GetResource() map[string]interface{}`
+`func (o *AuthorizationsResponse) GetResource() AuthorizationsResponseResource`
 
 GetResource returns the Resource field if non-nil, zero value otherwise.
 
 ### GetResourceOk
 
-`func (o *AuthorizationsResponse) GetResourceOk() (*map[string]interface{}, bool)`
+`func (o *AuthorizationsResponse) GetResourceOk() (*AuthorizationsResponseResource, bool)`
 
 GetResourceOk returns a tuple with the Resource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResource
 
-`func (o *AuthorizationsResponse) SetResource(v map[string]interface{})`
+`func (o *AuthorizationsResponse) SetResource(v AuthorizationsResponseResource)`
 
 SetResource sets Resource field to given value.
 

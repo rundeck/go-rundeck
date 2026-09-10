@@ -1,6 +1,6 @@
 # \RunnerAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -37,7 +37,7 @@ Method | HTTP request | Description
 [**SaveProjectRunnerNodeDispatchSettings**](RunnerAPI.md#SaveProjectRunnerNodeDispatchSettings) | **Post** /project/{project}/runnerManagement/nodeDispatch/config | Update Runner Node Dispatch at project context
 [**SaveRunner**](RunnerAPI.md#SaveRunner) | **Post** /runnerManagement/runner/{runnerId} | Update Runner Definition
 [**SearchTags**](RunnerAPI.md#SearchTags) | **Get** /runnerTag/searchTags | Search Runner Tags by a keyword
-[**StartupOperation**](RunnerAPI.md#StartupOperation) | **Get** /runner/startup | Runner: Init agent process to register replicas [Enterprise Runner]
+[**StartupOperation**](RunnerAPI.md#StartupOperation) | **Post** /runner/startup | Runner: Init agent process to register replicas [Enterprise Runner]
 [**Ui**](RunnerAPI.md#Ui) | **Get** /runnerManagement/ui | Get UI info for runner management
 
 
@@ -679,7 +679,7 @@ Name | Type | Description  | Notes
 
 ## DownloadRunner
 
-> DownloadRunner(ctx, token).Execute()
+> map[string]interface{} DownloadRunner(ctx, token).Execute()
 
 Download Runner
 
@@ -702,11 +702,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RunnerAPI.DownloadRunner(context.Background(), token).Execute()
+	resp, r, err := apiClient.RunnerAPI.DownloadRunner(context.Background(), token).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RunnerAPI.DownloadRunner``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DownloadRunner`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RunnerAPI.DownloadRunner`: %v\n", resp)
 }
 ```
 
@@ -729,7 +731,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1536,7 +1538,7 @@ Name | Type | Description  | Notes
 
 ## ProjectDownloadRunner
 
-> ProjectDownloadRunner(ctx, token, project).Execute()
+> map[string]interface{} ProjectDownloadRunner(ctx, token, project).Execute()
 
 Download Runner at Project Context
 
@@ -1560,11 +1562,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RunnerAPI.ProjectDownloadRunner(context.Background(), token, project).Execute()
+	resp, r, err := apiClient.RunnerAPI.ProjectDownloadRunner(context.Background(), token, project).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RunnerAPI.ProjectDownloadRunner``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ProjectDownloadRunner`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `RunnerAPI.ProjectDownloadRunner`: %v\n", resp)
 }
 ```
 
@@ -1589,7 +1593,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -2058,7 +2062,7 @@ import (
 
 func main() {
 	project := "project_example" // string | Project Name
-	saveProjectContextRunnerConfigRequest := *openapiclient.NewSaveProjectContextRunnerConfigRequest() // SaveProjectContextRunnerConfigRequest | 
+	saveProjectContextRunnerConfigRequest := *openapiclient.NewSaveProjectContextRunnerConfigRequest() // SaveProjectContextRunnerConfigRequest | Runner configuration request containing project name and automatic assignment setting
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -2088,7 +2092,7 @@ Other parameters are passed through a pointer to a apiSaveProjectContextRunnerCo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **saveProjectContextRunnerConfigRequest** | [**SaveProjectContextRunnerConfigRequest**](SaveProjectContextRunnerConfigRequest.md) |  | 
+ **saveProjectContextRunnerConfigRequest** | [**SaveProjectContextRunnerConfigRequest**](SaveProjectContextRunnerConfigRequest.md) | Runner configuration request containing project name and automatic assignment setting | 
 
 ### Return type
 
@@ -2399,7 +2403,7 @@ Name | Type | Description  | Notes
 
 ## StartupOperation
 
-> StartUpResponse StartupOperation(ctx).Execute()
+> StartUpResponse StartupOperation(ctx).RunnerReplicaStartUp(runnerReplicaStartUp).Execute()
 
 Runner: Init agent process to register replicas [Enterprise Runner]
 
@@ -2418,10 +2422,11 @@ import (
 )
 
 func main() {
+	runnerReplicaStartUp := *openapiclient.NewRunnerReplicaStartUp() // RunnerReplicaStartUp |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RunnerAPI.StartupOperation(context.Background()).Execute()
+	resp, r, err := apiClient.RunnerAPI.StartupOperation(context.Background()).RunnerReplicaStartUp(runnerReplicaStartUp).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `RunnerAPI.StartupOperation``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2433,12 +2438,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStartupOperationRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **runnerReplicaStartUp** | [**RunnerReplicaStartUp**](RunnerReplicaStartUp.md) |  | 
 
 ### Return type
 

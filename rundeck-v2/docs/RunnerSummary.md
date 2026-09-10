@@ -25,7 +25,10 @@ Name | Type | Description | Notes
 **Providers** | Pointer to [**[]RunnerProviderSummary**](RunnerProviderSummary.md) |  | [optional] 
 **RunnerReplicas** | Pointer to **int32** |  | [optional] 
 **HealthyRunnerReplicas** | Pointer to **int32** |  | [optional] 
-**RunningOperations** | Pointer to **int32** |  | [optional] 
+**RunningOperations** | Pointer to **int32** | Number of currently running operations on the runner. | [optional] 
+**MaxRunningOperations** | Pointer to **int32** | Maximum concurrent operations this runner is configured to handle. | [optional] 
+**QueuedOperations** | Pointer to **int32** | Operations waiting in the executor queue. | [optional] 
+**CompletedOperations** | Pointer to **int32** | Total operations completed since runner startup. | [optional] 
 **Uptime** | Pointer to **int64** |  | [optional] 
 **DateCreated** | Pointer to **time.Time** |  | [optional] 
 **LastUpdated** | Pointer to **time.Time** |  | [optional] 
@@ -598,6 +601,81 @@ SetRunningOperations sets RunningOperations field to given value.
 `func (o *RunnerSummary) HasRunningOperations() bool`
 
 HasRunningOperations returns a boolean if a field has been set.
+
+### GetMaxRunningOperations
+
+`func (o *RunnerSummary) GetMaxRunningOperations() int32`
+
+GetMaxRunningOperations returns the MaxRunningOperations field if non-nil, zero value otherwise.
+
+### GetMaxRunningOperationsOk
+
+`func (o *RunnerSummary) GetMaxRunningOperationsOk() (*int32, bool)`
+
+GetMaxRunningOperationsOk returns a tuple with the MaxRunningOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRunningOperations
+
+`func (o *RunnerSummary) SetMaxRunningOperations(v int32)`
+
+SetMaxRunningOperations sets MaxRunningOperations field to given value.
+
+### HasMaxRunningOperations
+
+`func (o *RunnerSummary) HasMaxRunningOperations() bool`
+
+HasMaxRunningOperations returns a boolean if a field has been set.
+
+### GetQueuedOperations
+
+`func (o *RunnerSummary) GetQueuedOperations() int32`
+
+GetQueuedOperations returns the QueuedOperations field if non-nil, zero value otherwise.
+
+### GetQueuedOperationsOk
+
+`func (o *RunnerSummary) GetQueuedOperationsOk() (*int32, bool)`
+
+GetQueuedOperationsOk returns a tuple with the QueuedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueuedOperations
+
+`func (o *RunnerSummary) SetQueuedOperations(v int32)`
+
+SetQueuedOperations sets QueuedOperations field to given value.
+
+### HasQueuedOperations
+
+`func (o *RunnerSummary) HasQueuedOperations() bool`
+
+HasQueuedOperations returns a boolean if a field has been set.
+
+### GetCompletedOperations
+
+`func (o *RunnerSummary) GetCompletedOperations() int32`
+
+GetCompletedOperations returns the CompletedOperations field if non-nil, zero value otherwise.
+
+### GetCompletedOperationsOk
+
+`func (o *RunnerSummary) GetCompletedOperationsOk() (*int32, bool)`
+
+GetCompletedOperationsOk returns a tuple with the CompletedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletedOperations
+
+`func (o *RunnerSummary) SetCompletedOperations(v int32)`
+
+SetCompletedOperations sets CompletedOperations field to given value.
+
+### HasCompletedOperations
+
+`func (o *RunnerSummary) HasCompletedOperations() bool`
+
+HasCompletedOperations returns a boolean if a field has been set.
 
 ### GetUptime
 

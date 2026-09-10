@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **RunnerId** | Pointer to **string** | Unique Runner ID for the Runner instance. | [optional] 
 **ReplicaId** | Pointer to **string** | Unique Runner ID for the Runner replica. | [optional] 
 **DownloadTk** | Pointer to **string** | Download token for retrieving Runner resources. | [optional] 
+**Filename** | Pointer to **string** | Filename for the downloadable runner JAR artifact | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetDownloadTk sets DownloadTk field to given value.
 `func (o *NewRunnerReplicaResponse) HasDownloadTk() bool`
 
 HasDownloadTk returns a boolean if a field has been set.
+
+### GetFilename
+
+`func (o *NewRunnerReplicaResponse) GetFilename() string`
+
+GetFilename returns the Filename field if non-nil, zero value otherwise.
+
+### GetFilenameOk
+
+`func (o *NewRunnerReplicaResponse) GetFilenameOk() (*string, bool)`
+
+GetFilenameOk returns a tuple with the Filename field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilename
+
+`func (o *NewRunnerReplicaResponse) SetFilename(v string)`
+
+SetFilename sets Filename field to given value.
+
+### HasFilename
+
+`func (o *NewRunnerReplicaResponse) HasFilename() bool`
+
+HasFilename returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

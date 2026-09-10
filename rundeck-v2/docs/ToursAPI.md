@@ -1,14 +1,14 @@
 # \ToursAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiGetProjectResource**](ToursAPI.md#ApiGetProjectResource) | **Get** /project/{project}/tours/resource/{path} | Get Project Tour Resource [Enterprise]
 [**ApiGetSystemResource**](ToursAPI.md#ApiGetSystemResource) | **Get** /system/tours/resource/{path} | Get System Tour Resource [Enterprise]
 [**ApiProjectImportTour**](ToursAPI.md#ApiProjectImportTour) | **Post** /project/{project}/tour/import/{tourFolder}/{manifestFileName} | Import Tours Archive for a Project [Enterprise]
-[**ApiProjectList**](ToursAPI.md#ApiProjectList) | **Get** /project/{project}/tours | Get Project Tours [Enterprise]
 [**ApiProjectLoadResource**](ToursAPI.md#ApiProjectLoadResource) | **Post** /project/{project}/tours/{path} | Upload Project Tour Resource [Enterprise]
+[**ApiProjectToursList**](ToursAPI.md#ApiProjectToursList) | **Get** /project/{project}/tours | Get Project Tours [Enterprise]
 [**ApiRundeckEndpoints**](ToursAPI.md#ApiRundeckEndpoints) | **Get** /tours/endpoints | Get Tour Endpoints List [Enterprise]
 [**ApiSystemImportTour**](ToursAPI.md#ApiSystemImportTour) | **Post** /system/tour/import/{tourFolder}/{manifestFileName} | Import Tours Archive for System [Enterprise]
 [**ApiSystemList**](ToursAPI.md#ApiSystemList) | **Get** /system/tours | Get System Tours [Enterprise]
@@ -237,76 +237,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiProjectList
-
-> Manifest ApiProjectList(ctx, project).Execute()
-
-Get Project Tours [Enterprise]
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
-)
-
-func main() {
-	project := "project_example" // string | Project Name
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ToursAPI.ApiProjectList(context.Background(), project).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ToursAPI.ApiProjectList``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ApiProjectList`: Manifest
-	fmt.Fprintf(os.Stdout, "Response from `ToursAPI.ApiProjectList`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**project** | **string** | Project Name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiApiProjectListRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**Manifest**](Manifest.md)
-
-### Authorization
-
-[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ApiProjectLoadResource
 
 > TourManagerSuccessResponse ApiProjectLoadResource(ctx, project, path).ApiProjectLoadResourceRequest(apiProjectLoadResourceRequest).Execute()
@@ -375,6 +305,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectToursList
+
+> Manifest ApiProjectToursList(ctx, project).Execute()
+
+Get Project Tours [Enterprise]
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	project := "project_example" // string | Project Name
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ToursAPI.ApiProjectToursList(context.Background(), project).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ToursAPI.ApiProjectToursList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiProjectToursList`: Manifest
+	fmt.Fprintf(os.Stdout, "Response from `ToursAPI.ApiProjectToursList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**project** | **string** | Project Name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectToursListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Manifest**](Manifest.md)
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

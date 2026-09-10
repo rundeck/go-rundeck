@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DateDefinition** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**Reference** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **CalendarType** | Pointer to **string** |  | [optional] 
@@ -17,8 +19,6 @@ Name | Type | Description | Notes
 **Recurrent** | Pointer to **bool** |  | [optional] 
 **DateCreated** | Pointer to **time.Time** |  | [optional] 
 **LastUpdated** | Pointer to **time.Time** |  | [optional] 
-**DateDefinition** | Pointer to **[]map[string]interface{}** |  | [optional] 
-**Reference** | Pointer to **[]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -38,6 +38,56 @@ will change when the set of required properties is changed
 NewCalendarWithDefaults instantiates a new Calendar object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDateDefinition
+
+`func (o *Calendar) GetDateDefinition() []map[string]interface{}`
+
+GetDateDefinition returns the DateDefinition field if non-nil, zero value otherwise.
+
+### GetDateDefinitionOk
+
+`func (o *Calendar) GetDateDefinitionOk() (*[]map[string]interface{}, bool)`
+
+GetDateDefinitionOk returns a tuple with the DateDefinition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateDefinition
+
+`func (o *Calendar) SetDateDefinition(v []map[string]interface{})`
+
+SetDateDefinition sets DateDefinition field to given value.
+
+### HasDateDefinition
+
+`func (o *Calendar) HasDateDefinition() bool`
+
+HasDateDefinition returns a boolean if a field has been set.
+
+### GetReference
+
+`func (o *Calendar) GetReference() []map[string]interface{}`
+
+GetReference returns the Reference field if non-nil, zero value otherwise.
+
+### GetReferenceOk
+
+`func (o *Calendar) GetReferenceOk() (*[]map[string]interface{}, bool)`
+
+GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReference
+
+`func (o *Calendar) SetReference(v []map[string]interface{})`
+
+SetReference sets Reference field to given value.
+
+### HasReference
+
+`func (o *Calendar) HasReference() bool`
+
+HasReference returns a boolean if a field has been set.
 
 ### GetName
 
@@ -363,56 +413,6 @@ SetLastUpdated sets LastUpdated field to given value.
 `func (o *Calendar) HasLastUpdated() bool`
 
 HasLastUpdated returns a boolean if a field has been set.
-
-### GetDateDefinition
-
-`func (o *Calendar) GetDateDefinition() []map[string]interface{}`
-
-GetDateDefinition returns the DateDefinition field if non-nil, zero value otherwise.
-
-### GetDateDefinitionOk
-
-`func (o *Calendar) GetDateDefinitionOk() (*[]map[string]interface{}, bool)`
-
-GetDateDefinitionOk returns a tuple with the DateDefinition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDateDefinition
-
-`func (o *Calendar) SetDateDefinition(v []map[string]interface{})`
-
-SetDateDefinition sets DateDefinition field to given value.
-
-### HasDateDefinition
-
-`func (o *Calendar) HasDateDefinition() bool`
-
-HasDateDefinition returns a boolean if a field has been set.
-
-### GetReference
-
-`func (o *Calendar) GetReference() []map[string]interface{}`
-
-GetReference returns the Reference field if non-nil, zero value otherwise.
-
-### GetReferenceOk
-
-`func (o *Calendar) GetReferenceOk() (*[]map[string]interface{}, bool)`
-
-GetReferenceOk returns a tuple with the Reference field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReference
-
-`func (o *Calendar) SetReference(v []map[string]interface{})`
-
-SetReference sets Reference field to given value.
-
-### HasReference
-
-`func (o *Calendar) HasReference() bool`
-
-HasReference returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **LastCheckinAlert** | Pointer to **bool** | Indicates if the last check-in triggered an alert. | [optional] 
 **Uptime** | Pointer to **int64** | Uptime of the replica in milliseconds. | [optional] 
 **RunningOperations** | Pointer to **int64** | Number of currently running operations on the replica. | [optional] 
+**MaxRunningOperations** | Pointer to **int32** | Maximum concurrent operations this replica is configured to handle. | [optional] 
+**QueuedOperations** | Pointer to **int32** | Operations waiting in the executor queue. | [optional] 
+**CompletedOperations** | Pointer to **int32** | Total operations completed since runner startup. | [optional] 
 **VersionWarning** | Pointer to **bool** | Indicates if there is a version mismatch warning for the replica. | [optional] 
 
 ## Methods
@@ -362,6 +365,81 @@ SetRunningOperations sets RunningOperations field to given value.
 `func (o *RunnerReplicaSummary) HasRunningOperations() bool`
 
 HasRunningOperations returns a boolean if a field has been set.
+
+### GetMaxRunningOperations
+
+`func (o *RunnerReplicaSummary) GetMaxRunningOperations() int32`
+
+GetMaxRunningOperations returns the MaxRunningOperations field if non-nil, zero value otherwise.
+
+### GetMaxRunningOperationsOk
+
+`func (o *RunnerReplicaSummary) GetMaxRunningOperationsOk() (*int32, bool)`
+
+GetMaxRunningOperationsOk returns a tuple with the MaxRunningOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRunningOperations
+
+`func (o *RunnerReplicaSummary) SetMaxRunningOperations(v int32)`
+
+SetMaxRunningOperations sets MaxRunningOperations field to given value.
+
+### HasMaxRunningOperations
+
+`func (o *RunnerReplicaSummary) HasMaxRunningOperations() bool`
+
+HasMaxRunningOperations returns a boolean if a field has been set.
+
+### GetQueuedOperations
+
+`func (o *RunnerReplicaSummary) GetQueuedOperations() int32`
+
+GetQueuedOperations returns the QueuedOperations field if non-nil, zero value otherwise.
+
+### GetQueuedOperationsOk
+
+`func (o *RunnerReplicaSummary) GetQueuedOperationsOk() (*int32, bool)`
+
+GetQueuedOperationsOk returns a tuple with the QueuedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueuedOperations
+
+`func (o *RunnerReplicaSummary) SetQueuedOperations(v int32)`
+
+SetQueuedOperations sets QueuedOperations field to given value.
+
+### HasQueuedOperations
+
+`func (o *RunnerReplicaSummary) HasQueuedOperations() bool`
+
+HasQueuedOperations returns a boolean if a field has been set.
+
+### GetCompletedOperations
+
+`func (o *RunnerReplicaSummary) GetCompletedOperations() int32`
+
+GetCompletedOperations returns the CompletedOperations field if non-nil, zero value otherwise.
+
+### GetCompletedOperationsOk
+
+`func (o *RunnerReplicaSummary) GetCompletedOperationsOk() (*int32, bool)`
+
+GetCompletedOperationsOk returns a tuple with the CompletedOperations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompletedOperations
+
+`func (o *RunnerReplicaSummary) SetCompletedOperations(v int32)`
+
+SetCompletedOperations sets CompletedOperations field to given value.
+
+### HasCompletedOperations
+
+`func (o *RunnerReplicaSummary) HasCompletedOperations() bool`
+
+HasCompletedOperations returns a boolean if a field has been set.
 
 ### GetVersionWarning
 

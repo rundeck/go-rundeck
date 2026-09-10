@@ -1,6 +1,6 @@
 # \WebhookAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## Post
 
-> Post(ctx, authtoken).Execute()
+> Post(ctx, authtoken).Authorization(authorization).Execute()
 
 Send Webhook Event
 
@@ -324,10 +324,11 @@ import (
 
 func main() {
 	authtoken := "authtoken_example" // string | Webhook auth token
+	authorization := "authorization_example" // string | Optional authorization secret. Required if webhook is configured to require authorization. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WebhookAPI.Post(context.Background(), authtoken).Execute()
+	r, err := apiClient.WebhookAPI.Post(context.Background(), authtoken).Authorization(authorization).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhookAPI.Post``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,6 +352,7 @@ Other parameters are passed through a pointer to a apiPostRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **authorization** | **string** | Optional authorization secret. Required if webhook is configured to require authorization. | 
 
 ### Return type
 
@@ -358,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[webhookTokenHeader](../README.md#webhookTokenHeader)
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
 
 ### HTTP request headers
 

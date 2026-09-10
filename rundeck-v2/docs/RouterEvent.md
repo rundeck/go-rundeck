@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Meta** | Pointer to [**RouterEventMetadata**](RouterEventMetadata.md) |  | [optional] 
-**Event** | Pointer to **map[string]interface{}** |  | [optional] 
+**Event** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasMeta returns a boolean if a field has been set.
 
 ### GetEvent
 
-`func (o *RouterEvent) GetEvent() map[string]interface{}`
+`func (o *RouterEvent) GetEvent() map[string]map[string]interface{}`
 
 GetEvent returns the Event field if non-nil, zero value otherwise.
 
 ### GetEventOk
 
-`func (o *RouterEvent) GetEventOk() (*map[string]interface{}, bool)`
+`func (o *RouterEvent) GetEventOk() (*map[string]map[string]interface{}, bool)`
 
 GetEventOk returns a tuple with the Event field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEvent
 
-`func (o *RouterEvent) SetEvent(v map[string]interface{})`
+`func (o *RouterEvent) SetEvent(v map[string]map[string]interface{})`
 
 SetEvent sets Event field to given value.
 
