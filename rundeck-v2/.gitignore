@@ -22,3 +22,6 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+# Generated locally per GENERATE_CLIENT_V2.md; not committed.
+/vendor/
