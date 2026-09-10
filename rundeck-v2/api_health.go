@@ -454,7 +454,7 @@ func (r ApiApiRefreshHealthCheckRequest) Execute() (map[string]interface{}, *htt
 /*
 ApiRefreshHealthCheck Refresh Node Healthcheck Status [Enterprise]
 
-Request a Refresh to the Healthcheck status for a set of Nodes.
+Request a Refresh to the Healtcheck status for a set of Nodes.
 
 Authorization required: `app_admin` for `system` resource.
 

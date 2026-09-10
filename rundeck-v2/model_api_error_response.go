@@ -19,9 +19,14 @@ var _ MappedNullable = &ApiErrorResponse{}
 
 // ApiErrorResponse Error Response
 type ApiErrorResponse struct {
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// Always true to indicate an error response
 	Error *bool `json:"error,omitempty"`
+	// Rundeck / Runbook Automation API version number
 	Apiversion *int32 `json:"apiversion,omitempty"`
+	// Error code (HTTP status or custom error code)
 	ErrorCode *string `json:"errorCode,omitempty"`
+	// Human-readable error message
 	Message *string `json:"message,omitempty"`
 }
 
@@ -40,6 +45,38 @@ func NewApiErrorResponse() *ApiErrorResponse {
 func NewApiErrorResponseWithDefaults() *ApiErrorResponse {
 	this := ApiErrorResponse{}
 	return &this
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+func (o *ApiErrorResponse) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiErrorResponse) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *ApiErrorResponse) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *ApiErrorResponse) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
@@ -180,6 +217,9 @@ func (o ApiErrorResponse) MarshalJSON() ([]byte, error) {
 
 func (o ApiErrorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ErrorMessage) {
+		toSerialize["errorMessage"] = o.ErrorMessage
+	}
 	if !IsNil(o.Error) {
 		toSerialize["error"] = o.Error
 	}

@@ -30,9 +30,13 @@ type RunnerInfo struct {
 	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 	LastCheckin *string `json:"lastCheckin,omitempty"`
 	LastCheckinAlert *bool `json:"lastCheckinAlert,omitempty"`
+	// Number of currently running operations on the runner.
 	RunningOperations *int32 `json:"runningOperations,omitempty"`
+	// Maximum concurrent operations this runner is configured to handle.
 	MaxRunningOperations *int32 `json:"maxRunningOperations,omitempty"`
+	// Operations waiting in the executor queue.
 	QueuedOperations *int32 `json:"queuedOperations,omitempty"`
+	// Total operations completed since runner startup.
 	CompletedOperations *int32 `json:"completedOperations,omitempty"`
 	Uptime *int64 `json:"uptime,omitempty"`
 	TagNames []string `json:"tagNames,omitempty"`

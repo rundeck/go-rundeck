@@ -64,32 +64,4 @@ func Test_openapi_AdHocAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdHocAPIService RunAdhocInline", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		resp, httpRes, err := apiClient.AdHocAPI.RunAdhocInline(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AdHocAPIService RunAdhocInlineApi", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var project string
-
-		resp, httpRes, err := apiClient.AdHocAPI.RunAdhocInlineApi(context.Background(), project).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

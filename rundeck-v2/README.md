@@ -98,8 +98,6 @@ Class | Method | HTTP request | Description
 *AdHocAPI* | [**ApiRunCommandv14**](docs/AdHocAPI.md#apiruncommandv14) | **Post** /project/{project}/run/command | Run Adhoc Command
 *AdHocAPI* | [**ApiRunScriptUrlv14**](docs/AdHocAPI.md#apirunscripturlv14) | **Post** /project/{project}/run/url | Run Adhoc Script URL
 *AdHocAPI* | [**ApiRunScriptv14**](docs/AdHocAPI.md#apirunscriptv14) | **Post** /project/{project}/run/script | Run Adhoc Script
-*AdHocAPI* | [**RunAdhocInline**](docs/AdHocAPI.md#runadhocinline) | **Post** /project/{project}/run/command/inline | Run Adhoc Command (Inline)
-*AdHocAPI* | [**RunAdhocInlineApi**](docs/AdHocAPI.md#runadhocinlineapi) | **Post** /project/{project}/run/command/inline/api | Run Adhoc Command (Inline) - API Auth
 *AuthorizationAPI* | [**AppContextAuthorizationsForResourceKind**](docs/AuthorizationAPI.md#appcontextauthorizationsforresourcekind) | **Get** /authorizations/application/{kind} | Check authorization for application resource kind
 *AuthorizationAPI* | [**AppContextAuthorizationsForTypeWithSpecifier**](docs/AuthorizationAPI.md#appcontextauthorizationsfortypewithspecifier) | **Get** /authorizations/application/{type}/{specifier} | Get authorizations for an application type with specifier
 *AuthorizationAPI* | [**ProjectContextAuthorizationsForJob**](docs/AuthorizationAPI.md#projectcontextauthorizationsforjob) | **Get** /authorizations/project/{project}/job/{specifier} | Get authorizations for a job
