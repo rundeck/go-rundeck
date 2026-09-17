@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **RunnerId** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Runner authentication token | [optional] 
 **DownloadTk** | Pointer to **string** | Runner package download token | [optional] 
+**Filename** | Pointer to **string** | Filename for the downloadable runner JAR artifact | [optional] 
 **ReplicaId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetDownloadTk sets DownloadTk field to given value.
 `func (o *RegenRunnerCredResponse) HasDownloadTk() bool`
 
 HasDownloadTk returns a boolean if a field has been set.
+
+### GetFilename
+
+`func (o *RegenRunnerCredResponse) GetFilename() string`
+
+GetFilename returns the Filename field if non-nil, zero value otherwise.
+
+### GetFilenameOk
+
+`func (o *RegenRunnerCredResponse) GetFilenameOk() (*string, bool)`
+
+GetFilenameOk returns a tuple with the Filename field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFilename
+
+`func (o *RegenRunnerCredResponse) SetFilename(v string)`
+
+SetFilename sets Filename field to given value.
+
+### HasFilename
+
+`func (o *RegenRunnerCredResponse) HasFilename() bool`
+
+HasFilename returns a boolean if a field has been set.
 
 ### GetReplicaId
 

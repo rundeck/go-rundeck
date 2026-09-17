@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Author** | Pointer to **string** |  | [optional] 
 **IconUrl** | Pointer to **string** | URL to icon file for the plugin if present. Since: v40 | [optional] 
-**ProviderMetadata** | Pointer to **map[string]string** | Map of metadata about the plugin if present. Since: v40 | [optional] 
+**ProviderMetadata** | Pointer to **map[string]string** | Map of metadata about the plugin if present. Includes groupBy and groupIconUrl from v57+. Since: v40 | [optional] 
 **IsHighlighted** | Pointer to **bool** | Indication of whether the plugin is marked as highlighted. Since: v51 | [optional] 
 **HighlightedOrder** | Pointer to **int32** | Order of the highlighted plugin. Since: v51 | [optional] 
 

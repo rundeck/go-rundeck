@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
 **Max** | Pointer to **int32** |  | [optional] 
-**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 **Offset** | Pointer to **int32** |  | [optional] 
+**SortOrders** | Pointer to [**[]SortOrder**](SortOrder.md) |  | [optional] 
 
 ## Methods
 
@@ -78,31 +78,6 @@ SetMax sets Max field to given value.
 
 HasMax returns a boolean if a field has been set.
 
-### GetSortOrders
-
-`func (o *RdPageable) GetSortOrders() []SortOrder`
-
-GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
-
-### GetSortOrdersOk
-
-`func (o *RdPageable) GetSortOrdersOk() (*[]SortOrder, bool)`
-
-GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSortOrders
-
-`func (o *RdPageable) SetSortOrders(v []SortOrder)`
-
-SetSortOrders sets SortOrders field to given value.
-
-### HasSortOrders
-
-`func (o *RdPageable) HasSortOrders() bool`
-
-HasSortOrders returns a boolean if a field has been set.
-
 ### GetOffset
 
 `func (o *RdPageable) GetOffset() int32`
@@ -127,6 +102,31 @@ SetOffset sets Offset field to given value.
 `func (o *RdPageable) HasOffset() bool`
 
 HasOffset returns a boolean if a field has been set.
+
+### GetSortOrders
+
+`func (o *RdPageable) GetSortOrders() []SortOrder`
+
+GetSortOrders returns the SortOrders field if non-nil, zero value otherwise.
+
+### GetSortOrdersOk
+
+`func (o *RdPageable) GetSortOrdersOk() (*[]SortOrder, bool)`
+
+GetSortOrdersOk returns a tuple with the SortOrders field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSortOrders
+
+`func (o *RdPageable) SetSortOrders(v []SortOrder)`
+
+SetSortOrders sets SortOrders field to given value.
+
+### HasSortOrders
+
+`func (o *RdPageable) HasSortOrders() bool`
+
+HasSortOrders returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

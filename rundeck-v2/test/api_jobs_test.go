@@ -42,9 +42,10 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.JobsAPI.ApiExecutionDataExport(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.JobsAPI.ApiExecutionDataExport(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -353,9 +354,10 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 		var id string
 		var executionId string
 
-		httpRes, err := apiClient.JobsAPI.ApiJobRetry(context.Background(), id, executionId).Execute()
+		resp, httpRes, err := apiClient.JobsAPI.ApiJobRetry(context.Background(), id, executionId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -366,9 +368,10 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.JobsAPI.ApiJobRun(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.JobsAPI.ApiJobRun(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -379,9 +382,10 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 		var id string
 
-		httpRes, err := apiClient.JobsAPI.ApiJobRun1(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.JobsAPI.ApiJobRun1(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -420,9 +424,10 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 
 		var project string
 
-		httpRes, err := apiClient.JobsAPI.ApiJobsImportv14(context.Background(), project).Execute()
+		resp, httpRes, err := apiClient.JobsAPI.ApiJobsImportv14(context.Background(), project).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -474,6 +479,34 @@ func Test_openapi_JobsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.JobsAPI.ApiSchedulerListJobsCurrentDocs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test JobsAPIService Job", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id string
+
+		resp, httpRes, err := apiClient.JobsAPI.Job(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test JobsAPIService Query", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.JobsAPI.Query(context.Background(), project).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

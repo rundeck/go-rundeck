@@ -1,6 +1,6 @@
 # \AuthorizationAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,7 +34,7 @@ import (
 
 func main() {
 	kind := "kind_example" // string | Resource Kind
-	actions := []string{"Inner_example"} // []string | Actions to check authorization for
+	actions := []string{"Inner_example"} // []string | Actions to check authorization for (can be specified multiple times)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -64,7 +64,7 @@ Other parameters are passed through a pointer to a apiAppContextAuthorizationsFo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **actions** | **[]string** | Actions to check authorization for | 
+ **actions** | **[]string** | Actions to check authorization for (can be specified multiple times) | 
 
 ### Return type
 
@@ -107,7 +107,7 @@ import (
 func main() {
 	type_ := "type__example" // string | Resource Type
 	specifier := "specifier_example" // string | Resource specifier
-	actions := []string{"Inner_example"} // []string | Actions to check authorization for
+	actions := []string{"Inner_example"} // []string | Actions to check authorization for (can be specified multiple times)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **actions** | **[]string** | Actions to check authorization for | 
+ **actions** | **[]string** | Actions to check authorization for (can be specified multiple times) | 
 
 ### Return type
 
@@ -182,7 +182,7 @@ import (
 func main() {
 	project := "project_example" // string | Project Name
 	specifier := "specifier_example" // string | Job Id
-	actions := []string{"Inner_example"} // []string | Actions to check authorization for
+	actions := []string{"Inner_example"} // []string | Actions to check authorization for (can be specified multiple times)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **actions** | **[]string** | Actions to check authorization for | 
+ **actions** | **[]string** | Actions to check authorization for (can be specified multiple times) | 
 
 ### Return type
 
@@ -257,7 +257,7 @@ import (
 func main() {
 	project := "project_example" // string | Project Name
 	kind := "kind_example" // string | Resource Kind
-	actions := []string{"Inner_example"} // []string | Actions to check authorization for
+	actions := []string{"Inner_example"} // []string | Actions to check authorization for (can be specified multiple times)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **actions** | **[]string** | Actions to check authorization for | 
+ **actions** | **[]string** | Actions to check authorization for (can be specified multiple times) | 
 
 ### Return type
 
@@ -333,7 +333,7 @@ func main() {
 	project := "project_example" // string | Project Name
 	type_ := "type__example" // string | Resource Type
 	specifier := "specifier_example" // string | Resource specifier
-	actions := []string{"Inner_example"} // []string | Actions to check authorization for
+	actions := []string{"Inner_example"} // []string | Actions to check authorization for (can be specified multiple times)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 
 
- **actions** | **[]string** | Actions to check authorization for | 
+ **actions** | **[]string** | Actions to check authorization for (can be specified multiple times) | 
 
 ### Return type
 

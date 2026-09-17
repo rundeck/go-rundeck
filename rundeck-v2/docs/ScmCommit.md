@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Message** | Pointer to **string** |  | [optional] 
 **Author** | Pointer to **string** |  | [optional] 
 **Date** | Pointer to **time.Time** |  | [optional] 
-**Info** | Pointer to **map[string]interface{}** |  | [optional] 
+**Info** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasDate returns a boolean if a field has been set.
 
 ### GetInfo
 
-`func (o *ScmCommit) GetInfo() map[string]interface{}`
+`func (o *ScmCommit) GetInfo() map[string]map[string]interface{}`
 
 GetInfo returns the Info field if non-nil, zero value otherwise.
 
 ### GetInfoOk
 
-`func (o *ScmCommit) GetInfoOk() (*map[string]interface{}, bool)`
+`func (o *ScmCommit) GetInfoOk() (*map[string]map[string]interface{}, bool)`
 
 GetInfoOk returns a tuple with the Info field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInfo
 
-`func (o *ScmCommit) SetInfo(v map[string]interface{})`
+`func (o *ScmCommit) SetInfo(v map[string]map[string]interface{})`
 
 SetInfo sets Info field to given value.
 

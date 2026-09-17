@@ -3,17 +3,17 @@
 ## Enum
 
 
-* `CONTAINS` (value: `"contains"`)
+* `contains` (value: `"contains"`)
 
-* `DATE_TIME_AFTER` (value: `"dateTimeAfter"`)
+* `dateTimeAfter` (value: `"dateTimeAfter"`)
 
-* `DATE_TIME_BEFORE` (value: `"dateTimeBefore"`)
+* `dateTimeBefore` (value: `"dateTimeBefore"`)
 
-* `EXISTS` (value: `"exists"`)
+* `exists` (value: `"exists"`)
 
-* `IS_A` (value: `"isA"`)
+* `isA` (value: `"isA"`)
 
-* `EQUALS` (value: `"equals"`)
+* `equals` (value: `"equals"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

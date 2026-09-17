@@ -1,6 +1,6 @@
 # \JobsAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ## ApiExecutionDataExport
 
-> ApiExecutionDataExport(ctx, id).Wait(wait).Execute()
+> map[string]interface{} ApiExecutionDataExport(ctx, id).Wait(wait).Execute()
 
 Get Execution Result Data [Enterprise]
 
@@ -139,11 +139,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiExecutionDataExport(context.Background(), id).Wait(wait).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiExecutionDataExport(context.Background(), id).Wait(wait).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiExecutionDataExport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiExecutionDataExport`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ApiExecutionDataExport`: %v\n", resp)
 }
 ```
 
@@ -167,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -745,7 +747,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobBrowse
 
-> JobBrowseResponse ApiJobBrowse(ctx, project).Path(path).Meta(meta).Breakpoint(breakpoint).Max(max).RdJobQueryInput(rdJobQueryInput).Execute()
+> JobBrowseResponse ApiJobBrowse(ctx, project).Path(path).Meta(meta).Breakpoint(breakpoint).Max(max).MetaExclude(metaExclude).RdJobQueryInput(rdJobQueryInput).Execute()
 
 Project Job Group browse
 
@@ -769,11 +771,12 @@ func main() {
 	meta := "meta_example" // string | Comma-separated list of metadata items to include, or \"*\" for all
 	breakpoint := int32(56) // int32 | Breakpoint, max number of jobs to load with metadata, if more results than the  breakpoint are available, no metadata will be loaded
 	max := int32(56) // int32 | Since v54: Maximum number of jobs to retrieve. If not specified, all jobs will be returned.
+	metaExclude := "metaExclude_example" // string | Since API v58: Same as GET /project/{project}/jobs/browse. Ignored when the request API version is below 58. (optional)
 	rdJobQueryInput := *openapiclient.NewRdJobQueryInput() // RdJobQueryInput | Query parameters (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobBrowse(context.Background(), project).Path(path).Meta(meta).Breakpoint(breakpoint).Max(max).RdJobQueryInput(rdJobQueryInput).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobBrowse(context.Background(), project).Path(path).Meta(meta).Breakpoint(breakpoint).Max(max).MetaExclude(metaExclude).RdJobQueryInput(rdJobQueryInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobBrowse``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -803,6 +806,7 @@ Name | Type | Description  | Notes
  **meta** | **string** | Comma-separated list of metadata items to include, or \&quot;*\&quot; for all | 
  **breakpoint** | **int32** | Breakpoint, max number of jobs to load with metadata, if more results than the  breakpoint are available, no metadata will be loaded | 
  **max** | **int32** | Since v54: Maximum number of jobs to retrieve. If not specified, all jobs will be returned. | 
+ **metaExclude** | **string** | Since API v58: Same as GET /project/{project}/jobs/browse. Ignored when the request API version is below 58. | 
  **rdJobQueryInput** | [**RdJobQueryInput**](RdJobQueryInput.md) | Query parameters | 
 
 ### Return type
@@ -825,7 +829,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobBrowseGetDocs
 
-> JobBrowseResponse ApiJobBrowseGetDocs(ctx, project).Path(path).Meta(meta).Breakpoint(breakpoint).Execute()
+> JobBrowseResponse ApiJobBrowseGetDocs(ctx, project).Path(path).Meta(meta).MetaExclude(metaExclude).Breakpoint(breakpoint).Execute()
 
 Browse jobs at a path
 
@@ -847,11 +851,12 @@ func main() {
 	project := "project_example" // string | Project name
 	path := "path_example" // string | Group path root, or blank for the root
 	meta := "meta_example" // string | Comma-separated list of metadata items to include, or \"*\" for all
+	metaExclude := "metaExclude_example" // string | Since API v58: Comma-separated metadata names to omit. Ignored when the request API version is below 58. When set, if meta includes \"*\",  it is expanded to all names from registered JobMetadataComponent beans, then exclusions are applied (literal \"*\" is not passed to loaders).  For an explicit meta list, excluded names are removed from that list.
 	breakpoint := int32(56) // int32 | Breakpoint, max number of jobs to load with metadata, if more results than the  breakpoint are available, no metadata will be loaded
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobBrowseGetDocs(context.Background(), project).Path(path).Meta(meta).Breakpoint(breakpoint).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobBrowseGetDocs(context.Background(), project).Path(path).Meta(meta).MetaExclude(metaExclude).Breakpoint(breakpoint).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobBrowseGetDocs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -879,6 +884,7 @@ Name | Type | Description  | Notes
 
  **path** | **string** | Group path root, or blank for the root | 
  **meta** | **string** | Comma-separated list of metadata items to include, or \&quot;*\&quot; for all | 
+ **metaExclude** | **string** | Since API v58: Comma-separated metadata names to omit. Ignored when the request API version is below 58. When set, if meta includes \&quot;*\&quot;,  it is expanded to all names from registered JobMetadataComponent beans, then exclusions are applied (literal \&quot;*\&quot; is not passed to loaders).  For an explicit meta list, excluded names are removed from that list. | 
  **breakpoint** | **int32** | Breakpoint, max number of jobs to load with metadata, if more results than the  breakpoint are available, no metadata will be loaded | 
 
 ### Return type
@@ -1386,7 +1392,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json, text/yaml
+- **Accept**: application/json, text/yaml, application/x-yaml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1535,7 +1541,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobFileUpload
 
-> JobFileUpload ApiJobFileUpload(ctx, id, optionName).FileName(fileName).Execute()
+> JobFileUpload ApiJobFileUpload(ctx, id, optionName).FileName(fileName).Body(body).Execute()
 
 Upload a File for a Job Option
 
@@ -1557,10 +1563,11 @@ func main() {
 	id := "id_example" // string | Job ID
 	optionName := "optionName_example" // string | For a single file/option value, specify the option name either as a query parameter or as part of the URL path
 	fileName := "fileName_example" // string | Specify the original file name (optional) (optional)
+	body := map[string]interface{}{ ... } // map[string]interface{} | Upload a single file directly (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobFileUpload(context.Background(), id, optionName).FileName(fileName).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobFileUpload(context.Background(), id, optionName).FileName(fileName).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobFileUpload``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1589,6 +1596,7 @@ Name | Type | Description  | Notes
 
 
  **fileName** | **string** | Specify the original file name (optional) | 
+ **body** | **map[string]interface{}** | Upload a single file directly | 
 
 ### Return type
 
@@ -1686,7 +1694,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobMeta
 
-> []ItemMeta ApiJobMeta(ctx, id).Meta(meta).Execute()
+> []ItemMeta ApiJobMeta(ctx, id).Meta(meta).MetaExclude(metaExclude).Execute()
 
 Get Job UI Metadata
 
@@ -1707,10 +1715,11 @@ import (
 func main() {
 	id := "id_example" // string | Job ID
 	meta := "meta_example" // string | Comma-separated list of metadata item names to include, or \"*\" for all (default)
+	metaExclude := "metaExclude_example" // string | Since API v58: Comma-separated metadata names to omit. Ignored when the request API version is below 58. When set, if meta includes \"*\",  it is expanded to all names from registered JobMetadataComponent beans, then exclusions are applied.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobMeta(context.Background(), id).Meta(meta).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobMeta(context.Background(), id).Meta(meta).MetaExclude(metaExclude).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobMeta``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1737,6 +1746,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **meta** | **string** | Comma-separated list of metadata item names to include, or \&quot;*\&quot; for all (default) | 
+ **metaExclude** | **string** | Since API v58: Comma-separated metadata names to omit. Ignored when the request API version is below 58. When set, if meta includes \&quot;*\&quot;,  it is expanded to all names from registered JobMetadataComponent beans, then exclusions are applied. | 
 
 ### Return type
 
@@ -1758,7 +1768,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobRetry
 
-> ApiJobRetry(ctx, id, executionId).FailedNodes(failedNodes).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+> map[string]interface{} ApiJobRetry(ctx, id, executionId).FailedNodes(failedNodes).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 
 Retry a Job based on execution
 
@@ -1792,11 +1802,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiJobRetry(context.Background(), id, executionId).FailedNodes(failedNodes).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobRetry(context.Background(), id, executionId).FailedNodes(failedNodes).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobRetry``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiJobRetry`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ApiJobRetry`: %v\n", resp)
 }
 ```
 
@@ -1830,7 +1842,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1848,7 +1860,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobRun
 
-> ApiJobRun(ctx, id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+> map[string]interface{} ApiJobRun(ctx, id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 
 Running a Job
 
@@ -1880,11 +1892,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiJobRun(context.Background(), id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobRun(context.Background(), id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobRun``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiJobRun`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ApiJobRun`: %v\n", resp)
 }
 ```
 
@@ -1915,7 +1929,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -1933,7 +1947,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobRun1
 
-> ApiJobRun1(ctx, id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+> map[string]interface{} ApiJobRun1(ctx, id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 
 Running a Job
 
@@ -1965,11 +1979,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiJobRun1(context.Background(), id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobRun1(context.Background(), id).ArgString(argString).Loglevel(loglevel).AsUser(asUser).Filter(filter).RunAtTime(runAtTime).OptionOPTNAME(optionOPTNAME).MetaKEY(metaKEY).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobRun1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiJobRun1`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ApiJobRun1`: %v\n", resp)
 }
 ```
 
@@ -2000,7 +2016,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -2088,7 +2104,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobsExportv14
 
-> map[string]interface{} ApiJobsExportv14(ctx, project).Idlist(idlist).GroupPath(groupPath).JobFilter(jobFilter).Format(format).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
+> map[string]interface{} ApiJobsExportv14(ctx, project).Idlist(idlist).GroupPath(groupPath).JobFilter(jobFilter).Format(format).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
 
 Export Jobs
 
@@ -2112,6 +2128,10 @@ func main() {
 	groupPath := "groupPath_example" // string | specify a group or partial group path to include all jobs within that group path. (optional)
 	jobFilter := "jobFilter_example" // string | specify a filter for the job Name (optional)
 	format := "format_example" // string | can be \"yaml\" or \"json\" (API v44+) to specify the output format (optional)
+	max := int32(56) // int32 |  (optional)
+	offset := int32(56) // int32 |  (optional)
+	sortBy := "sortBy_example" // string |  (optional)
+	sortOrder := "sortOrder_example" // string |  (optional)
 	jobExactFilter := "jobExactFilter_example" // string |  (optional)
 	projFilter := "projFilter_example" // string |  (optional)
 	groupPathExact := "groupPathExact_example" // string |  (optional)
@@ -2127,7 +2147,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobsExportv14(context.Background(), project).Idlist(idlist).GroupPath(groupPath).JobFilter(jobFilter).Format(format).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobsExportv14(context.Background(), project).Idlist(idlist).GroupPath(groupPath).JobFilter(jobFilter).Format(format).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobsExportv14``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2157,6 +2177,10 @@ Name | Type | Description  | Notes
  **groupPath** | **string** | specify a group or partial group path to include all jobs within that group path. | 
  **jobFilter** | **string** | specify a filter for the job Name | 
  **format** | **string** | can be \&quot;yaml\&quot; or \&quot;json\&quot; (API v44+) to specify the output format | 
+ **max** | **int32** |  | 
+ **offset** | **int32** |  | 
+ **sortBy** | **string** |  | 
+ **sortOrder** | **string** |  | 
  **jobExactFilter** | **string** |  | 
  **projFilter** | **string** |  | 
  **groupPathExact** | **string** |  | 
@@ -2190,7 +2214,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobsImportv14
 
-> ApiJobsImportv14(ctx, project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
+> map[string]interface{} ApiJobsImportv14(ctx, project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
 
 Import Job definitions
 
@@ -2216,11 +2240,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobsAPI.ApiJobsImportv14(context.Background(), project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobsImportv14(context.Background(), project).Fileformat(fileformat).DupeOption(dupeOption).UuidOption(uuidOption).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobsImportv14``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiJobsImportv14`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ApiJobsImportv14`: %v\n", resp)
 }
 ```
 
@@ -2246,7 +2272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -2254,7 +2280,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/x-www-form-urlencoded, multipart/form-data, application/json, text/yaml
+- **Content-Type**: application/x-www-form-urlencoded, multipart/form-data, application/json, application/x-yaml
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2264,7 +2290,7 @@ Name | Type | Description  | Notes
 
 ## ApiJobsListv2
 
-> []JobInfo ApiJobsListv2(ctx, project).Max(max).Offset(offset).Tags(tags).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
+> []JobInfo ApiJobsListv2(ctx, project).Max(max).Offset(offset).Tags(tags).SortBy(sortBy).SortOrder(sortOrder).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
 
 Listing Jobs
 
@@ -2287,6 +2313,8 @@ func main() {
 	max := int32(56) // int32 | limit the maximum amount of results to be received. (optional)
 	offset := int32(56) // int32 | use in conjunction with `max` to paginate the result set. (optional)
 	tags := int32(56) // int32 | specify a tag or comma separated list of tags to list Jobs that have matching tags. (e.g. `tags=tag1,tag2`) (optional)
+	sortBy := "sortBy_example" // string |  (optional)
+	sortOrder := "sortOrder_example" // string |  (optional)
 	jobFilter := "jobFilter_example" // string |  (optional)
 	jobExactFilter := "jobExactFilter_example" // string |  (optional)
 	projFilter := "projFilter_example" // string |  (optional)
@@ -2305,7 +2333,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ApiJobsListv2(context.Background(), project).Max(max).Offset(offset).Tags(tags).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
+	resp, r, err := apiClient.JobsAPI.ApiJobsListv2(context.Background(), project).Max(max).Offset(offset).Tags(tags).SortBy(sortBy).SortOrder(sortOrder).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).PaginatedRequired(paginatedRequired).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ApiJobsListv2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2334,6 +2362,8 @@ Name | Type | Description  | Notes
  **max** | **int32** | limit the maximum amount of results to be received. | 
  **offset** | **int32** | use in conjunction with &#x60;max&#x60; to paginate the result set. | 
  **tags** | **int32** | specify a tag or comma separated list of tags to list Jobs that have matching tags. (e.g. &#x60;tags&#x3D;tag1,tag2&#x60;) | 
+ **sortBy** | **string** |  | 
+ **sortOrder** | **string** |  | 
  **jobFilter** | **string** |  | 
  **jobExactFilter** | **string** |  | 
  **projFilter** | **string** |  | 
@@ -2641,7 +2671,7 @@ Name | Type | Description  | Notes
 
 ## Query
 
-> map[string]interface{} Query(ctx, project).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).SortOrders(sortOrders).Execute()
+> map[string]interface{} Query(ctx, project).SortOrders(sortOrders).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).Execute()
 
 Query Project Job Tags [Enterprise]
 
@@ -2661,6 +2691,7 @@ import (
 
 func main() {
 	project := "project_example" // string | 
+	sortOrders := []openapiclient.SortOrder{*openapiclient.NewSortOrder()} // []SortOrder |  (optional)
 	jobFilter := "jobFilter_example" // string |  (optional)
 	jobExactFilter := "jobExactFilter_example" // string |  (optional)
 	projFilter := "projFilter_example" // string |  (optional)
@@ -2679,13 +2710,12 @@ func main() {
 	offset := int32(56) // int32 |  (optional)
 	sortBy := "sortBy_example" // string |  (optional)
 	sortOrder := "sortOrder_example" // string |  (optional)
-	inputParamMap := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
+	inputParamMap := map[string]map[string]interface{}{"key": map[string]interface{}(123)} // map[string]map[string]interface{} |  (optional)
 	paginatedRequired := true // bool |  (optional)
-	sortOrders := []openapiclient.SortOrder{*openapiclient.NewSortOrder()} // []SortOrder |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.Query(context.Background(), project).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).SortOrders(sortOrders).Execute()
+	resp, r, err := apiClient.JobsAPI.Query(context.Background(), project).SortOrders(sortOrders).JobFilter(jobFilter).JobExactFilter(jobExactFilter).ProjFilter(projFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).DescFilter(descFilter).LoglevelFilter(loglevelFilter).Idlist(idlist).ScheduledFilter(scheduledFilter).ScheduleEnabledFilter(scheduleEnabledFilter).ExecutionEnabledFilter(executionEnabledFilter).ServerNodeUUIDFilter(serverNodeUUIDFilter).DaysAhead(daysAhead).RunJobLaterFilter(runJobLaterFilter).Max(max).Offset(offset).SortBy(sortBy).SortOrder(sortOrder).InputParamMap(inputParamMap).PaginatedRequired(paginatedRequired).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.Query``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2711,6 +2741,7 @@ Other parameters are passed through a pointer to a apiQueryRequest struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **sortOrders** | [**[]SortOrder**](SortOrder.md) |  | 
  **jobFilter** | **string** |  | 
  **jobExactFilter** | **string** |  | 
  **projFilter** | **string** |  | 
@@ -2729,9 +2760,8 @@ Name | Type | Description  | Notes
  **offset** | **int32** |  | 
  **sortBy** | **string** |  | 
  **sortOrder** | **string** |  | 
- **inputParamMap** | **map[string]interface{}** |  | 
+ **inputParamMap** | **map[string]map[string]interface{}** |  | 
  **paginatedRequired** | **bool** |  | 
- **sortOrders** | [**[]SortOrder**](SortOrder.md) |  | 
 
 ### Return type
 

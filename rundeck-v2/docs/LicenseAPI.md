@@ -1,6 +1,6 @@
 # \LicenseAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,12 +30,8 @@ import (
 )
 
 func main() {
-	licenseAgreement := TODO // interface{} | true to agree with the Runbook Automation License
-	body := "-----BEGIN PGP MESSAGE-----
-Version: ...
-...
------END PGP MESSAGE-----
-" // string | The Runbook Automation License key file
+	licenseAgreement := map[string]interface{}{ ... } // map[string]interface{} | true to agree with the Runbook Automation License
+	body := "-----BEGIN PGP MESSAGE----- Version: ... ... -----END PGP MESSAGE----- " // string | The Runbook Automation License key file
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -60,7 +56,7 @@ Other parameters are passed through a pointer to a apiApiStoreLicenseRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseAgreement** | [**interface{}**](interface{}.md) | true to agree with the Runbook Automation License | 
+ **licenseAgreement** | [**map[string]interface{}**](map[string]interface{}.md) | true to agree with the Runbook Automation License | 
  **body** | **string** | The Runbook Automation License key file | 
 
 ### Return type

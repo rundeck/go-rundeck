@@ -1,6 +1,6 @@
 # \ROIAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetRoiMetricsDataApi
 
-> GetRoiMetricsDataApi(ctx, id).Wait(wait).Execute()
+> map[string]interface{} GetRoiMetricsDataApi(ctx, id).Wait(wait).Execute()
 
 INCUBATING: ROI Metrics Data [Enterprise]
 
@@ -35,11 +35,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ROIAPI.GetRoiMetricsDataApi(context.Background(), id).Wait(wait).Execute()
+	resp, r, err := apiClient.ROIAPI.GetRoiMetricsDataApi(context.Background(), id).Wait(wait).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ROIAPI.GetRoiMetricsDataApi``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `GetRoiMetricsDataApi`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ROIAPI.GetRoiMetricsDataApi`: %v\n", resp)
 }
 ```
 
@@ -63,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 

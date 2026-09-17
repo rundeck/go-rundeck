@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**System** | Pointer to [**System**](System.md) | System Information | [optional] 
+**System** | Pointer to [**SystemInfoModelSystemInfoSystem**](SystemInfoModelSystemInfoSystem.md) | System Information | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSystem
 
-`func (o *SystemInfoModel) GetSystem() System`
+`func (o *SystemInfoModel) GetSystem() SystemInfoModelSystemInfoSystem`
 
 GetSystem returns the System field if non-nil, zero value otherwise.
 
 ### GetSystemOk
 
-`func (o *SystemInfoModel) GetSystemOk() (*System, bool)`
+`func (o *SystemInfoModel) GetSystemOk() (*SystemInfoModelSystemInfoSystem, bool)`
 
 GetSystemOk returns a tuple with the System field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSystem
 
-`func (o *SystemInfoModel) SetSystem(v System)`
+`func (o *SystemInfoModel) SetSystem(v SystemInfoModelSystemInfoSystem)`
 
 SetSystem sets System field to given value.
 

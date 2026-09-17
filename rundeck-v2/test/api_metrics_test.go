@@ -22,13 +22,59 @@ func Test_openapi_MetricsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test MetricsAPIService ApiMetrics", func(t *testing.T) {
+	t.Run("Test MetricsAPIService ApiMetricsHealthcheckDocs", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var name string
+		resp, httpRes, err := apiClient.MetricsAPI.ApiMetricsHealthcheckDocs(context.Background()).Execute()
 
-		resp, httpRes, err := apiClient.MetricsAPI.ApiMetrics(context.Background(), name).Execute()
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetricsAPIService ApiMetricsListDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MetricsAPI.ApiMetricsListDocs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetricsAPIService ApiMetricsMetricsDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MetricsAPI.ApiMetricsMetricsDocs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetricsAPIService ApiMetricsPingDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MetricsAPI.ApiMetricsPingDocs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MetricsAPIService ApiMetricsThreadsDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MetricsAPI.ApiMetricsThreadsDocs(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

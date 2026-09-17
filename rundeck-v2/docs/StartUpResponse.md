@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Error** | Pointer to **bool** |  | [optional] 
+**Error** | Pointer to **string** |  | [optional] 
 **ReplicaId** | Pointer to **string** |  | [optional] 
 **ReplicaType** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetError
 
-`func (o *StartUpResponse) GetError() bool`
+`func (o *StartUpResponse) GetError() string`
 
 GetError returns the Error field if non-nil, zero value otherwise.
 
 ### GetErrorOk
 
-`func (o *StartUpResponse) GetErrorOk() (*bool, bool)`
+`func (o *StartUpResponse) GetErrorOk() (*string, bool)`
 
 GetErrorOk returns a tuple with the Error field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetError
 
-`func (o *StartUpResponse) SetError(v bool)`
+`func (o *StartUpResponse) SetError(v string)`
 
 SetError sets Error field to given value.
 

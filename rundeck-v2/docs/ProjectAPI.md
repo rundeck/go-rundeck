@@ -1,6 +1,6 @@
 # \ProjectAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,13 +14,15 @@ Method | HTTP request | Description
 [**ApiProjectExport**](ProjectAPI.md#ApiProjectExport) | **Get** /project/{project}/export | Export a zip archive of the project.
 [**ApiProjectExportAsyncDocs**](ProjectAPI.md#ApiProjectExportAsyncDocs) | **Get** /project/{project}/export/async | Export a zip archive of the project asynchronously.
 [**ApiProjectExportAsyncDownload**](ProjectAPI.md#ApiProjectExportAsyncDownload) | **Get** /project/{project}/export/download/{token} | Download the zip archive file
+[**ApiProjectExportAsyncPostDocs**](ProjectAPI.md#ApiProjectExportAsyncPostDocs) | **Post** /project/{project}/export/async | Export a zip archive of the project asynchronously (POST).
 [**ApiProjectExportAsyncStatus**](ProjectAPI.md#ApiProjectExportAsyncStatus) | **Get** /project/{project}/export/status/{token} | Get the status of an async export request
+[**ApiProjectExportPostDocs**](ProjectAPI.md#ApiProjectExportPostDocs) | **Post** /project/{project}/export | Export a zip archive of the project (POST).
 [**ApiProjectFileDelete**](ProjectAPI.md#ApiProjectFileDelete) | **Delete** /project/{project}/{filename} | Delete &#x60;readme.md&#x60; and &#x60;motd.md&#x60;
 [**ApiProjectFileGet**](ProjectAPI.md#ApiProjectFileGet) | **Get** /project/{project}/{filename} | Get &#x60;readme.md&#x60; and &#x60;motd.md&#x60;
 [**ApiProjectFilePut**](ProjectAPI.md#ApiProjectFilePut) | **Put** /project/{project}/{filename} | To create or modify the &#x60;readme.md&#x60; and &#x60;motd.md&#x60; contents
 [**ApiProjectGet**](ProjectAPI.md#ApiProjectGet) | **Get** /project/{project} | Get a project
 [**ApiProjectImport**](ProjectAPI.md#ApiProjectImport) | **Put** /project/{project}/import | Import a zip archive.
-[**ApiProjectList1**](ProjectAPI.md#ApiProjectList1) | **Get** /projects | List Projects
+[**ApiProjectList**](ProjectAPI.md#ApiProjectList) | **Get** /projects | List Projects
 [**ApiProjectMeta**](ProjectAPI.md#ApiProjectMeta) | **Get** /project/{project}/meta | Get Project UI Metadata
 [**ApiResourcesv2**](ProjectAPI.md#ApiResourcesv2) | **Get** /project/{project}/resources | List Project Nodes
 [**ApiResourcev14**](ProjectAPI.md#ApiResourcev14) | **Get** /project/{project}/resource/{name} | Get Node Info
@@ -240,7 +242,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/text, application/json
+- **Accept**: text/plain, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -791,6 +793,98 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ApiProjectExportAsyncPostDocs
+
+> ProjectExport ApiProjectExportAsyncPostDocs(ctx, project).ExecutionIds(executionIds).ExportAll(exportAll).ExportJobs(exportJobs).ExportExecutions(exportExecutions).ExportConfigs(exportConfigs).ExportReadmes(exportReadmes).ExportAcls(exportAcls).ExportScm(exportScm).ExportWebhooks(exportWebhooks).WhkIncludeAuthTokens(whkIncludeAuthTokens).WhkRegenUuid(whkRegenUuid).Execute()
+
+Export a zip archive of the project asynchronously (POST).
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	project := "project_example" // string | Project Name
+	executionIds := "executionIds_example" // string | A list (comma-separated) of execution IDs (optional)
+	exportAll := true // bool | Export all project contents (default: true) (optional)
+	exportJobs := true // bool | Include job definitions (optional)
+	exportExecutions := true // bool | Include execution history (optional)
+	exportConfigs := true // bool | Include project configuration (optional)
+	exportReadmes := true // bool | Include readme/motd files (optional)
+	exportAcls := true // bool | true/false, include project ACL Policy files, if authorized (optional)
+	exportScm := true // bool | Include SCM configuration (API v28+) (optional)
+	exportWebhooks := true // bool | Include webhooks (API v34+) (optional)
+	whkIncludeAuthTokens := true // bool | Include auth tokens when exporting webhooks (API v34+) (optional)
+	whkRegenUuid := true // bool | Regenerate UUIDs for webhooks on import (API v34+) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectAPI.ApiProjectExportAsyncPostDocs(context.Background(), project).ExecutionIds(executionIds).ExportAll(exportAll).ExportJobs(exportJobs).ExportExecutions(exportExecutions).ExportConfigs(exportConfigs).ExportReadmes(exportReadmes).ExportAcls(exportAcls).ExportScm(exportScm).ExportWebhooks(exportWebhooks).WhkIncludeAuthTokens(whkIncludeAuthTokens).WhkRegenUuid(whkRegenUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.ApiProjectExportAsyncPostDocs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiProjectExportAsyncPostDocs`: ProjectExport
+	fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.ApiProjectExportAsyncPostDocs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**project** | **string** | Project Name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectExportAsyncPostDocsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **executionIds** | **string** | A list (comma-separated) of execution IDs | 
+ **exportAll** | **bool** | Export all project contents (default: true) | 
+ **exportJobs** | **bool** | Include job definitions | 
+ **exportExecutions** | **bool** | Include execution history | 
+ **exportConfigs** | **bool** | Include project configuration | 
+ **exportReadmes** | **bool** | Include readme/motd files | 
+ **exportAcls** | **bool** | true/false, include project ACL Policy files, if authorized | 
+ **exportScm** | **bool** | Include SCM configuration (API v28+) | 
+ **exportWebhooks** | **bool** | Include webhooks (API v34+) | 
+ **whkIncludeAuthTokens** | **bool** | Include auth tokens when exporting webhooks (API v34+) | 
+ **whkRegenUuid** | **bool** | Regenerate UUIDs for webhooks on import (API v34+) | 
+
+### Return type
+
+[**ProjectExport**](ProjectExport.md)
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiProjectExportAsyncStatus
 
 > map[string]interface{} ApiProjectExportAsyncStatus(ctx, project, token).Execute()
@@ -858,6 +952,98 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiProjectExportPostDocs
+
+> *os.File ApiProjectExportPostDocs(ctx, project).ExecutionIds(executionIds).ExportAll(exportAll).ExportJobs(exportJobs).ExportExecutions(exportExecutions).ExportConfigs(exportConfigs).ExportReadmes(exportReadmes).ExportAcls(exportAcls).ExportScm(exportScm).ExportWebhooks(exportWebhooks).WhkIncludeAuthTokens(whkIncludeAuthTokens).WhkRegenUuid(whkRegenUuid).Execute()
+
+Export a zip archive of the project (POST).
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rundeck/go-rundeck/rundeck-v2"
+)
+
+func main() {
+	project := "project_example" // string | Project Name
+	executionIds := "executionIds_example" // string | A list (comma-separated) of execution IDs (optional)
+	exportAll := true // bool | Export all project contents (default: true) (optional)
+	exportJobs := true // bool | Include job definitions (optional)
+	exportExecutions := true // bool | Include execution history (optional)
+	exportConfigs := true // bool | Include project configuration (optional)
+	exportReadmes := true // bool | Include readme/motd files (optional)
+	exportAcls := true // bool | true/false, include project ACL Policy files, if authorized (optional)
+	exportScm := true // bool | Include SCM configuration (API v28+) (optional)
+	exportWebhooks := true // bool | Include webhooks (API v34+) (optional)
+	whkIncludeAuthTokens := true // bool | Include auth tokens when exporting webhooks (API v34+) (optional)
+	whkRegenUuid := true // bool | Regenerate UUIDs for webhooks on import (API v34+) (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectAPI.ApiProjectExportPostDocs(context.Background(), project).ExecutionIds(executionIds).ExportAll(exportAll).ExportJobs(exportJobs).ExportExecutions(exportExecutions).ExportConfigs(exportConfigs).ExportReadmes(exportReadmes).ExportAcls(exportAcls).ExportScm(exportScm).ExportWebhooks(exportWebhooks).WhkIncludeAuthTokens(whkIncludeAuthTokens).WhkRegenUuid(whkRegenUuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.ApiProjectExportPostDocs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ApiProjectExportPostDocs`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.ApiProjectExportPostDocs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**project** | **string** | Project Name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiProjectExportPostDocsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **executionIds** | **string** | A list (comma-separated) of execution IDs | 
+ **exportAll** | **bool** | Export all project contents (default: true) | 
+ **exportJobs** | **bool** | Include job definitions | 
+ **exportExecutions** | **bool** | Include execution history | 
+ **exportConfigs** | **bool** | Include project configuration | 
+ **exportReadmes** | **bool** | Include readme/motd files | 
+ **exportAcls** | **bool** | true/false, include project ACL Policy files, if authorized | 
+ **exportScm** | **bool** | Include SCM configuration (API v28+) | 
+ **exportWebhooks** | **bool** | Include webhooks (API v34+) | 
+ **whkIncludeAuthTokens** | **bool** | Include auth tokens when exporting webhooks (API v34+) | 
+ **whkRegenUuid** | **bool** | Regenerate UUIDs for webhooks on import (API v34+) | 
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[rundeckApiToken](../README.md#rundeckApiToken), [rundeckJWT](../README.md#rundeckJWT), [rundeckPassword](../README.md#rundeckPassword)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/zip, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1001,7 +1187,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/text, application/json
+- **Accept**: text/plain, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1076,7 +1262,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json, text/plain
-- **Accept**: application/text, application/json
+- **Accept**: text/plain, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1155,7 +1341,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectImport
 
-> map[string]interface{} ApiProjectImport(ctx, project).JobUuidOption(jobUuidOption).ImportExecutions(importExecutions).ImportConfig(importConfig).ImportACL(importACL).ImportScm(importScm).ImportWebhooks(importWebhooks).WhkRegenAuthTokens(whkRegenAuthTokens).ImportNodesSources(importNodesSources).ImportComponentsNAME(importComponentsNAME).ImportOptsNAMEKEY(importOptsNAMEKEY).Body(body).Execute()
+> map[string]interface{} ApiProjectImport(ctx, project).JobUuidOption(jobUuidOption).ImportExecutions(importExecutions).ImportConfig(importConfig).ImportACL(importACL).ImportScm(importScm).ImportWebhooks(importWebhooks).WhkRegenAuthTokens(whkRegenAuthTokens).ImportNodesSources(importNodesSources).ImportComponentsNAME(importComponentsNAME).ImportOptsNAMEKEY(importOptsNAMEKEY).ApiProjectImportRequest(apiProjectImportRequest).Execute()
 
 Import a zip archive.
 
@@ -1185,11 +1371,11 @@ func main() {
 	importNodesSources := true // bool | In APIv38 or later: If true, import Node Resources Source defined on project properties.  If false, do not import the nodes sources. (optional)
 	importComponentsNAME := "importComponentsNAME_example" // string | Enable a component for import. Project archives may contain \"components\" which can be imported, beyond the base set of contents. This includes some data used by Runbook Automation (prev. Rundeck Enterprise) features.  For example, to enable Webhook import, you could use `importWebhooks` and `whkRegenAuthTokens` params, but those are simply shortcuts for the following parameters:  * `importComponents.webhooks=true&importOpts.webhooks.regenAuthTokens=true`  Import schedules definitions:  * `importComponents.Schedule%20Definitions=true` (optional)
 	importOptsNAMEKEY := "importOptsNAMEKEY_example" // string | Set a component option. See `importComponents.NAME` parameter description (optional)
-	body := os.NewFile(1234, "some_file") // *os.File |  (optional)
+	apiProjectImportRequest := *openapiclient.NewApiProjectImportRequest() // ApiProjectImportRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectAPI.ApiProjectImport(context.Background(), project).JobUuidOption(jobUuidOption).ImportExecutions(importExecutions).ImportConfig(importConfig).ImportACL(importACL).ImportScm(importScm).ImportWebhooks(importWebhooks).WhkRegenAuthTokens(whkRegenAuthTokens).ImportNodesSources(importNodesSources).ImportComponentsNAME(importComponentsNAME).ImportOptsNAMEKEY(importOptsNAMEKEY).Body(body).Execute()
+	resp, r, err := apiClient.ProjectAPI.ApiProjectImport(context.Background(), project).JobUuidOption(jobUuidOption).ImportExecutions(importExecutions).ImportConfig(importConfig).ImportACL(importACL).ImportScm(importScm).ImportWebhooks(importWebhooks).WhkRegenAuthTokens(whkRegenAuthTokens).ImportNodesSources(importNodesSources).ImportComponentsNAME(importComponentsNAME).ImportOptsNAMEKEY(importOptsNAMEKEY).ApiProjectImportRequest(apiProjectImportRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.ApiProjectImport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1225,7 +1411,7 @@ Name | Type | Description  | Notes
  **importNodesSources** | **bool** | In APIv38 or later: If true, import Node Resources Source defined on project properties.  If false, do not import the nodes sources. | 
  **importComponentsNAME** | **string** | Enable a component for import. Project archives may contain \&quot;components\&quot; which can be imported, beyond the base set of contents. This includes some data used by Runbook Automation (prev. Rundeck Enterprise) features.  For example, to enable Webhook import, you could use &#x60;importWebhooks&#x60; and &#x60;whkRegenAuthTokens&#x60; params, but those are simply shortcuts for the following parameters:  * &#x60;importComponents.webhooks&#x3D;true&amp;importOpts.webhooks.regenAuthTokens&#x3D;true&#x60;  Import schedules definitions:  * &#x60;importComponents.Schedule%20Definitions&#x3D;true&#x60; | 
  **importOptsNAMEKEY** | **string** | Set a component option. See &#x60;importComponents.NAME&#x60; parameter description | 
- **body** | ***os.File** |  | 
+ **apiProjectImportRequest** | [**ApiProjectImportRequest**](ApiProjectImportRequest.md) |  | 
 
 ### Return type
 
@@ -1245,9 +1431,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ApiProjectList1
+## ApiProjectList
 
-> []map[string]interface{} ApiProjectList1(ctx).Meta(meta).Execute()
+> []map[string]interface{} ApiProjectList(ctx).Meta(meta).Execute()
 
 List Projects
 
@@ -1270,13 +1456,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectAPI.ApiProjectList1(context.Background()).Meta(meta).Execute()
+	resp, r, err := apiClient.ProjectAPI.ApiProjectList(context.Background()).Meta(meta).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.ApiProjectList1``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectAPI.ApiProjectList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ApiProjectList1`: []map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.ApiProjectList1`: %v\n", resp)
+	// response from `ApiProjectList`: []map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ProjectAPI.ApiProjectList`: %v\n", resp)
 }
 ```
 
@@ -1286,7 +1472,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiProjectList1Request struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiProjectListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

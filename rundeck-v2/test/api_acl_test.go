@@ -127,9 +127,10 @@ func Test_openapi_ACLAPIService(t *testing.T) {
 
 		var path string
 
-		httpRes, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Execute()
+		resp, httpRes, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

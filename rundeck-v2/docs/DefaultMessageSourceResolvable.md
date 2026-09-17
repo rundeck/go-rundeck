@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** |  | 
 **Codes** | Pointer to **[]string** |  | [optional] 
-**DefaultMessage** | Pointer to **string** |  | [optional] 
 **Arguments** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**DefaultMessage** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -73,31 +73,6 @@ SetCodes sets Codes field to given value.
 
 HasCodes returns a boolean if a field has been set.
 
-### GetDefaultMessage
-
-`func (o *DefaultMessageSourceResolvable) GetDefaultMessage() string`
-
-GetDefaultMessage returns the DefaultMessage field if non-nil, zero value otherwise.
-
-### GetDefaultMessageOk
-
-`func (o *DefaultMessageSourceResolvable) GetDefaultMessageOk() (*string, bool)`
-
-GetDefaultMessageOk returns a tuple with the DefaultMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultMessage
-
-`func (o *DefaultMessageSourceResolvable) SetDefaultMessage(v string)`
-
-SetDefaultMessage sets DefaultMessage field to given value.
-
-### HasDefaultMessage
-
-`func (o *DefaultMessageSourceResolvable) HasDefaultMessage() bool`
-
-HasDefaultMessage returns a boolean if a field has been set.
-
 ### GetArguments
 
 `func (o *DefaultMessageSourceResolvable) GetArguments() []map[string]interface{}`
@@ -122,6 +97,31 @@ SetArguments sets Arguments field to given value.
 `func (o *DefaultMessageSourceResolvable) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
+
+### GetDefaultMessage
+
+`func (o *DefaultMessageSourceResolvable) GetDefaultMessage() string`
+
+GetDefaultMessage returns the DefaultMessage field if non-nil, zero value otherwise.
+
+### GetDefaultMessageOk
+
+`func (o *DefaultMessageSourceResolvable) GetDefaultMessageOk() (*string, bool)`
+
+GetDefaultMessageOk returns a tuple with the DefaultMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultMessage
+
+`func (o *DefaultMessageSourceResolvable) SetDefaultMessage(v string)`
+
+SetDefaultMessage sets DefaultMessage field to given value.
+
+### HasDefaultMessage
+
+`func (o *DefaultMessageSourceResolvable) HasDefaultMessage() bool`
+
+HasDefaultMessage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

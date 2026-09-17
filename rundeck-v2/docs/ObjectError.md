@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** |  | 
 **Codes** | Pointer to **[]string** |  | [optional] 
-**DefaultMessage** | Pointer to **string** |  | [optional] 
 **Arguments** | Pointer to **[]map[string]interface{}** |  | [optional] 
+**DefaultMessage** | Pointer to **string** |  | [optional] 
 **ObjectName** | **string** |  | 
 
 ## Methods
@@ -74,31 +74,6 @@ SetCodes sets Codes field to given value.
 
 HasCodes returns a boolean if a field has been set.
 
-### GetDefaultMessage
-
-`func (o *ObjectError) GetDefaultMessage() string`
-
-GetDefaultMessage returns the DefaultMessage field if non-nil, zero value otherwise.
-
-### GetDefaultMessageOk
-
-`func (o *ObjectError) GetDefaultMessageOk() (*string, bool)`
-
-GetDefaultMessageOk returns a tuple with the DefaultMessage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDefaultMessage
-
-`func (o *ObjectError) SetDefaultMessage(v string)`
-
-SetDefaultMessage sets DefaultMessage field to given value.
-
-### HasDefaultMessage
-
-`func (o *ObjectError) HasDefaultMessage() bool`
-
-HasDefaultMessage returns a boolean if a field has been set.
-
 ### GetArguments
 
 `func (o *ObjectError) GetArguments() []map[string]interface{}`
@@ -123,6 +98,31 @@ SetArguments sets Arguments field to given value.
 `func (o *ObjectError) HasArguments() bool`
 
 HasArguments returns a boolean if a field has been set.
+
+### GetDefaultMessage
+
+`func (o *ObjectError) GetDefaultMessage() string`
+
+GetDefaultMessage returns the DefaultMessage field if non-nil, zero value otherwise.
+
+### GetDefaultMessageOk
+
+`func (o *ObjectError) GetDefaultMessageOk() (*string, bool)`
+
+GetDefaultMessageOk returns a tuple with the DefaultMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultMessage
+
+`func (o *ObjectError) SetDefaultMessage(v string)`
+
+SetDefaultMessage sets DefaultMessage field to given value.
+
+### HasDefaultMessage
+
+`func (o *ObjectError) HasDefaultMessage() bool`
+
+HasDefaultMessage returns a boolean if a field has been set.
 
 ### GetObjectName
 

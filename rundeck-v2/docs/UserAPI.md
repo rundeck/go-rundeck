@@ -1,6 +1,6 @@
 # \UserAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## ApiCreate1
 
-> map[string]interface{} ApiCreate1(ctx).Execute()
+> map[string]interface{} ApiCreate1(ctx).CreateUserRequest(createUserRequest).Execute()
 
 Create A Local User [Enterprise]
 
@@ -113,10 +113,11 @@ import (
 )
 
 func main() {
+	createUserRequest := *openapiclient.NewCreateUserRequest("johndoe", "SecurePassword123!", []string{"Roles_example"}) // CreateUserRequest | User creation data including username, password (pwd), and roles
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserAPI.ApiCreate1(context.Background()).Execute()
+	resp, r, err := apiClient.UserAPI.ApiCreate1(context.Background()).CreateUserRequest(createUserRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserAPI.ApiCreate1``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -128,12 +129,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiApiCreate1Request struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createUserRequest** | [**CreateUserRequest**](CreateUserRequest.md) | User creation data including username, password (pwd), and roles | 
 
 ### Return type
 
@@ -145,7 +150,7 @@ Other parameters are passed through a pointer to a apiApiCreate1Request struct v
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

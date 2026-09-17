@@ -1,6 +1,6 @@
 # \JobExecutionsAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## ApiExecutionMetricsDocs
 
-> MetricsQueryResponse ApiExecutionMetricsDocs(ctx).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+> MetricsQueryResponse ApiExecutionMetricsDocs(ctx).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).UseStats(useStats).GroupByJob(groupByJob).Max(max).Offset(offset).Execute()
 
 Execution Query Metrics
 
@@ -416,12 +416,14 @@ func main() {
 	olderFilter := "olderFilter_example" // string | (same format as `recentFilter`) return executions that completed before the specified relative period of time.  E.g. a value of `30d` returns executions older than 30 days. (optional)
 	userFilter := "userFilter_example" // string | Username who started the execution (optional)
 	executionTypeFilter := "executionTypeFilter_example" // string | specify the execution type, one of: `scheduled` (schedule trigger), `user` (user trigger), `user-scheduled` (user scheduled trigger). Since: v20 (optional)
+	useStats := true // bool | if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). if false or not provided, use execution table query (slow, always returns data). Since: v57 (optional)
+	groupByJob := true // bool | if true with useStats=true, returns metrics for all jobs in the project (batch mode). Requires project parameter. Returns format: {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since: v57 (optional)
 	max := int32(56) // int32 | maximum number of results to include in response. (default: 20) (optional)
 	offset := int32(56) // int32 | offset for first result to include. (default: 0) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionMetricsDocs(context.Background()).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+	resp, r, err := apiClient.JobExecutionsAPI.ApiExecutionMetricsDocs(context.Background()).Project(project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).UseStats(useStats).GroupByJob(groupByJob).Max(max).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionMetricsDocs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -468,6 +470,8 @@ Name | Type | Description  | Notes
  **olderFilter** | **string** | (same format as &#x60;recentFilter&#x60;) return executions that completed before the specified relative period of time.  E.g. a value of &#x60;30d&#x60; returns executions older than 30 days. | 
  **userFilter** | **string** | Username who started the execution | 
  **executionTypeFilter** | **string** | specify the execution type, one of: &#x60;scheduled&#x60; (schedule trigger), &#x60;user&#x60; (user trigger), &#x60;user-scheduled&#x60; (user scheduled trigger). Since: v20 | 
+ **useStats** | **bool** | if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). if false or not provided, use execution table query (slow, always returns data). Since: v57 | 
+ **groupByJob** | **bool** | if true with useStats&#x3D;true, returns metrics for all jobs in the project (batch mode). Requires project parameter. Returns format: {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since: v57 | 
  **max** | **int32** | maximum number of results to include in response. (default: 20) | 
  **offset** | **int32** | offset for first result to include. (default: 0) | 
 
@@ -1011,7 +1015,7 @@ Name | Type | Description  | Notes
 
 ## ApiExecutionsQueryv14Docs
 
-> ApiExecutionsQueryv14Docs(ctx, project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+> ApiExecutionsQueryv14Docs(ctx, project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).UseStats(useStats).GroupByJob(groupByJob).AdhocStringFilter(adhocStringFilter).NodeFilter(nodeFilter).OptionFilter(optionFilter).Max(max).Offset(offset).Execute()
 
 Execution Query
 
@@ -1056,12 +1060,17 @@ func main() {
 	olderFilter := "olderFilter_example" // string | (same format as `recentFilter`) return executions that completed before the specified relative period of time.  E.g. a value of `30d` returns executions older than 30 days. (optional)
 	userFilter := "userFilter_example" // string | Username who started the execution (optional)
 	executionTypeFilter := "executionTypeFilter_example" // string | specify the execution type, one of: `scheduled` (schedule trigger), `user` (user trigger), `user-scheduled` (user scheduled trigger). Since: v20 (optional)
+	useStats := true // bool | if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). if false or not provided, use execution table query (slow, always returns data). Since: v57 (optional)
+	groupByJob := true // bool | if true with useStats=true, returns metrics for all jobs in the project (batch mode). Requires project parameter. Returns format: {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since: v57 (optional)
+	adhocStringFilter := "adhocStringFilter_example" // string | filter adhoc executions by command title (partial match). (optional)
+	nodeFilter := "nodeFilter_example" // string | filter executions by node name or filter expression (partial match). Use 'name:nodename' for simple node name search, or a filter expression like 'tags:value' for complex filters. (optional)
+	optionFilter := "optionFilter_example" // string | filter executions by option values (partial match, e.g. '-test 123'). (optional)
 	max := int32(56) // int32 | maximum number of results to include in response. (default: 20) (optional)
 	offset := int32(56) // int32 | offset for first result to include. (default: 0) (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobExecutionsAPI.ApiExecutionsQueryv14Docs(context.Background(), project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).Max(max).Offset(offset).Execute()
+	r, err := apiClient.JobExecutionsAPI.ApiExecutionsQueryv14Docs(context.Background(), project).StatusFilter(statusFilter).AbortedbyFilter(abortedbyFilter).JobIdListFilter(jobIdListFilter).ExcludeJobIdListFilter(excludeJobIdListFilter).JobListFilter(jobListFilter).ExcludeJobListFilter(excludeJobListFilter).GroupPath(groupPath).GroupPathExact(groupPathExact).ExcludeGroupPath(excludeGroupPath).ExcludeGroupPathExact(excludeGroupPathExact).JobFilter(jobFilter).ExcludeJobFilter(excludeJobFilter).JobExactFilter(jobExactFilter).ExcludeJobExactFilter(excludeJobExactFilter).StartafterFilter(startafterFilter).StartbeforeFilter(startbeforeFilter).EndafterFilter(endafterFilter).EndbeforeFilter(endbeforeFilter).Begin(begin).End(end).Adhoc(adhoc).RecentFilter(recentFilter).OlderFilter(olderFilter).UserFilter(userFilter).ExecutionTypeFilter(executionTypeFilter).UseStats(useStats).GroupByJob(groupByJob).AdhocStringFilter(adhocStringFilter).NodeFilter(nodeFilter).OptionFilter(optionFilter).Max(max).Offset(offset).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobExecutionsAPI.ApiExecutionsQueryv14Docs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1110,6 +1119,11 @@ Name | Type | Description  | Notes
  **olderFilter** | **string** | (same format as &#x60;recentFilter&#x60;) return executions that completed before the specified relative period of time.  E.g. a value of &#x60;30d&#x60; returns executions older than 30 days. | 
  **userFilter** | **string** | Username who started the execution | 
  **executionTypeFilter** | **string** | specify the execution type, one of: &#x60;scheduled&#x60; (schedule trigger), &#x60;user&#x60; (user trigger), &#x60;user-scheduled&#x60; (user scheduled trigger). Since: v20 | 
+ **useStats** | **bool** | if true, use snapshot-based metrics from SCHEDULED_EXECUTION_STATS table (fast, returns empty metrics (all zeros) if no stats exist). if false or not provided, use execution table query (slow, always returns data). Since: v57 | 
+ **groupByJob** | **bool** | if true with useStats&#x3D;true, returns metrics for all jobs in the project (batch mode). Requires project parameter. Returns format: {jobs: {uuid1: metrics, uuid2: metrics, ...}}. RUN-3768 Phase 5. Since: v57 | 
+ **adhocStringFilter** | **string** | filter adhoc executions by command title (partial match). | 
+ **nodeFilter** | **string** | filter executions by node name or filter expression (partial match). Use &#39;name:nodename&#39; for simple node name search, or a filter expression like &#39;tags:value&#39; for complex filters. | 
+ **optionFilter** | **string** | filter executions by option values (partial match, e.g. &#39;-test 123&#39;). | 
  **max** | **int32** | maximum number of results to include in response. (default: 20) | 
  **offset** | **int32** | offset for first result to include. (default: 0) | 
 

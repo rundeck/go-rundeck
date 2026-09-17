@@ -153,9 +153,10 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 
 		var token string
 
-		httpRes, err := apiClient.RunnerAPI.DownloadRunner(context.Background(), token).Execute()
+		resp, httpRes, err := apiClient.RunnerAPI.DownloadRunner(context.Background(), token).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -320,9 +321,10 @@ func Test_openapi_RunnerAPIService(t *testing.T) {
 		var token string
 		var project string
 
-		httpRes, err := apiClient.RunnerAPI.ProjectDownloadRunner(context.Background(), token, project).Execute()
+		resp, httpRes, err := apiClient.RunnerAPI.ProjectDownloadRunner(context.Background(), token, project).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

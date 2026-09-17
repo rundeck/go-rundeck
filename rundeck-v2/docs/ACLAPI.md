@@ -1,6 +1,6 @@
 # \ACLAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/text, application/yaml, application/json
+- **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -182,14 +182,7 @@ import (
 func main() {
 	project := "project_example" // string | Project Name
 	path := "path_example" // string | Path to the ACL Policy
-	body := "description: "my policy"
-context:
-  application: rundeck
-for:
-  project:
-    - allow: read
-by:
-  group: build" // string |  (optional)
+	body := "description: \"my policy\" context:   application: rundeck for:   project:     - allow: read by:   group: build" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -233,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: text/plain, application/yaml, application/json
+- **Content-Type**: text/plain, application/x-yaml, application/json
 - **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -264,14 +257,7 @@ import (
 func main() {
 	project := "project_example" // string | Project Name
 	path := "path_example" // string | Path to the ACL Policy
-	body := "description: "my policy"
-context:
-  application: rundeck
-for:
-  project:
-    - allow: read
-by:
-  group: build" // string |  (optional)
+	body := "description: \"my policy\" context:   application: rundeck for:   project:     - allow: read by:   group: build" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -314,7 +300,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: text/plain, application/x-yaml, application/json
-- **Accept**: application/text, application/yaml, application/json
+- **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -382,7 +368,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain, application/yaml, application/json
+- **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -481,14 +467,7 @@ import (
 
 func main() {
 	path := "path_example" // string | Path to the Acl policy file
-	body := "description: "my policy"
-context:
-  application: rundeck
-for:
-  project:
-    - allow: read
-by:
-  group: build" // string | If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.  Otherwise, you can use JSON to wrap the yaml content inside `contents`  (optional)
+	body := "description: \"my policy\" context:   application: rundeck for:   project:     - allow: read by:   group: build" // string | If the `Content-Type` is `application/yaml` or `text/plain`, then the request body is the ACL policy contents directly.  Otherwise, you can use JSON to wrap the yaml content inside `contents`  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -531,7 +510,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/yaml, application/json
-- **Accept**: text/plain, application/yaml, application/json
+- **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -540,7 +519,7 @@ Name | Type | Description  | Notes
 
 ## ApiSystemAclsPUTDocs
 
-> ApiSystemAclsPUTDocs(ctx, path).Body(body).Execute()
+> map[string]interface{} ApiSystemAclsPUTDocs(ctx, path).Body(body).Execute()
 
 Update an ACL Policy.
 
@@ -564,11 +543,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Body(body).Execute()
+	resp, r, err := apiClient.ACLAPI.ApiSystemAclsPUTDocs(context.Background(), path).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ACLAPI.ApiSystemAclsPUTDocs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ApiSystemAclsPUTDocs`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ACLAPI.ApiSystemAclsPUTDocs`: %v\n", resp)
 }
 ```
 
@@ -592,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 
@@ -601,7 +582,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/yaml, application/json
-- **Accept**: text/plain, application/yaml, application/json
+- **Accept**: text/plain, application/x-yaml, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

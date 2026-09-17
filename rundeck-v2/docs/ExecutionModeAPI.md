@@ -1,6 +1,6 @@
 # \ExecutionModeAPI
 
-All URIs are relative to *https://localhost:4440/api/56*
+All URIs are relative to *https://localhost:4440/api/59*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## ApiExecutionModeLaterActive
 
-> ModeLaterResponse ApiExecutionModeLaterActive(ctx).ModeLaterRequest(modeLaterRequest).Execute()
+> ModeLaterResponse ApiExecutionModeLaterActive(ctx).ApiExecutionModeLaterPassiveRequest(apiExecutionModeLaterPassiveRequest).Execute()
 
 Enable System executions after a duration of time
 
@@ -32,11 +32,11 @@ import (
 )
 
 func main() {
-	modeLaterRequest := *openapiclient.NewModeLaterRequest() // ModeLaterRequest | Enable Executions. Specify a `value` with a time duration expression. (See request schema for syntax.) 
+	apiExecutionModeLaterPassiveRequest := *openapiclient.NewApiExecutionModeLaterPassiveRequest() // ApiExecutionModeLaterPassiveRequest | Enable Executions. Specify a `value` with a time duration expression. (See request schema for syntax.) 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExecutionModeAPI.ApiExecutionModeLaterActive(context.Background()).ModeLaterRequest(modeLaterRequest).Execute()
+	resp, r, err := apiClient.ExecutionModeAPI.ApiExecutionModeLaterActive(context.Background()).ApiExecutionModeLaterPassiveRequest(apiExecutionModeLaterPassiveRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionModeAPI.ApiExecutionModeLaterActive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiApiExecutionModeLaterActiv
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modeLaterRequest** | [**ModeLaterRequest**](ModeLaterRequest.md) | Enable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.)  | 
+ **apiExecutionModeLaterPassiveRequest** | [**ApiExecutionModeLaterPassiveRequest**](ApiExecutionModeLaterPassiveRequest.md) | Enable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.)  | 
 
 ### Return type
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## ApiExecutionModeLaterPassive
 
-> ModeLaterResponse ApiExecutionModeLaterPassive(ctx).ModeLaterRequest(modeLaterRequest).Execute()
+> ModeLaterResponse ApiExecutionModeLaterPassive(ctx).ApiExecutionModeLaterPassiveRequest(apiExecutionModeLaterPassiveRequest).Execute()
 
 Disable System executions after a duration of time
 
@@ -98,11 +98,11 @@ import (
 )
 
 func main() {
-	modeLaterRequest := *openapiclient.NewModeLaterRequest() // ModeLaterRequest | Disable Executions. Specify a `value` with a time duration expression. (See request schema for syntax.) 
+	apiExecutionModeLaterPassiveRequest := *openapiclient.NewApiExecutionModeLaterPassiveRequest() // ApiExecutionModeLaterPassiveRequest | Disable Executions. Specify a `value` with a time duration expression. (See request schema for syntax.) 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExecutionModeAPI.ApiExecutionModeLaterPassive(context.Background()).ModeLaterRequest(modeLaterRequest).Execute()
+	resp, r, err := apiClient.ExecutionModeAPI.ApiExecutionModeLaterPassive(context.Background()).ApiExecutionModeLaterPassiveRequest(apiExecutionModeLaterPassiveRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionModeAPI.ApiExecutionModeLaterPassive``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -123,7 +123,7 @@ Other parameters are passed through a pointer to a apiApiExecutionModeLaterPassi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **modeLaterRequest** | [**ModeLaterRequest**](ModeLaterRequest.md) | Disable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.)  | 
+ **apiExecutionModeLaterPassiveRequest** | [**ApiExecutionModeLaterPassiveRequest**](ApiExecutionModeLaterPassiveRequest.md) | Disable Executions. Specify a &#x60;value&#x60; with a time duration expression. (See request schema for syntax.)  | 
 
 ### Return type
 
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectDisableLater
 
-> ModeLaterResponse ApiProjectDisableLater(ctx, project).ProjectModeLaterRequest(projectModeLaterRequest).Execute()
+> ModeLaterResponse ApiProjectDisableLater(ctx, project).ApiProjectDisableLaterRequest(apiProjectDisableLaterRequest).Execute()
 
 Disable Project executions or schedules after a duration of time
 
@@ -165,11 +165,11 @@ import (
 
 func main() {
 	project := "project_example" // string | project name
-	projectModeLaterRequest := *openapiclient.NewProjectModeLaterRequest() // ProjectModeLaterRequest | Disable Schedule or Executions. Specify the `type` to enable, and a `value` with a time duration expression. The request must contain a `value` with a \"Time duration expression\". (See request schema for syntax.) 
+	apiProjectDisableLaterRequest := *openapiclient.NewApiProjectDisableLaterRequest() // ApiProjectDisableLaterRequest | Disable Schedule or Executions. Specify the `type` to enable, and a `value` with a time duration expression. The request must contain a `value` with a \"Time duration expression\". (See request schema for syntax.) 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExecutionModeAPI.ApiProjectDisableLater(context.Background(), project).ProjectModeLaterRequest(projectModeLaterRequest).Execute()
+	resp, r, err := apiClient.ExecutionModeAPI.ApiProjectDisableLater(context.Background(), project).ApiProjectDisableLaterRequest(apiProjectDisableLaterRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionModeAPI.ApiProjectDisableLater``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,7 +195,7 @@ Other parameters are passed through a pointer to a apiApiProjectDisableLaterRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectModeLaterRequest** | [**ProjectModeLaterRequest**](ProjectModeLaterRequest.md) | Disable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.)  | 
+ **apiProjectDisableLaterRequest** | [**ApiProjectDisableLaterRequest**](ApiProjectDisableLaterRequest.md) | Disable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.)  | 
 
 ### Return type
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ## ApiProjectEnableLater
 
-> ModeLaterResponse ApiProjectEnableLater(ctx, project).ProjectModeLaterRequest(projectModeLaterRequest).Execute()
+> ModeLaterResponse ApiProjectEnableLater(ctx, project).ApiProjectDisableLaterRequest(apiProjectDisableLaterRequest).Execute()
 
 Enable Project executions or schedules after a duration of time
 
@@ -237,11 +237,11 @@ import (
 
 func main() {
 	project := "project_example" // string | project name
-	projectModeLaterRequest := *openapiclient.NewProjectModeLaterRequest() // ProjectModeLaterRequest | Enable Schedule or Executions. Specify the `type` to enable, and a `value` with a time duration expression. The request must contain a `value` with a \"Time duration expression\". (See request schema for syntax.) 
+	apiProjectDisableLaterRequest := *openapiclient.NewApiProjectDisableLaterRequest() // ApiProjectDisableLaterRequest | Enable Schedule or Executions. Specify the `type` to enable, and a `value` with a time duration expression. The request must contain a `value` with a \"Time duration expression\". (See request schema for syntax.) 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExecutionModeAPI.ApiProjectEnableLater(context.Background(), project).ProjectModeLaterRequest(projectModeLaterRequest).Execute()
+	resp, r, err := apiClient.ExecutionModeAPI.ApiProjectEnableLater(context.Background(), project).ApiProjectDisableLaterRequest(apiProjectDisableLaterRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ExecutionModeAPI.ApiProjectEnableLater``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -267,7 +267,7 @@ Other parameters are passed through a pointer to a apiApiProjectEnableLaterReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **projectModeLaterRequest** | [**ProjectModeLaterRequest**](ProjectModeLaterRequest.md) | Enable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.)  | 
+ **apiProjectDisableLaterRequest** | [**ApiProjectDisableLaterRequest**](ApiProjectDisableLaterRequest.md) | Enable Schedule or Executions. Specify the &#x60;type&#x60; to enable, and a &#x60;value&#x60; with a time duration expression. The request must contain a &#x60;value&#x60; with a \&quot;Time duration expression\&quot;. (See request schema for syntax.)  | 
 
 ### Return type
 

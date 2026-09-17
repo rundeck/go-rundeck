@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **NodeKeepgoing** | Pointer to **bool** |  | [optional] 
 **NodeThreadcount** | Pointer to **int32** |  | [optional] 
 **Meta** | Pointer to **map[string]string** |  | [optional] 
+**Errors** | Pointer to [**Errors**](Errors.md) |  | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetMeta sets Meta field to given value.
 `func (o *ApiRunAdhocRequest) HasMeta() bool`
 
 HasMeta returns a boolean if a field has been set.
+
+### GetErrors
+
+`func (o *ApiRunAdhocRequest) GetErrors() Errors`
+
+GetErrors returns the Errors field if non-nil, zero value otherwise.
+
+### GetErrorsOk
+
+`func (o *ApiRunAdhocRequest) GetErrorsOk() (*Errors, bool)`
+
+GetErrorsOk returns a tuple with the Errors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrors
+
+`func (o *ApiRunAdhocRequest) SetErrors(v Errors)`
+
+SetErrors sets Errors field to given value.
+
+### HasErrors
+
+`func (o *ApiRunAdhocRequest) HasErrors() bool`
+
+HasErrors returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

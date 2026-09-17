@@ -162,6 +162,20 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectAPIService ApiProjectExportAsyncPostDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectExportAsyncPostDocs(context.Background(), project).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAPIService ApiProjectExportAsyncStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -170,6 +184,20 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 		var token string
 
 		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectExportAsyncStatus(context.Background(), project, token).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectAPIService ApiProjectExportPostDocs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var project string
+
+		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectExportPostDocs(context.Background(), project).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -249,11 +277,11 @@ func Test_openapi_ProjectAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectAPIService ApiProjectList1", func(t *testing.T) {
+	t.Run("Test ProjectAPIService ApiProjectList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectList1(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ProjectAPI.ApiProjectList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

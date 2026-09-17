@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RequestCount** | Pointer to **int32** | number of requested execution deletions | [optional] 
-**Allsuccessful** | Pointer to **bool** | true if all deletions were successful | [optional] 
-**SuccessCount** | Pointer to **int32** | number of deletion attempts that succeeded | [optional] 
-**FailedCount** | Pointer to **int32** | number of deletion attempts that failed | [optional] 
+**RequestCount** | Pointer to **int32** |  | [optional] 
+**Allsuccessful** | Pointer to **bool** |  | [optional] 
+**SuccessCount** | Pointer to **int32** |  | [optional] 
+**FailedCount** | Pointer to **int32** |  | [optional] 
 **Failures** | Pointer to [**[]FailedItem**](FailedItem.md) |  | [optional] 
 
 ## Methods
